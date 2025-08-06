@@ -16,13 +16,23 @@ import sys
 import argparse
 import base64
 import pandas as pd
+from prompt_config import (
+    generate_zero_shot_prompt, 
+    generate_zero_shot_feature_select_prompt, 
+    generate_zero_shot_feature_select_balanced_prompt,
+    generate_few_shot_prompt,
+    generate_few_shot_feature_select_prompt,
+    generate_few_shot_feature_select_balanced_prompt,
+    generate_enhanced_zero_shot_prompt,  # Import the new prompt
+    prepare_few_shot_examples
+)
 
 # Replace with your own API key
 api_key = os.environ['CHEN_OPENAI_API_KEY']
 
 # Default file paths (will be overridden by command line arguments)
-DEFAULT_CHECKPOINT_FILE = "checkpoint_results_{model}_{mode}.json"
-DEFAULT_OUTPUT_FILE = "evaluation_results_{model}_{mode}.json"
+DEFAULT_CHECKPOINT_FILE = "checkpoint_results_{model}_{mode}_{prompt_config}.json"
+DEFAULT_OUTPUT_FILE = "evaluation_results_{model}_{mode}_{prompt_config}.json"
 DEFAULT_CHECKPOINT_INTERVAL = 100  # Save every 100 completed items
 
 # Global variable to track if we're shutting down
@@ -63,6 +73,7 @@ async def evaluate_questions_parallel(
     client,
     model: str,
     mode: str,
+    prompt_config: str,
     temperature: float,
     max_concurrent: int = 5,
     checkpoint_file: str = DEFAULT_CHECKPOINT_FILE,
@@ -78,6 +89,8 @@ async def evaluate_questions_parallel(
         client: OpenAI client
         model (str): Name of the model (e.g., "gpt-4o", "gpt-4-turbo")
         mode (str): 'text-only' or 'vision'
+        prompt_config (str): 'zero-shot', 'zero-shot-feature-select', or 'few-shot'
+        temperature (float): Temperature for model generation
         max_concurrent (int): Max concurrent API calls allowed
         checkpoint_file (str): Path to save intermediate results
         checkpoint_interval (int): How often to save results (every N completed items)
@@ -89,6 +102,10 @@ async def evaluate_questions_parallel(
     results = {}
     completed_count = 0
     global shutting_down
+
+    # Prepare few-shot examples if needed
+    if prompt_config in ['few-shot', 'few-shot-feature-select', 'few-shot-feature-select-balanced']:
+        prepare_few_shot_examples(question_data)
 
     # Load previous results if they exist
     if os.path.exists(checkpoint_file):
@@ -110,60 +127,24 @@ async def evaluate_questions_parallel(
         
         if shutting_down:
             return {}  # Return empty if we're shutting down
-            
-        text_prompt = f"""
-        You are an AI assistant. Your first task is to describe the image provided in a single sentence.
-        After that, you are tasked with predicting how a participant would rate the quality of a smoking cessation support message. 
-        There are four different dimensions: 
-        1. content (How would you rate the content, that is, the words and meaning of this message), 
-        2. design (How would you rate the design, that is, how the message looks),
-        3. coping (How helpful would this message be to support you in coping with a smoking urge or craving), 
-        4. quitting (How helpful would this message be to support you in quitting or reducing smoking).
-
-        The possible ratings (from lowest to highest) for content and design quality are:
-        - Very poor
-        - Poor
-        - Acceptable
-        - Good
-        - Very good
-
-        The possible ratings (from lowest to highest) for coping and quitting are:
-        - Not at all helpful
-        - Somewhat helpful
-        - Moderately helpful
-        - Very helpful
-        - Extremely helpful 
-
-        Here is the message provided to the participant:
-
-        "{data['input_message']}"
-
-        And here is the demographics for the participant, use these information to embed yourself as
-        a member of the group:
-
-        Participant metadata:
-        """
         
-        # Add all metadata fields to the prompt
-        for key, value in data['metadata'].items():
-            if pd.notna(value):  # Only include non-null values
-                text_prompt += f"- {key}: {value}\n"
-        
-        text_prompt += f"""
-        Return your response in the following JSON format:
-        {{
-        "response_id": "{data['response_id']}",
-        "input_message": "{data['input_message']}",
-        "image_description": "List the text shown on the image here.",
-        "predicted_content": Choose one of the following options: "Very poor/Poor/Acceptable/Good/Very good",
-        "predicted_design": Choose one of the following options: "Very poor/Poor/Acceptable/Good/Very good",
-        "predicted_coping": Choose one of the following options: "Not at all helpful/Somewhat helpful/Moderately helpful/Very helpful/Extremely helpful",
-        "predicted_quitting": Choose one of the following options: "Not at all helpful/Somewhat helpful/Moderately helpful/Very helpful/Extremely helpful",
-        "explanation": Replace this with a very brief explanation (AT MOST 2 sentences!) for each predicted dimension. 
-        Your explanation should reflect your internal reasoning—consider what latent beliefs, inferred motivations, or psychological traits 
-        (e.g., readiness to quit, affective response, perceived relevance) might influence the participant's ratings.
-        }}
-        """
+        # Select the appropriate prompt generation function
+        if prompt_config == 'zero-shot':
+            text_prompt = generate_zero_shot_prompt(data)
+        elif prompt_config == 'zero-shot-feature-select':
+            text_prompt = generate_zero_shot_feature_select_prompt(data)
+        elif prompt_config == 'zero-shot-feature-select-balanced':
+            text_prompt = generate_zero_shot_feature_select_balanced_prompt(data)
+        elif prompt_config == 'few-shot':
+            text_prompt = generate_few_shot_prompt(data)
+        elif prompt_config == 'few-shot-feature-select':
+            text_prompt = generate_few_shot_feature_select_prompt(data)
+        elif prompt_config == 'few-shot-feature-select-balanced':
+            text_prompt = generate_few_shot_feature_select_balanced_prompt(data)
+        elif prompt_config == 'enhanced-zero-shot':  # Add the new option
+            text_prompt = generate_enhanced_zero_shot_prompt(data)
+        else:
+            raise ValueError(f"Unknown prompt config: {prompt_config}")
         
         prompt_messages = [{"role": "user", "content": []}]
         prompt_messages[0]["content"].append({"type": "text", "text": text_prompt})
@@ -276,16 +257,18 @@ async def main():
     parser = argparse.ArgumentParser(description="Evaluate smoking cessation messages using an LLM.")
     parser.add_argument('--mode', type=str, choices=['text-only', 'vision'], required=True, help="Evaluation mode: 'text-only' or 'vision'")
     parser.add_argument('--model', type=str, default="gpt-4o-mini", help="Name of the OpenAI model to use.")
-    parser.add_argument('--checkpoint-file', type=str, default=DEFAULT_CHECKPOINT_FILE, help="Path template for checkpoint file (use {model} and {mode} placeholders).")
-    parser.add_argument('--output-file', type=str, default=DEFAULT_OUTPUT_FILE, help="Path template for final output file (use {model} and {mode} placeholders).")
+    parser.add_argument('--prompt-config', type=str, choices=['zero-shot', 'zero-shot-feature-select', 'zero-shot-feature-select-balanced', 'few-shot', 'few-shot-feature-select', 'few-shot-feature-select-balanced', 'enhanced-zero-shot'], default='zero-shot', help="Prompt configuration")
+    parser.add_argument('--sample-size', type=int, default=None, help="Number of samples to process for testing (if not specified, processes all data)")
+    parser.add_argument('--checkpoint-file', type=str, default=DEFAULT_CHECKPOINT_FILE, help="Path template for checkpoint file (use {model}, {mode}, and {prompt_config} placeholders).")
+    parser.add_argument('--output-file', type=str, default=DEFAULT_OUTPUT_FILE, help="Path template for final output file (use {model}, {mode}, and {prompt_config} placeholders).")
     parser.add_argument('--max-concurrent', type=int, default=10, help="Maximum concurrent API calls.")
     parser.add_argument('--checkpoint-interval', type=int, default=DEFAULT_CHECKPOINT_INTERVAL, help="How often to save checkpoint (every N completed items).")
     parser.add_argument('--temperature', type=float, default=None, help="Set the model temperature. Overrides default logic (0.2, or 1.0 for 'o3-' models).")
     args = parser.parse_args()
 
-    # Format file paths with model and mode
-    checkpoint_file = args.checkpoint_file.format(model=args.model, mode=args.mode)
-    final_output_file = args.output_file.format(model=args.model, mode=args.mode)
+    # Format file paths with model, mode, and prompt_config
+    checkpoint_file = args.checkpoint_file.format(model=args.model, mode=args.mode, prompt_config=args.prompt_config)
+    final_output_file = args.output_file.format(model=args.model, mode=args.mode, prompt_config=args.prompt_config)
 
     # Determine temperature based on model name or user override
     temperature = args.temperature
@@ -299,6 +282,8 @@ async def main():
     else:
         print(f"User override: using temperature {temperature}")
 
+    print(f"Using prompt configuration: {args.prompt_config}")
+
     # Load data
     with open("data/processed_llm_data.json", "r") as f:
         question_data = json.load(f)
@@ -306,9 +291,12 @@ async def main():
     random.seed(42)
     question_data = {f"{i}": data for i, data in enumerate(question_data)}
     
-    # For testing with a sample, these lines are now commented out to run on the full dataset
-    # sampled_keys = random.sample(list(question_data.keys()), 5)
-    # question_data = {k: question_data[k] for k in sampled_keys}
+    # Sample data if specified
+    if args.sample_size:
+        print(f"Sampling {args.sample_size} items from {len(question_data)} total items")
+        sampled_keys = random.sample(list(question_data.keys()), min(args.sample_size, len(question_data)))
+        question_data = {k: question_data[k] for k in sampled_keys}
+        print(f"Using {len(question_data)} samples for evaluation")
 
     client = AsyncOpenAI(api_key=api_key)
     
@@ -319,6 +307,7 @@ async def main():
             client, 
             model=args.model,
             mode=args.mode,
+            prompt_config=args.prompt_config,
             temperature=temperature,
             max_concurrent=args.max_concurrent,
             checkpoint_file=checkpoint_file,

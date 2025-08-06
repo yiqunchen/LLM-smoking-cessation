@@ -1,0 +1,478 @@
+import random
+import pandas as pd
+
+# --- Configuration for Selected Features ---
+
+# A subset of features to be used in feature-selected and few-shot prompts
+SELECTED_FEATURES = [
+    "age_years", "gender_identity", "race_ethnicity", 
+    "quit_motivation_level", "social_support_to_quit"
+]
+
+# --- Zero-Shot Prompt (Original) ---
+
+def generate_zero_shot_prompt(data: dict) -> str:
+    """Generates a prompt with all available metadata (original behavior)."""
+    return _generate_prompt_base(data, use_all_features=True)
+
+# --- Zero-Shot Prompt (Feature-Selected) ---
+
+def generate_zero_shot_feature_select_prompt(data: dict) -> str:
+    """Generates a prompt with only a selected subset of metadata."""
+    return _generate_prompt_base(data, use_all_features=False)
+
+# --- Zero-Shot Prompt (Feature-Selected with Balanced Instructions) ---
+
+def generate_zero_shot_feature_select_balanced_prompt(data: dict) -> str:
+    """Generates a prompt with only a selected subset of metadata and explicit instructions to use the full rating range."""
+    return _generate_prompt_base(data, use_all_features=False, is_balanced=True)
+
+# --- Few-Shot Prompt Preparation and Generation ---
+
+FEW_SHOT_EXAMPLES = {}
+FEW_SHOT_EXAMPLES_BALANCED = {}
+
+def prepare_few_shot_examples(all_question_data: dict):
+    """
+    Pre-samples and stores high/low rated examples for each dimension to be used in few-shot prompts.
+    This should be called once before starting the evaluation.
+    """
+    global FEW_SHOT_EXAMPLES, FEW_SHOT_EXAMPLES_BALANCED
+    if FEW_SHOT_EXAMPLES and FEW_SHOT_EXAMPLES_BALANCED:  # Don't re-prepare if already done
+        return
+
+    print("Preparing examples for few-shot prompts...")
+    
+    # Convert dict to list of tuples for easier processing
+    dataset = [(qid, qdata) for qid, qdata in all_question_data.items()]
+    
+    # Define rating dimensions and their high/low values
+    dimensions = {
+        'content': {"high": "Very good", "low": "Very poor"},
+        'design': {"high": "Very good", "low": "Very poor"},
+        'coping': {"high": "Extremely helpful", "low": "Not at all helpful"},
+        'quitting': {"high": "Extremely helpful", "low": "Not at all helpful"}
+    }
+
+    # Prepare standard few-shot examples (high/low only)
+    for dim, values in dimensions.items():
+        high_val, low_val = values['high'], values['low']
+        
+        # Find one example for the high rating
+        high_example = next((d for _, d in dataset if d['ratings'].get(dim) == high_val), None)
+        
+        # Find one example for the low rating
+        low_example = next((d for _, d in dataset if d['ratings'].get(dim) == low_val), None)
+
+        if high_example and low_example:
+            FEW_SHOT_EXAMPLES[dim] = {'high': high_example, 'low': low_example}
+        else:
+            print(f"Warning: Could not find examples for dimension '{dim}'")
+
+    # Prepare balanced few-shot examples (all 5 categories)
+    all_ratings = {
+        'content': ["Very poor", "Poor", "Acceptable", "Good", "Very good"],
+        'design': ["Very poor", "Poor", "Acceptable", "Good", "Very good"],
+        'coping': ["Not at all helpful", "Somewhat helpful", "Moderately helpful", "Very helpful", "Extremely helpful"],
+        'quitting': ["Not at all helpful", "Somewhat helpful", "Moderately helpful", "Very helpful", "Extremely helpful"]
+    }
+
+    for dim, rating_values in all_ratings.items():
+        examples_by_rating = {}
+        for rating in rating_values:
+            # Find examples for each rating level
+            examples = [d for _, d in dataset if d['ratings'].get(dim) == rating]
+            if examples:
+                # Randomly select one example for this rating
+                examples_by_rating[rating] = random.choice(examples)
+            else:
+                print(f"Warning: No examples found for {dim} = {rating}")
+        
+        if examples_by_rating:
+            FEW_SHOT_EXAMPLES_BALANCED[dim] = examples_by_rating
+
+    print(f"Standard few-shot examples prepared for {len(FEW_SHOT_EXAMPLES)} dimensions.")
+    print(f"Balanced few-shot examples prepared for {len(FEW_SHOT_EXAMPLES_BALANCED)} dimensions.")
+
+
+def generate_few_shot_prompt(data: dict) -> str:
+    """
+    Generates a prompt that includes pre-sampled high/low examples for each dimension,
+    using all available metadata.
+    """
+    if not FEW_SHOT_EXAMPLES:
+        raise ValueError("Few-shot examples have not been prepared. Call prepare_few_shot_examples() first.")
+
+    # Start with examples
+    examples_text = "Here are some examples of how participants with certain demographics have rated other messages:\n\n"
+    
+    for dim, examples in FEW_SHOT_EXAMPLES.items():
+        for example_type, example_data in examples.items():
+            examples_text += f"--- Example ({dim.capitalize()} - {example_type.capitalize()}) ---\n"
+            examples_text += "Participant Demographics:\n"
+            for key, value in example_data['metadata'].items():
+                if pd.notna(value):
+                    examples_text += f"- {key}: {value}\n"
+            
+            examples_text += f"\nMessage: \"{example_data['input_message']}\"\n"
+            examples_text += f"Participant's Ground Truth Rating for {dim.capitalize()}: {example_data['ratings'][dim]}\n"
+            examples_text += "---\n\n"
+
+    # Generate the base prompt for the actual question to evaluate
+    question_prompt = _generate_prompt_base(data, use_all_features=True, is_few_shot=True)
+    
+    return examples_text + question_prompt
+
+
+def generate_few_shot_feature_select_prompt(data: dict) -> str:
+    """
+    Generates a prompt that includes pre-sampled high/low examples for each dimension,
+    using only a selected subset of metadata.
+    """
+    if not FEW_SHOT_EXAMPLES:
+        raise ValueError("Few-shot examples have not been prepared. Call prepare_few_shot_examples() first.")
+
+    # Start with examples
+    examples_text = "Here are some examples of how participants with certain demographics have rated other messages:\n\n"
+    
+    for dim, examples in FEW_SHOT_EXAMPLES.items():
+        for example_type, example_data in examples.items():
+            examples_text += f"--- Example ({dim.capitalize()} - {example_type.capitalize()}) ---\n"
+            examples_text += "Participant Demographics:\n"
+            for key, value in example_data['metadata'].items():
+                if key in SELECTED_FEATURES and pd.notna(value):
+                    examples_text += f"- {key}: {value}\n"
+            
+            examples_text += f"\nMessage: \"{example_data['input_message']}\"\n"
+            examples_text += f"Participant's Ground Truth Rating for {dim.capitalize()}: {example_data['ratings'][dim]}\n"
+            examples_text += "---\n\n"
+
+    # Generate the base prompt for the actual question to evaluate
+    question_prompt = _generate_prompt_base(data, use_all_features=False, is_few_shot=True)
+    
+    return examples_text + question_prompt
+
+
+def generate_few_shot_feature_select_balanced_prompt(data: dict) -> str:
+    """
+    Generates a prompt that includes examples from ALL 5 rating categories for each dimension,
+    using only selected metadata, with explicit instructions to use the full rating range.
+    """
+    if not FEW_SHOT_EXAMPLES_BALANCED:
+        raise ValueError("Balanced few-shot examples have not been prepared. Call prepare_few_shot_examples() first.")
+
+    # Start with examples from all 5 categories
+    examples_text = """IMPORTANT: The examples below show the FULL RANGE of possible ratings. Notice that participants DO rate messages at ALL extremes - from "Very poor" to "Very good" and from "Not at all helpful" to "Extremely helpful". DO NOT shy away from predicting extreme ratings when they are warranted.
+
+Here are examples showing how participants with various demographics have rated messages across ALL rating categories:
+
+"""
+    
+    for dim, examples_by_rating in FEW_SHOT_EXAMPLES_BALANCED.items():
+        examples_text += f"=== {dim.capitalize()} Examples (All Rating Levels) ===\n"
+        for rating, example_data in examples_by_rating.items():
+            examples_text += f"--- {rating} ---\n"
+            examples_text += "Participant Demographics:\n"
+            for key, value in example_data['metadata'].items():
+                if key in SELECTED_FEATURES and pd.notna(value):
+                    examples_text += f"- {key}: {value}\n"
+            
+            examples_text += f"\nMessage: \"{example_data['input_message']}\"\n"
+            examples_text += f"Participant's Rating for {dim.capitalize()}: {rating}\n"
+            examples_text += "---\n"
+        examples_text += "\n"
+
+    examples_text += """
+REMEMBER: Based on these examples, you can see that:
+1. Participants DO give extreme ratings ("Very poor", "Very good", "Not at all helpful", "Extremely helpful")
+2. Consider ALL rating categories - don't avoid the extremes
+3. Match your predictions to what similar participants would actually rate
+"""
+
+    # Generate the base prompt for the actual question to evaluate
+    question_prompt = _generate_prompt_base(data, use_all_features=False, is_few_shot=True, is_balanced=True)
+    
+    return examples_text + question_prompt
+
+
+# --- Continuous Rating Prompt (for calibration) ---
+
+def generate_continuous_rating_prompt(data: dict) -> str:
+    """
+    Generates a prompt that asks for continuous numerical ratings between 1-5 
+    instead of categorical ratings, enabling calibration.
+    """
+    return _generate_continuous_prompt_base(data, use_all_features=False)
+
+def _generate_continuous_prompt_base(data: dict, use_all_features: bool) -> str:
+    """
+    A helper to generate prompts for continuous rating prediction.
+    """
+    prompt = """
+You are an expert in smoking cessation communication and intervention. Your first task is to describe the image provided in a single sentence.
+After that, you are tasked with predicting how a participant would rate the quality of a smoking cessation support message. 
+There are four different dimensions: 
+1. content (How would you rate the content, that is, the words and meaning of this message), 
+2. design (How would you rate the design, that is, how the message looks),
+3. coping (How helpful would this message be to support you in coping with a smoking urge or craving), 
+4. quitting (How helpful would this message be to support you in quitting or reducing smoking).
+
+IMPORTANT: Provide your ratings as CONTINUOUS NUMERICAL SCORES between 1.0 and 5.0 (with decimals allowed).
+
+For content and design quality:
+- 1.0 = Very poor
+- 2.0 = Poor  
+- 3.0 = Acceptable
+- 4.0 = Good
+- 5.0 = Very good
+- Use any decimal between these values (e.g., 2.3, 3.7, 4.1)
+
+For coping and quitting helpfulness:
+- 1.0 = Not at all helpful
+- 2.0 = Somewhat helpful
+- 3.0 = Moderately helpful  
+- 4.0 = Very helpful
+- 5.0 = Extremely helpful
+- Use any decimal between these values (e.g., 1.8, 3.2, 4.6)
+
+Here is the message provided to the participant:
+
+"{message}"
+
+And here is the demographics for the participant, use these information to embed yourself as
+a member of the group:
+
+Participant metadata:
+""".format(message=data['input_message'])
+
+    # Determine which metadata features to include
+    features_to_include = data['metadata'].keys() if use_all_features else SELECTED_FEATURES
+    
+    for key in features_to_include:
+        value = data['metadata'].get(key)
+        if pd.notna(value):
+            prompt += f"- {key}: {value}\n"
+
+    # End of the prompt
+    prompt += """
+Return your response in the following JSON format:
+{{
+"response_id": "{response_id}",
+"input_message": "{input_message}",
+"image_description": "List the text shown on the image here.",
+"predicted_content": [numerical score between 1.0 and 5.0],
+"predicted_design": [numerical score between 1.0 and 5.0],
+"predicted_coping": [numerical score between 1.0 and 5.0],
+"predicted_quitting": [numerical score between 1.0 and 5.0],
+"confidence_content": [how confident are you in this rating, scale 1.0-5.0],
+"confidence_design": [how confident are you in this rating, scale 1.0-5.0],
+"confidence_coping": [how confident are you in this rating, scale 1.0-5.0],
+"confidence_quitting": [how confident are you in this rating, scale 1.0-5.0],
+"explanation": "Replace this with a very brief explanation (AT MOST 2 sentences!) for each predicted dimension."
+}}
+""".format(response_id=data['response_id'], input_message=data['input_message'].replace('"', '\\"'))
+
+    return prompt
+
+
+# --- Helper Function for Prompt Generation ---
+
+def _generate_prompt_base(data: dict, use_all_features: bool, is_few_shot: bool = False, is_balanced: bool = False) -> str:
+    """
+    A helper to generate the core prompt structure.
+    """
+    # Start of the prompt
+    if is_few_shot:
+        if is_balanced:
+            prompt = "\nNow, based on the examples above showing the FULL RANGE of ratings, evaluate the following message for the given participant. Remember to consider ALL rating categories and use extreme ratings when appropriate:\n\n"
+        else:
+            prompt = "Now, based on the examples above, evaluate the following message for the given participant:\n\n"
+    else:
+        prompt = ""
+        
+    prompt += """
+You are an expert in smoking cessation communication and intervention. Your first task is to describe the image provided in a single sentence.
+After that, you are tasked with predicting how a participant would rate the quality of a smoking cessation support message. 
+There are four different dimensions: 
+1. content (How would you rate the content, that is, the words and meaning of this message), 
+2. design (How would you rate the design, that is, how the message looks),
+3. coping (How helpful would this message be to support you in coping with a smoking urge or craving), 
+4. quitting (How helpful would this message be to support you in quitting or reducing smoking).
+
+The possible ratings (from lowest to highest) for content and design quality are:
+- Very poor
+- Poor
+- Acceptable
+- Good
+- Very good
+
+The possible ratings (from lowest to highest) for coping and quitting are:
+- Not at all helpful
+- Somewhat helpful
+- Moderately helpful
+- Very helpful
+- Extremely helpful 
+"""
+
+    if is_balanced:
+        prompt += """
+IMPORTANT: Use the FULL RANGE of ratings. Do not avoid extreme ratings like "Very poor", "Very good", "Not at all helpful", or "Extremely helpful" - these ratings exist in the data and should be used when appropriate for the participant and message.
+"""
+
+    prompt += f"""
+Here is the message provided to the participant:
+
+"{data['input_message']}"
+
+And here is the demographics for the participant, use these information to embed yourself as
+a member of the group:
+
+Participant metadata:
+"""
+
+    # Determine which metadata features to include
+    features_to_include = data['metadata'].keys() if use_all_features else SELECTED_FEATURES
+    
+    for key in features_to_include:
+        value = data['metadata'].get(key)
+        if pd.notna(value):
+            prompt += f"- {key}: {value}\n"
+
+    # End of the prompt
+    prompt += """
+Return your response in the following JSON format:
+{{
+"response_id": "{response_id}",
+"input_message": "{input_message}",
+"image_description": "List the text shown on the image here.",
+"predicted_content": "Choose one of the following options: \\"Very poor/Poor/Acceptable/Good/Very good\\"",
+"predicted_design": "Choose one of the following options: \\"Very poor/Poor/Acceptable/Good/Very good\\"",
+"predicted_coping": "Choose one of the following options: \\"Not at all helpful/Somewhat helpful/Moderately helpful/Very helpful/Extremely helpful\\"",
+"predicted_quitting": "Choose one of the following options: \\"Not at all helpful/Somewhat helpful/Moderately helpful/Very helpful/Extremely helpful\\"",
+"explanation": "Replace this with a very brief explanation (AT MOST 2 sentences!) for each predicted dimension. Your explanation should reflect your internal reasoning—consider what latent beliefs, inferred motivations, or psychological traits (e.g., readiness to quit, affective response, perceived relevance) might influence the participant's ratings."
+}}
+""".format(response_id=data['response_id'], input_message=data['input_message'].replace('"', '\\"'))
+
+    return prompt 
+
+def generate_enhanced_zero_shot_prompt(data):
+    """Generate the enhanced zero-shot prompt with detailed rubrics"""
+    
+    # Extract participant metadata
+    # Using all metadata available in this version
+    metadata_text = ""
+    if 'metadata' in data and data['metadata']:
+        for key, value in data['metadata'].items():
+            if pd.notna(value):
+                metadata_text += f"- {key}: {value}\n"
+    
+    # Escape the message for JSON
+    escaped_message = data['input_message'].replace('"', '\\"')
+    
+    prompt = f"""
+You are an **expert in smoking-cessation communication and intervention**.
+
+Your first task is to **describe the image** provided in **one sentence**.
+
+After that, **predict how *this participant* will rate** a smoking-cessation support message.  
+**CRITICAL → Evaluate strictly from the participant’s perspective, not as a general expert.**
+
+---
+
+## RATING DIMENSIONS
+1. **content** – words and meaning  
+2. **design** – visual presentation  
+3. **coping** – helpfulness for handling an urge or craving *in the moment*  
+4. **quitting** – helpfulness for quitting or reducing smoking *long-term*  
+
+### Allowed rating categories  
+**Content / Design** → Very poor · Poor · Acceptable · Good · Very good  
+**Coping / Quitting** → Not at all helpful · Somewhat helpful · Moderately helpful · Very helpful · Extremely helpful  
+
+---
+
+## PARTICIPANT-CENTRIC GUIDELINES  
+Before rating, weigh these factors **in the participant's metadata**:  
+1. **Psychological barriers** – worry, fear of feelings, emotional problems.  
+2. **Social environment** – household/friend smokers, second-hand cues.  
+3. **Quit history** – number & outcome of prior attempts; past use of advice given.  
+4. **Motivation & support** – readiness and availability of help.  
+5. **Nicotine dependence** – cigarettes/day, time to first cigarette.  
+6. **Context realism** – can the suggested action work in their daily life and socioeconomic setting?  
+
+---
+
+## GLOBAL RATING RUBRIC  
+• **Very poor** – generic, patronising, no new actionable idea; likely ignored / reactance.  
+• **Poor** – some idea but unclear, controlling, or badly tailored.  
+• **Acceptable** – clear & neutral but not notably novel or motivating.  
+• **Good** – clear + novel/motivating *and* respects autonomy; supportive tone.  
+• **Very good** – all of "Good" plus culturally/relevantly tailored, emotionally engaging, concrete, feasible action.  
+
+---
+
+## COPING-SPECIFIC RUBRIC  
+| Level | Likely participant reaction | Message traits |
+|-------|-----------------------------|----------------|
+| **Not at all helpful** | "This won't help my cravings." | Only slogans / self-talk, no concrete skill, unrealistic. |
+| **Somewhat helpful** | "Maybe okay but basic." | A single generic tactic (e.g., "count to 10"), limited tailoring. |
+| **Moderately helpful** | "Could work sometimes." | One evidence-based tactic + brief rationale, minor feasibility gaps. |
+| **Very helpful** | "I can do this when cravings hit." | Specific, context-aware tactic addressing barriers; autonomy-supportive. |
+| **Extremely helpful** | "Gives me multiple tools I trust." | Combines behavioral + cognitive skills; boosts self-efficacy; usable anywhere. |
+
+✔ **Coping checklist** → Novelty · Feasibility · Barrier fit · Self-efficacy  
+
+---
+
+## QUITTING-SPECIFIC RUBRIC (Enhanced)  
+| Level | Likely participant reaction | Message traits |
+|-------|-----------------------------|----------------|
+| **Not at all helpful** | "This won't get me closer to quitting." | Pure affirmation or vague mindfulness; **no plan, resources, or timeline**; ignores nicotine dependence. |
+| **Somewhat helpful** | "Nice idea but thin." | Single motivational step (e.g., write a note) **without** guidance on evidence-based aids (NRT, quitline, Rx) or social support. |
+| **Moderately helpful** | "A decent starting point." | Introduces **one** evidence-based step (set quit date, call quitline, use NRT) + rationale, yet only lightly addresses dependence/barriers. |
+| **Very helpful** | "This feels like a workable plan." | Blends **behavioral + pharmacological** advice, includes resource link / support prompt, tailors to dependence (cigs/day, TTFC) **and** quit history. |
+| **Extremely helpful** | "Clear, comprehensive roadmap I believe in." | Provides a **multi-step, tailored strategy** (set date, remove triggers, select NRT/Rx, enlist support), anticipates barriers (stress, environment, low income), offers concrete resources (quitline number, free NRT program), and reinforces efficacy with success cues. |
+
+✔ **Quitting checklist** → Evidence-based components · Tailoring to dependence & history · Resource inclusion · Socio-economic fit · Self-efficacy boost  
+
+### Common pitfalls that **must lower** the quitting rating  
+- Relies only on positive self-talk or mindfulness metaphors without next steps.  
+- Ignores heavy dependence indicators (≥10 CPD, TTFC ≤30 min).  
+- Suggests difficult or costly actions without acknowledging participant's income or support constraints.  
+
+---
+
+### ADJUSTMENT RULES  
+• **Penalty** – Down-grade ≥1 level if message omits evidence-based aids, offers only generic motivation, or is unrealistic for the participant's context.  
+• **Bonus** – Up-grade only when strategy is **fresh, specific, evidence-based, low-cost**, and actionable **today** for this participant.  
+
+### EXPLANATION LIMIT  
+For each dimension write **≤ 2 sentences** citing at least one checklist factor (e.g., "generic self-talk; no NRT advice for highly dependent smoker").
+
+---
+
+### INPUTS  
+
+Here is the message provided to the participant:  
+
+\\"{data['input_message']}\\"  
+
+Participant metadata (embed yourself as a member of this group):  
+{metadata_text}
+---
+
+### OUTPUT FORMAT  
+Return **exactly** this JSON object:  
+
+{{
+  "response_id": "{data['response_id']}",
+  "input_message": "{escaped_message}",
+  "image_description": "List the text shown on the image here.",
+  "predicted_content": "Very poor/Poor/Acceptable/Good/Very good",
+  "predicted_design": "Very poor/Poor/Acceptable/Good/Very good",
+  "predicted_coping": "Not at all helpful/Somewhat helpful/Moderately helpful/Very helpful/Extremely helpful",
+  "predicted_quitting": "Not at all helpful/Somewhat helpful/Moderately helpful/Very helpful/Extremely helpful",
+  "explanation": "≤ 2 sentences per dimension reflecting the participant's likely view (psychological barriers, social context, quit history, dependence, motivation)."
+}}
+"""
+    return prompt 
