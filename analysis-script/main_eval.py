@@ -147,14 +147,41 @@ async def evaluate_questions_parallel(
             raise ValueError(f"Unknown prompt config: {prompt_config}")
         
         prompt_messages = [{"role": "user", "content": []}]
-        prompt_messages[0]["content"].append({"type": "text", "text": text_prompt})
+
+        # NEW: handle few-shot generators that now return {"text": ..., "example_images": [...]}
+        if isinstance(text_prompt, dict):
+            # 1) Add the examples + question text
+            prompt_messages[0]["content"].append({
+                "type": "text",
+                "text": text_prompt["text"]
+            })
+        
+            # 2) Attach example images, if any (exactly like you already do for the current item)
+            for ex in text_prompt.get("example_images", []):
+                path = ex.get("path")
+                if path and os.path.exists(path):
+                    b64 = encode_image(path)
+                    if b64:
+                        prompt_messages[0]["content"].append({
+                            "type": "image_url",
+                            "image_url": {"url": f"data:image/jpeg;base64,{b64}"}
+                        })
+        else:
+            # Backward-compatible path (zero-shot, etc., still return a string)
+            prompt_messages[0]["content"].append({
+                "type": "text",
+                "text": text_prompt
+            })
 
         if mode == 'vision':
             if data.get('image_path') and os.path.exists(data['image_path']):
                 base64_image = encode_image(data['image_path'])
                 if base64_image:
                     # Add a message to the text prompt indicating an image is included
-                    text_prompt += "\nAn image is included in this message for your review."
+                    prompt_messages[0]["content"].append({ 
+                        "type": "text", 
+                        "text": "\nAn image is included in this message for your review. When rating, jointly use both inputs: the message text and the image. Do not ignore either." })
+                    
                     prompt_messages[0]["content"].append({
                         "type": "image_url",
                         "image_url": {
@@ -164,9 +191,6 @@ async def evaluate_questions_parallel(
             else:
                 # Handle case where image is missing for a vision task
                 print(f"Warning: Image path not found for qid {qid}, running as text-only.")
-
-        # Finalize the user prompt content
-        prompt_messages[0]["content"][0]['text'] = text_prompt
 
         try:
             response_json_str = await get_response_async(client, prompt_messages, model, semaphore, temperature)

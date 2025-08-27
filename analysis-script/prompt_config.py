@@ -1,5 +1,6 @@
 import random
 import pandas as pd
+from typing import Dict, Any, List, Union
 
 # --- Configuration for Selected Features ---
 
@@ -95,16 +96,21 @@ def prepare_few_shot_examples(all_question_data: dict):
     print(f"Balanced few-shot examples prepared for {len(FEW_SHOT_EXAMPLES_BALANCED)} dimensions.")
 
 
-def generate_few_shot_prompt(data: dict) -> str:
+def generate_few_shot_prompt(data: dict) -> Union[str, Dict[str, Any]]:
     """
     Generates a prompt that includes pre-sampled high/low examples for each dimension,
     using all available metadata.
+
+    Returns:
+        dict with {"text": <string>, "example_images": [ {path, alt}, ... ]}
+        (Zero-shot functions still return str; only few-shot returns this dict.)
     """
     if not FEW_SHOT_EXAMPLES:
         raise ValueError("Few-shot examples have not been prepared. Call prepare_few_shot_examples() first.")
 
     # Start with examples
     examples_text = "Here are some examples of how participants with certain demographics have rated other messages:\n\n"
+    example_images: List[Dict[str, str]] = []
     
     for dim, examples in FEW_SHOT_EXAMPLES.items():
         for example_type, example_data in examples.items():
@@ -118,13 +124,18 @@ def generate_few_shot_prompt(data: dict) -> str:
             examples_text += f"Participant's Ground Truth Rating for {dim.capitalize()}: {example_data['ratings'][dim]}\n"
             examples_text += "---\n\n"
 
+            # NEW: example image if present (already stored in example_data)
+            img = example_data.get("image_path")
+            if img:
+                example_images.append({"path": img, "alt": f"{dim} - {example_type}"})
+
     # Generate the base prompt for the actual question to evaluate
     question_prompt = _generate_prompt_base(data, use_all_features=True, is_few_shot=True)
     
-    return examples_text + question_prompt
+    return {"text": examples_text + question_prompt, "example_images": example_images}
 
 
-def generate_few_shot_feature_select_prompt(data: dict) -> str:
+def generate_few_shot_feature_select_prompt(data: dict) -> Union[str, Dict[str, Any]]:
     """
     Generates a prompt that includes pre-sampled high/low examples for each dimension,
     using only a selected subset of metadata.
@@ -133,7 +144,8 @@ def generate_few_shot_feature_select_prompt(data: dict) -> str:
         raise ValueError("Few-shot examples have not been prepared. Call prepare_few_shot_examples() first.")
 
     # Start with examples
-    examples_text = "Here are some examples of how participants with certain demographics have rated other messages:\n\n"
+    examples_text = "Here are some examples of how participants with certain demographics have rated other messages:\n\n Each participant is associated with both a message text and an image. When generating a rating, you must jointly consider both inputs together. Do not ignore either the text or the image."
+    example_images: List[Dict[str, str]] = []
     
     for dim, examples in FEW_SHOT_EXAMPLES.items():
         for example_type, example_data in examples.items():
@@ -147,13 +159,18 @@ def generate_few_shot_feature_select_prompt(data: dict) -> str:
             examples_text += f"Participant's Ground Truth Rating for {dim.capitalize()}: {example_data['ratings'][dim]}\n"
             examples_text += "---\n\n"
 
+            # NEW: example image if present
+            img = example_data.get("image_path")
+            if img:
+                example_images.append({"path": img, "alt": f"{dim} - {example_type}"})
+
     # Generate the base prompt for the actual question to evaluate
     question_prompt = _generate_prompt_base(data, use_all_features=False, is_few_shot=True)
     
-    return examples_text + question_prompt
+    return {"text": examples_text + question_prompt, "example_images": example_images}
 
 
-def generate_few_shot_feature_select_balanced_prompt(data: dict) -> str:
+def generate_few_shot_feature_select_balanced_prompt(data: dict) -> Union[str, Dict[str, Any]]:
     """
     Generates a prompt that includes examples from ALL 5 rating categories for each dimension,
     using only selected metadata, with explicit instructions to use the full rating range.
@@ -164,9 +181,10 @@ def generate_few_shot_feature_select_balanced_prompt(data: dict) -> str:
     # Start with examples from all 5 categories
     examples_text = """IMPORTANT: The examples below show the FULL RANGE of possible ratings. Notice that participants DO rate messages at ALL extremes - from "Very poor" to "Very good" and from "Not at all helpful" to "Extremely helpful". DO NOT shy away from predicting extreme ratings when they are warranted.
 
-Here are examples showing how participants with various demographics have rated messages across ALL rating categories:
+Here are examples showing how participants with various demographics have rated messages across ALL rating categories. Each participant is associated with both a message text and an image. When generating a rating, you must jointly consider both inputs together. Do not ignore either the text or the image:
 
 """
+    example_images: List[Dict[str, str]] = []
     
     for dim, examples_by_rating in FEW_SHOT_EXAMPLES_BALANCED.items():
         examples_text += f"=== {dim.capitalize()} Examples (All Rating Levels) ===\n"
@@ -180,6 +198,11 @@ Here are examples showing how participants with various demographics have rated 
             examples_text += f"\nMessage: \"{example_data['input_message']}\"\n"
             examples_text += f"Participant's Rating for {dim.capitalize()}: {rating}\n"
             examples_text += "---\n"
+            
+            # NEW: example image if present
+            img = example_data.get("image_path")
+            if img:
+                example_images.append({"path": img, "alt": f"{dim} - {rating}"})
         examples_text += "\n"
 
     examples_text += """
@@ -191,8 +214,8 @@ REMEMBER: Based on these examples, you can see that:
 
     # Generate the base prompt for the actual question to evaluate
     question_prompt = _generate_prompt_base(data, use_all_features=False, is_few_shot=True, is_balanced=True)
-    
-    return examples_text + question_prompt
+
+    return {"text": examples_text + question_prompt, "example_images": example_images}
 
 
 # --- Continuous Rating Prompt (for calibration) ---
