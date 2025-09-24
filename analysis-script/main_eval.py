@@ -24,6 +24,10 @@ from prompt_config import (
     generate_few_shot_feature_select_prompt,
     generate_few_shot_feature_select_balanced_prompt,
     generate_enhanced_zero_shot_prompt,  # Import the new prompt
+    generate_digital_twin_prompt,
+    generate_digital_twin_select_prompt,
+    generate_digital_twin_feedback_prompt,
+    generate_digital_twin_cbtact_prompt,
     prepare_few_shot_examples
 )
 
@@ -89,7 +93,7 @@ async def evaluate_questions_parallel(
         client: OpenAI client
         model (str): Name of the model (e.g., "gpt-4o", "gpt-4-turbo")
         mode (str): 'text-only' or 'vision'
-        prompt_config (str): 'zero-shot', 'zero-shot-feature-select', or 'few-shot'
+        prompt_config (str): 'zero-shot', 'zero-shot-feature-select', 'few-shot', 'digital-twin', 'digital-twin-select', 'digital-twin-feedback', 'digital-twin-cbtact'
         temperature (float): Temperature for model generation
         max_concurrent (int): Max concurrent API calls allowed
         checkpoint_file (str): Path to save intermediate results
@@ -143,6 +147,14 @@ async def evaluate_questions_parallel(
             text_prompt = generate_few_shot_feature_select_balanced_prompt(data)
         elif prompt_config == 'enhanced-zero-shot':  # Add the new option
             text_prompt = generate_enhanced_zero_shot_prompt(data)
+        elif prompt_config == 'digital-twin':
+            text_prompt = generate_digital_twin_prompt(data)
+        elif prompt_config == 'digital-twin-select':
+            text_prompt = generate_digital_twin_select_prompt(data)
+        elif prompt_config == 'digital-twin-feedback':
+            text_prompt = generate_digital_twin_feedback_prompt(data)
+        elif prompt_config == 'digital-twin-cbtact':
+            text_prompt = generate_digital_twin_cbtact_prompt(data)
         else:
             raise ValueError(f"Unknown prompt config: {prompt_config}")
         
@@ -257,7 +269,7 @@ async def main():
     parser = argparse.ArgumentParser(description="Evaluate smoking cessation messages using an LLM.")
     parser.add_argument('--mode', type=str, choices=['text-only', 'vision'], required=True, help="Evaluation mode: 'text-only' or 'vision'")
     parser.add_argument('--model', type=str, default="gpt-4o-mini", help="Name of the OpenAI model to use.")
-    parser.add_argument('--prompt-config', type=str, choices=['zero-shot', 'zero-shot-feature-select', 'zero-shot-feature-select-balanced', 'few-shot', 'few-shot-feature-select', 'few-shot-feature-select-balanced', 'enhanced-zero-shot'], default='zero-shot', help="Prompt configuration")
+    parser.add_argument('--prompt-config', type=str, choices=['zero-shot', 'zero-shot-feature-select', 'zero-shot-feature-select-balanced', 'few-shot', 'few-shot-feature-select', 'few-shot-feature-select-balanced', 'enhanced-zero-shot', 'digital-twin', 'digital-twin-select', 'digital-twin-feedback', 'digital-twin-cbtact'], default='zero-shot', help="Prompt configuration")
     parser.add_argument('--sample-size', type=int, default=None, help="Number of samples to process for testing (if not specified, processes all data)")
     parser.add_argument('--checkpoint-file', type=str, default=DEFAULT_CHECKPOINT_FILE, help="Path template for checkpoint file (use {model}, {mode}, and {prompt_config} placeholders).")
     parser.add_argument('--output-file', type=str, default=DEFAULT_OUTPUT_FILE, help="Path template for final output file (use {model}, {mode}, and {prompt_config} placeholders).")

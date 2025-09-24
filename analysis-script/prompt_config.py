@@ -476,3 +476,425 @@ Return **exactly** this JSON object:
 }}
 """
     return prompt 
+
+def generate_digital_twin_prompt(data):
+    """Generate prompts for digital twin method"""
+
+    # Read the traing messages & ratings (first 7 messages) for each participant
+    df = pd.read_excel("data/digitalTwin_msg.xlsx")
+    
+    # Extract participant metadata
+    # Using all metadata available in this version
+    metadata_text = ""
+    if 'metadata' in data and data['metadata']:
+        for key, value in data['metadata'].items():
+            if pd.notna(value):
+                metadata_text += f"- {key}: {value}\n"
+    
+    # Add training messages and ratings for each participant
+    row = df[df["response_id"] == data['response_id']]
+    
+    for col in df.columns:
+            if col.startswith("message_"):
+                msg_text = str(row[col].iloc[0]).strip()
+
+                # Map rating column names to short labels
+                label_map = {
+                    "content": "content",
+                    "design": "design",
+                    "coping": "coping",
+                    "quitting": "quitting"
+                }
+                
+                # Find rating columns (they follow the message column)
+                ratings = []
+                col_index = df.columns.get_loc(col)
+                # Ratings usually are next 4 columns after each message
+                for rcol in df.columns[col_index+1 : col_index+5]:
+                    if rcol.startswith("how"):
+                        # Pick a short label based on keyword in column name
+                        for key, short_label in label_map.items():
+                            if key in rcol.lower():
+                                value = row[rcol].iloc[0]
+                                ratings.append(f"{short_label}: {value}")
+                                break
+
+                ratings_text = "\n".join(ratings)
+
+                metadata_text += f"Past message:\n{msg_text}\nRatings:\n{ratings_text}\n\n---\n"
+
+      
+    prompt = f"""
+You are an AI assistant simulating this participant. Your task is to predict how the participant will rate a new smoking-cessation support message, using their Participant metadata (which includes their characteristics and past message ratings).
+Base your prediction on how similar the new message is to the participant’s previously rated messages. Remain consistent with the participant’s prior ratings and stated characteristics, as if you are that person.
+Be sure to carefully follow all provided Instructions for formatting your answer to the new message.
+---
+Instructions:
+### RATING DIMENSIONS
+1. **content** – How would you rate the content (that is, the words and meaning) of this message?  
+2. **design** – How would you rate the design (that is, how the message looks) of this message? 
+3. **coping** – How helpful would this message be to support you in coping with a smoking urge or craving?  
+4. **quitting** – How helpful would this message be to support you in quitting or reducing smoking? 
+
+### Allowed rating categories  
+**content / design** → Very poor · Poor · Acceptable · Good · Very good  
+**coping / quitting** → Not at all helpful · Somewhat helpful · Moderately helpful · Very helpful · Extremely helpful  
+
+
+
+### INPUTS  
+
+Here is the message provided to the participant to be rated:  
+
+\\"{data['input_message']}\\"  
+
+Participant metadata:  
+{metadata_text}
+---
+
+### OUTPUT FORMAT  
+Return **exactly** this JSON object:  
+
+{{
+  "response_id": "{data['response_id']}",
+  "predicted_content": "Very poor/Poor/Acceptable/Good/Very good",
+  "predicted_design": "Very poor/Poor/Acceptable/Good/Very good",
+  "predicted_coping": "Not at all helpful/Somewhat helpful/Moderately helpful/Very helpful/Extremely helpful",
+  "predicted_quitting": "Not at all helpful/Somewhat helpful/Moderately helpful/Very helpful/Extremely helpful",
+  "explanation": "≤ 2 sentences per dimension reflecting the participant's likely view (psychological barriers, social context, quit history, dependence, motivation)."
+}}
+"""
+    #print("=== Prompt Sent to GPT ===")
+    #print(prompt)
+    #print("==========================")
+    return prompt 
+
+def generate_digital_twin_select_prompt(data):
+    """Generate prompts for digital twin method with selected features"""
+
+    # Read the traing messages & ratings (first 7 messages) for each participant
+    df = pd.read_excel("data/digitalTwin_msg.xlsx")
+    
+    # Extract participant metadata
+    # Using all metadata available in this version
+    metadata_text = ""
+    if 'metadata' in data and data['metadata']:
+        for key, value in data['metadata'].items():
+            if key in SELECTED_FEATURES and pd.notna(value):
+                metadata_text += f"- {key}: {value}\n"
+    
+    # Add training messages and ratings for each participant
+    row = df[df["response_id"] == data['response_id']]
+    
+    for col in df.columns:
+            if col.startswith("message_"):
+                msg_text = str(row[col].iloc[0]).strip()
+
+                # Map rating column names to short labels
+                label_map = {
+                    "content": "content",
+                    "design": "design",
+                    "coping": "coping",
+                    "quitting": "quitting"
+                }
+                
+                # Find rating columns (they follow the message column)
+                ratings = []
+                col_index = df.columns.get_loc(col)
+                # Ratings usually are next 4 columns after each message
+                for rcol in df.columns[col_index+1 : col_index+5]:
+                    if rcol.startswith("how"):
+                        # Pick a short label based on keyword in column name
+                        for key, short_label in label_map.items():
+                            if key in rcol.lower():
+                                value = row[rcol].iloc[0]
+                                ratings.append(f"{short_label}: {value}")
+                                break
+
+                ratings_text = "\n".join(ratings)
+
+                metadata_text += f"Past message:\n{msg_text}\nRatings:\n{ratings_text}\n\n---\n"
+
+      
+    prompt = f"""
+You are an AI assistant simulating this participant. Your task is to predict how the participant will rate a new smoking-cessation support message, using their Participant metadata (which includes their characteristics and past message ratings).
+Base your prediction on how similar the new message is to the participant’s previously rated messages. Remain consistent with the participant’s prior ratings and stated characteristics, as if you are that person.
+Be sure to carefully follow all provided Instructions for formatting your answer to the new message.
+---
+Instructions:
+### RATING DIMENSIONS
+1. **content** – How would you rate the content (that is, the words and meaning) of this message?  
+2. **design** – How would you rate the design (that is, how the message looks) of this message? 
+3. **coping** – How helpful would this message be to support you in coping with a smoking urge or craving?  
+4. **quitting** – How helpful would this message be to support you in quitting or reducing smoking? 
+
+### Allowed rating categories  
+**content / design** → Very poor · Poor · Acceptable · Good · Very good  
+**coping / quitting** → Not at all helpful · Somewhat helpful · Moderately helpful · Very helpful · Extremely helpful  
+
+
+
+### INPUTS  
+
+Here is the message provided to the participant to be rated:  
+
+\\"{data['input_message']}\\"  
+
+Participant metadata:  
+{metadata_text}
+---
+
+### OUTPUT FORMAT  
+Return **exactly** this JSON object:  
+
+{{
+  "response_id": "{data['response_id']}",
+  "predicted_content": "Very poor/Poor/Acceptable/Good/Very good",
+  "predicted_design": "Very poor/Poor/Acceptable/Good/Very good",
+  "predicted_coping": "Not at all helpful/Somewhat helpful/Moderately helpful/Very helpful/Extremely helpful",
+  "predicted_quitting": "Not at all helpful/Somewhat helpful/Moderately helpful/Very helpful/Extremely helpful",
+  "explanation": "≤ 2 sentences per dimension reflecting the participant's likely view (psychological barriers, social context, quit history, dependence, motivation)."
+}}
+"""
+    #print("=== Prompt Sent to GPT ===")
+    #print(prompt)
+    #print("==========================")
+    return prompt 
+
+def generate_digital_twin_feedback_prompt(data):
+    """Generate prompts for digital twin method with feedback in prompts"""
+
+    # Read the traing messages & ratings (first 7 messages) for each participant
+    df = pd.read_excel("data/digitalTwin_msg.xlsx")
+    feedback = pd.read_csv("data/Message testing data with participant characteristics_02.27.csv")
+    
+    # Extract participant metadata
+    # Using all metadata available in this version
+    metadata_text = ""
+    if 'metadata' in data and data['metadata']:
+        for key, value in data['metadata'].items():
+            if pd.notna(value):
+                metadata_text += f"- {key}: {value}\n"
+    
+    # Add training messages and ratings for each participant
+    row = df[df["response_id"] == data['response_id']]
+    
+    for col in df.columns:
+            if col.startswith("message_"):
+                msg_text = str(row[col].iloc[0]).strip()
+
+                # Map rating column names to short labels
+                label_map = {
+                    "content": "content",
+                    "design": "design",
+                    "coping": "coping",
+                    "quitting": "quitting"
+                }
+                
+                # Find rating columns (they follow the message column)
+                ratings = []
+                col_index = df.columns.get_loc(col)
+                # Ratings usually are next 4 columns after each message
+                for rcol in df.columns[col_index+1 : col_index+5]:
+                    if rcol.startswith("how"):
+                        # Pick a short label based on keyword in column name
+                        for key, short_label in label_map.items():
+                            if key in rcol.lower():
+                                value = row[rcol].iloc[0]
+                                ratings.append(f"{short_label}: {value}")
+                                break
+
+                ratings_text = "\n".join(ratings)
+
+                 # --- Add feedback ---
+                fb_row = feedback[
+                    (feedback["response_id"] == data['response_id']) &
+                    (feedback["message_num"] == col)   
+                ]
+        
+                if not fb_row.empty and "additional_thoughts_quantative_resonses" in fb_row:
+                    fb_text = str(fb_row["additional_thoughts_quantative_resonses"].iloc[0]).strip()
+                else:
+                    fb_text = None
+        
+                # Build section text
+                metadata_text += f"Past message:\n{msg_text}\n"
+                if ratings_text:
+                    metadata_text += f"Ratings:\n{ratings_text}\n"
+                if fb_text:
+                    metadata_text += f"Feedback:\n{fb_text}\n"
+                metadata_text += "\n---\n"
+      
+    prompt = f"""
+You are an AI assistant simulating this participant. Your task is to predict how the participant will rate a new smoking-cessation support message. Use the Participant metadata, which includes their characteristics, past message ratings, and any feedback they have provided on those messages.
+
+When forming your prediction:
+
+Base your judgment primarily on how similar the new message is to the participant’s previously rated messages and the patterns in their past ratings.
+Use the participant’s feedback as additional context to refine your understanding of their preferences (e.g., comments about what they liked or disliked).
+Ensure that your prediction reflects both the quantitative ratings and the qualitative feedback, while keeping ratings as the main anchor.
+Stay consistent with the participant’s overall profile, including their characteristics, past ratings, and feedback.
+Be sure to carefully follow all provided Instructions for formatting your answer to the new message.
+
+---
+Instructions:
+### RATING DIMENSIONS
+1. **content** – How would you rate the content (that is, the words and meaning) of this message?  
+2. **design** – How would you rate the design (that is, how the message looks) of this message? 
+3. **coping** – How helpful would this message be to support you in coping with a smoking urge or craving?  
+4. **quitting** – How helpful would this message be to support you in quitting or reducing smoking? 
+
+### Allowed rating categories  
+**content / design** → Very poor · Poor · Acceptable · Good · Very good  
+**coping / quitting** → Not at all helpful · Somewhat helpful · Moderately helpful · Very helpful · Extremely helpful  
+
+
+
+### INPUTS  
+
+Here is the message provided to the participant to be rated:  
+
+\\"{data['input_message']}\\"  
+
+Participant metadata:  
+{metadata_text}
+---
+
+### OUTPUT FORMAT  
+Return **exactly** this JSON object:  
+
+{{
+  "response_id": "{data['response_id']}",
+  "predicted_content": "Very poor/Poor/Acceptable/Good/Very good",
+  "predicted_design": "Very poor/Poor/Acceptable/Good/Very good",
+  "predicted_coping": "Not at all helpful/Somewhat helpful/Moderately helpful/Very helpful/Extremely helpful",
+  "predicted_quitting": "Not at all helpful/Somewhat helpful/Moderately helpful/Very helpful/Extremely helpful",
+  "explanation": "≤ 2 sentences per dimension reflecting the participant's likely view (psychological barriers, social context, quit history, dependence, motivation)."
+}}
+"""
+    #print("=== Prompt Sent to GPT ===")
+    #print(prompt)
+    #print("==========================")
+    return prompt 
+
+def generate_digital_twin_cbtact_prompt(data):
+    """Generate prompts for digital twin method with CBT/ACT labels for messages"""
+
+    # Read the traing messages & ratings (first 7 messages) for each participant
+    df = pd.read_excel("data/digitalTwin_msg.xlsx")
+    feedback = pd.read_csv("data/Message testing data with participant characteristics_02.27.csv")
+    
+    # Extract participant metadata
+    # Using all metadata available in this version
+    metadata_text = ""
+    msg_type_text = ""
+    if 'metadata' in data and data['metadata']:
+        for key, value in data['metadata'].items():
+            if pd.notna(value):
+                metadata_text += f"- {key}: {value}\n"
+
+        # Check if "Image ID" exists in metadata
+        image_id = data['metadata'].get("Image ID")
+        if image_id and pd.notna(image_id):
+            # Find matching row in feedback by photo_no
+            match = feedback.loc[feedback['photo_no'] == image_id, 'l_category']
+            if not match.empty:
+                l_category_value = match.iloc[0]
+                msg_type_text += f"\nMessage type: {l_category_value}\n"
+    
+    # Add training messages and ratings for each participant
+    row = df[df["response_id"] == data['response_id']]
+    
+    for col in df.columns:
+            if col.startswith("message_"):
+                msg_text = str(row[col].iloc[0]).strip()
+
+                # Map rating column names to short labels
+                label_map = {
+                    "content": "content",
+                    "design": "design",
+                    "coping": "coping",
+                    "quitting": "quitting"
+                }
+                
+                # Find rating columns (they follow the message column)
+                ratings = []
+                col_index = df.columns.get_loc(col)
+                # Ratings usually are next 4 columns after each message
+                for rcol in df.columns[col_index+1 : col_index+5]:
+                    if rcol.startswith("how"):
+                        # Pick a short label based on keyword in column name
+                        for key, short_label in label_map.items():
+                            if key in rcol.lower():
+                                value = row[rcol].iloc[0]
+                                ratings.append(f"{short_label}: {value}")
+                                break
+
+                ratings_text = "\n".join(ratings)
+
+                 # --- Add message type ---
+                fb_row = feedback[
+                    (feedback["response_id"] == data['response_id']) &
+                    (feedback["message_num"] == col)   
+                ]
+        
+                if not fb_row.empty and "l_category" in fb_row:
+                    fb_text = str(fb_row["l_category"].iloc[0]).strip()
+                else:
+                    fb_text = None
+        
+                # Build section text
+                metadata_text += f"Past message:\n{msg_text}\n"
+                if ratings_text:
+                    metadata_text += f"Ratings:\n{ratings_text}\n"
+                if fb_text:
+                    metadata_text += f"Message type:\n{fb_text}\n"
+                metadata_text += "\n---\n"
+      
+    prompt = f"""
+You are an AI assistant simulating this participant. Your task is to predict how the participant will rate a new smoking-cessation support message, using their Participant metadata (which includes their characteristics and past message ratings).
+Base your prediction on how similar the new message is to the participant’s previously rated messages. Remain consistent with the participant’s prior ratings and stated characteristics, as if you are that person.
+When predicting coping and quitting, use an additional factor - message type.
+Be sure to carefully follow all provided Instructions for formatting your answer to the new message.
+---
+Instructions:
+### RATING DIMENSIONS
+1. **content** – How would you rate the content (that is, the words and meaning) of this message?  
+2. **design** – How would you rate the design (that is, how the message looks) of this message? 
+3. **coping** – How helpful would this message be to support you in coping with a smoking urge or craving?  
+4. **quitting** – How helpful would this message be to support you in quitting or reducing smoking? 
+
+### Allowed rating categories  
+**content / design** → Very poor · Poor · Acceptable · Good · Very good  
+**coping / quitting** → Not at all helpful · Somewhat helpful · Moderately helpful · Very helpful · Extremely helpful  
+
+
+
+### INPUTS  
+
+Here is the message provided to the participant to be rated:  
+
+\\"{data['input_message']}\\"  
+
+{msg_type_text}
+
+Participant metadata:  
+{metadata_text}
+---
+
+### OUTPUT FORMAT  
+Return **exactly** this JSON object:  
+
+{{
+  "response_id": "{data['response_id']}",
+  "predicted_content": "Very poor/Poor/Acceptable/Good/Very good",
+  "predicted_design": "Very poor/Poor/Acceptable/Good/Very good",
+  "predicted_coping": "Not at all helpful/Somewhat helpful/Moderately helpful/Very helpful/Extremely helpful",
+  "predicted_quitting": "Not at all helpful/Somewhat helpful/Moderately helpful/Very helpful/Extremely helpful",
+  "explanation": "≤ 2 sentences per dimension reflecting the participant's likely view (psychological barriers, social context, quit history, dependence, motivation)."
+}}
+"""
+    #print("=== Prompt Sent to GPT ===")
+    #print(prompt)
+    #print("==========================")
+    return prompt 
