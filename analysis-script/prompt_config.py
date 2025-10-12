@@ -355,7 +355,7 @@ Return your response in the following JSON format:
 
     return prompt 
 
-def generate_enhanced_zero_shot_prompt(data):
+def generate_enhanced_zero_shot_prompt(data: dict) -> str:
     """Generate the enhanced zero-shot prompt with detailed rubrics"""
     
     # Extract participant metadata
@@ -473,6 +473,206 @@ Return **exactly** this JSON object:
   "predicted_coping": "Not at all helpful/Somewhat helpful/Moderately helpful/Very helpful/Extremely helpful",
   "predicted_quitting": "Not at all helpful/Somewhat helpful/Moderately helpful/Very helpful/Extremely helpful",
   "explanation": "≤ 2 sentences per dimension reflecting the participant's likely view (psychological barriers, social context, quit history, dependence, motivation)."
+}}
+"""
+    return prompt 
+
+def _create_natural_language_profile(metadata: dict) -> str:
+    """Creates a natural language paragraph from participant metadata."""
+    
+    parts = []
+    
+    # Sentence 1: Demographics
+    age = metadata.get('age_years')
+    gender = metadata.get('gender_identity')
+    if age and gender:
+        parts.append(f"The participant is a {age}-year-old {gender}.")
+    
+    # Sentence 2: Smoking Behavior
+    cigs_per_day = metadata.get('cigs_per_day', 'an unspecified number of')
+    smoking_status = metadata.get('smoking_status', 'smokes')
+    quit_attempts = metadata.get('quit_attempts_count', 'an unknown number of')
+    
+    behavior_parts = []
+    if smoking_status:
+        behavior_parts.append(f"who currently smokes '{smoking_status}'")
+    if cigs_per_day:
+        behavior_parts.append(f"and reports smoking around {cigs_per_day} cigarettes per day")
+    if quit_attempts:
+        behavior_parts.append(f"They have attempted to quit {quit_attempts} times in the past.")
+        
+    if behavior_parts:
+        # A bit of grammar correction for sentence flow
+        full_sentence = " ".join(behavior_parts)
+        if full_sentence.startswith("who currently"):
+            full_sentence = "Currently, they" + full_sentence[13:]
+        parts.append(full_sentence.strip() + ".")
+        
+    # Sentence 3: Motivation and Support
+    motivation = metadata.get('quit_motivation_level')
+    support = metadata.get('social_support_to_quit')
+    
+    motivation_parts = []
+    if motivation:
+        motivation_parts.append(f"Their motivation to quit is '{motivation}'.")
+    if support:
+        motivation_parts.append(f"In terms of social support, they describe it as '{support}'.")
+        
+    if motivation_parts:
+        parts.append(" ".join(motivation_parts))
+        
+    if not parts:
+        return "No participant metadata available."
+        
+    return "\n".join(parts)
+
+
+def generate_zero_shot_natural_lang_prob_prompt(data: dict) -> str:
+    """
+    Generates a zero-shot prompt with a natural language participant profile
+    and probability output.
+    """
+    metadata = data.get('metadata', {})
+    participant_profile = _create_natural_language_profile(metadata)
+
+    prompt = f"""
+You are an expert in smoking cessation communication. Your task is to evaluate a support message based on a specific participant's characteristics, which are described below in a natural language profile.
+
+**INSTRUCTIONS:**
+1.  Read the **Participant Profile** to understand the person receiving the message.
+2.  Analyze the provided **Input Message**.
+3.  For each of the four dimensions (content, design, coping, quitting), perform two steps:
+    a.  **Predict Probabilities**: Estimate the probability for each possible rating. The probabilities for each dimension must sum to 1.0.
+    b.  **Make a Final Prediction**: Choose the rating with the highest estimated probability.
+    c.  **State Confidence**: Provide a confidence score from 0.0 to 1.0 for your final prediction.
+
+**PARTICIPANT PROFILE:**
+{participant_profile}
+
+**INPUT MESSAGE:**
+{data['input_message']}
+
+**OUTPUT FORMAT (JSON ONLY):**
+You must return a valid JSON object with the following structure. Provide the final prediction, the estimated probabilities, and your confidence for each of the four dimensions.
+
+{{
+  "predicted_content": "...",
+  "predicted_content_probabilities": {{
+    "Very poor": 0.0,
+    "Poor": 0.0,
+    "Acceptable": 0.0,
+    "Good": 0.0,
+    "Very good": 0.0
+  }},
+  "predicted_content_confidence": 0.0,
+  "predicted_design": "...",
+  "predicted_design_probabilities": {{
+    "Very poor": 0.0,
+    "Poor": 0.0,
+    "Acceptable": 0.0,
+    "Good": 0.0,
+    "Very good": 0.0
+  }},
+  "predicted_design_confidence": 0.0,
+  "predicted_coping": "...",
+  "predicted_coping_probabilities": {{
+    "Not at all helpful": 0.0,
+    "Somewhat helpful": 0.0,
+    "Moderately helpful": 0.0,
+    "Very helpful": 0.0,
+    "Extremely helpful": 0.0
+  }},
+  "predicted_coping_confidence": 0.0,
+  "predicted_quitting": "...",
+  "predicted_quitting_probabilities": {{
+    "Not at all helpful": 0.0,
+    "Somewhat helpful": 0.0,
+    "Moderately helpful": 0.0,
+    "Very helpful": 0.0,
+    "Extremely helpful": 0.0
+  }},
+  "predicted_quitting_confidence": 0.0,
+  "image_description": "A brief, one-sentence description of the image content if one is provided.",
+  "explanation": "A brief explanation of your reasoning, considering both the message and the participant."
+}}
+"""
+    return prompt
+
+
+def generate_zero_shot_feature_select_prob_prompt(data: dict) -> str:
+    """
+    Generates a zero-shot prompt with feature selection and probability output.
+    """
+    metadata = data.get('metadata', {})
+    
+    # Feature selection
+    selected_features = {
+        'Age': metadata.get('age_years'),
+        'Gender': metadata.get('gender_identity'),
+        'Smoking Status': metadata.get('smoking_status'),
+        'Cigarettes per Day': metadata.get('cigs_per_day'),
+        'Quit Attempts in Past Year': metadata.get('quit_attempts_count'),
+        'Motivation to Quit': metadata.get('quit_motivation_level'),
+        'Social Support': metadata.get('social_support_to_quit')
+    }
+    
+    # Filter out any features that are None or empty strings
+    participant_metadata = "\n".join([f"- {key}: {value}" for key, value in selected_features.items() if value is not None and str(value).strip()])
+
+    prompt = f"""
+You are an expert in smoking cessation communication. Your task is to evaluate a support message based on a specific participant's characteristics.
+
+**INSTRUCTIONS:**
+1.  Analyze the provided **Input Message**.
+2.  Review the **Participant Metadata** to understand the person receiving the message.
+3.  For each of the four dimensions (content, design, coping, quitting), perform two steps:
+    a.  **Predict Probabilities**: Estimate the probability for each possible rating. The probabilities for each dimension must sum to 1.0.
+    b.  **Make a Final Prediction**: Choose the rating with the highest estimated probability.
+
+**INPUT MESSAGE:**
+{data['input_message']}
+
+**PARTICIPANT METADATA:**
+{participant_metadata}
+
+**OUTPUT FORMAT (JSON ONLY):**
+You must return a valid JSON object with the following structure. Provide both the final prediction and the estimated probabilities for each of the four dimensions.
+
+{{
+  "predicted_content": "...",
+  "predicted_content_probabilities": {{
+    "Very poor": 0.0,
+    "Poor": 0.0,
+    "Acceptable": 0.0,
+    "Good": 0.0,
+    "Very good": 0.0
+  }},
+  "predicted_design": "...",
+  "predicted_design_probabilities": {{
+    "Very poor": 0.0,
+    "Poor": 0.0,
+    "Acceptable": 0.0,
+    "Good": 0.0,
+    "Very good": 0.0
+  }},
+  "predicted_coping": "...",
+  "predicted_coping_probabilities": {{
+    "Not at all helpful": 0.0,
+    "Somewhat helpful": 0.0,
+    "Moderately helpful": 0.0,
+    "Very helpful": 0.0,
+    "Extremely helpful": 0.0
+  }},
+  "predicted_quitting": "...",
+  "predicted_quitting_probabilities": {{
+    "Not at all helpful": 0.0,
+    "Somewhat helpful": 0.0,
+    "Moderately helpful": 0.0,
+    "Very helpful": 0.0,
+    "Extremely helpful": 0.0
+  }},
+  "image_description": "A brief, one-sentence description of the image content if one is provided.",
+  "explanation": "A brief explanation of your reasoning, considering both the message and the participant."
 }}
 """
     return prompt 

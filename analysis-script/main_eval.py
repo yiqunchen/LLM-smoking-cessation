@@ -24,11 +24,13 @@ from prompt_config import (
     generate_few_shot_feature_select_prompt,
     generate_few_shot_feature_select_balanced_prompt,
     generate_enhanced_zero_shot_prompt,  # Import the new prompt
+    generate_zero_shot_feature_select_prob_prompt, # Import the new prompt
+    generate_zero_shot_natural_lang_prob_prompt, # Import the new prompt
     prepare_few_shot_examples
 )
 
 # Replace with your own API key
-api_key = os.environ['CHEN_OPENAI_API_KEY']
+api_key = os.environ['OPENAI_API_KEY']
 
 # Default file paths (will be overridden by command line arguments)
 DEFAULT_CHECKPOINT_FILE = "checkpoint_results_{model}_{mode}_{prompt_config}.json"
@@ -143,6 +145,10 @@ async def evaluate_questions_parallel(
             text_prompt = generate_few_shot_feature_select_balanced_prompt(data)
         elif prompt_config == 'enhanced-zero-shot':  # Add the new option
             text_prompt = generate_enhanced_zero_shot_prompt(data)
+        elif prompt_config == 'zero-shot-prob':
+            text_prompt = generate_zero_shot_feature_select_prob_prompt(data)
+        elif prompt_config == 'zero-shot-natural-lang':
+            text_prompt = generate_zero_shot_natural_lang_prob_prompt(data)
         else:
             raise ValueError(f"Unknown prompt config: {prompt_config}")
         
@@ -200,6 +206,14 @@ async def evaluate_questions_parallel(
                 "predicted_design": response.get("predicted_design", ""),
                 "predicted_coping": response.get("predicted_coping", ""),
                 "predicted_quitting": response.get("predicted_quitting", ""),
+                "predicted_content_probabilities": response.get("predicted_content_probabilities", {}),
+                "predicted_design_probabilities": response.get("predicted_design_probabilities", {}),
+                "predicted_coping_probabilities": response.get("predicted_coping_probabilities", {}),
+                "predicted_quitting_probabilities": response.get("predicted_quitting_probabilities", {}),
+                "predicted_content_confidence": response.get("predicted_content_confidence", None),
+                "predicted_design_confidence": response.get("predicted_design_confidence", None),
+                "predicted_coping_confidence": response.get("predicted_coping_confidence", None),
+                "predicted_quitting_confidence": response.get("predicted_quitting_confidence", None),
                 "image_description": response.get("image_description", ""),
                 "explanation": response.get("explanation", "")
             }
@@ -255,16 +269,40 @@ async def evaluate_questions_parallel(
 
 async def main():
     parser = argparse.ArgumentParser(description="Evaluate smoking cessation messages using an LLM.")
-    parser.add_argument('--mode', type=str, choices=['text-only', 'vision'], required=True, help="Evaluation mode: 'text-only' or 'vision'")
+    parser.add_argument('--mode', type=str, choices=['text-only', 'vision'], default='text-only', help="Evaluation mode: 'text-only' or 'vision'")
     parser.add_argument('--model', type=str, default="gpt-4o-mini", help="Name of the OpenAI model to use.")
-    parser.add_argument('--prompt-config', type=str, choices=['zero-shot', 'zero-shot-feature-select', 'zero-shot-feature-select-balanced', 'few-shot', 'few-shot-feature-select', 'few-shot-feature-select-balanced', 'enhanced-zero-shot'], default='zero-shot', help="Prompt configuration")
+    parser.add_argument('--prompt-config', type=str, choices=['zero-shot', 'zero-shot-feature-select', 'zero-shot-feature-select-balanced', 'few-shot', 'few-shot-feature-select', 'few-shot-feature-select-balanced', 'enhanced-zero-shot', 'zero-shot-prob', 'zero-shot-natural-lang'], default='zero-shot', help="Prompt configuration")
     parser.add_argument('--sample-size', type=int, default=None, help="Number of samples to process for testing (if not specified, processes all data)")
+    parser.add_argument('--adaptive', action='store_true', help="Run adaptive prompt optimization instead of regular evaluation")
     parser.add_argument('--checkpoint-file', type=str, default=DEFAULT_CHECKPOINT_FILE, help="Path template for checkpoint file (use {model}, {mode}, and {prompt_config} placeholders).")
     parser.add_argument('--output-file', type=str, default=DEFAULT_OUTPUT_FILE, help="Path template for final output file (use {model}, {mode}, and {prompt_config} placeholders).")
     parser.add_argument('--max-concurrent', type=int, default=10, help="Maximum concurrent API calls.")
     parser.add_argument('--checkpoint-interval', type=int, default=DEFAULT_CHECKPOINT_INTERVAL, help="How often to save checkpoint (every N completed items).")
     parser.add_argument('--temperature', type=float, default=None, help="Set the model temperature. Overrides default logic (0.2, or 1.0 for 'o3-' models).")
     args = parser.parse_args()
+
+    # Check if adaptive optimization is requested
+    if args.adaptive:
+        print("🔄 Redirecting to adaptive prompt optimization...")
+        import subprocess
+        import sys
+        
+        cmd = [
+            sys.executable, 
+            "analysis-script/run_adaptive_optimization.py",
+            "--model", args.model,
+            "--mode", args.mode,
+            "--initial-prompt-config", "zero-shot-feature-select",
+            "--iterations", "15",
+            "--test-sample-size", "50",
+            "--max-concurrent", str(args.max_concurrent)
+        ]
+        
+        if args.temperature is not None:
+            cmd.extend(["--temperature", str(args.temperature)])
+        
+        subprocess.run(cmd)
+        return
 
     # Format file paths with model, mode, and prompt_config
     checkpoint_file = args.checkpoint_file.format(model=args.model, mode=args.mode, prompt_config=args.prompt_config)
