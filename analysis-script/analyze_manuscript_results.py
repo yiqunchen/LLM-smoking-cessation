@@ -137,10 +137,10 @@ def analyze_all_results(results_dir: str = 'results_manuscript') -> pd.DataFrame
     
     all_metrics = []
     
-    # Method categories from manuscript
+    # Method categories from manuscript - CORRECTED FILENAMES
     method_configs = {
         # 2.2.2 Generic LLM Models
-        'generic_llm_1_zero_shot_all.json': {
+        'generic_llm_1_zero_shot.json': {
             'category': '2.2.2 Generic LLM',
             'method': '1. Zero-shot + all features',
             'split_type': 'participant',
@@ -152,7 +152,7 @@ def analyze_all_results(results_dir: str = 'results_manuscript') -> pd.DataFrame
             'split_type': 'participant',
             'model': 'gpt-4o-mini'
         },
-        'generic_llm_3_few_shot_all.json': {
+        'generic_llm_3_few_shot.json': {
             'category': '2.2.2 Generic LLM',
             'method': '3. Few-shot + all features',
             'split_type': 'participant',
@@ -164,54 +164,60 @@ def analyze_all_results(results_dir: str = 'results_manuscript') -> pd.DataFrame
             'split_type': 'participant',
             'model': 'gpt-4o-mini'
         },
-        'generic_llm_5_continuous_all.json': {
+        'generic_llm_5_continuous.json': {
             'category': '2.2.2 Generic LLM',
-            'method': '5. Continuous + all features',
+            'method': '5. Continuous + natural language',
             'split_type': 'participant',
             'model': 'gpt-4o-mini'
         },
         'generic_llm_6_continuous_select.json': {
             'category': '2.2.2 Generic LLM',
-            'method': '6. Continuous + selected features',
+            'method': '6. Continuous + probabilities',
             'split_type': 'participant',
             'model': 'gpt-4o-mini'
         },
         # 2.2.4 Digital Twin Models
-        'digital_twin_1_full_5050.json': {
+        'digital_twin_1_full_7030.json': {
             'category': '2.2.4 Digital Twin',
-            'method': '1. Full-feature (50/50)',
+            'method': '1. Full-feature (70/30)',
             'split_type': 'digital_twin',
-            'model': 'gpt-4o'
+            'model': 'gpt-4o-mini'
         },
-        'digital_twin_2_select_5050.json': {
+        'digital_twin_2_select_7030.json': {
             'category': '2.2.4 Digital Twin',
-            'method': '2. Selected-feature (50/50)',
+            'method': '2. Selected-feature (70/30)',
             'split_type': 'digital_twin',
-            'model': 'gpt-4o'
+            'model': 'gpt-4o-mini'
         },
-        'digital_twin_3_feedback_5050.json': {
+        'digital_twin_3_feedback_7030.json': {
             'category': '2.2.4 Digital Twin',
-            'method': '3. Full + feedback (50/50)',
+            'method': '3. Full + feedback (70/30)',
             'split_type': 'digital_twin',
-            'model': 'gpt-4o'
+            'model': 'gpt-4o-mini'
         },
-        'digital_twin_4a_cbtact_5050.json': {
+        'digital_twin_4_cbtact_1090.json': {
             'category': '2.2.4 Digital Twin',
-            'method': '4a. CBT/ACT (50/50)',
+            'method': '4. CBT/ACT (10/90)',
             'split_type': 'digital_twin',
-            'model': 'gpt-4o'
+            'model': 'gpt-4o-mini'
         },
-        'digital_twin_4b_cbtact_7030.json': {
+        'digital_twin_4_cbtact_3070.json': {
             'category': '2.2.4 Digital Twin',
-            'method': '4b. CBT/ACT (70/30)',
+            'method': '4. CBT/ACT (30/70)',
             'split_type': 'digital_twin',
-            'model': 'gpt-4o'
+            'model': 'gpt-4o-mini'
         },
-        'digital_twin_4c_cbtact_9010.json': {
+        'digital_twin_4_cbtact_7030.json': {
             'category': '2.2.4 Digital Twin',
-            'method': '4c. CBT/ACT (90/10)',
+            'method': '4. CBT/ACT (70/30)',
             'split_type': 'digital_twin',
-            'model': 'gpt-4o'
+            'model': 'gpt-4o-mini'
+        },
+        'digital_twin_4_cbtact_9010.json': {
+            'category': '2.2.4 Digital Twin',
+            'method': '4. CBT/ACT (90/10)',
+            'split_type': 'digital_twin',
+            'model': 'gpt-4o-mini'
         },
     }
     
