@@ -5,6 +5,16 @@
 # This script runs all experiments with proper checkpointing, error handling,
 # and progress tracking for reproducible results.
 #
+# Usage:
+#   bash run_full_manuscript_pipeline.sh <model_name> [<provider>]
+#
+# Examples:
+#   bash run_full_manuscript_pipeline.sh gpt-4o-mini
+#   bash run_full_manuscript_pipeline.sh gpt-4o
+#   bash run_full_manuscript_pipeline.sh deepseek/deepseek-r1 openrouter
+#   bash run_full_manuscript_pipeline.sh x-ai/grok-2-1212 openrouter
+#   bash run_full_manuscript_pipeline.sh gemini-2.0-flash-exp gemini
+#
 # Features:
 # - ✅ Checkpointing: Resume from interruption
 # - ✅ API robustness: Exponential backoff on errors
@@ -21,14 +31,34 @@ YELLOW='\033[1;33m'
 RED='\033[0;31m'
 NC='\033[0m'
 
+# Parse arguments
+if [ -z "$1" ]; then
+    echo "❌ Error: Model name is required!"
+    echo ""
+    echo "Usage: bash run_full_manuscript_pipeline.sh <model_name> [<provider>]"
+    echo ""
+    echo "Examples:"
+    echo "  bash run_full_manuscript_pipeline.sh gpt-4o-mini"
+    echo "  bash run_full_manuscript_pipeline.sh gpt-4o"
+    echo "  bash run_full_manuscript_pipeline.sh deepseek/deepseek-r1 openrouter"
+    echo "  bash run_full_manuscript_pipeline.sh x-ai/grok-2-1212 openrouter"
+    echo "  bash run_full_manuscript_pipeline.sh gemini-2.0-flash-exp gemini"
+    exit 1
+fi
+
+MODEL="$1"
+PROVIDER="${2:-openai}"  # Default to openai
+
+# Sanitize model name for filenames (replace / with _)
+MODEL_SAFE=$(echo "$MODEL" | tr '/' '_' | tr ':' '_')
+
 # Configuration
 CANONICAL_SPLITS_DIR="data_splits/canonical"
-OUTPUT_DIR="results_manuscript"
+OUTPUT_DIR="results_manuscript_${MODEL_SAFE}"
 CHECKPOINT_DIR="$OUTPUT_DIR/checkpoints"
 COMPARISON_DIR="$OUTPUT_DIR/comparisons"
 LOG_DIR="$OUTPUT_DIR/logs"
 
-DEFAULT_MODEL="gpt-4o-mini"
 MAX_CONCURRENT=20  # Adjust based on your API rate limits
 CHECKPOINT_INTERVAL=50  # Save every 50 items
 
@@ -45,6 +75,8 @@ MAIN_LOG="$LOG_DIR/pipeline_${TIMESTAMP}.log"
 echo "================================================================================"
 echo "FULL MANUSCRIPT PIPELINE - REPRODUCIBLE RESULTS"
 echo "================================================================================"
+echo "Model: $MODEL"
+echo "Provider: $PROVIDER"
 echo "Timestamp: $TIMESTAMP"
 echo "Output directory: $OUTPUT_DIR"
 echo "Canonical splits: $CANONICAL_SPLITS_DIR"
@@ -55,7 +87,7 @@ echo ""
 echo "This pipeline will:"
 echo "  1. Generate canonical train/test splits (70/30 default)"
 echo "  2. Run Generic LLM methods (6 configurations)"
-echo "  3. Run Digital Twin methods (4 variants, default 70/30)"
+echo "  3. Run Digital Twin methods (7 configurations)"
 echo "  4. Generate Traditional ML comparisons"
 echo "  5. Analyze all results with comprehensive metrics"
 echo ""
@@ -115,7 +147,7 @@ log "=========================================="
 run_with_logging \
     "python analysis-script/main_eval.py \
         --mode text-only \
-        --model $DEFAULT_MODEL \
+        --model $MODEL \
         --prompt-config zero-shot \
         --data-file $CANONICAL_SPLITS_DIR/test_participant_7030.json \
         --max-concurrent $MAX_CONCURRENT \
@@ -128,7 +160,7 @@ run_with_logging \
 run_with_logging \
     "python analysis-script/main_eval.py \
         --mode text-only \
-        --model $DEFAULT_MODEL \
+        --model $MODEL \
         --prompt-config zero-shot-feature-select \
         --data-file $CANONICAL_SPLITS_DIR/test_participant_7030.json \
         --max-concurrent $MAX_CONCURRENT \
@@ -141,7 +173,7 @@ run_with_logging \
 run_with_logging \
     "python analysis-script/main_eval.py \
         --mode text-only \
-        --model $DEFAULT_MODEL \
+        --model $MODEL \
         --prompt-config few-shot \
         --data-file $CANONICAL_SPLITS_DIR/test_participant_7030.json \
         --max-concurrent $MAX_CONCURRENT \
@@ -154,7 +186,7 @@ run_with_logging \
 run_with_logging \
     "python analysis-script/main_eval.py \
         --mode text-only \
-        --model $DEFAULT_MODEL \
+        --model $MODEL \
         --prompt-config few-shot-feature-select \
         --data-file $CANONICAL_SPLITS_DIR/test_participant_7030.json \
         --max-concurrent $MAX_CONCURRENT \
@@ -167,7 +199,7 @@ run_with_logging \
 run_with_logging \
     "python analysis-script/main_eval.py \
         --mode text-only \
-        --model $DEFAULT_MODEL \
+        --model $MODEL \
         --prompt-config zero-shot-natural-lang \
         --data-file $CANONICAL_SPLITS_DIR/test_participant_7030.json \
         --max-concurrent $MAX_CONCURRENT \
@@ -180,7 +212,7 @@ run_with_logging \
 run_with_logging \
     "python analysis-script/main_eval.py \
         --mode text-only \
-        --model $DEFAULT_MODEL \
+        --model $MODEL \
         --prompt-config zero-shot-prob \
         --data-file $CANONICAL_SPLITS_DIR/test_participant_7030.json \
         --max-concurrent $MAX_CONCURRENT \
@@ -202,7 +234,7 @@ log "=========================================="
 run_with_logging \
     "python analysis-script/main_eval.py \
         --mode text-only \
-        --model $DEFAULT_MODEL \
+        --model $MODEL \
         --prompt-config digital-twin \
         --data-file $CANONICAL_SPLITS_DIR/test_digital_twin_7030.json \
         --train-file $CANONICAL_SPLITS_DIR/train_digital_twin_7030.json \
@@ -216,7 +248,7 @@ run_with_logging \
 run_with_logging \
     "python analysis-script/main_eval.py \
         --mode text-only \
-        --model $DEFAULT_MODEL \
+        --model $MODEL \
         --prompt-config digital-twin-select \
         --data-file $CANONICAL_SPLITS_DIR/test_digital_twin_7030.json \
         --train-file $CANONICAL_SPLITS_DIR/train_digital_twin_7030.json \
@@ -230,7 +262,7 @@ run_with_logging \
 run_with_logging \
     "python analysis-script/main_eval.py \
         --mode text-only \
-        --model $DEFAULT_MODEL \
+        --model $MODEL \
         --prompt-config digital-twin-feedback \
         --data-file $CANONICAL_SPLITS_DIR/test_digital_twin_7030.json \
         --train-file $CANONICAL_SPLITS_DIR/train_digital_twin_7030.json \
@@ -245,7 +277,7 @@ for split_name in "1090" "3070" "7030" "9010"; do
     run_with_logging \
         "python analysis-script/main_eval.py \
             --mode text-only \
-            --model $DEFAULT_MODEL \
+            --model $MODEL \
             --prompt-config digital-twin-cbtact \
             --data-file $CANONICAL_SPLITS_DIR/test_digital_twin_${split_name}.json \
             --train-file $CANONICAL_SPLITS_DIR/train_digital_twin_${split_name}.json \
