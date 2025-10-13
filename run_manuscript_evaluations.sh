@@ -88,23 +88,19 @@ if [[ "$METHODS" == "all" || "$METHODS" == *"benchmarks"* ]]; then
   echo -e "${YELLOW}2.2.1 BENCHMARK MODELS${NC}"
   echo -e "${YELLOW}========================================${NC}"
   echo -e "${BLUE}Using canonical participant split (70/30)${NC}"
+  echo -e "${BLUE}Traditional ML uses existing compare_llm_vs_individual.py${NC}"
+  echo -e "${BLUE}Results will be generated alongside LLM comparisons${NC}"
   echo ""
   
-  # Traditional ML: Logistic Regression
-  echo -e "${GREEN}Benchmark 1: Logistic Regression${NC}"
-  run_cmd "python analysis-script/run_traditional_ml_baseline.py \
-    --train-split $CANONICAL_SPLITS_DIR/train_participant_7030.json \
-    --test-split $CANONICAL_SPLITS_DIR/test_participant_7030.json \
-    --model-type logistic \
-    --output-dir $OUTPUT_DIR"
-  
-  # Traditional ML: Random Forest
-  echo -e "${GREEN}Benchmark 2: Random Forest${NC}"
-  run_cmd "python analysis-script/run_traditional_ml_baseline.py \
-    --train-split $CANONICAL_SPLITS_DIR/train_participant_7030.json \
-    --test-split $CANONICAL_SPLITS_DIR/test_participant_7030.json \
-    --model-type random_forest \
-    --output-dir $OUTPUT_DIR"
+  echo -e "${GREEN}Note: Traditional ML benchmarks (Random Forest on individual characteristics)${NC}"
+  echo -e "${GREEN}      are automatically generated when running compare_llm_vs_individual.py${NC}"
+  echo -e "${GREEN}      with the canonical 70/30 split.${NC}"
+  echo ""
+  echo -e "${GREEN}To generate traditional ML benchmarks, run:${NC}"
+  echo -e "${GREEN}  python analysis-script/compare_llm_vs_individual.py \\${NC}"
+  echo -e "${GREEN}    --data-path $CANONICAL_SPLITS_DIR/test_participant_7030.json \\${NC}"
+  echo -e "${GREEN}    --llm-results-path <your_llm_results.json> \\${NC}"
+  echo -e "${GREEN}    --output-dir $OUTPUT_DIR/traditional_ml_comparison${NC}"
 fi
 
 #############################################################################

@@ -459,11 +459,18 @@ def main(
 if __name__ == '__main__':
     import argparse
     parser = argparse.ArgumentParser(description='Compare LLM vs Individual models')
-    parser.add_argument('--data-path', default='data/processed_llm_data.json')
-    parser.add_argument('--llm-results-path', default=None)
-    parser.add_argument('--output-dir', default='llm_vs_individual_comparison')
-    parser.add_argument('--run-joint-model', action='store_true', help='Enable the joint embedding model comparison')
+    parser.add_argument('--data-path', default='data/processed_llm_data.json', 
+                        help='Path to ground truth data (use canonical test split for fair comparison)')
+    parser.add_argument('--llm-results-path', default=None,
+                        help='Path to LLM evaluation results JSON file')
+    parser.add_argument('--output-dir', default='llm_vs_individual_comparison',
+                        help='Directory to save comparison results')
+    parser.add_argument('--run-joint-model', action='store_true', 
+                        help='Enable the joint embedding model comparison (requires message_embeddings.pkl)')
     args = parser.parse_args()
+    
+    # Note: This script builds traditional ML models (Random Forest) on individual characteristics
+    # using cross-validation. When data-path points to a canonical split, it ensures fair comparison.
     main(args.data_path, args.llm_results_path, args.output_dir, args.run_joint_model)
 
 

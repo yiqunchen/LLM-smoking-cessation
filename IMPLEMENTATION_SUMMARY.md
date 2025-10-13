@@ -18,14 +18,13 @@ Digital twin models now have **5 split ratios** available:
 
 All splits generated in: `data_splits/canonical/`
 
-### 3. **Traditional ML Baselines Added**
-New script: `analysis-script/run_traditional_ml_baseline.py`
+### 3. **Traditional ML Baselines**
+Uses existing script: `analysis-script/compare_llm_vs_individual.py`
 
 Implements:
-- **Logistic Regression** (baseline linear model)
-- **Random Forest** (baseline tree-based model)
-
-Both use participant features (age, gender, smoking status, etc.) and the **70/30 split**.
+- **Random Forest** on participant characteristics (cross-validated)
+- Uses the same **70/30 split** as other methods when `--data-path` points to canonical test split
+- Generates traditional ML results automatically alongside LLM comparison
 
 ### 4. **Comprehensive Metrics Implementation**
 Updated `analysis-script/analyze_manuscript_results.py` to calculate:
