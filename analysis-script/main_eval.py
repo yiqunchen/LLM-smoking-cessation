@@ -293,7 +293,8 @@ async def evaluate_questions_parallel(
 async def main():
     parser = argparse.ArgumentParser(description="Evaluate smoking cessation messages using an LLM.")
     parser.add_argument('--mode', type=str, choices=['text-only', 'vision'], default='text-only', help="Evaluation mode: 'text-only' or 'vision'")
-    parser.add_argument('--model', type=str, default="gpt-4o-mini", help="Name of the OpenAI model to use.")
+    parser.add_argument('--model', type=str, default="gpt-4o-mini", help="Name of the model to use.")
+    parser.add_argument('--provider', type=str, choices=['openai', 'openrouter', 'gemini'], default='openai', help="API provider: openai, openrouter, or gemini")
     parser.add_argument('--prompt-config', type=str, choices=['zero-shot', 'zero-shot-feature-select', 'zero-shot-feature-select-balanced', 'few-shot', 'few-shot-feature-select', 'few-shot-feature-select-balanced', 'enhanced-zero-shot', 'zero-shot-prob', 'zero-shot-natural-lang', 'digital-twin', 'digital-twin-select', 'digital-twin-feedback', 'digital-twin-cbtact'], default='zero-shot', help="Prompt configuration")
     parser.add_argument('--sample-size', type=int, default=None, help="Number of samples to process for testing (if not specified, processes all data)")
     parser.add_argument('--adaptive', action='store_true', help="Run adaptive prompt optimization instead of regular evaluation")
@@ -392,7 +393,30 @@ async def main():
         question_data = {k: question_data[k] for k in sampled_keys}
         print(f"Using {len(question_data)} samples for evaluation")
 
-    client = AsyncOpenAI(api_key=api_key)
+    # Initialize client based on provider
+    if args.provider == 'openai':
+        client = AsyncOpenAI(api_key=api_key)
+        print(f"Using OpenAI API with model: {args.model}")
+    elif args.provider == 'openrouter':
+        openrouter_key = os.environ.get('OPENROUTER_API_KEY')
+        if not openrouter_key:
+            raise ValueError("OPENROUTER_API_KEY environment variable not set!")
+        client = AsyncOpenAI(
+            api_key=openrouter_key,
+            base_url="https://openrouter.ai/api/v1"
+        )
+        print(f"Using OpenRouter API with model: {args.model}")
+    elif args.provider == 'gemini':
+        gemini_key = os.environ.get('GEMINI_API_KEY')
+        if not gemini_key:
+            raise ValueError("GEMINI_API_KEY environment variable not set!")
+        client = AsyncOpenAI(
+            api_key=gemini_key,
+            base_url="https://generativelanguage.googleapis.com/v1beta/openai/"
+        )
+        print(f"Using Gemini API with model: {args.model}")
+    else:
+        raise ValueError(f"Unknown provider: {args.provider}")
     
     try:
         # Run the evaluation

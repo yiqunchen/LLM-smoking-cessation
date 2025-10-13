@@ -147,7 +147,8 @@ log "=========================================="
 run_with_logging \
     "python analysis-script/main_eval.py \
         --mode text-only \
-        --model $MODEL \
+        --model $MODEL --provider $PROVIDER \
+        --provider $PROVIDER \
         --prompt-config zero-shot \
         --data-file $CANONICAL_SPLITS_DIR/test_participant_7030.json \
         --max-concurrent $MAX_CONCURRENT \
@@ -160,7 +161,7 @@ run_with_logging \
 run_with_logging \
     "python analysis-script/main_eval.py \
         --mode text-only \
-        --model $MODEL \
+        --model $MODEL --provider $PROVIDER \
         --prompt-config zero-shot-feature-select \
         --data-file $CANONICAL_SPLITS_DIR/test_participant_7030.json \
         --max-concurrent $MAX_CONCURRENT \
@@ -173,7 +174,7 @@ run_with_logging \
 run_with_logging \
     "python analysis-script/main_eval.py \
         --mode text-only \
-        --model $MODEL \
+        --model $MODEL --provider $PROVIDER \
         --prompt-config few-shot \
         --data-file $CANONICAL_SPLITS_DIR/test_participant_7030.json \
         --max-concurrent $MAX_CONCURRENT \
@@ -186,7 +187,7 @@ run_with_logging \
 run_with_logging \
     "python analysis-script/main_eval.py \
         --mode text-only \
-        --model $MODEL \
+        --model $MODEL --provider $PROVIDER \
         --prompt-config few-shot-feature-select \
         --data-file $CANONICAL_SPLITS_DIR/test_participant_7030.json \
         --max-concurrent $MAX_CONCURRENT \
@@ -199,7 +200,7 @@ run_with_logging \
 run_with_logging \
     "python analysis-script/main_eval.py \
         --mode text-only \
-        --model $MODEL \
+        --model $MODEL --provider $PROVIDER \
         --prompt-config zero-shot-natural-lang \
         --data-file $CANONICAL_SPLITS_DIR/test_participant_7030.json \
         --max-concurrent $MAX_CONCURRENT \
@@ -212,7 +213,7 @@ run_with_logging \
 run_with_logging \
     "python analysis-script/main_eval.py \
         --mode text-only \
-        --model $MODEL \
+        --model $MODEL --provider $PROVIDER \
         --prompt-config zero-shot-prob \
         --data-file $CANONICAL_SPLITS_DIR/test_participant_7030.json \
         --max-concurrent $MAX_CONCURRENT \
@@ -234,7 +235,7 @@ log "=========================================="
 run_with_logging \
     "python analysis-script/main_eval.py \
         --mode text-only \
-        --model $MODEL \
+        --model $MODEL --provider $PROVIDER \
         --prompt-config digital-twin \
         --data-file $CANONICAL_SPLITS_DIR/test_digital_twin_7030.json \
         --train-file $CANONICAL_SPLITS_DIR/train_digital_twin_7030.json \
@@ -248,7 +249,7 @@ run_with_logging \
 run_with_logging \
     "python analysis-script/main_eval.py \
         --mode text-only \
-        --model $MODEL \
+        --model $MODEL --provider $PROVIDER \
         --prompt-config digital-twin-select \
         --data-file $CANONICAL_SPLITS_DIR/test_digital_twin_7030.json \
         --train-file $CANONICAL_SPLITS_DIR/train_digital_twin_7030.json \
@@ -262,7 +263,7 @@ run_with_logging \
 run_with_logging \
     "python analysis-script/main_eval.py \
         --mode text-only \
-        --model $MODEL \
+        --model $MODEL --provider $PROVIDER \
         --prompt-config digital-twin-feedback \
         --data-file $CANONICAL_SPLITS_DIR/test_digital_twin_7030.json \
         --train-file $CANONICAL_SPLITS_DIR/train_digital_twin_7030.json \
@@ -277,7 +278,7 @@ for split_name in "1090" "3070" "7030" "9010"; do
     run_with_logging \
         "python analysis-script/main_eval.py \
             --mode text-only \
-            --model $MODEL \
+            --model $MODEL --provider $PROVIDER \
             --prompt-config digital-twin-cbtact \
             --data-file $CANONICAL_SPLITS_DIR/test_digital_twin_${split_name}.json \
             --train-file $CANONICAL_SPLITS_DIR/train_digital_twin_${split_name}.json \
