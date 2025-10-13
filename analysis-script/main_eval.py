@@ -404,6 +404,9 @@ async def main():
         # Build map: response_id -> list of prior messages with ratings
         response_id_to_profile = {}
         for it in train_items:
+            # Safety check: ensure it is a dict
+            if not isinstance(it, dict):
+                continue
             rid = it.get('response_id')
             if rid is None:
                 continue
@@ -415,8 +418,11 @@ async def main():
 
         # Attach to test items
         for it in question_data:
+            # Safety check: ensure it is a dict
+            if not isinstance(it, dict):
+                continue
             rid = it.get('response_id')
-            if rid in response_id_to_profile:
+            if rid and rid in response_id_to_profile:
                 it['profile_messages'] = response_id_to_profile[rid]
         print("Attached profile_messages to test items where available.")
 
