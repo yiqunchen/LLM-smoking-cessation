@@ -67,12 +67,20 @@ async def get_response_async(client, prompt_messages, model, semaphore, temperat
     async with semaphore:
         for attempt in range(max_retries):
             try:
-                completion = await client.chat.completions.create(
-                    model=model,
-                    messages=prompt_messages,
-                    response_format={"type": "json_object"},
-                    temperature=temperature,
-                )
+                # GPT-5 doesn't support temperature parameter, so don't pass it
+                if 'gpt-5' in model.lower():
+                    completion = await client.chat.completions.create(
+                        model=model,
+                        messages=prompt_messages,
+                        response_format={"type": "json_object"},
+                    )
+                else:
+                    completion = await client.chat.completions.create(
+                        model=model,
+                        messages=prompt_messages,
+                        response_format={"type": "json_object"},
+                        temperature=temperature,
+                    )
                 return completion.choices[0].message.content
             except Exception as e:
                 wait_time = (2 ** attempt) + random.uniform(0, 1)  # Exponential backoff with jitter
