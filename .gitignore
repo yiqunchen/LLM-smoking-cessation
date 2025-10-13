@@ -10,7 +10,8 @@
 .LSOverride
 
 # Icon must end with two \r
-Icon
+Icon
+
 
 # Thumbnails
 ._*
@@ -208,3 +209,18 @@ poetry.toml
 pyrightconfig.json
 
 # End of https://www.toptal.com/developers/gitignore/api/python,jupyter-notebook,macos
+
+# API Keys and Secrets - NEVER COMMIT THESE
+**/api_key*.txt
+**/api_key*.json
+**/*_API_KEY*
+**/*api_key*
+**/*secret*
+.env.local
+.env*.local
+*.key
+
+# Project-specific: Large result files
+checkpoint_results_*.json
+evaluation_results_*.json
+temp_checkpoint/
