@@ -682,8 +682,14 @@ def _format_profile_messages(profile_messages: list) -> str:
         return ""
     out = []
     for pm in profile_messages:
+        # Safety check: ensure pm is a dict
+        if not isinstance(pm, dict):
+            continue
         msg = str(pm.get('input_message', '')).strip()
         ratings = pm.get('ratings', {}) or {}
+        # Safety check: ensure ratings is a dict
+        if not isinstance(ratings, dict):
+            ratings = {}
         ratings_lines = []
         for key in ['content', 'design', 'coping', 'quitting']:
             if key in ratings and ratings[key] is not None:
