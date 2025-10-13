@@ -56,7 +56,7 @@ echo ""
 
 # Model 3: DeepSeek-R1
 echo -e "${GREEN}[3/5] Running DeepSeek-R1...${NC}"
-bash run_full_manuscript_pipeline.sh deepseek/deepseek-r1 openrouter
+bash run_full_manuscript_pipeline.sh deepseek/deepseek-r1-0528 openrouter
 echo ""
 
 # Model 4: Grok-4-Fast
