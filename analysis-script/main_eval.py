@@ -153,6 +153,21 @@ async def evaluate_questions_parallel(
         if shutting_down:
             return {}  # Return empty if we're shutting down
         
+        # Safety check: ensure data is a dict
+        if not isinstance(data, dict):
+            print(f"⚠️  WARNING: Item {qid} is not a dict (type: {type(data)}), skipping...")
+            return {}
+        
+        # Ensure required fields exist
+        if 'response_id' not in data or 'input_message' not in data or 'ratings' not in data:
+            print(f"⚠️  WARNING: Item {qid} missing required fields, skipping...")
+            return {}
+        
+        # Ensure ratings is a dict
+        if not isinstance(data.get('ratings'), dict):
+            print(f"⚠️  WARNING: Item {qid} has invalid ratings field, skipping...")
+            return {}
+        
         # Select the appropriate prompt generation function
         if prompt_config == 'zero-shot':
             text_prompt = generate_zero_shot_prompt(data)
@@ -209,13 +224,19 @@ async def evaluate_questions_parallel(
             response_json_str = await get_response_async(client, prompt_messages, model, semaphore, temperature)
             response = json.loads(response_json_str)
         except Exception as e:
+            print(f"⚠️  ERROR processing {qid}: {str(e)[:100]}")
+            # Safe access to data fields
+            ratings = data.get('ratings', {})
+            if not isinstance(ratings, dict):
+                ratings = {}
+            
             response = {
-                "response_id": data['response_id'],
-                "input_message": data['input_message'],
-                "ground_truth_content": data['ratings'].get('content', "ERROR"),
-                "ground_truth_design": data['ratings'].get('design', "ERROR"),
-                "ground_truth_coping": data['ratings'].get('coping', "ERROR"),
-                "ground_truth_quitting": data['ratings'].get('quitting', "ERROR"),
+                "response_id": data.get('response_id', 'UNKNOWN'),
+                "input_message": data.get('input_message', 'UNKNOWN'),
+                "ground_truth_content": ratings.get('content', "ERROR"),
+                "ground_truth_design": ratings.get('design', "ERROR"),
+                "ground_truth_coping": ratings.get('coping', "ERROR"),
+                "ground_truth_quitting": ratings.get('quitting', "ERROR"),
                 "predicted_content": "ERROR",
                 "predicted_design": "ERROR",
                 "predicted_coping": "ERROR",
@@ -224,15 +245,23 @@ async def evaluate_questions_parallel(
                 "error": str(e)
             }
 
+        # Safe access to all fields
+        ratings = data.get('ratings', {})
+        if not isinstance(ratings, dict):
+            ratings = {}
+        metadata = data.get('metadata', {})
+        if not isinstance(metadata, dict):
+            metadata = {}
+        
         result = {
             qid: {
-                "response_id": data['response_id'],
-                "input_message": data['input_message'],
-                "metadata": data['metadata'],
-                "ground_truth_content": data['ratings'].get('content', ""),
-                "ground_truth_design": data['ratings'].get('design', ""),
-                "ground_truth_coping": data['ratings'].get('coping', ""),
-                "ground_truth_quitting": data['ratings'].get('quitting', ""),
+                "response_id": data.get('response_id', 'UNKNOWN'),
+                "input_message": data.get('input_message', 'UNKNOWN'),
+                "metadata": metadata,
+                "ground_truth_content": ratings.get('content', ""),
+                "ground_truth_design": ratings.get('design', ""),
+                "ground_truth_coping": ratings.get('coping', ""),
+                "ground_truth_quitting": ratings.get('quitting', ""),
                 "predicted_content": response.get("predicted_content", ""),
                 "predicted_design": response.get("predicted_design", ""),
                 "predicted_coping": response.get("predicted_coping", ""),
