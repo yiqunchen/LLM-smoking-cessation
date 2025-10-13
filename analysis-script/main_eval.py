@@ -62,16 +62,27 @@ def encode_image(image_path):
     with open(image_path, "rb") as image_file:
         return base64.b64encode(image_file.read()).decode('utf-8')
 
-async def get_response_async(client, prompt_messages, model, semaphore, temperature):
-    """Asynchronously get response from OpenAI API with semaphore control"""
+async def get_response_async(client, prompt_messages, model, semaphore, temperature, max_retries=5):
+    """Asynchronously get response from OpenAI API with semaphore control and exponential backoff"""
     async with semaphore:
-        completion = await client.chat.completions.create(
-            model=model,
-            messages=prompt_messages,
-            response_format={"type": "json_object"},
-            temperature=temperature,
-        )
-        return completion.choices[0].message.content
+        for attempt in range(max_retries):
+            try:
+                completion = await client.chat.completions.create(
+                    model=model,
+                    messages=prompt_messages,
+                    response_format={"type": "json_object"},
+                    temperature=temperature,
+                )
+                return completion.choices[0].message.content
+            except Exception as e:
+                wait_time = (2 ** attempt) + random.uniform(0, 1)  # Exponential backoff with jitter
+                if attempt < max_retries - 1:
+                    print(f"\n⚠️  API error (attempt {attempt + 1}/{max_retries}): {str(e)[:100]}")
+                    print(f"   Retrying in {wait_time:.1f}s...")
+                    await asyncio.sleep(wait_time)
+                else:
+                    print(f"\n❌ API error after {max_retries} attempts: {str(e)[:100]}")
+                    raise  # Re-raise after all retries exhausted
 
 
 async def evaluate_questions_parallel(
