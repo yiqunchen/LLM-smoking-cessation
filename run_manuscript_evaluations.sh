@@ -110,6 +110,7 @@ if [[ "$METHODS" == "all" || "$METHODS" == *"generic_llm"* ]]; then
     --mode text-only \
     --model $DEFAULT_MODEL \
     --prompt-config zero-shot \
+    --data-file $CANONICAL_SPLITS_DIR/test_participant_7030.json \
     --max-concurrent $MAX_CONCURRENT \
     --output-file $OUTPUT_DIR/generic_llm_1_zero_shot_all.json \
     --checkpoint-file $OUTPUT_DIR/checkpoint_generic_llm_1.json"
@@ -120,6 +121,7 @@ if [[ "$METHODS" == "all" || "$METHODS" == *"generic_llm"* ]]; then
     --mode text-only \
     --model $DEFAULT_MODEL \
     --prompt-config zero-shot-feature-select \
+    --data-file $CANONICAL_SPLITS_DIR/test_participant_7030.json \
     --max-concurrent $MAX_CONCURRENT \
     --output-file $OUTPUT_DIR/generic_llm_2_zero_shot_select.json \
     --checkpoint-file $OUTPUT_DIR/checkpoint_generic_llm_2.json"
@@ -130,6 +132,7 @@ if [[ "$METHODS" == "all" || "$METHODS" == *"generic_llm"* ]]; then
     --mode text-only \
     --model $DEFAULT_MODEL \
     --prompt-config few-shot \
+    --data-file $CANONICAL_SPLITS_DIR/test_participant_7030.json \
     --max-concurrent $MAX_CONCURRENT \
     --output-file $OUTPUT_DIR/generic_llm_3_few_shot_all.json \
     --checkpoint-file $OUTPUT_DIR/checkpoint_generic_llm_3.json"
@@ -140,6 +143,7 @@ if [[ "$METHODS" == "all" || "$METHODS" == *"generic_llm"* ]]; then
     --mode text-only \
     --model $DEFAULT_MODEL \
     --prompt-config few-shot-feature-select \
+    --data-file $CANONICAL_SPLITS_DIR/test_participant_7030.json \
     --max-concurrent $MAX_CONCURRENT \
     --output-file $OUTPUT_DIR/generic_llm_4_few_shot_select.json \
     --checkpoint-file $OUTPUT_DIR/checkpoint_generic_llm_4.json"
@@ -150,6 +154,7 @@ if [[ "$METHODS" == "all" || "$METHODS" == *"generic_llm"* ]]; then
     --mode text-only \
     --model $DEFAULT_MODEL \
     --prompt-config zero-shot-natural-lang \
+    --data-file $CANONICAL_SPLITS_DIR/test_participant_7030.json \
     --max-concurrent $MAX_CONCURRENT \
     --output-file $OUTPUT_DIR/generic_llm_5_continuous_all.json \
     --checkpoint-file $OUTPUT_DIR/checkpoint_generic_llm_5.json"
@@ -160,6 +165,7 @@ if [[ "$METHODS" == "all" || "$METHODS" == *"generic_llm"* ]]; then
     --mode text-only \
     --model $DEFAULT_MODEL \
     --prompt-config zero-shot-prob \
+    --data-file $CANONICAL_SPLITS_DIR/test_participant_7030.json \
     --max-concurrent $MAX_CONCURRENT \
     --output-file $OUTPUT_DIR/generic_llm_6_continuous_select.json \
     --checkpoint-file $OUTPUT_DIR/checkpoint_generic_llm_6.json"

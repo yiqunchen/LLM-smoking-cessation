@@ -291,6 +291,7 @@ async def main():
     parser.add_argument('--max-concurrent', type=int, default=10, help="Maximum concurrent API calls.")
     parser.add_argument('--checkpoint-interval', type=int, default=DEFAULT_CHECKPOINT_INTERVAL, help="How often to save checkpoint (every N completed items).")
     parser.add_argument('--temperature', type=float, default=None, help="Set the model temperature. Overrides default logic (0.2, or 1.0 for 'o3-' models).")
+    parser.add_argument('--data-file', type=str, default='data/processed_llm_data.json', help="Path to data file (default: full dataset). Use canonical splits for manuscript experiments.")
     args = parser.parse_args()
 
     # Check if adaptive optimization is requested
@@ -333,9 +334,10 @@ async def main():
         print(f"User override: using temperature {temperature}")
 
     print(f"Using prompt configuration: {args.prompt_config}")
+    print(f"Loading data from: {args.data_file}")
 
     # Load data
-    with open("data/processed_llm_data.json", "r") as f:
+    with open(args.data_file, "r") as f:
         question_data = json.load(f)
 
     random.seed(42)
