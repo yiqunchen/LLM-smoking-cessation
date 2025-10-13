@@ -13,8 +13,11 @@ import os
 import pandas as pd
 import numpy as np
 from pathlib import Path
-from sklearn.metrics import cohen_kappa_score, accuracy_score
-from scipy.stats import spearmanr
+from sklearn.metrics import (
+    cohen_kappa_score, accuracy_score, 
+    f1_score, precision_score, recall_score
+)
+from scipy.stats import spearmanr, kendalltau
 import matplotlib.pyplot as plt
 import seaborn as sns
 
@@ -63,7 +66,7 @@ def load_results(results_path: str) -> pd.DataFrame:
 
 
 def calculate_metrics(df: pd.DataFrame, domains: list) -> dict:
-    """Calculate accuracy, Cohen's Kappa, and Spearman's Rho for each domain."""
+    """Calculate comprehensive metrics for each domain."""
     metrics = {}
     
     for domain in domains:
@@ -81,13 +84,24 @@ def calculate_metrics(df: pd.DataFrame, domains: list) -> dict:
         if len(gt) < 2:
             continue
         
-        # Accuracy
+        # 1. Accuracy (exact match)
         acc = accuracy_score(gt, pred)
         
-        # Cohen's Kappa
+        # 2. Accuracy within 1 (allow ±1 error)
+        acc_within_1 = np.mean(np.abs(gt - pred) <= 1)
+        
+        # 3. Cohen's Kappa
         kappa = cohen_kappa_score(gt, pred)
         
-        # Per-participant Spearman's Rho
+        # 4. Kendall's Tau
+        tau, _ = kendalltau(gt, pred)
+        
+        # 5. Macro-weighted F1, Precision, Recall
+        f1_macro = f1_score(gt, pred, average='macro', zero_division=0)
+        precision_macro = precision_score(gt, pred, average='macro', zero_division=0)
+        recall_macro = recall_score(gt, pred, average='macro', zero_division=0)
+        
+        # 6. Per-participant Spearman's Rho
         participant_rhos = []
         if 'response_id' in df.columns:
             for participant_id, group in df.groupby('response_id'):
@@ -104,8 +118,13 @@ def calculate_metrics(df: pd.DataFrame, domains: list) -> dict:
         
         metrics[domain] = {
             'accuracy': acc,
+            'accuracy_within_1': acc_within_1,
             'kappa': kappa,
+            'kendall_tau': tau,
             'spearman_rho': avg_rho,
+            'f1_macro': f1_macro,
+            'precision_macro': precision_macro,
+            'recall_macro': recall_macro,
             'n_samples': len(gt),
             'n_participants': len(participant_rhos) if participant_rhos else 0
         }
@@ -218,8 +237,13 @@ def analyze_all_results(results_dir: str = 'results_manuscript') -> pd.DataFrame
                 'Model': config['model'],
                 'Domain': domain.capitalize(),
                 'Accuracy': domain_metrics['accuracy'],
-                'Cohen\'s Kappa': domain_metrics['kappa'],
-                'Avg Spearman\'s ρ': domain_metrics['spearman_rho'],
+                'Acc±1': domain_metrics['accuracy_within_1'],
+                'Cohen\'s κ': domain_metrics['kappa'],
+                'Kendall\'s τ': domain_metrics['kendall_tau'],
+                'Spearman\'s ρ': domain_metrics['spearman_rho'],
+                'F1 (macro)': domain_metrics['f1_macro'],
+                'Precision (macro)': domain_metrics['precision_macro'],
+                'Recall (macro)': domain_metrics['recall_macro'],
                 'N': domain_metrics['n_samples']
             }
             all_metrics.append(row)
@@ -237,23 +261,30 @@ def analyze_all_results(results_dir: str = 'results_manuscript') -> pd.DataFrame
 def create_summary_table(results_df: pd.DataFrame, output_path: str = 'results_manuscript/summary_table.csv'):
     """Create and save summary table."""
     
-    # Pivot to create a cleaner format
-    summary = results_df.pivot_table(
-        index=['Category', 'Method', 'Model'],
-        columns='Domain',
-        values=['Accuracy', 'Cohen\'s Kappa', 'Avg Spearman\'s ρ'],
-        aggfunc='first'
-    )
+    # Save full table
+    results_df.to_csv(output_path, index=False)
+    print(f"\n✓ Full results table saved to: {output_path}")
     
-    summary.to_csv(output_path)
-    print(f"\n✓ Summary table saved to: {output_path}")
-    
-    # Also create a markdown version
+    # Create markdown version
     md_path = output_path.replace('.csv', '.md')
     with open(md_path, 'w') as f:
         f.write("# Manuscript Results Summary\n\n")
+        f.write("## All Metrics\n\n")
         f.write(results_df.to_markdown(index=False))
     print(f"✓ Markdown table saved to: {md_path}")
+    
+    # Create a pivot summary for key metrics
+    pivot_metrics = ['Accuracy', 'Acc±1', 'Cohen\'s κ', 'Kendall\'s τ', 'Spearman\'s ρ', 'F1 (macro)']
+    summary = results_df.pivot_table(
+        index=['Category', 'Method'],
+        columns='Domain',
+        values=pivot_metrics,
+        aggfunc='first'
+    )
+    
+    summary_path = output_path.replace('.csv', '_pivot.csv')
+    summary.to_csv(summary_path)
+    print(f"✓ Pivot summary saved to: {summary_path}")
     
     return summary
 
@@ -261,8 +292,10 @@ def create_summary_table(results_df: pd.DataFrame, output_path: str = 'results_m
 def plot_comparison(results_df: pd.DataFrame, output_dir: str = 'results_manuscript'):
     """Create comparison visualizations."""
     
-    fig, axes = plt.subplots(1, 3, figsize=(18, 6))
-    metrics = ['Accuracy', 'Cohen\'s Kappa', 'Avg Spearman\'s ρ']
+    # Plot 1: Key metrics comparison
+    fig, axes = plt.subplots(2, 3, figsize=(20, 12))
+    axes = axes.flatten()
+    metrics = ['Accuracy', 'Acc±1', 'Cohen\'s κ', 'Kendall\'s τ', 'Spearman\'s ρ', 'F1 (macro)']
     
     for idx, metric in enumerate(metrics):
         ax = axes[idx]
@@ -276,18 +309,18 @@ def plot_comparison(results_df: pd.DataFrame, output_dir: str = 'results_manuscr
         )
         
         data_pivot.plot(kind='bar', ax=ax, rot=45, width=0.8)
-        ax.set_title(f'{metric} by Method', fontsize=14, fontweight='bold')
+        ax.set_title(f'{metric} by Method', fontsize=12, fontweight='bold')
         ax.set_ylabel(metric)
         ax.set_xlabel('')
-        ax.legend(title='Domain', bbox_to_anchor=(1.05, 1), loc='upper left')
+        ax.legend(title='Domain', bbox_to_anchor=(1.05, 1), loc='upper left', fontsize=8)
         ax.grid(axis='y', alpha=0.3)
         
-        # Add horizontal line at baseline
-        if metric == 'Accuracy':
-            ax.axhline(y=0.2, color='r', linestyle='--', alpha=0.5, label='Random (20%)')
+        # Add horizontal line at baseline for accuracy metrics
+        if metric in ['Accuracy', 'Acc±1']:
+            ax.axhline(y=0.2, color='r', linestyle='--', alpha=0.5, linewidth=1)
     
     plt.tight_layout()
-    plot_path = os.path.join(output_dir, 'method_comparison.png')
+    plot_path = os.path.join(output_dir, 'method_comparison_all_metrics.png')
     plt.savefig(plot_path, dpi=300, bbox_inches='tight')
     print(f"✓ Comparison plot saved to: {plot_path}")
     plt.close()
@@ -312,7 +345,9 @@ def main():
     print(f"{'='*80}\n")
     
     # Print summary statistics
-    print(results_df.groupby(['Category', 'Domain'])[['Accuracy', 'Cohen\'s Kappa', 'Avg Spearman\'s ρ']].agg(['mean', 'std']))
+    print(results_df.groupby(['Category', 'Domain'])[
+        ['Accuracy', 'Acc±1', 'Cohen\'s κ', 'Kendall\'s τ', 'Spearman\'s ρ', 'F1 (macro)']
+    ].agg(['mean', 'std']))
     
     # Create summary table
     summary = create_summary_table(results_df)

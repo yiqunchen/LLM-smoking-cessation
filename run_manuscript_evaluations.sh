@@ -87,9 +87,24 @@ if [[ "$METHODS" == "all" || "$METHODS" == *"benchmarks"* ]]; then
   echo -e "${YELLOW}========================================${NC}"
   echo -e "${YELLOW}2.2.1 BENCHMARK MODELS${NC}"
   echo -e "${YELLOW}========================================${NC}"
+  echo -e "${BLUE}Using canonical participant split (70/30)${NC}"
+  echo ""
   
-  echo -e "${BLUE}Note: Benchmark models (random guess, regression) need separate implementation${NC}"
-  echo -e "${BLUE}      These will be added in a follow-up script.${NC}"
+  # Traditional ML: Logistic Regression
+  echo -e "${GREEN}Benchmark 1: Logistic Regression${NC}"
+  run_cmd "python analysis-script/run_traditional_ml_baseline.py \
+    --train-split $CANONICAL_SPLITS_DIR/train_participant_7030.json \
+    --test-split $CANONICAL_SPLITS_DIR/test_participant_7030.json \
+    --model-type logistic \
+    --output-dir $OUTPUT_DIR"
+  
+  # Traditional ML: Random Forest
+  echo -e "${GREEN}Benchmark 2: Random Forest${NC}"
+  run_cmd "python analysis-script/run_traditional_ml_baseline.py \
+    --train-split $CANONICAL_SPLITS_DIR/train_participant_7030.json \
+    --test-split $CANONICAL_SPLITS_DIR/test_participant_7030.json \
+    --model-type random_forest \
+    --output-dir $OUTPUT_DIR"
 fi
 
 #############################################################################
@@ -202,27 +217,54 @@ if [[ "$METHODS" == "all" || "$METHODS" == *"digital_twin"* ]]; then
   # Note: Digital twin prompts need to be updated to load from split files
   # rather than from a single Excel file
   
-  echo -e "${RED}WARNING: Digital twin methods need script updates to use canonical splits!${NC}"
-  echo -e "${BLUE}Current implementation uses data/digitalTwin_msg.xlsx${NC}"
-  echo -e "${BLUE}Needs update to use data_splits/canonical/train_digital_twin_*.json${NC}"
-  
-  # Placeholder commands (will work after script update)
   # Method 1: Full-feature (50/50)
   echo -e "${GREEN}Method 1: Full-feature (50/50 split)${NC}"
-  echo -e "${BLUE}  [PLACEHOLDER - needs implementation update]${NC}"
-  
+  run_cmd "python analysis-script/main_eval.py \
+    --mode text-only \
+    --model $DEFAULT_MODEL \
+    --prompt-config digital-twin \
+    --data-file $CANONICAL_SPLITS_DIR/test_digital_twin_5050.json \
+    --train-file $CANONICAL_SPLITS_DIR/train_digital_twin_5050.json \
+    --max-concurrent $MAX_CONCURRENT \
+    --output-file $OUTPUT_DIR/digital_twin_1_full_5050.json \
+    --checkpoint-file $OUTPUT_DIR/checkpoint_digital_twin_1_5050.json"
+
   # Method 2: Selected-feature (50/50)
   echo -e "${GREEN}Method 2: Selected-feature (50/50 split)${NC}"
-  echo -e "${BLUE}  [PLACEHOLDER - needs implementation update]${NC}"
-  
+  run_cmd "python analysis-script/main_eval.py \
+    --mode text-only \
+    --model $DEFAULT_MODEL \
+    --prompt-config digital-twin-select \
+    --data-file $CANONICAL_SPLITS_DIR/test_digital_twin_5050.json \
+    --train-file $CANONICAL_SPLITS_DIR/train_digital_twin_5050.json \
+    --max-concurrent $MAX_CONCURRENT \
+    --output-file $OUTPUT_DIR/digital_twin_2_select_5050.json \
+    --checkpoint-file $OUTPUT_DIR/checkpoint_digital_twin_2_5050.json"
+
   # Method 3: Full-feature + feedback (50/50)
   echo -e "${GREEN}Method 3: Full-feature + feedback (50/50 split)${NC}"
-  echo -e "${BLUE}  [PLACEHOLDER - needs implementation update]${NC}"
-  
-  # Method 4: Domain-informed CBT/ACT
-  for split_name in "5050" "7030" "9010"; do
+  run_cmd "python analysis-script/main_eval.py \
+    --mode text-only \
+    --model $DEFAULT_MODEL \
+    --prompt-config digital-twin-feedback \
+    --data-file $CANONICAL_SPLITS_DIR/test_digital_twin_5050.json \
+    --train-file $CANONICAL_SPLITS_DIR/train_digital_twin_5050.json \
+    --max-concurrent $MAX_CONCURRENT \
+    --output-file $OUTPUT_DIR/digital_twin_3_feedback_5050.json \
+    --checkpoint-file $OUTPUT_DIR/checkpoint_digital_twin_3_5050.json"
+
+  # Method 4: Domain-informed CBT/ACT across splits (DEFAULT: 70/30)
+  for split_name in "1090" "3070" "7030" "9010"; do
     echo -e "${GREEN}Method 4: CBT/ACT-informed ($split_name split)${NC}"
-    echo -e "${BLUE}  [PLACEHOLDER - needs implementation update]${NC}"
+    run_cmd "python analysis-script/main_eval.py \
+      --mode text-only \
+      --model $DEFAULT_MODEL \
+      --prompt-config digital-twin-cbtact \
+      --data-file $CANONICAL_SPLITS_DIR/test_digital_twin_${split_name}.json \
+      --train-file $CANONICAL_SPLITS_DIR/train_digital_twin_${split_name}.json \
+      --max-concurrent $MAX_CONCURRENT \
+      --output-file $OUTPUT_DIR/digital_twin_4_cbtact_${split_name}.json \
+      --checkpoint-file $OUTPUT_DIR/checkpoint_digital_twin_4_${split_name}.json"
   done
 fi
 

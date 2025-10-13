@@ -292,6 +292,7 @@ async def main():
     parser.add_argument('--checkpoint-interval', type=int, default=DEFAULT_CHECKPOINT_INTERVAL, help="How often to save checkpoint (every N completed items).")
     parser.add_argument('--temperature', type=float, default=None, help="Set the model temperature. Overrides default logic (0.2, or 1.0 for 'o3-' models).")
     parser.add_argument('--data-file', type=str, default='data/processed_llm_data.json', help="Path to data file (default: full dataset). Use canonical splits for manuscript experiments.")
+    parser.add_argument('--train-file', type=str, default=None, help="(Digital-twin) Path to TRAIN split for building participant profiles (e.g., data_splits/canonical/train_digital_twin_5050.json)")
     args = parser.parse_args()
 
     # Check if adaptive optimization is requested
@@ -341,6 +342,36 @@ async def main():
         question_data = json.load(f)
 
     random.seed(42)
+    # If digital-twin, optionally attach profile messages from train split to each test item
+    if args.prompt_config.startswith('digital-twin') and args.train_file:
+        print(f"Loading digital-twin TRAIN profiles from: {args.train_file}")
+        try:
+            with open(args.train_file, "r") as f:
+                train_items = json.load(f)
+        except Exception as e:
+            print(f"WARNING: Failed to load train file '{args.train_file}': {e}. Proceeding without profiles.")
+            train_items = []
+
+        # Build map: response_id -> list of prior messages with ratings
+        response_id_to_profile = {}
+        for it in train_items:
+            rid = it.get('response_id')
+            if rid is None:
+                continue
+            profile_entry = {
+                'input_message': it.get('input_message'),
+                'ratings': it.get('ratings', {})
+            }
+            response_id_to_profile.setdefault(rid, []).append(profile_entry)
+
+        # Attach to test items
+        for it in question_data:
+            rid = it.get('response_id')
+            if rid in response_id_to_profile:
+                it['profile_messages'] = response_id_to_profile[rid]
+        print("Attached profile_messages to test items where available.")
+
+    # Re-key data for async processing
     question_data = {f"{i}": data for i, data in enumerate(question_data)}
     
     # Sample data if specified

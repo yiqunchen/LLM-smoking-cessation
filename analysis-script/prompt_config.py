@@ -677,51 +677,61 @@ You must return a valid JSON object with the following structure. Provide both t
 """
     return prompt 
 
-def generate_digital_twin_prompt(data):
-    """Generate prompts for digital twin method"""
+def _format_profile_messages(profile_messages: list) -> str:
+    if not profile_messages:
+        return ""
+    out = []
+    for pm in profile_messages:
+        msg = str(pm.get('input_message', '')).strip()
+        ratings = pm.get('ratings', {}) or {}
+        ratings_lines = []
+        for key in ['content', 'design', 'coping', 'quitting']:
+            if key in ratings and ratings[key] is not None:
+                ratings_lines.append(f"{key}: {ratings[key]}")
+        out.append(f"Past message:\n{msg}\nRatings:\n" + "\n".join(ratings_lines) + "\n\n---\n")
+    return "".join(out)
 
-    # Read the traing messages & ratings (first 7 messages) for each participant
-    df = pd.read_excel("data/digitalTwin_msg.xlsx")
-    
+
+def generate_digital_twin_prompt(data):
+    """Generate prompts for digital twin method.
+    Prefers data['profile_messages'] if provided; otherwise falls back to Excel file.
+    """
+
     # Extract participant metadata
-    # Using all metadata available in this version
     metadata_text = ""
     if 'metadata' in data and data['metadata']:
         for key, value in data['metadata'].items():
-            if pd.notna(value):
+            if value is not None and str(value) != 'nan':
                 metadata_text += f"- {key}: {value}\n"
-    
-    # Add training messages and ratings for each participant
-    row = df[df["response_id"] == data['response_id']]
-    
-    for col in df.columns:
-            if col.startswith("message_"):
-                msg_text = str(row[col].iloc[0]).strip()
 
-                # Map rating column names to short labels
-                label_map = {
-                    "content": "content",
-                    "design": "design",
-                    "coping": "coping",
-                    "quitting": "quitting"
-                }
-                
-                # Find rating columns (they follow the message column)
-                ratings = []
-                col_index = df.columns.get_loc(col)
-                # Ratings usually are next 4 columns after each message
-                for rcol in df.columns[col_index+1 : col_index+5]:
-                    if rcol.startswith("how"):
-                        # Pick a short label based on keyword in column name
-                        for key, short_label in label_map.items():
-                            if key in rcol.lower():
-                                value = row[rcol].iloc[0]
-                                ratings.append(f"{short_label}: {value}")
-                                break
-
-                ratings_text = "\n".join(ratings)
-
-                metadata_text += f"Past message:\n{msg_text}\nRatings:\n{ratings_text}\n\n---\n"
+    # Prefer attached profile messages (from canonical train split)
+    if data.get('profile_messages'):
+        metadata_text += _format_profile_messages(data['profile_messages'])
+    else:
+        # Fallback to legacy Excel if profiles not attached
+        try:
+            df = pd.read_excel("data/digitalTwin_msg.xlsx")
+            row = df[df["response_id"] == data['response_id']]
+            if not row.empty:
+                # Iterate message_* columns
+                for col in df.columns:
+                    if col.startswith("message_"):
+                        msg_text = str(row[col].iloc[0]).strip()
+                        ratings = []
+                        col_index = df.columns.get_loc(col)
+                        for rcol in df.columns[col_index+1 : col_index+5]:
+                            if rcol.startswith("how"):
+                                val = row[rcol].iloc[0]
+                                # derive short key
+                                low = rcol.lower()
+                                for key in ['content', 'design', 'coping', 'quitting']:
+                                    if key in low:
+                                        ratings.append(f"{key}: {val}")
+                                        break
+                        ratings_text = "\n".join(ratings)
+                        metadata_text += f"Past message:\n{msg_text}\nRatings:\n{ratings_text}\n\n---\n"
+        except Exception:
+            pass
 
       
     prompt = f"""

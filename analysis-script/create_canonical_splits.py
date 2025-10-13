@@ -223,12 +223,22 @@ def main():
     print("Split strategy: BY MESSAGE WITHIN PARTICIPANT (personalized profiles)")
     print("="*80)
     
+    # Create 10/90 split
+    create_digital_twin_split(
+        data, train_ratio=0.1, output_dir=output_dir, split_name="1090"
+    )
+    
+    # Create 30/70 split
+    create_digital_twin_split(
+        data, train_ratio=0.3, output_dir=output_dir, split_name="3070"
+    )
+    
     # Create 50/50 split
     create_digital_twin_split(
         data, train_ratio=0.5, output_dir=output_dir, split_name="5050"
     )
     
-    # Create 70/30 split
+    # Create 70/30 split (DEFAULT)
     create_digital_twin_split(
         data, train_ratio=0.7, output_dir=output_dir, split_name="7030"
     )
