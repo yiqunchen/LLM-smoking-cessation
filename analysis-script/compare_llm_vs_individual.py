@@ -436,6 +436,12 @@ def main(
     # Bar chart of accuracies
     acc_df = pd.DataFrame(summaries)
     if not acc_df.empty:
+        # Ensure numeric columns and replace missing with 0 to avoid matplotlib TypeError
+        for col in ['acc_individual', 'acc_joint', 'acc_llm', 'acc_ensemble_stack', 'acc_ensemble_adv_stack']:
+            if col not in acc_df.columns:
+                acc_df[col] = np.nan
+            acc_df[col] = pd.to_numeric(acc_df[col], errors='coerce').fillna(0.0)
+
         plt.figure(figsize=(12, 6))
         width = 0.15
         x = np.arange(len(acc_df['domain']))
