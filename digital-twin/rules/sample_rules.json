@@ -1,0 +1,23 @@
+{
+  "content": {
+    "positive": [
+      {"phrase": "step", "weight": 0.5},
+      {"phrase": "practice", "weight": 0.5}
+    ],
+    "negative": [
+      {"phrase": "graphic", "weight": 1.0}
+    ]
+  },
+  "design": {
+    "positive": ["simple", "clear"],
+    "negative": ["clutter", "busy"]
+  },
+  "coping": {
+    "positive": ["urge", "breath", "plan"],
+    "negative": ["panic", "triggering"]
+  },
+  "quitting": {
+    "positive": ["quit", "smoke-free"],
+    "negative": ["relapse", "stress"]
+  }
+}

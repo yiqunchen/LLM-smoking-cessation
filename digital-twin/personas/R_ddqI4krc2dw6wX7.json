@@ -1,0 +1,137 @@
+{
+  "participant_id": "R_ddqI4krc2dw6wX7",
+  "demographics": {
+    "age_years": 25,
+    "gender_identity": "Female",
+    "race_ethnicity": "White",
+    "is_hispanic_latino": "Yes",
+    "education_level": "Some college",
+    "household_income": "$40,000-59,999"
+  },
+  "smoking_behavior": {
+    "quit_intention": "Are currently trying to quit",
+    "days_smoked_past_30d": 8,
+    "cigs_per_day": "1",
+    "time_to_first_cig": "After 30 minutes",
+    "household_smokers": "Yes",
+    "friends_smoke_level": "Some of them",
+    "quit_attempts_count": "3",
+    "smoking_status": "Some days",
+    "quit_motivation_level": "Very motivated",
+    "social_support_to_quit": "Extremely supportive"
+  },
+  "psychosocial": {
+    "pain_blocks_valued_life": "Always true",
+    "fear_of_feelings": "Seldom true",
+    "worry_about_control": "Always true",
+    "memories_block_fulfillment": "Always true",
+    "emotions_cause_problems": "Always true",
+    "others_handle_life_better": "Always true",
+    "worry_blocks_success": "Always true"
+  },
+  "history": {
+    "rated_messages": [
+      {
+        "input_message": "Try to stop smoking by setting yourself a rule. For example, \"IF I am tempted, THEN I will chew on some mints\" - make your own rule that will work for you.",
+        "ImageID": "D9",
+        "ratings": {
+          "content": "Very good",
+          "design": "Good",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "If you usually smoke while you talk on the phone, try taking the next call in a place where you can't smoke and focus on the conversation. The urge will pass.",
+        "ImageID": "D43",
+        "ratings": {
+          "content": "Good",
+          "design": "Acceptable",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "Now is a good time for BREAKS B=stop and Brake R=Read how your body feels E=Expand and take deep breaths A=Allow everything to be as it is K=Know what's important to you S=take 1 Step in a direction important to you",
+        "ImageID": "A24",
+        "ratings": {
+          "content": "Very good",
+          "design": "Very good",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "To keep on track, small changes can really help. For example, keep a list of quit reasons where you used to keep cigarettes, rearrange your living space, or grab some extra pens to fiddle with to keep your hands busy.",
+        "ImageID": "D10",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "Craving a cig? Plan a fun activity you can do when you get home as a reward for not smoking.",
+        "ImageID": "D58",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Very helpful",
+          "quitting": "Moderately helpful"
+        }
+      },
+      {
+        "input_message": "Ask yourself, \"What do I need right now? Is it really a smoke, or is there something else I need? How can I best take care of myself right now?\"",
+        "ImageID": "D62",
+        "ratings": {
+          "content": "Very good",
+          "design": "Very good",
+          "coping": "Extremely helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "Notice how stress and anxiety may pull you and make you want to smoke. Just notice this. You can choose to just notice and not smoke.",
+        "ImageID": "A36",
+        "ratings": {
+          "content": "Very good",
+          "design": "Very good",
+          "coping": "Extremely helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "Ways of dealing with urges: play a game or an online quiz.",
+        "ImageID": "D36",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "To help get through a 'risky situation', remind yourself of how far you've come and the effort that you've put in. Don't ruin your hard work - stay strong!",
+        "ImageID": "D24",
+        "ratings": {
+          "content": "Very good",
+          "design": "Good",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "If you miss doing something with your hands, try turning a coin or pen over and over with your fingers.",
+        "ImageID": "D49",
+        "ratings": {
+          "content": "Very good",
+          "design": "Very good",
+          "coping": "Extremely helpful",
+          "quitting": "Extremely helpful"
+        }
+      }
+    ]
+  },
+  "summary_text": "Age 25, Female, Some days, Motivation: Very motivated, Support: Extremely supportive, CPD: 1, TTF: After 30 minutes"
+}

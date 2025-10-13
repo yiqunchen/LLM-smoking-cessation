@@ -1,0 +1,137 @@
+{
+  "participant_id": "R_3NJLRjV6sukDhjC",
+  "demographics": {
+    "age_years": 26,
+    "gender_identity": "Female",
+    "race_ethnicity": "White",
+    "is_hispanic_latino": "No",
+    "education_level": "Less than high school",
+    "household_income": "< $15,000"
+  },
+  "smoking_behavior": {
+    "quit_intention": "Will quit in the next month",
+    "days_smoked_past_30d": 4,
+    "cigs_per_day": "1",
+    "time_to_first_cig": "After 30 minutes",
+    "household_smokers": "Yes",
+    "friends_smoke_level": "Most of them",
+    "quit_attempts_count": "1",
+    "smoking_status": "Some days",
+    "quit_motivation_level": "Very motivated",
+    "social_support_to_quit": "Very supportive"
+  },
+  "psychosocial": {
+    "pain_blocks_valued_life": "Sometimes true",
+    "fear_of_feelings": "Seldom true",
+    "worry_about_control": "Sometimes true",
+    "memories_block_fulfillment": "Frequently true",
+    "emotions_cause_problems": "Frequently true",
+    "others_handle_life_better": "Frequently true",
+    "worry_blocks_success": "Sometimes true"
+  },
+  "history": {
+    "rated_messages": [
+      {
+        "input_message": "The best way to deal with any urges from being around smokers is to get out of the situation briefly until it goes. Make an excuse, go to the toilet, go get some water, pretend you need to get some phone reception!",
+        "ImageID": "D21",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Acceptable",
+          "coping": "Somewhat helpful",
+          "quitting": "Moderately helpful"
+        }
+      },
+      {
+        "input_message": "Even though you are stressed, are you willing to sit with this urge until it passes if will help you break this habit?",
+        "ImageID": "A35",
+        "ratings": {
+          "content": "Good",
+          "design": "Acceptable",
+          "coping": "Moderately helpful",
+          "quitting": "Somewhat helpful"
+        }
+      },
+      {
+        "input_message": "Instead of lighting up a cigarette, light a scented candle or burn some incense.",
+        "ImageID": "D47",
+        "ratings": {
+          "content": "Good",
+          "design": "Acceptable",
+          "coping": "Moderately helpful",
+          "quitting": "Somewhat helpful"
+        }
+      },
+      {
+        "input_message": "Take a deep breath and let it out slowly. Notice that you are completely OK for this one breath. Do it again.",
+        "ImageID": "A44",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Poor",
+          "coping": "Somewhat helpful",
+          "quitting": "Somewhat helpful"
+        }
+      },
+      {
+        "input_message": "Have confidence in knowing that you can have this urge, choose not to smoke, be okay, and choose to do things that matter most to you.",
+        "ImageID": "A28",
+        "ratings": {
+          "content": "Good",
+          "design": "Very good",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "A funny thing about people is that we tend to believe what we tell ourselves. So make sure that whatever else happens today, tell yourself \"I can, and I will stick to not smoking!\"",
+        "ImageID": "D13",
+        "ratings": {
+          "content": "Very good",
+          "design": "Very good",
+          "coping": "Extremely helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "Think of your anxious mind like a toddler throwing a tantrum. The best way to respond is to quietly watch, but not give in.",
+        "ImageID": "A40",
+        "ratings": {
+          "content": "Very good",
+          "design": "Good",
+          "coping": "Very helpful",
+          "quitting": "Moderately helpful"
+        }
+      },
+      {
+        "input_message": "You might find that you have more time now that you're trying to cut some cigarettes. Some people find that going for a walk can help fill the gap. Or take a nap if you can!",
+        "ImageID": "D19",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Somewhat helpful",
+          "quitting": "Moderately helpful"
+        }
+      },
+      {
+        "input_message": "Are you willing to let this urge pass for the sake of living a good long time with the people who matter most to you? When you have an urge, think about the people most important to you.",
+        "ImageID": "A15",
+        "ratings": {
+          "content": "Very good",
+          "design": "Very good",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "Use self-talk to stay motivated and determined. Say, \u201cI don't need a cigarette. I might WANT one, but I don\u2019t NEED it.\u201d",
+        "ImageID": "D53",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Acceptable",
+          "coping": "Moderately helpful",
+          "quitting": "Moderately helpful"
+        }
+      }
+    ]
+  },
+  "summary_text": "Age 26, Female, Some days, Motivation: Very motivated, Support: Very supportive, CPD: 1, TTF: After 30 minutes"
+}

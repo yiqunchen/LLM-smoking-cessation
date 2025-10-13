@@ -1,0 +1,137 @@
+{
+  "participant_id": "R_3luJtR1KDLtcfvc",
+  "demographics": {
+    "age_years": 25,
+    "gender_identity": "Male",
+    "race_ethnicity": "White",
+    "is_hispanic_latino": "No",
+    "education_level": "Less than high school",
+    "household_income": "$80,000-99,000"
+  },
+  "smoking_behavior": {
+    "quit_intention": "Will quit in the next month",
+    "days_smoked_past_30d": 27,
+    "cigs_per_day": "16",
+    "time_to_first_cig": "Within 30 minutes",
+    "household_smokers": "Yes",
+    "friends_smoke_level": "All of them",
+    "quit_attempts_count": "5",
+    "smoking_status": "Every day",
+    "quit_motivation_level": "Very motivated",
+    "social_support_to_quit": "Extremely supportive"
+  },
+  "psychosocial": {
+    "pain_blocks_valued_life": "Always true",
+    "fear_of_feelings": "Almost always true",
+    "worry_about_control": "Almost always true",
+    "memories_block_fulfillment": "Always true",
+    "emotions_cause_problems": "Always true",
+    "others_handle_life_better": "Almost always true",
+    "worry_blocks_success": "Almost always true"
+  },
+  "history": {
+    "rated_messages": [
+      {
+        "input_message": "Try to avoid seeing other people smoke. It might sound basic but brain see, brain want! If you can, make life easier and avoid the people you used to smoke with for some time where possible.",
+        "ImageID": "D30",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Extremely helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "Feelings aren't permanent. They are always changing like the weather. Observe the storm that is coming, but don't fight it. Eventually the weather will change.",
+        "ImageID": "A42",
+        "ratings": {
+          "content": "Good",
+          "design": "Very good",
+          "coping": "Very helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "Try to stop smoking by setting yourself a rule. For example, \"IF I am tempted, THEN I will chew on some mints\" - make your own rule that will work for you.",
+        "ImageID": "D9",
+        "ratings": {
+          "content": "Very good",
+          "design": "Good",
+          "coping": "Extremely helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "Notice what it feels like to see other people smoke and choose not to smoke. Notice what thoughts or emotions come up. Allow them to come and go. They will pass and so will this urge.",
+        "ImageID": "A57",
+        "ratings": {
+          "content": "Very good",
+          "design": "Good",
+          "coping": "Extremely helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "Imagine your urge is like a talk radio station going on about something you disagree with. Arguing with it doesn't change what they say. Instead, just let them talk while you focus on what's important to you.",
+        "ImageID": "A14",
+        "ratings": {
+          "content": "Poor",
+          "design": "Good",
+          "coping": "Extremely helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "If you usually smoke while you talk on the phone, keep a pen and paper nearby to occupy your hands with doodling rather than smoking.",
+        "ImageID": "D42",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Extremely helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "Take a minute to notice what the urge feels like in your body without smoking a cigarette. Notice what is going on. See what happens. Does the urge pass?",
+        "ImageID": "A21",
+        "ratings": {
+          "content": "Good",
+          "design": "Very good",
+          "coping": "Very helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "If you have trouble resisting a craving when other smokers are around, try carrying a water bottle and taking a sip every time you want to ask for a cig.",
+        "ImageID": "D52",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Very helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "When your mind tells you that you will be less stressed after smoking a cigarette, remember that you don't have to listen to that thought. It's just a thought and nothing more.",
+        "ImageID": "A32",
+        "ratings": {
+          "content": "Poor",
+          "design": "Good",
+          "coping": "Very helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "This craving is just an event. A game. It will pass. The game gets easier the more you let your urge pass without smoking. But, it gets harder every time you give in to the urge and smoke.",
+        "ImageID": "A31",
+        "ratings": {
+          "content": "Good",
+          "design": "Very good",
+          "coping": "Very helpful",
+          "quitting": "Extremely helpful"
+        }
+      }
+    ]
+  },
+  "summary_text": "Age 25, Male, Every day, Motivation: Very motivated, Support: Extremely supportive, CPD: 16, TTF: Within 30 minutes"
+}

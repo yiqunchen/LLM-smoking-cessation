@@ -1,0 +1,137 @@
+{
+  "participant_id": "R_3Matzl9c3RQUXt4",
+  "demographics": {
+    "age_years": 28,
+    "gender_identity": "Male",
+    "race_ethnicity": "White",
+    "is_hispanic_latino": "No",
+    "education_level": "Some college",
+    "household_income": "$40,000-59,999"
+  },
+  "smoking_behavior": {
+    "quit_intention": "Will quit in the next month",
+    "days_smoked_past_30d": 5,
+    "cigs_per_day": "1",
+    "time_to_first_cig": "After 30 minutes",
+    "household_smokers": "No",
+    "friends_smoke_level": "Some of them",
+    "quit_attempts_count": "2",
+    "smoking_status": "Some days",
+    "quit_motivation_level": "Very motivated",
+    "social_support_to_quit": "Somewhat supportive"
+  },
+  "psychosocial": {
+    "pain_blocks_valued_life": "Seldom true",
+    "fear_of_feelings": "Never true",
+    "worry_about_control": "Never true",
+    "memories_block_fulfillment": "Seldom true",
+    "emotions_cause_problems": "Never true",
+    "others_handle_life_better": "Very seldom true",
+    "worry_blocks_success": "Sometimes true"
+  },
+  "history": {
+    "rated_messages": [
+      {
+        "input_message": "Keep picturing yourself getting home later today knowing that you've gained a smoke-free day. It's nearly a reality!",
+        "ImageID": "D5",
+        "ratings": {
+          "content": "Good",
+          "design": "Very poor",
+          "coping": "Very helpful",
+          "quitting": "Moderately helpful"
+        }
+      },
+      {
+        "input_message": "Each time you let an urge pass without smoking, you break the old habit a bit more.",
+        "ImageID": "A27",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Acceptable",
+          "coping": "Moderately helpful",
+          "quitting": "Somewhat helpful"
+        }
+      },
+      {
+        "input_message": "Think of your anxious mind like a toddler throwing a tantrum. The best way to respond is to quietly watch, but not give in.",
+        "ImageID": "A40",
+        "ratings": {
+          "content": "Good",
+          "design": "Very good",
+          "coping": "Very helpful",
+          "quitting": "Moderately helpful"
+        }
+      },
+      {
+        "input_message": "You don't have to act on this feeling by smoking or doing anything about it. Give it some space, breathe, and see if it changes. Let the urge and feeling be there while you focus on doing something you care about.",
+        "ImageID": "A41",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Acceptable",
+          "coping": "Moderately helpful",
+          "quitting": "Moderately helpful"
+        }
+      },
+      {
+        "input_message": "If you have trouble resisting a craving when other smokers are around, try carrying a water bottle and taking a sip every time you want to ask for a cig.",
+        "ImageID": "D52",
+        "ratings": {
+          "content": "Very good",
+          "design": "Very good",
+          "coping": "Extremely helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "Take a deep breath. Focus on today and the things you have accomplished. How many urges have you let pass? Give yourself some credit!",
+        "ImageID": "A17",
+        "ratings": {
+          "content": "Good",
+          "design": "Acceptable",
+          "coping": "Moderately helpful",
+          "quitting": "Moderately helpful"
+        }
+      },
+      {
+        "input_message": "Imagine walking into a social situation in three months' time as a non-smoker. Now hold that picture and imagine you're that person now. Seeing yourself as a non-smoker now can make it much easier to resist!",
+        "ImageID": "D27",
+        "ratings": {
+          "content": "Good",
+          "design": "Acceptable",
+          "coping": "Moderately helpful",
+          "quitting": "Moderately helpful"
+        }
+      },
+      {
+        "input_message": "If you are tempted to smoke by being in this location, see if you can sit with that temptation for 1 minute. When the minute is over, do it again. Soon, it should pass.",
+        "ImageID": "A52",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Moderately helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "Just because letting an urge pass isn't easy, doesn't mean that you can't do it. Try it, you might surprise yourself.",
+        "ImageID": "A29",
+        "ratings": {
+          "content": "Very good",
+          "design": "Very good",
+          "coping": "Extremely helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "Some people find it helpful to give a name to their urge. If you're experiencing regular urges, give that feeling a name ('Olga the urge'?), and tell it that you won't give in to it. It may make it easier to live with (e.g. \"ok Olga, I need to be by myself now...\").",
+        "ImageID": "A3",
+        "ratings": {
+          "content": "Very good",
+          "design": "Very good",
+          "coping": "Extremely helpful",
+          "quitting": "Extremely helpful"
+        }
+      }
+    ]
+  },
+  "summary_text": "Age 28, Male, Some days, Motivation: Very motivated, Support: Somewhat supportive, CPD: 1, TTF: After 30 minutes"
+}

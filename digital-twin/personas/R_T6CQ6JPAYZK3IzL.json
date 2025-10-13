@@ -1,0 +1,136 @@
+{
+  "participant_id": "R_T6CQ6JPAYZK3IzL",
+  "demographics": {
+    "age_years": 26,
+    "gender_identity": "Male",
+    "race_ethnicity": "White",
+    "is_hispanic_latino": "No",
+    "education_level": "Some college",
+    "household_income": "$60,000-79,999"
+  },
+  "smoking_behavior": {
+    "quit_intention": "Are currently trying to quit",
+    "days_smoked_past_30d": 28,
+    "cigs_per_day": "11",
+    "time_to_first_cig": "Within 30 minutes",
+    "household_smokers": "Yes",
+    "friends_smoke_level": "Some of them",
+    "smoking_status": "Every day",
+    "quit_motivation_level": "Moderately motivated",
+    "social_support_to_quit": "Extremely supportive"
+  },
+  "psychosocial": {
+    "pain_blocks_valued_life": "Very seldom true",
+    "fear_of_feelings": "Very seldom true",
+    "worry_about_control": "Never true",
+    "memories_block_fulfillment": "Very seldom true",
+    "emotions_cause_problems": "Never true",
+    "others_handle_life_better": "Very seldom true",
+    "worry_blocks_success": "Never true"
+  },
+  "history": {
+    "rated_messages": [
+      {
+        "input_message": "Instead of smoking, use the next two minutes to pay close attention to your senses. Notice what you see, hear, feel, taste, and smell. Urges are just one part of your experience.",
+        "ImageID": "A23",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Acceptable",
+          "coping": "Moderately helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "Some people find that having a simple mantra can really help, especially if things feel stressful. Try repeating something simple to yourself like: \"I can do it!\".",
+        "ImageID": "D16",
+        "ratings": {
+          "content": "Very good",
+          "design": "Good",
+          "coping": "Extremely helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "Each time you let an urge pass without smoking, you break the old habit a bit more.",
+        "ImageID": "A27",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Very helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "If you usually smoke while you talk on the phone, try taking the next call in a place where you can't smoke and focus on the conversation. The urge will pass.",
+        "ImageID": "D43",
+        "ratings": {
+          "content": "Very good",
+          "design": "Acceptable",
+          "coping": "Extremely helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "Tell yourself, \u201cI am going to quit smoking soon.\u201d Say it out loud. Say to yourself, \u201cI am too strong to continue smoking for the rest of my life.\"",
+        "ImageID": "D40",
+        "ratings": {
+          "content": "Very good",
+          "design": "Very good",
+          "coping": "Extremely helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "Think about times in the past when you have let urges pass during a stressful moment, and notice what helped make that moment easier.",
+        "ImageID": "A39",
+        "ratings": {
+          "content": "Good",
+          "design": "Acceptable",
+          "coping": "Moderately helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "This craving is just an event. A game. It will pass. The game gets easier the more you let your urge pass without smoking. But, it gets harder every time you give in to the urge and smoke.",
+        "ImageID": "A31",
+        "ratings": {
+          "content": "Good",
+          "design": "Very good",
+          "coping": "Extremely helpful",
+          "quitting": "Moderately helpful"
+        }
+      },
+      {
+        "input_message": "Urges to smoke usually only last a few minutes. Distract yourself by NOT thinking about giraffes, or leave the situation until it passes.",
+        "ImageID": "D23",
+        "ratings": {
+          "content": "Very good",
+          "design": "Good",
+          "coping": "Very helpful",
+          "quitting": "Moderately helpful"
+        }
+      },
+      {
+        "input_message": "If you find yourself thinking: \"I can't do this\", \"I need a cig\", or \"I'll just have one\", make sure you tell yourself \"I absolutely CAN do this\", \"I'm in control\". Take control of your negative thoughts!",
+        "ImageID": "D29",
+        "ratings": {
+          "content": "Very good",
+          "design": "Very good",
+          "coping": "Very helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "What can you do right now to break the automatic habit of smoking to help you feel better? Pause. Close your eyes. And take 10 slow breaths.",
+        "ImageID": "A37",
+        "ratings": {
+          "content": "Very good",
+          "design": "Very good",
+          "coping": "Extremely helpful",
+          "quitting": "Extremely helpful"
+        }
+      }
+    ]
+  },
+  "summary_text": "Age 26, Male, Every day, Motivation: Moderately motivated, Support: Extremely supportive, CPD: 11, TTF: Within 30 minutes"
+}

@@ -1,0 +1,137 @@
+{
+  "participant_id": "R_3KvguqEakrMcnY3",
+  "demographics": {
+    "age_years": 26,
+    "gender_identity": "Female",
+    "race_ethnicity": "White",
+    "is_hispanic_latino": "No",
+    "education_level": "High school graduate or GED",
+    "household_income": "$40,000-59,999"
+  },
+  "smoking_behavior": {
+    "quit_intention": "Are currently trying to quit",
+    "days_smoked_past_30d": 10,
+    "cigs_per_day": "2",
+    "time_to_first_cig": "Within 30 minutes",
+    "household_smokers": "Yes",
+    "friends_smoke_level": "Some of them",
+    "quit_attempts_count": "3",
+    "smoking_status": "Some days",
+    "quit_motivation_level": "Very motivated",
+    "social_support_to_quit": "Extremely supportive"
+  },
+  "psychosocial": {
+    "pain_blocks_valued_life": "Sometimes true",
+    "fear_of_feelings": "Seldom true",
+    "worry_about_control": "Sometimes true",
+    "memories_block_fulfillment": "Sometimes true",
+    "emotions_cause_problems": "Sometimes true",
+    "others_handle_life_better": "Seldom true",
+    "worry_blocks_success": "Seldom true"
+  },
+  "history": {
+    "rated_messages": [
+      {
+        "input_message": "If you miss doing something with your hands, try turning a coin or pen over and over with your fingers.",
+        "ImageID": "D49",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Acceptable",
+          "coping": "Somewhat helpful",
+          "quitting": "Somewhat helpful"
+        }
+      },
+      {
+        "input_message": "Try to avoid seeing other people smoke. It might sound basic but brain see, brain want! If you can, make life easier and avoid the people you used to smoke with for some time where possible.",
+        "ImageID": "D30",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Acceptable",
+          "coping": "Moderately helpful",
+          "quitting": "Somewhat helpful"
+        }
+      },
+      {
+        "input_message": "Imagine your urge is like a talk radio station going on about something you disagree with. Arguing with it doesn't change what they say. Instead, just let them talk while you focus on what's important to you.",
+        "ImageID": "A14",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Acceptable",
+          "coping": "Somewhat helpful",
+          "quitting": "Somewhat helpful"
+        }
+      },
+      {
+        "input_message": "It can be tricky to be around friends or colleagues who are still smoking. If you're finding it tough, try and think about the things that you are doing well.",
+        "ImageID": "D3",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Acceptable",
+          "coping": "Moderately helpful",
+          "quitting": "Moderately helpful"
+        }
+      },
+      {
+        "input_message": "What inspires you most to quit smoking? Are you willing to let this urge pass without smoking for that reason?",
+        "ImageID": "A10",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Acceptable",
+          "coping": "Moderately helpful",
+          "quitting": "Moderately helpful"
+        }
+      },
+      {
+        "input_message": "If leaving social situations to avoid smokers feels awkward, make sure you have something to do instead - take sugar free mints, lollipops or low fat snacks to chew, or use a stress ball.",
+        "ImageID": "D22",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Acceptable",
+          "coping": "Somewhat helpful",
+          "quitting": "Somewhat helpful"
+        }
+      },
+      {
+        "input_message": "If you are tempted to smoke by being in this location, see if you can sit with that temptation for 1 minute. When the minute is over, do it again. Soon, it should pass.",
+        "ImageID": "A52",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Acceptable",
+          "coping": "Moderately helpful",
+          "quitting": "Moderately helpful"
+        }
+      },
+      {
+        "input_message": "Don't test yourself needlessly. If this social situation gets uncomfortable then leave briefly if you can. It really helps and it's fine to do it more than once!",
+        "ImageID": "D28",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Moderately helpful",
+          "quitting": "Moderately helpful"
+        }
+      },
+      {
+        "input_message": "Remind yourself that by staying quit, you'll be freeing yourself from the constant cycle of cigarette, nicotine withdrawal, feeling stressed as a result and wanting another cigarette. Keep going and this will be a thing of the past!",
+        "ImageID": "D14",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Moderately helpful",
+          "quitting": "Moderately helpful"
+        }
+      },
+      {
+        "input_message": "Each time you let an urge pass without smoking, you break the old habit a bit more.",
+        "ImageID": "A27",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Acceptable",
+          "coping": "Somewhat helpful",
+          "quitting": "Somewhat helpful"
+        }
+      }
+    ]
+  },
+  "summary_text": "Age 26, Female, Some days, Motivation: Very motivated, Support: Extremely supportive, CPD: 2, TTF: Within 30 minutes"
+}

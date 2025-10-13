@@ -1,0 +1,137 @@
+{
+  "participant_id": "R_DOldzndi0ud9173",
+  "demographics": {
+    "age_years": 30,
+    "gender_identity": "Female",
+    "race_ethnicity": "Black or African American",
+    "is_hispanic_latino": "No",
+    "education_level": "Professional or Doctoral degree (MD, JD, PhD, etc.)",
+    "household_income": ">=$100,000"
+  },
+  "smoking_behavior": {
+    "quit_intention": "Are currently trying to quit",
+    "days_smoked_past_30d": 30,
+    "cigs_per_day": "10",
+    "time_to_first_cig": "Within 30 minutes",
+    "household_smokers": "Yes",
+    "friends_smoke_level": "Some of them",
+    "quit_attempts_count": "5",
+    "smoking_status": "Every day",
+    "quit_motivation_level": "Very motivated",
+    "social_support_to_quit": "Extremely supportive"
+  },
+  "psychosocial": {
+    "pain_blocks_valued_life": "Very seldom true",
+    "fear_of_feelings": "Very seldom true",
+    "worry_about_control": "Very seldom true",
+    "memories_block_fulfillment": "Very seldom true",
+    "emotions_cause_problems": "Very seldom true",
+    "others_handle_life_better": "Seldom true",
+    "worry_blocks_success": "Very seldom true"
+  },
+  "history": {
+    "rated_messages": [
+      {
+        "input_message": "What can you do right now to break the automatic habit of smoking to help you feel better? Pause. Close your eyes. And take 10 slow breaths.",
+        "ImageID": "A37",
+        "ratings": {
+          "content": "Good",
+          "design": "Very good",
+          "coping": "Very helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "Picture the people or things you care deeply about. On a scale of 0-10, how willing are you to let this urge pass for those reasons?",
+        "ImageID": "A9",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Very helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "You cant always control when you will see other people smoking. But you can control how you respond to your urge when you do.",
+        "ImageID": "A55",
+        "ratings": {
+          "content": "Good",
+          "design": "Very good",
+          "coping": "Extremely helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "To help get through a 'risky situation', remind yourself of how far you've come and the effort that you've put in. Don't ruin your hard work - stay strong!",
+        "ImageID": "D24",
+        "ratings": {
+          "content": "Very good",
+          "design": "Very good",
+          "coping": "Very helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "Try chewing gum if you have trouble resisting smoking when other people light up around you.",
+        "ImageID": "D51",
+        "ratings": {
+          "content": "Very good",
+          "design": "Very good",
+          "coping": "Extremely helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "Even though you are stressed, are you willing to sit with this urge until it passes if will help you break this habit?",
+        "ImageID": "A35",
+        "ratings": {
+          "content": "Very good",
+          "design": "Very good",
+          "coping": "Very helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "Practice staying in this location without smoking. Just notice your urge. Practicing this will weaken this trigger with time. Just think of it as practice.",
+        "ImageID": "A51",
+        "ratings": {
+          "content": "Very good",
+          "design": "Very good",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "Just because letting an urge pass isn't easy, doesn't mean that you can't do it. Try it, you might surprise yourself.",
+        "ImageID": "A29",
+        "ratings": {
+          "content": "Very good",
+          "design": "Good",
+          "coping": "Very helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "Sometimes an urge comes on like a wave. Imagine what it is like to ride the wave as it ebbs and flows. Instead of trying to swim against it, try riding it out until it disappears into the sea.",
+        "ImageID": "A12",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Very helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "Think about what is really important to you. Maybe it's spending time with family or a friend, exercising, doing something spiritual, or creating something. Whatever it is, take a step in that direction.",
+        "ImageID": "D69",
+        "ratings": {
+          "content": "Very good",
+          "design": "Very good",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      }
+    ]
+  },
+  "summary_text": "Age 30, Female, Every day, Motivation: Very motivated, Support: Extremely supportive, CPD: 10, TTF: Within 30 minutes"
+}

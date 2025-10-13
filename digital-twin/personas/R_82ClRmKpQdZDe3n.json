@@ -1,0 +1,137 @@
+{
+  "participant_id": "R_82ClRmKpQdZDe3n",
+  "demographics": {
+    "age_years": 29,
+    "gender_identity": "Male",
+    "race_ethnicity": "White",
+    "is_hispanic_latino": "No",
+    "education_level": "Some college",
+    "household_income": "$80,000-99,000"
+  },
+  "smoking_behavior": {
+    "quit_intention": "Are currently trying to quit",
+    "days_smoked_past_30d": 27,
+    "cigs_per_day": "7",
+    "time_to_first_cig": "Within 30 minutes",
+    "household_smokers": "Yes",
+    "friends_smoke_level": "Most of them",
+    "quit_attempts_count": "1",
+    "smoking_status": "Every day",
+    "quit_motivation_level": "Somewhat motivated",
+    "social_support_to_quit": "Very supportive"
+  },
+  "psychosocial": {
+    "pain_blocks_valued_life": "Very seldom true",
+    "fear_of_feelings": "Very seldom true",
+    "worry_about_control": "Never true",
+    "memories_block_fulfillment": "Very seldom true",
+    "emotions_cause_problems": "Never true",
+    "others_handle_life_better": "Very seldom true",
+    "worry_blocks_success": "Never true"
+  },
+  "history": {
+    "rated_messages": [
+      {
+        "input_message": "Stop and take 3 deep breaths. Then decide if you really want to smoke right now or not. Pausing for a few breaths can help lessen the habit.",
+        "ImageID": "A26",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Acceptable",
+          "coping": "Moderately helpful",
+          "quitting": "Moderately helpful"
+        }
+      },
+      {
+        "input_message": "One way to combat any urges is to keep your mouth busy - some people find that chewing sugar free gum, mints, or even a pen can be a good alternative.",
+        "ImageID": "D8",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Very helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "You might find that you have more time now that you're trying to cut some cigarettes. Some people find that going for a walk can help fill the gap. Or take a nap if you can!",
+        "ImageID": "D19",
+        "ratings": {
+          "content": "Good",
+          "design": "Acceptable",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "If you get any urges tonight, why not confront them head on? Ask the urge - what's it going to give you? It's not going to make you richer, or better looking, and it's not going to leave you if you give in either!",
+        "ImageID": "D32",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Acceptable",
+          "coping": "Very helpful",
+          "quitting": "Moderately helpful"
+        }
+      },
+      {
+        "input_message": "Now is a good time for BREAKS B=stop and Brake R=Read how your body feels E=Expand and take deep breaths A=Allow everything to be as it is K=Know what's important to you S=take 1 Step in a direction important to you",
+        "ImageID": "A24",
+        "ratings": {
+          "content": "Good",
+          "design": "Acceptable",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "Tell yourself, \u201cI am going to quit smoking soon.\u201d Say it out loud. Say to yourself, \u201cI am too strong to continue smoking for the rest of my life.\"",
+        "ImageID": "D40",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Good",
+          "coping": "Extremely helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "If you get urges, remind yourself that cigarettes did that to you. If you go back to them, they will keep making you suffer. Now you are breaking free.",
+        "ImageID": "D17",
+        "ratings": {
+          "content": "Good",
+          "design": "Very good",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "Each time you choose to not smoke after seeing someone else light up, you lessen the habit a little more.",
+        "ImageID": "A58",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Good",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "Some places trigger powerful cravings, that is to be expected. Stop and notice where in your body you feel those cravings and remind yourself that cravings typically pass in 1 to 3 minutes",
+        "ImageID": "A50",
+        "ratings": {
+          "content": "Good",
+          "design": "Acceptable",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "Pause and take 5 slow breaths. Pausing just for a moment breaks the automatic habit of reaching for a smoke.",
+        "ImageID": "D65",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Extremely helpful",
+          "quitting": "Very helpful"
+        }
+      }
+    ]
+  },
+  "summary_text": "Age 29, Male, Every day, Motivation: Somewhat motivated, Support: Very supportive, CPD: 7, TTF: Within 30 minutes"
+}

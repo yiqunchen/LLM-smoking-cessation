@@ -1,0 +1,147 @@
+{
+  "participant_id": "R_8tYqU6qBiZJTnYB",
+  "demographics": {
+    "age_years": 26,
+    "gender_identity": "Female",
+    "race_ethnicity": "White",
+    "is_hispanic_latino": "No",
+    "education_level": "High school graduate or GED",
+    "household_income": "$15,000-24,999"
+  },
+  "smoking_behavior": {
+    "quit_intention": "Are currently trying to quit",
+    "days_smoked_past_30d": 1,
+    "cigs_per_day": "1",
+    "time_to_first_cig": "After 30 minutes",
+    "household_smokers": "Yes",
+    "friends_smoke_level": "Some of them",
+    "quit_attempts_count": "2",
+    "smoking_status": "Some days",
+    "quit_motivation_level": "Moderately motivated",
+    "social_support_to_quit": "Extremely supportive"
+  },
+  "psychosocial": {
+    "pain_blocks_valued_life": "Sometimes true",
+    "fear_of_feelings": "Never true",
+    "worry_about_control": "Sometimes true",
+    "memories_block_fulfillment": "Never true",
+    "emotions_cause_problems": "Always true",
+    "others_handle_life_better": "Seldom true",
+    "worry_blocks_success": "Very seldom true"
+  },
+  "history": {
+    "rated_messages": [
+      {
+        "input_message": "Crumple a piece of paper into a ball and imagine it is your urge. Toss the \"urge\" into the garbage or against the wall. By doing this, you are letting go of your urges.",
+        "ImageID": "A16",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Good",
+          "coping": "Not at all helpful",
+          "quitting": "Not at all helpful"
+        }
+      },
+      {
+        "input_message": "It can be tricky to be around friends or colleagues who are still smoking. If you're finding it tough, try and think about the things that you are doing well.",
+        "ImageID": "D3",
+        "ratings": {
+          "content": "Very good",
+          "design": "Very good",
+          "coping": "Moderately helpful",
+          "quitting": "Moderately  helpful"
+        }
+      },
+      {
+        "input_message": "See what it is like to let the urge pass. You can have an urge and choose not to smoke.",
+        "ImageID": "A18",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Good",
+          "coping": "Extremely helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "How you would feel later on if you smoked during this social situation? Now think how good you'll feel for resisting!",
+        "ImageID": "D26",
+        "ratings": {
+          "content": "Good",
+          "design": "Very good",
+          "coping": "Moderately helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "Just because other people are smoking, doesn't mean you have to. Practice allowing this urge to be present for 5 minutes. When it passes, give yourself credit.",
+        "ImageID": "A59",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Very good",
+          "coping": "Somewhat helpful",
+          "quitting": "Somewhat helpful"
+        }
+      },
+      {
+        "input_message": "Ask yourself, \"From 0-10, how willing am I to let this urge pass without smoking?\" Let it pass to be closer to the things that matter most to you.",
+        "ImageID": "A6",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Poor",
+          "coping": "Extremely helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "Pause. Notice the feelings you are having without judgement. Let them come and go. Being aware of your feelings means you can make a new choice about how you respond to your urges instead of smoking on autopilot.",
+        "ImageID": "A8",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Good",
+          "coping": "Moderately helpful",
+          "quitting": "Moderately helpful"
+        }
+      },
+      {
+        "input_message": "Pause. Notice the feelings you are having without judgement. Let them come and go. Being aware of your feelings means you can make a new choice about how you respond to your urges instead of smoking on autopilot.",
+        "ImageID": "A43",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Good",
+          "coping": "Moderately helpful",
+          "quitting": "Moderately helpful"
+        }
+      },
+      {
+        "input_message": "If leaving social situations to avoid smokers feels awkward, make sure you have something to do instead - take sugar free mints, lollipops or low fat snacks to chew, or use a stress ball.",
+        "ImageID": "D22",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Somewhat helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "Instead of smoking, use the next two minutes to pay close attention to your senses. Notice what you see, hear, feel, taste, and smell. Urges are just one part of your experience.",
+        "ImageID": "A23",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Good",
+          "coping": "Extremely helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "Step back from what is stressful by taking 10 slow breaths. Count them as you go and notice your breath. If you get distracted, keep starting over until you get to 10.",
+        "ImageID": "D67",
+        "ratings": {
+          "content": "Good",
+          "design": "Acceptable",
+          "coping": "Very helpful",
+          "quitting": "Extremely helpful"
+        }
+      }
+    ]
+  },
+  "summary_text": "Age 26, Female, Some days, Motivation: Moderately motivated, Support: Extremely supportive, CPD: 1, TTF: After 30 minutes"
+}

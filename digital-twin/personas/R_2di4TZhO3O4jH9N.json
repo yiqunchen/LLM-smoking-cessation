@@ -1,0 +1,136 @@
+{
+  "participant_id": "R_2di4TZhO3O4jH9N",
+  "demographics": {
+    "age_years": 26,
+    "gender_identity": "Female",
+    "race_ethnicity": "Black or African American",
+    "is_hispanic_latino": "No",
+    "education_level": "High school graduate or GED",
+    "household_income": "$25,000-39,999"
+  },
+  "smoking_behavior": {
+    "quit_intention": "Are currently trying to quit",
+    "days_smoked_past_30d": 3,
+    "cigs_per_day": "2",
+    "time_to_first_cig": "After 30 minutes",
+    "household_smokers": "No",
+    "friends_smoke_level": "Some of them",
+    "smoking_status": "Some days",
+    "quit_motivation_level": "Moderately motivated",
+    "social_support_to_quit": "Extremely supportive"
+  },
+  "psychosocial": {
+    "pain_blocks_valued_life": "Frequently true",
+    "fear_of_feelings": "Very seldom true",
+    "worry_about_control": "Sometimes true",
+    "memories_block_fulfillment": "Sometimes true",
+    "emotions_cause_problems": "Always true",
+    "others_handle_life_better": "Always true",
+    "worry_blocks_success": "Frequently true"
+  },
+  "history": {
+    "rated_messages": [
+      {
+        "input_message": "Imagine walking into a social situation in three months' time as a non-smoker. Now hold that picture and imagine you're that person now. Seeing yourself as a non-smoker now can make it much easier to resist!",
+        "ImageID": "D27",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Acceptable",
+          "coping": "Not at all helpful",
+          "quitting": "Not at all helpful"
+        }
+      },
+      {
+        "input_message": "If you find yourself thinking: \"I can't do this\", \"I need a cig\", or \"I'll just have one\", make sure you tell yourself \"I absolutely CAN do this\", \"I'm in control\". Take control of your negative thoughts!",
+        "ImageID": "D29",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Acceptable",
+          "coping": "Not at all helpful",
+          "quitting": "Not at all helpful"
+        }
+      },
+      {
+        "input_message": "To keep on track, small changes can really help. For example, keep a list of quit reasons where you used to keep cigarettes, rearrange your living space, or grab some extra pens to fiddle with to keep your hands busy.",
+        "ImageID": "D10",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Acceptable",
+          "coping": "Not at all helpful",
+          "quitting": "Not at all helpful"
+        }
+      },
+      {
+        "input_message": "If you miss doing something with your hands, try turning a coin or pen over and over with your fingers.",
+        "ImageID": "D49",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Very poor",
+          "coping": "Not at all helpful",
+          "quitting": "Not at all helpful"
+        }
+      },
+      {
+        "input_message": "Instead of smoking, think of 3 things from today that you are grateful for. These can be anything, even small things! Now ask yourself, why are you grateful for these things?",
+        "ImageID": "D60",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Good",
+          "coping": "Not at all helpful",
+          "quitting": "Not at all helpful"
+        }
+      },
+      {
+        "input_message": "This craving is just an event. A game. It will pass. The game gets easier the more you let your urge pass without smoking. But, it gets harder every time you give in to the urge and smoke.",
+        "ImageID": "A31",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Acceptable",
+          "coping": "Not at all helpful",
+          "quitting": "Not at all helpful"
+        }
+      },
+      {
+        "input_message": "Are you willing to let this urge pass for the sake of living a good long time with the people who matter most to you? When you have an urge, think about the people most important to you.",
+        "ImageID": "A15",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Acceptable",
+          "coping": "Not at all helpful",
+          "quitting": "Not at all helpful"
+        }
+      },
+      {
+        "input_message": "Instead of smoking, keep your fingers busy by scrolling through your phone.",
+        "ImageID": "D39",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Acceptable",
+          "coping": "Not at all helpful",
+          "quitting": "Not at all helpful"
+        }
+      },
+      {
+        "input_message": "Some people find it helpful to give a name to their urge. If you're experiencing regular urges, give that feeling a name ('Olga the urge'?), and tell it that you won't give in to it. It may make it easier to live with (e.g. \"ok Olga, I need to be by myself now...\").",
+        "ImageID": "A3",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Acceptable",
+          "coping": "Not at all helpful",
+          "quitting": "Not at all helpful"
+        }
+      },
+      {
+        "input_message": "When running a marathon, the hardest part is often towards the end, but many runners stick with it, knowing that the pain will pass. Learning to quit smoking is like running a marathon - if it gets hard, you may be closer to succeeding than you realize!",
+        "ImageID": "A4",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Acceptable",
+          "coping": "Not at all helpful",
+          "quitting": "Not at all helpful"
+        }
+      }
+    ]
+  },
+  "summary_text": "Age 26, Female, Some days, Motivation: Moderately motivated, Support: Extremely supportive, CPD: 2, TTF: After 30 minutes"
+}

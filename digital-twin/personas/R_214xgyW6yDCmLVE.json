@@ -1,0 +1,137 @@
+{
+  "participant_id": "R_214xgyW6yDCmLVE",
+  "demographics": {
+    "age_years": 29,
+    "gender_identity": "Male",
+    "race_ethnicity": "White",
+    "is_hispanic_latino": "No",
+    "education_level": "Master's degree",
+    "household_income": ">=$100,000"
+  },
+  "smoking_behavior": {
+    "quit_intention": "Will quit in the next month",
+    "days_smoked_past_30d": 8,
+    "cigs_per_day": "6",
+    "time_to_first_cig": "Within 30 minutes",
+    "household_smokers": "No",
+    "friends_smoke_level": "Some of them",
+    "quit_attempts_count": "4",
+    "smoking_status": "Every day",
+    "quit_motivation_level": "Extremely motivated",
+    "social_support_to_quit": "Extremely supportive"
+  },
+  "psychosocial": {
+    "pain_blocks_valued_life": "Sometimes true",
+    "fear_of_feelings": "Sometimes true",
+    "worry_about_control": "Sometimes true",
+    "memories_block_fulfillment": "Sometimes true",
+    "emotions_cause_problems": "Sometimes true",
+    "others_handle_life_better": "Sometimes true",
+    "worry_blocks_success": "Sometimes true"
+  },
+  "history": {
+    "rated_messages": [
+      {
+        "input_message": "Some people find it helpful to give a name to their urge. If you're experiencing regular urges, give that feeling a name ('Olga the urge'?), and tell it that you won't give in to it. It may make it easier to live with (e.g. \"ok Olga, I need to be by myself now...\").",
+        "ImageID": "A3",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Acceptable",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "Instead of smoking, take 10 deep, slow breaths and count them. Pay attention to what your breathing feels like. If you lose count, that's okay, just start over at 1 until you get to 10.",
+        "ImageID": "D59",
+        "ratings": {
+          "content": "Good",
+          "design": "Very good",
+          "coping": "Extremely helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "To help get through a 'risky situation', remind yourself of how far you've come and the effort that you've put in. Don't ruin your hard work - stay strong!",
+        "ImageID": "D24",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Very helpful",
+          "quitting": "Moderately helpful"
+        }
+      },
+      {
+        "input_message": "You spent a long time training your brain to want a cig. Now you're retraining your brain, and it's natural that this might take time.",
+        "ImageID": "D12",
+        "ratings": {
+          "content": "Good",
+          "design": "Very good",
+          "coping": "Extremely helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "Notice what is triggering your urge. Have understanding and kindness for yourself for feeling this urge. It isn't easy, but can you choose to let it be there without smoking?",
+        "ImageID": "A19",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Acceptable",
+          "coping": "Moderately helpful",
+          "quitting": "Moderately helpful"
+        }
+      },
+      {
+        "input_message": "Now is a good time for BREAKS B=stop and Brake R=Read how your body feels E=Expand and take deep breaths A=Allow everything to be as it is K=Know what's important to you S=take 1 Step in a direction important to you",
+        "ImageID": "A24",
+        "ratings": {
+          "content": "Poor",
+          "design": "Poor",
+          "coping": "Somewhat helpful",
+          "quitting": "Somewhat helpful"
+        }
+      },
+      {
+        "input_message": "Instead of lighting up a cigarette, light a scented candle or burn some incense.",
+        "ImageID": "D47",
+        "ratings": {
+          "content": "Very good",
+          "design": "Very good",
+          "coping": "Extremely helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "See what it is like to let the urge pass. You can have an urge and choose not to smoke.",
+        "ImageID": "A18",
+        "ratings": {
+          "content": "Good",
+          "design": "Very good",
+          "coping": "Extremely helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "Write down why you want to stop smoking to resist a craving. Remember, trying something to beat the urge is always better than doing nothing. Each time you resist a cig, you're one step closer to being tobacco-free.",
+        "ImageID": "D46",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Very helpful",
+          "quitting": "Moderately helpful"
+        }
+      },
+      {
+        "input_message": "What inspires you most to quit smoking? Are you willing to let this urge pass without smoking for that reason?",
+        "ImageID": "A10",
+        "ratings": {
+          "content": "Very good",
+          "design": "Very good",
+          "coping": "Extremely helpful",
+          "quitting": "Extremely helpful"
+        }
+      }
+    ]
+  },
+  "summary_text": "Age 29, Male, Every day, Motivation: Extremely motivated, Support: Extremely supportive, CPD: 6, TTF: Within 30 minutes"
+}

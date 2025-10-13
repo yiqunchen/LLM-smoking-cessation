@@ -1,0 +1,137 @@
+{
+  "participant_id": "R_2q3n28BIAEykB1r",
+  "demographics": {
+    "age_years": 24,
+    "gender_identity": "Female",
+    "race_ethnicity": "White",
+    "is_hispanic_latino": "Yes",
+    "education_level": "Bachelor's degree",
+    "household_income": ">=$100,000"
+  },
+  "smoking_behavior": {
+    "quit_intention": "Will quit in the next month",
+    "days_smoked_past_30d": 15,
+    "cigs_per_day": "12",
+    "time_to_first_cig": "Within 30 minutes",
+    "household_smokers": "Yes",
+    "friends_smoke_level": "Some of them",
+    "quit_attempts_count": "2",
+    "smoking_status": "Some days",
+    "quit_motivation_level": "Very motivated",
+    "social_support_to_quit": "Very supportive"
+  },
+  "psychosocial": {
+    "pain_blocks_valued_life": "Frequently true",
+    "fear_of_feelings": "Seldom true",
+    "worry_about_control": "Seldom true",
+    "memories_block_fulfillment": "Seldom true",
+    "emotions_cause_problems": "Sometimes true",
+    "others_handle_life_better": "Sometimes true",
+    "worry_blocks_success": "Very seldom true"
+  },
+  "history": {
+    "rated_messages": [
+      {
+        "input_message": "Maybe you could use these few minutes to work out whose birthday is next and what message you'll write in their card? Then when it comes you'll have something original and well thought-out to write!",
+        "ImageID": "D33",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Acceptable",
+          "coping": "Moderately helpful",
+          "quitting": "Moderately helpful"
+        }
+      },
+      {
+        "input_message": "What can you do right now to break the automatic habit of smoking to help you feel better? Pause. Close your eyes. And take 10 slow breaths.",
+        "ImageID": "A37",
+        "ratings": {
+          "content": "Poor",
+          "design": "Poor",
+          "coping": "Somewhat helpful",
+          "quitting": "Somewhat helpful"
+        }
+      },
+      {
+        "input_message": "If you have trouble resisting a craving when other smokers are around, try carrying a water bottle and taking a sip every time you want to ask for a cig.",
+        "ImageID": "D52",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "Even though you are stressed, are you willing to sit with this urge until it passes if will help you break this habit?",
+        "ImageID": "A35",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "Try to avoid seeing other people smoke. It might sound basic but brain see, brain want! If you can, make life easier and avoid the people you used to smoke with for some time where possible.",
+        "ImageID": "D30",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "Take a deep breath. Focus on today and the things you have accomplished. How many urges have you let pass? Give yourself some credit!",
+        "ImageID": "A17",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "Seeing other people smoke is a predictable and unavoidable trigger. Take 5 slow, deep breaths and remind yourself that the urge will pass and that you do not need to smoke.",
+        "ImageID": "A56",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "Take a minute to notice what the urge feels like in your body without smoking a cigarette. Notice what is going on. See what happens. Does the urge pass?",
+        "ImageID": "A21",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "When a craving hits, keep your hands busy by doing the dishes or taking out the trash. Small chores will help pass the time during a craving.",
+        "ImageID": "D41",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "Imagine your 'you' from next year has come to visit, and guess what? You quit! How good is that?",
+        "ImageID": "D34",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      }
+    ]
+  },
+  "summary_text": "Age 24, Female, Some days, Motivation: Very motivated, Support: Very supportive, CPD: 12, TTF: Within 30 minutes"
+}

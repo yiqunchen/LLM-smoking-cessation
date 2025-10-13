@@ -1,0 +1,147 @@
+{
+  "participant_id": "R_3RgXfJmoKNcXlYA",
+  "demographics": {
+    "age_years": 30,
+    "gender_identity": "Male",
+    "race_ethnicity": "Black or African American",
+    "is_hispanic_latino": "No",
+    "education_level": "Some college",
+    "household_income": "< $15,000"
+  },
+  "smoking_behavior": {
+    "quit_intention": "Are currently trying to quit",
+    "days_smoked_past_30d": 5,
+    "cigs_per_day": "10",
+    "time_to_first_cig": "After 30 minutes",
+    "household_smokers": "No",
+    "friends_smoke_level": "None of them",
+    "quit_attempts_count": "1",
+    "smoking_status": "Every day",
+    "quit_motivation_level": "Moderately motivated",
+    "social_support_to_quit": "Somewhat supportive"
+  },
+  "psychosocial": {
+    "pain_blocks_valued_life": "Sometimes true",
+    "fear_of_feelings": "Never true",
+    "worry_about_control": "Never true",
+    "memories_block_fulfillment": "Never true",
+    "emotions_cause_problems": "Very seldom true",
+    "others_handle_life_better": "Very seldom true",
+    "worry_blocks_success": "Very seldom true"
+  },
+  "history": {
+    "rated_messages": [
+      {
+        "input_message": "How you would feel later on if you smoked during this social situation? Now think how good you'll feel for resisting!",
+        "ImageID": "D26",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Very helpful",
+          "quitting": "Moderately helpful"
+        }
+      },
+      {
+        "input_message": "Pause. Notice what triggered you to smoke in the past. Now take one deep breath and remind yourself that you do not need to smoke.",
+        "ImageID": "A8",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Acceptable",
+          "coping": "Somewhat helpful",
+          "quitting": "Somewhat helpful"
+        }
+      },
+      {
+        "input_message": "Pause. Notice what triggered you to smoke in the past. Now take one deep breath and remind yourself that you do not need to smoke.",
+        "ImageID": "A43",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Acceptable",
+          "coping": "Somewhat helpful",
+          "quitting": "Somewhat helpful"
+        }
+      },
+      {
+        "input_message": "When you notice yourself trapped in stressful thoughts or worry, say out loud, \"I'm noticing that I'm having some worrisome thoughts.\" This helps unhook you from your thoughts so you don't stay caught in them.",
+        "ImageID": "A34",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Acceptable",
+          "coping": "Somewhat helpful",
+          "quitting": "Somewhat helpful"
+        }
+      },
+      {
+        "input_message": "Urges to smoke usually only last a few minutes. Distract yourself by NOT thinking about giraffes, or leave the situation until it passes.",
+        "ImageID": "D23",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Acceptable",
+          "coping": "Somewhat helpful",
+          "quitting": "Somewhat helpful"
+        }
+      },
+      {
+        "input_message": "Instead of smoking, think of 3 things from today that you are grateful for. These can be anything, even small things! Now ask yourself, why are you grateful for these things?",
+        "ImageID": "D60",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Acceptable",
+          "coping": "Moderately helpful",
+          "quitting": "Moderately helpful"
+        }
+      },
+      {
+        "input_message": "Setting small goals when you feel unmotivated is best. Maybe a small goal for now is to breathe deeply for the next 3 minutes instead of smoking.",
+        "ImageID": "D68",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Good",
+          "coping": "Somewhat helpful",
+          "quitting": "Moderately helpful"
+        }
+      },
+      {
+        "input_message": "Imagine that your urge is a backseat passenger trying to distract you from reaching your destination. See if you can choose to keep driving instead of allowing your urges to distract you from where you want to go.",
+        "ImageID": "A7",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Good",
+          "coping": "Moderately helpful",
+          "quitting": "Somewhat helpful"
+        }
+      },
+      {
+        "input_message": "Add the phrase \u201cI\u2019m having the thought that\u2026\u201d in front of your unhelpful thoughts. For example, \u201cI\u2019m having the thought that I need a cigarette.\u201d Your thoughts are not always true or helpful! They are just thoughts.",
+        "ImageID": "A46",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Acceptable",
+          "coping": "Very helpful",
+          "quitting": "Moderately helpful"
+        }
+      },
+      {
+        "input_message": "Don't let anyone tell you how you should or shouldn't feel today. You feel how you feel and that's it. If you're happy and grateful then enjoy the moment, if you're angry and frustrated, know that this will pass.",
+        "ImageID": "A5",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Moderately helpful",
+          "quitting": "Moderately helpful"
+        }
+      },
+      {
+        "input_message": "You were often stressed in this location and this might trigger urges. What can you do to reduce your stress here? If you can avoid this place until things settle down, then do.",
+        "ImageID": "D38",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Acceptable",
+          "coping": "Moderately helpful",
+          "quitting": "Moderately helpful"
+        }
+      }
+    ]
+  },
+  "summary_text": "Age 30, Male, Every day, Motivation: Moderately motivated, Support: Somewhat supportive, CPD: 10, TTF: After 30 minutes"
+}

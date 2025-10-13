@@ -1,0 +1,147 @@
+{
+  "participant_id": "R_WpaOO7bA1Obhmx3",
+  "demographics": {
+    "age_years": 29,
+    "gender_identity": "Female",
+    "race_ethnicity": "Black or African American",
+    "is_hispanic_latino": "No",
+    "education_level": "Professional or Doctoral degree (MD, JD, PhD, etc.)",
+    "household_income": ">=$100,000"
+  },
+  "smoking_behavior": {
+    "quit_intention": "Are currently trying to quit",
+    "days_smoked_past_30d": 20,
+    "cigs_per_day": "8",
+    "time_to_first_cig": "Within 30 minutes",
+    "household_smokers": "Yes",
+    "friends_smoke_level": "Most of them",
+    "quit_attempts_count": "6",
+    "smoking_status": "Every day",
+    "quit_motivation_level": "Very motivated",
+    "social_support_to_quit": "Very supportive"
+  },
+  "psychosocial": {
+    "pain_blocks_valued_life": "Almost always true",
+    "fear_of_feelings": "Almost always true",
+    "worry_about_control": "Always true",
+    "memories_block_fulfillment": "Always true",
+    "emotions_cause_problems": "Almost always true",
+    "others_handle_life_better": "Almost always true",
+    "worry_blocks_success": "Almost always true"
+  },
+  "history": {
+    "rated_messages": [
+      {
+        "input_message": "If you usually smoke while you talk on the phone, try taking the next call in a place where you can't smoke and focus on the conversation. The urge will pass.",
+        "ImageID": "D43",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Very helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "Pause. Notice what triggered you to smoke in the past. Now take one deep breath and remind yourself that you do not need to smoke.",
+        "ImageID": "A8",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Very helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "Pause. Notice what triggered you to smoke in the past. Now take one deep breath and remind yourself that you do not need to smoke.",
+        "ImageID": "A43",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Very helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "Step back from what is stressful by taking 10 slow breaths. Count them as you go and notice your breath. If you get distracted, keep starting over until you get to 10.",
+        "ImageID": "D67",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Very helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "Keep picturing yourself getting home later today knowing that you've gained a smoke-free day. It's nearly a reality!",
+        "ImageID": "D5",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Very helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "Picture the people or things you care deeply about. On a scale of 0-10, how willing are you to let this urge pass for those reasons?",
+        "ImageID": "A9",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "See what it is like to let the urge pass. You can have an urge and choose not to smoke.",
+        "ImageID": "A18",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "This craving is just an event. A game. It will pass. The game gets easier the more you let your urge pass without smoking. But, it gets harder every time you give in to the urge and smoke.",
+        "ImageID": "A31",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "Are you willing to let this urge pass for the sake of living a good long time with the people who matter most to you? When you have an urge, think about the people most important to you.",
+        "ImageID": "A15",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "Try to stop smoking by setting yourself a rule. For example, \"IF I am tempted, THEN I will chew on some mints\" - make your own rule that will work for you.",
+        "ImageID": "D9",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Extremely helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "Life can get you really stressed out, but turning to cigs isn't the answer. Call or text family and friends instead. Ask them to help you stay on track.",
+        "ImageID": "D55",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      }
+    ]
+  },
+  "summary_text": "Age 29, Female, Every day, Motivation: Very motivated, Support: Very supportive, CPD: 8, TTF: Within 30 minutes"
+}

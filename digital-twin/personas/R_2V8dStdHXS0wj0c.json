@@ -1,0 +1,137 @@
+{
+  "participant_id": "R_2V8dStdHXS0wj0c",
+  "demographics": {
+    "age_years": 23,
+    "gender_identity": "Female",
+    "race_ethnicity": "White",
+    "is_hispanic_latino": "No",
+    "education_level": "Some college",
+    "household_income": "$80,000-99,000"
+  },
+  "smoking_behavior": {
+    "quit_intention": "Are currently trying to quit",
+    "days_smoked_past_30d": 1,
+    "cigs_per_day": "2",
+    "time_to_first_cig": "After 30 minutes",
+    "household_smokers": "No",
+    "friends_smoke_level": "Some of them",
+    "quit_attempts_count": "10 or more times",
+    "smoking_status": "Some days",
+    "quit_motivation_level": "Extremely motivated",
+    "social_support_to_quit": "Extremely supportive"
+  },
+  "psychosocial": {
+    "pain_blocks_valued_life": "Very seldom true",
+    "fear_of_feelings": "Sometimes true",
+    "worry_about_control": "Seldom true",
+    "memories_block_fulfillment": "Never true",
+    "emotions_cause_problems": "Frequently true",
+    "others_handle_life_better": "Always true",
+    "worry_blocks_success": "Almost always true"
+  },
+  "history": {
+    "rated_messages": [
+      {
+        "input_message": "If you find sounds soothing, tune in to the soundtrack of nature, like crashing waves, the wind rustling through trees, or birds singing.",
+        "ImageID": "D48",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Not at all helpful",
+          "quitting": "Not at all helpful"
+        }
+      },
+      {
+        "input_message": "Just because letting an urge pass isn't easy, doesn't mean that you can't do it. Try it, you might surprise yourself.",
+        "ImageID": "A29",
+        "ratings": {
+          "content": "Very good",
+          "design": "Acceptable",
+          "coping": "Extremely helpful",
+          "quitting": "Moderately  helpful"
+        }
+      },
+      {
+        "input_message": "Are you feeling down because you are thinking of smoking? It's really important to be kind to yourself, and to make sure you give yourself praise too!",
+        "ImageID": "D2",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Acceptable",
+          "coping": "Not at all helpful",
+          "quitting": "Not at all helpful"
+        }
+      },
+      {
+        "input_message": "Ways of dealing with urges: play a game or an online quiz.",
+        "ImageID": "D36",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Moderately helpful",
+          "quitting": "Moderately helpful"
+        }
+      },
+      {
+        "input_message": "Take a slow, deep breath in. And let it out. Now, ask yourself, \"Am I willing to go one minute without smoking?\" When that minute is over, ask yourself this question again.",
+        "ImageID": "A20",
+        "ratings": {
+          "content": "Good",
+          "design": "Very good",
+          "coping": "Extremely helpful",
+          "quitting": "Moderately helpful"
+        }
+      },
+      {
+        "input_message": "If you find yourself thinking: \"I can't do this\", \"I need a cig\", or \"I'll just have one\", make sure you tell yourself \"I absolutely CAN do this\", \"I'm in control\". Take control of your negative thoughts!",
+        "ImageID": "D29",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Very poor",
+          "coping": "Somewhat helpful",
+          "quitting": "Not at all helpful"
+        }
+      },
+      {
+        "input_message": "As smokers are usually with you in this location, it's really important that you're not with them when they smoke. Consider avoiding this place if possible until things settle down.",
+        "ImageID": "D37",
+        "ratings": {
+          "content": "Very good",
+          "design": "Very good",
+          "coping": "Moderately helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "Spend 3 minutes noticing how your hands feel, how your mouth feels, and how your chest feels. The more you practice noticing these things without smoking, the sooner this place will stop being a trigger for you.",
+        "ImageID": "A53",
+        "ratings": {
+          "content": "Poor",
+          "design": "Very poor",
+          "coping": "Not at all helpful",
+          "quitting": "Not at all helpful"
+        }
+      },
+      {
+        "input_message": "Instead of smoking, think of 3 things from today that you are grateful for. These can be anything, even small things! Now ask yourself, why are you grateful for these things?",
+        "ImageID": "D60",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Moderately helpful",
+          "quitting": "Somewhat helpful"
+        }
+      },
+      {
+        "input_message": "Instead of lighting up a cigarette, light a scented candle or burn some incense.",
+        "ImageID": "D47",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Very good",
+          "coping": "Moderately helpful",
+          "quitting": "Somewhat helpful"
+        }
+      }
+    ]
+  },
+  "summary_text": "Age 23, Female, Some days, Motivation: Extremely motivated, Support: Extremely supportive, CPD: 2, TTF: After 30 minutes"
+}

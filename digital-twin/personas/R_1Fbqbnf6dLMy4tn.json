@@ -1,0 +1,147 @@
+{
+  "participant_id": "R_1Fbqbnf6dLMy4tn",
+  "demographics": {
+    "age_years": 28,
+    "gender_identity": "Female",
+    "race_ethnicity": "Not sure",
+    "is_hispanic_latino": "Yes",
+    "education_level": "Some college",
+    "household_income": "$15,000-24,999"
+  },
+  "smoking_behavior": {
+    "quit_intention": "Are currently trying to quit",
+    "days_smoked_past_30d": 3,
+    "cigs_per_day": "2",
+    "time_to_first_cig": "After 30 minutes",
+    "household_smokers": "No",
+    "friends_smoke_level": "Some of them",
+    "quit_attempts_count": "10 or more times",
+    "smoking_status": "Some days",
+    "quit_motivation_level": "Moderately motivated",
+    "social_support_to_quit": "Extremely supportive"
+  },
+  "psychosocial": {
+    "pain_blocks_valued_life": "Sometimes true",
+    "fear_of_feelings": "Almost always true",
+    "worry_about_control": "Almost always true",
+    "memories_block_fulfillment": "Almost always true",
+    "emotions_cause_problems": "Almost always true",
+    "others_handle_life_better": "Always true",
+    "worry_blocks_success": "Always true"
+  },
+  "history": {
+    "rated_messages": [
+      {
+        "input_message": "Try to avoid seeing other people smoke. It might sound basic but brain see, brain want! If you can, make life easier and avoid the people you used to smoke with for some time where possible.",
+        "ImageID": "D30",
+        "ratings": {
+          "content": "Poor",
+          "design": "Poor",
+          "coping": "Somewhat helpful",
+          "quitting": "Somewhat helpful"
+        }
+      },
+      {
+        "input_message": "Remind yourself that by staying quit, you'll be freeing yourself from the constant cycle of cigarette, nicotine withdrawal, feeling stressed as a result and wanting another cigarette. Keep going and this will be a thing of the past!",
+        "ImageID": "D14",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Acceptable",
+          "coping": "Moderately helpful",
+          "quitting": "Moderately  helpful"
+        }
+      },
+      {
+        "input_message": "Try chewing gum if you have trouble resisting smoking when other people light up around you.",
+        "ImageID": "D51",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Poor",
+          "coping": "Somewhat helpful",
+          "quitting": "Somewhat helpful"
+        }
+      },
+      {
+        "input_message": "Setting small goals when you feel unmotivated is best. Maybe a small goal for now is to breathe deeply for the next 3 minutes instead of smoking.",
+        "ImageID": "D68",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Acceptable",
+          "coping": "Moderately helpful",
+          "quitting": "Somewhat helpful"
+        }
+      },
+      {
+        "input_message": "Are you feeling down because you are thinking of smoking? It's really important to be kind to yourself, and to make sure you give yourself praise too!",
+        "ImageID": "D2",
+        "ratings": {
+          "content": "Good",
+          "design": "Acceptable",
+          "coping": "Moderately helpful",
+          "quitting": "Moderately helpful"
+        }
+      },
+      {
+        "input_message": "Urges to smoke usually only last a few minutes. Distract yourself by NOT thinking about giraffes, or leave the situation until it passes.",
+        "ImageID": "D23",
+        "ratings": {
+          "content": "Very poor",
+          "design": "Very poor",
+          "coping": "Not at all helpful",
+          "quitting": "Not at all helpful"
+        }
+      },
+      {
+        "input_message": "If this situation becomes stressful for you, make an excuse to leave for a few minutes. If this doesn't help, it might be better to just leave early.",
+        "ImageID": "D31",
+        "ratings": {
+          "content": "Good",
+          "design": "Acceptable",
+          "coping": "Moderately helpful",
+          "quitting": "Moderately helpful"
+        }
+      },
+      {
+        "input_message": "Instead of smoking, keep your fingers busy by scrolling through your phone.",
+        "ImageID": "D39",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "Pause and take 5 slow breaths. Pausing just for a moment breaks the automatic habit of reaching for a smoke.",
+        "ImageID": "D65",
+        "ratings": {
+          "content": "Very good",
+          "design": "Very good",
+          "coping": "Extremely helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "Pause. Notice the feelings you are having without judgement. Let them come and go. Being aware of your feelings means you can make a new choice about how you respond to your urges instead of smoking on autopilot.",
+        "ImageID": "A8",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "Pause. Notice the feelings you are having without judgement. Let them come and go. Being aware of your feelings means you can make a new choice about how you respond to your urges instead of smoking on autopilot.",
+        "ImageID": "A43",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      }
+    ]
+  },
+  "summary_text": "Age 28, Female, Some days, Motivation: Moderately motivated, Support: Extremely supportive, CPD: 2, TTF: After 30 minutes"
+}

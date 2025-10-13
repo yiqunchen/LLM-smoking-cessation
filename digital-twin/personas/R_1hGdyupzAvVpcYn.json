@@ -1,0 +1,137 @@
+{
+  "participant_id": "R_1hGdyupzAvVpcYn",
+  "demographics": {
+    "age_years": 30,
+    "gender_identity": "Female",
+    "race_ethnicity": "Black or African American",
+    "is_hispanic_latino": "No",
+    "education_level": "Master's degree",
+    "household_income": "$80,000-99,000"
+  },
+  "smoking_behavior": {
+    "quit_intention": "Are currently trying to quit",
+    "days_smoked_past_30d": 20,
+    "cigs_per_day": "5",
+    "time_to_first_cig": "Within 30 minutes",
+    "household_smokers": "Yes",
+    "friends_smoke_level": "Most of them",
+    "quit_attempts_count": "5",
+    "smoking_status": "Every day",
+    "quit_motivation_level": "Very motivated",
+    "social_support_to_quit": "Moderately supportive"
+  },
+  "psychosocial": {
+    "pain_blocks_valued_life": "Almost always true",
+    "fear_of_feelings": "Never true",
+    "worry_about_control": "Very seldom true",
+    "memories_block_fulfillment": "Never true",
+    "emotions_cause_problems": "Very seldom true",
+    "others_handle_life_better": "Very seldom true",
+    "worry_blocks_success": "Very seldom true"
+  },
+  "history": {
+    "rated_messages": [
+      {
+        "input_message": "Urges can feel like stormy weather. But if you're the sky, you just let that storm come and go on it's own knowing that it won't last forever.",
+        "ImageID": "A25",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "If you have trouble resisting a craving when other smokers are around, try carrying a water bottle and taking a sip every time you want to ask for a cig.",
+        "ImageID": "D52",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "To keep on track, small changes can really help. For example, keep a list of quit reasons where you used to keep cigarettes, rearrange your living space, or grab some extra pens to fiddle with to keep your hands busy.",
+        "ImageID": "D10",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "Keep picturing yourself getting home later today knowing that you've gained a smoke-free day. It's nearly a reality!",
+        "ImageID": "D5",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "What can you do right now to break the automatic habit of smoking to help you feel better? Pause. Close your eyes. And take 10 slow breaths.",
+        "ImageID": "A37",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "No need to get rid of these feelings or control them with a smoke. They are not permanent.",
+        "ImageID": "A45",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "Don't test yourself needlessly. If this social situation gets uncomfortable then leave briefly if you can. It really helps and it's fine to do it more than once!",
+        "ImageID": "D28",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Extremely helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "Imagine that your urge is a backseat passenger trying to distract you from reaching your destination. See if you can choose to keep driving instead of allowing your urges to distract you from where you want to go.",
+        "ImageID": "A7",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "Don't let anyone tell you how you should or shouldn't feel today. You feel how you feel and that's it. If you're happy and grateful then enjoy the moment, if you're angry and frustrated, know that this will pass.",
+        "ImageID": "A5",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "Take a slow, deep breath in. And let it out. Now, ask yourself, \"Am I willing to go one minute without smoking?\" When that minute is over, ask yourself this question again.",
+        "ImageID": "A20",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      }
+    ]
+  },
+  "summary_text": "Age 30, Female, Every day, Motivation: Very motivated, Support: Moderately supportive, CPD: 5, TTF: Within 30 minutes"
+}

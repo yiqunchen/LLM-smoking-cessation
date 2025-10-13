@@ -1,0 +1,127 @@
+{
+  "participant_id": "R_UfNqx4ZNtpLPjGh",
+  "demographics": {
+    "age_years": 30,
+    "gender_identity": "Male",
+    "race_ethnicity": "White",
+    "is_hispanic_latino": "Yes",
+    "education_level": "Bachelor's degree",
+    "household_income": "$80,000-99,000"
+  },
+  "smoking_behavior": {
+    "quit_intention": "Will quit in the next month",
+    "days_smoked_past_30d": 28,
+    "cigs_per_day": "9",
+    "time_to_first_cig": "Within 30 minutes",
+    "household_smokers": "Yes",
+    "friends_smoke_level": "Some of them",
+    "quit_attempts_count": "2",
+    "smoking_status": "Every day",
+    "quit_motivation_level": "Very motivated",
+    "social_support_to_quit": "Very supportive"
+  },
+  "psychosocial": {
+    "pain_blocks_valued_life": "Frequently true",
+    "fear_of_feelings": "Very seldom true",
+    "worry_about_control": "Never true",
+    "memories_block_fulfillment": "Almost always true",
+    "emotions_cause_problems": "Frequently true",
+    "others_handle_life_better": "Sometimes true",
+    "worry_blocks_success": "Almost always true"
+  },
+  "history": {
+    "rated_messages": [
+      {
+        "input_message": "One way to combat any urges is to keep your mouth busy - some people find that chewing sugar free gum, mints, or even a pen can be a good alternative.",
+        "ImageID": "D8",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Somewhat helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "You don\u2019t need to get rid of or change your thoughts about smoking\u2014just let them pass by like a cloud in the sky.",
+        "ImageID": "A47",
+        "ratings": {
+          "content": "Poor",
+          "design": "Acceptable",
+          "coping": "Not at all helpful",
+          "quitting": "Not at all helpful"
+        }
+      },
+      {
+        "input_message": "Are you willing to let this urge pass for the sake of living a good long time with the people who matter most to you? When you have an urge, think about the people most important to you.",
+        "ImageID": "A15",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Moderately helpful",
+          "quitting": "Moderately helpful"
+        }
+      },
+      {
+        "input_message": "Imagine walking into a social situation in three months' time as a non-smoker. Now hold that picture and imagine you're that person now. Seeing yourself as a non-smoker now can make it much easier to resist!",
+        "ImageID": "D27",
+        "ratings": {
+          "content": "Good",
+          "design": "Very good",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "Don't let anyone tell you how you should or shouldn't feel today. You feel how you feel and that's it. If you're happy and grateful then enjoy the moment, if you're angry and frustrated, know that this will pass.",
+        "ImageID": "A5",
+        "ratings": {
+          "content": "Good",
+          "design": "Acceptable",
+          "coping": "Moderately helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "Did you know that just seeing other people smoke activates a part of your brain that is connected with the action of you smoking? This can bring on strong urges to smoke. One simple solution is to avoid seeing others smoke.",
+        "ImageID": "D7",
+        "ratings": {
+          "content": "Good",
+          "design": "Very good",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "Practice going 10 minutes without smoking. Think of it just as practice. When the urge passes, reward yourself with a break from work or dinner from your favorite restaurant!",
+        "ImageID": "A11",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Acceptable",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "Instead of smoking, use the next two minutes to pay close attention to your senses. Notice what you see, hear, feel, taste, and smell. Urges are just one part of your experience.",
+        "ImageID": "A23",
+        "ratings": {
+          "content": "Very good",
+          "design": "Good",
+          "coping": "Very helpful",
+          "quitting": "Moderately helpful"
+        }
+      },
+      {
+        "input_message": "When you begin to crave a cig, concentrate on your reasons for not smoking. Keep a list on your phone and look at it when you feel yourself beginning to falter.",
+        "ImageID": "D50",
+        "ratings": {
+          "content": "Good",
+          "design": "Acceptable",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      }
+    ]
+  },
+  "summary_text": "Age 30, Male, Every day, Motivation: Very motivated, Support: Very supportive, CPD: 9, TTF: Within 30 minutes"
+}

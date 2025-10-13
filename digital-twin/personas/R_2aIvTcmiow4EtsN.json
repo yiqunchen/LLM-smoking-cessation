@@ -1,0 +1,137 @@
+{
+  "participant_id": "R_2aIvTcmiow4EtsN",
+  "demographics": {
+    "age_years": 27,
+    "gender_identity": "Female",
+    "race_ethnicity": "Black or African American",
+    "is_hispanic_latino": "No",
+    "education_level": "High school graduate or GED",
+    "household_income": "$25,000-39,999"
+  },
+  "smoking_behavior": {
+    "quit_intention": "Are currently trying to quit",
+    "days_smoked_past_30d": 25,
+    "cigs_per_day": "4",
+    "time_to_first_cig": "After 30 minutes",
+    "household_smokers": "No",
+    "friends_smoke_level": "None of them",
+    "quit_attempts_count": "3",
+    "smoking_status": "Every day",
+    "quit_motivation_level": "Extremely motivated",
+    "social_support_to_quit": "Extremely supportive"
+  },
+  "psychosocial": {
+    "pain_blocks_valued_life": "Very seldom true",
+    "fear_of_feelings": "Never true",
+    "worry_about_control": "Never true",
+    "memories_block_fulfillment": "Never true",
+    "emotions_cause_problems": "Sometimes true",
+    "others_handle_life_better": "Very seldom true",
+    "worry_blocks_success": "Frequently true"
+  },
+  "history": {
+    "rated_messages": [
+      {
+        "input_message": "Don't test yourself needlessly. If this social situation gets uncomfortable then leave briefly if you can. It really helps and it's fine to do it more than once!",
+        "ImageID": "D28",
+        "ratings": {
+          "content": "Good",
+          "design": "Poor",
+          "coping": "Somewhat helpful",
+          "quitting": "Somewhat helpful"
+        }
+      },
+      {
+        "input_message": "Have confidence in knowing that you can have this urge, choose not to smoke, be okay, and choose to do things that matter most to you.",
+        "ImageID": "A28",
+        "ratings": {
+          "content": "Good",
+          "design": "Very poor",
+          "coping": "Not at all helpful",
+          "quitting": "Not at all helpful"
+        }
+      },
+      {
+        "input_message": "Step back from what is stressful by taking 10 slow breaths. Count them as you go and notice your breath. If you get distracted, keep starting over until you get to 10.",
+        "ImageID": "D67",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Acceptable",
+          "coping": NaN,
+          "quitting": "Moderately helpful"
+        }
+      },
+      {
+        "input_message": "When running a marathon, the hardest part is often towards the end, but many runners stick with it, knowing that the pain will pass. Learning to quit smoking is like running a marathon - if it gets hard, you may be closer to succeeding than you realize!",
+        "ImageID": "A4",
+        "ratings": {
+          "content": "Poor",
+          "design": "Acceptable",
+          "coping": "Not at all helpful",
+          "quitting": "Not at all helpful"
+        }
+      },
+      {
+        "input_message": "Maybe you could use these few minutes to work out whose birthday is next and what message you'll write in their card? Then when it comes you'll have something original and well thought-out to write!",
+        "ImageID": "D33",
+        "ratings": {
+          "content": "Very poor",
+          "design": "Very poor",
+          "coping": "Not at all helpful",
+          "quitting": "Not at all helpful"
+        }
+      },
+      {
+        "input_message": "Instead of smoking, take 10 deep, slow breaths and count them. Pay attention to what your breathing feels like. If you lose count, that's okay, just start over at 1 until you get to 10.",
+        "ImageID": "D59",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Good",
+          "coping": "Moderately helpful",
+          "quitting": "Moderately helpful"
+        }
+      },
+      {
+        "input_message": "Add the phrase \u201cI\u2019m having the thought that\u2026\u201d in front of your unhelpful thoughts. For example, \u201cI\u2019m having the thought that I need a cigarette.\u201d Your thoughts are not always true or helpful! They are just thoughts.",
+        "ImageID": "A46",
+        "ratings": {
+          "content": "Very poor",
+          "design": "Very poor",
+          "coping": "Not at all helpful",
+          "quitting": "Not at all helpful"
+        }
+      },
+      {
+        "input_message": "Instead of smoking, use the next two minutes to pay close attention to your senses. Notice what you see, hear, feel, taste, and smell. Urges are just one part of your experience.",
+        "ImageID": "A23",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Acceptable",
+          "coping": "Moderately helpful",
+          "quitting": "Somewhat helpful"
+        }
+      },
+      {
+        "input_message": "The best way to deal with any urges from being around smokers is to get out of the situation briefly until it goes. Make an excuse, go to the toilet, go get some water, pretend you need to get some phone reception!",
+        "ImageID": "D21",
+        "ratings": {
+          "content": "Very good",
+          "design": "Acceptable",
+          "coping": "Very helpful",
+          "quitting": "Somewhat helpful"
+        }
+      },
+      {
+        "input_message": "If you get urges, remind yourself that cigarettes did that to you. If you go back to them, they will keep making you suffer. Now you are breaking free.",
+        "ImageID": "D17",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Moderately helpful",
+          "quitting": "Somewhat helpful"
+        }
+      }
+    ]
+  },
+  "summary_text": "Age 27, Female, Every day, Motivation: Extremely motivated, Support: Extremely supportive, CPD: 4, TTF: After 30 minutes"
+}

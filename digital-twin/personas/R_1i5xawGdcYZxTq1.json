@@ -1,0 +1,137 @@
+{
+  "participant_id": "R_1i5xawGdcYZxTq1",
+  "demographics": {
+    "age_years": 30,
+    "gender_identity": "Male",
+    "race_ethnicity": "White",
+    "is_hispanic_latino": "No",
+    "education_level": "High school graduate or GED",
+    "household_income": "$80,000-99,000"
+  },
+  "smoking_behavior": {
+    "quit_intention": "Are currently trying to quit",
+    "days_smoked_past_30d": 20,
+    "cigs_per_day": "8",
+    "time_to_first_cig": "Within 30 minutes",
+    "household_smokers": "No",
+    "friends_smoke_level": "Some of them",
+    "quit_attempts_count": "2",
+    "smoking_status": "Every day",
+    "quit_motivation_level": "Somewhat motivated",
+    "social_support_to_quit": "Somewhat supportive"
+  },
+  "psychosocial": {
+    "pain_blocks_valued_life": "Sometimes true",
+    "fear_of_feelings": "Frequently true",
+    "worry_about_control": "Sometimes true",
+    "memories_block_fulfillment": "Frequently true",
+    "emotions_cause_problems": "Very seldom true",
+    "others_handle_life_better": "Very seldom true",
+    "worry_blocks_success": "Very seldom true"
+  },
+  "history": {
+    "rated_messages": [
+      {
+        "input_message": "What can you do right now to break the automatic habit of smoking to help you feel better? Pause. Close your eyes. And take 10 slow breaths.",
+        "ImageID": "A37",
+        "ratings": {
+          "content": "Good",
+          "design": "Acceptable",
+          "coping": "Very helpful",
+          "quitting": "Moderately helpful"
+        }
+      },
+      {
+        "input_message": "It's normal to have some doubts during a quit attempt. Keep your quit reasons on hand to remind yourself if ever you feel uncertain or undecided.",
+        "ImageID": "D4",
+        "ratings": {
+          "content": "Poor",
+          "design": "Good",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "Think of your anxious mind like a toddler throwing a tantrum. The best way to respond is to quietly watch, but not give in.",
+        "ImageID": "A40",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Acceptable",
+          "coping": "Very helpful",
+          "quitting": "Somewhat helpful"
+        }
+      },
+      {
+        "input_message": "When you are stressed, it is easy to focus on the things that are going wrong. Take a few moments to focus on 5 things that have gone well or that you are thankful for this week.",
+        "ImageID": "A38",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Acceptable",
+          "coping": "Moderately helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "If you find yourself with a few minutes to spare, it can be nice to read back over old messages. It's also a chance to reply to ones that you might have forgotten about!",
+        "ImageID": "D18",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Extremely helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "Just because letting an urge pass isn't easy, doesn't mean that you can't do it. Try it, you might surprise yourself.",
+        "ImageID": "A29",
+        "ratings": {
+          "content": "Very good",
+          "design": "Good",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "Try to avoid seeing other people smoke. It might sound basic but brain see, brain want! If you can, make life easier and avoid the people you used to smoke with for some time where possible.",
+        "ImageID": "D30",
+        "ratings": {
+          "content": "Good",
+          "design": "Very good",
+          "coping": "Extremely helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "Imagine that your urge is a backseat passenger trying to distract you from reaching your destination. See if you can choose to keep driving instead of allowing your urges to distract you from where you want to go.",
+        "ImageID": "A7",
+        "ratings": {
+          "content": NaN,
+          "design": "Good",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "Imagine walking into a social situation in three months' time as a non-smoker. Now hold that picture and imagine you're that person now. Seeing yourself as a non-smoker now can make it much easier to resist!",
+        "ImageID": "D27",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Good",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "If you get any urges tonight, why not confront them head on? Ask the urge - what's it going to give you? It's not going to make you richer, or better looking, and it's not going to leave you if you give in either!",
+        "ImageID": "D32",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Good",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      }
+    ]
+  },
+  "summary_text": "Age 30, Male, Every day, Motivation: Somewhat motivated, Support: Somewhat supportive, CPD: 8, TTF: Within 30 minutes"
+}

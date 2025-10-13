@@ -1,0 +1,146 @@
+{
+  "participant_id": "R_1CsBI6n0sickaMf",
+  "demographics": {
+    "age_years": 22,
+    "gender_identity": "Male",
+    "race_ethnicity": "White",
+    "is_hispanic_latino": "No",
+    "education_level": "High school graduate or GED",
+    "household_income": "$25,000-39,999"
+  },
+  "smoking_behavior": {
+    "quit_intention": "Are currently trying to quit",
+    "days_smoked_past_30d": 30,
+    "cigs_per_day": "10",
+    "time_to_first_cig": "Within 30 minutes",
+    "household_smokers": "Yes",
+    "friends_smoke_level": "Some of them",
+    "smoking_status": "Every day",
+    "quit_motivation_level": "Moderately motivated",
+    "social_support_to_quit": "Very supportive"
+  },
+  "psychosocial": {
+    "pain_blocks_valued_life": "Sometimes true",
+    "fear_of_feelings": "Sometimes true",
+    "worry_about_control": "Frequently true",
+    "memories_block_fulfillment": "Frequently true",
+    "emotions_cause_problems": "Sometimes true",
+    "others_handle_life_better": "Sometimes true",
+    "worry_blocks_success": "Frequently true"
+  },
+  "history": {
+    "rated_messages": [
+      {
+        "input_message": "Some people find that having a simple mantra can really help, especially if things feel stressful. Try repeating something simple to yourself like: \"I can do it!\".",
+        "ImageID": "D16",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Somewhat helpful",
+          "quitting": "Somewhat helpful"
+        }
+      },
+      {
+        "input_message": "Reduce your stress by using your next break to list four things that have gone well so far today. It might feel like a bit of effort, but doing this will help your mind to refocus, and help you to feel calmer.",
+        "ImageID": "D1",
+        "ratings": {
+          "content": "Very good",
+          "design": "Very good",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "Notice how stress and anxiety may pull you and make you want to smoke. Just notice this. You can choose to just notice and not smoke.",
+        "ImageID": "A36",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Moderately helpful",
+          "quitting": "Moderately helpful"
+        }
+      },
+      {
+        "input_message": "Now is a good time for BREAKS B=stop and Brake R=Read how your body feels E=Expand and take deep breaths A=Allow everything to be as it is K=Know what's important to you S=take 1 Step in a direction important to you",
+        "ImageID": "A24",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Moderately helpful",
+          "quitting": "Moderately helpful"
+        }
+      },
+      {
+        "input_message": "Crumple a piece of paper into a ball and imagine it is your urge. Toss the \"urge\" into the garbage or against the wall. By doing this, you are letting go of your urges.",
+        "ImageID": "A16",
+        "ratings": {
+          "content": "Good",
+          "design": "Acceptable",
+          "coping": "Moderately helpful",
+          "quitting": "Moderately helpful"
+        }
+      },
+      {
+        "input_message": "Try to avoid seeing other people smoke. It might sound basic but brain see, brain want! If you can, make life easier and avoid the people you used to smoke with for some time where possible.",
+        "ImageID": "D30",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Acceptable",
+          "coping": "Somewhat helpful",
+          "quitting": "Somewhat helpful"
+        }
+      },
+      {
+        "input_message": "Have confidence in knowing that you can have this urge, choose not to smoke, be okay, and choose to do things that matter most to you.",
+        "ImageID": "A28",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Very helpful",
+          "quitting": "Moderately helpful"
+        }
+      },
+      {
+        "input_message": "Did you know that just seeing other people smoke activates a part of your brain that is connected with the action of you smoking? This can bring on strong urges to smoke. One simple solution is to avoid seeing others smoke.",
+        "ImageID": "D7",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Moderately helpful",
+          "quitting": "Moderately helpful"
+        }
+      },
+      {
+        "input_message": "Pause. Notice the feelings you are having without judgement. Let them come and go. Being aware of your feelings means you can make a new choice about how you respond to your urges instead of smoking on autopilot.",
+        "ImageID": "A8",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Very helpful",
+          "quitting": "Moderately helpful"
+        }
+      },
+      {
+        "input_message": "Pause. Notice the feelings you are having without judgement. Let them come and go. Being aware of your feelings means you can make a new choice about how you respond to your urges instead of smoking on autopilot.",
+        "ImageID": "A43",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Very helpful",
+          "quitting": "Moderately helpful"
+        }
+      },
+      {
+        "input_message": "Each time you let an urge pass without smoking, you break the old habit a bit more.",
+        "ImageID": "A27",
+        "ratings": {
+          "content": "Very good",
+          "design": "Very good",
+          "coping": "Extremely helpful",
+          "quitting": "Very helpful"
+        }
+      }
+    ]
+  },
+  "summary_text": "Age 22, Male, Every day, Motivation: Moderately motivated, Support: Very supportive, CPD: 10, TTF: Within 30 minutes"
+}

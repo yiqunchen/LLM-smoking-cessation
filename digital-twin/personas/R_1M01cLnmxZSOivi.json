@@ -1,0 +1,137 @@
+{
+  "participant_id": "R_1M01cLnmxZSOivi",
+  "demographics": {
+    "age_years": 24,
+    "gender_identity": "Female",
+    "race_ethnicity": "White",
+    "is_hispanic_latino": "No",
+    "education_level": "Some college",
+    "household_income": "< $15,000"
+  },
+  "smoking_behavior": {
+    "quit_intention": "Are currently trying to quit",
+    "days_smoked_past_30d": 30,
+    "cigs_per_day": "10",
+    "time_to_first_cig": "Within 30 minutes",
+    "household_smokers": "Yes",
+    "friends_smoke_level": "Some of them",
+    "quit_attempts_count": "3",
+    "smoking_status": "Every day",
+    "quit_motivation_level": "Moderately motivated",
+    "social_support_to_quit": "Extremely supportive"
+  },
+  "psychosocial": {
+    "pain_blocks_valued_life": "Frequently true",
+    "fear_of_feelings": "Frequently true",
+    "worry_about_control": "Frequently true",
+    "memories_block_fulfillment": "Frequently true",
+    "emotions_cause_problems": "Frequently true",
+    "others_handle_life_better": "Frequently true",
+    "worry_blocks_success": "Frequently true"
+  },
+  "history": {
+    "rated_messages": [
+      {
+        "input_message": "If this situation becomes stressful for you, make an excuse to leave for a few minutes. If this doesn't help, it might be better to just leave early.",
+        "ImageID": "D31",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Poor",
+          "coping": "Not at all helpful",
+          "quitting": "Not at all helpful"
+        }
+      },
+      {
+        "input_message": "You were often stressed in this location and this might trigger urges. What can you do to reduce your stress here? If you can avoid this place until things settle down, then do.",
+        "ImageID": "D38",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Good",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "Each time you choose to not smoke after seeing someone else light up, you lessen the habit a little more.",
+        "ImageID": "A58",
+        "ratings": {
+          "content": "Very good",
+          "design": "Very good",
+          "coping": "Extremely helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "It can be tricky to be around friends or colleagues who are still smoking. If you're finding it tough, try and think about the things that you are doing well.",
+        "ImageID": "D3",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Acceptable",
+          "coping": "Moderately helpful",
+          "quitting": "Moderately helpful"
+        }
+      },
+      {
+        "input_message": "Now is a good time for BREAKS B=stop and Brake R=Read how your body feels E=Expand and take deep breaths A=Allow everything to be as it is K=Know what's important to you S=take 1 Step in a direction important to you",
+        "ImageID": "A24",
+        "ratings": {
+          "content": "Very poor",
+          "design": "Very poor",
+          "coping": "Not at all helpful",
+          "quitting": "Not at all helpful"
+        }
+      },
+      {
+        "input_message": "You might find that you have more time now that you're trying to cut some cigarettes. Some people find that going for a walk can help fill the gap. Or take a nap if you can!",
+        "ImageID": "D19",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Very good",
+          "coping": "Moderately helpful",
+          "quitting": "Moderately helpful"
+        }
+      },
+      {
+        "input_message": "Imagine your urge is like a talk radio station going on about something you disagree with. Arguing with it doesn't change what they say. Instead, just let them talk while you focus on what's important to you.",
+        "ImageID": "A14",
+        "ratings": {
+          "content": "Very good",
+          "design": "Very good",
+          "coping": "Extremely helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "Keep your mind occupied if you get an urge. Do a mental puzzle, make your next shopping list, read a book, write a poem\u2026you might be surprised how well occupying your mind can get rid of urges.",
+        "ImageID": "D35",
+        "ratings": {
+          "content": "Very good",
+          "design": "Very good",
+          "coping": "Extremely helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "Crumple a piece of paper into a ball and imagine it is your urge. Toss the \"urge\" into the garbage or against the wall. By doing this, you are letting go of your urges.",
+        "ImageID": "A16",
+        "ratings": {
+          "content": "Very poor",
+          "design": "Very poor",
+          "coping": "Not at all helpful",
+          "quitting": "Not at all helpful"
+        }
+      },
+      {
+        "input_message": "See what it is like to let the urge pass. You can have an urge and choose not to smoke.",
+        "ImageID": "A18",
+        "ratings": {
+          "content": "Very good",
+          "design": "Very good",
+          "coping": "Extremely helpful",
+          "quitting": "Extremely helpful"
+        }
+      }
+    ]
+  },
+  "summary_text": "Age 24, Female, Every day, Motivation: Moderately motivated, Support: Extremely supportive, CPD: 10, TTF: Within 30 minutes"
+}

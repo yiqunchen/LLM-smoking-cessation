@@ -1,0 +1,137 @@
+{
+  "participant_id": "R_WD8Xnns8UZBfaSd",
+  "demographics": {
+    "age_years": 29,
+    "gender_identity": "Male",
+    "race_ethnicity": "White",
+    "is_hispanic_latino": "Yes",
+    "education_level": "Bachelor's degree",
+    "household_income": "$80,000-99,000"
+  },
+  "smoking_behavior": {
+    "quit_intention": "Will quit in the next month",
+    "days_smoked_past_30d": 26,
+    "cigs_per_day": "2",
+    "time_to_first_cig": "Within 30 minutes",
+    "household_smokers": "No",
+    "friends_smoke_level": "Some of them",
+    "quit_attempts_count": "3",
+    "smoking_status": "Every day",
+    "quit_motivation_level": "Extremely motivated",
+    "social_support_to_quit": "Extremely supportive"
+  },
+  "psychosocial": {
+    "pain_blocks_valued_life": "Almost always true",
+    "fear_of_feelings": "Always true",
+    "worry_about_control": "Always true",
+    "memories_block_fulfillment": "Almost always true",
+    "emotions_cause_problems": "Always true",
+    "others_handle_life_better": "Always true",
+    "worry_blocks_success": "Frequently true"
+  },
+  "history": {
+    "rated_messages": [
+      {
+        "input_message": "Pause and take 5 slow breaths. Pausing just for a moment breaks the automatic habit of reaching for a smoke.",
+        "ImageID": "D65",
+        "ratings": {
+          "content": "Good",
+          "design": "Very good",
+          "coping": "Extremely helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "Each time you choose to not smoke after seeing someone else light up, you lessen the habit a little more.",
+        "ImageID": "A58",
+        "ratings": {
+          "content": "Very good",
+          "design": "Very good",
+          "coping": "Extremely helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "The best way to deal with any urges from being around smokers is to get out of the situation briefly until it goes. Make an excuse, go to the toilet, go get some water, pretend you need to get some phone reception!",
+        "ImageID": "D21",
+        "ratings": {
+          "content": "Very good",
+          "design": "Very good",
+          "coping": "Extremely helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "You might find that you have more time now that you're trying to cut some cigarettes. Some people find that going for a walk can help fill the gap. Or take a nap if you can!",
+        "ImageID": "D19",
+        "ratings": {
+          "content": "Very good",
+          "design": "Very good",
+          "coping": "Very helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "Notice how stress and anxiety may pull you and make you want to smoke. Just notice this. You can choose to just notice and not smoke.",
+        "ImageID": "A36",
+        "ratings": {
+          "content": "Very good",
+          "design": "Very good",
+          "coping": "Extremely helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "Each time you let an urge pass without smoking, you break the old habit a bit more.",
+        "ImageID": "A27",
+        "ratings": {
+          "content": "Very good",
+          "design": "Very good",
+          "coping": "Extremely helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "Craving a cig? Plan a fun activity you can do when you get home as a reward for not smoking.",
+        "ImageID": "D58",
+        "ratings": {
+          "content": "Very good",
+          "design": "Very good",
+          "coping": "Extremely helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "One way to combat any urges is to keep your mouth busy - some people find that chewing sugar free gum, mints, or even a pen can be a good alternative.",
+        "ImageID": "D8",
+        "ratings": {
+          "content": "Very good",
+          "design": "Very good",
+          "coping": "Extremely helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "Instead of smoking, keep your fingers busy by scrolling through your phone.",
+        "ImageID": "D39",
+        "ratings": {
+          "content": "Very good",
+          "design": "Good",
+          "coping": "Extremely helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "Try chewing gum if you have trouble resisting smoking when other people light up around you.",
+        "ImageID": "D51",
+        "ratings": {
+          "content": "Very good",
+          "design": "Very good",
+          "coping": "Extremely helpful",
+          "quitting": "Extremely helpful"
+        }
+      }
+    ]
+  },
+  "summary_text": "Age 29, Male, Every day, Motivation: Extremely motivated, Support: Extremely supportive, CPD: 2, TTF: Within 30 minutes"
+}

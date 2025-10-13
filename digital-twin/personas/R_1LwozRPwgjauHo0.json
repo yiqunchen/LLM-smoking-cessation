@@ -1,0 +1,137 @@
+{
+  "participant_id": "R_1LwozRPwgjauHo0",
+  "demographics": {
+    "age_years": 28,
+    "gender_identity": "Male",
+    "race_ethnicity": "White",
+    "is_hispanic_latino": "No",
+    "education_level": "Master's degree",
+    "household_income": "$80,000-99,000"
+  },
+  "smoking_behavior": {
+    "quit_intention": "Are currently trying to quit",
+    "days_smoked_past_30d": 22,
+    "cigs_per_day": "2",
+    "time_to_first_cig": "Within 30 minutes",
+    "household_smokers": "No",
+    "friends_smoke_level": "Some of them",
+    "quit_attempts_count": "5",
+    "smoking_status": "Every day",
+    "quit_motivation_level": "Moderately motivated",
+    "social_support_to_quit": "Moderately supportive"
+  },
+  "psychosocial": {
+    "pain_blocks_valued_life": "Always true",
+    "fear_of_feelings": "Frequently true",
+    "worry_about_control": "Almost always true",
+    "memories_block_fulfillment": "Almost always true",
+    "emotions_cause_problems": "Almost always true",
+    "others_handle_life_better": "Frequently true",
+    "worry_blocks_success": "Almost always true"
+  },
+  "history": {
+    "rated_messages": [
+      {
+        "input_message": "The best way to deal with any urges from being around smokers is to get out of the situation briefly until it goes. Make an excuse, go to the toilet, go get some water, pretend you need to get some phone reception!",
+        "ImageID": "D21",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Acceptable",
+          "coping": "Somewhat helpful",
+          "quitting": "Moderately helpful"
+        }
+      },
+      {
+        "input_message": "Remind yourself that by staying quit, you'll be freeing yourself from the constant cycle of cigarette, nicotine withdrawal, feeling stressed as a result and wanting another cigarette. Keep going and this will be a thing of the past!",
+        "ImageID": "D14",
+        "ratings": {
+          "content": "Very good",
+          "design": "Very good",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "Now is a good time for BREAKS B=stop and Brake R=Read how your body feels E=Expand and take deep breaths A=Allow everything to be as it is K=Know what's important to you S=take 1 Step in a direction important to you",
+        "ImageID": "A24",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Good",
+          "coping": "Moderately helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "If you find yourself thinking: \"I can't do this\", \"I need a cig\", or \"I'll just have one\", make sure you tell yourself \"I absolutely CAN do this\", \"I'm in control\". Take control of your negative thoughts!",
+        "ImageID": "D29",
+        "ratings": {
+          "content": "Good",
+          "design": "Very good",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "Spend 3 minutes noticing how your hands feel, how your mouth feels, and how your chest feels. The more you practice noticing these things without smoking, the sooner this place will stop being a trigger for you.",
+        "ImageID": "A53",
+        "ratings": {
+          "content": "Good",
+          "design": "Acceptable",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "It can be tricky to be around friends or colleagues who are still smoking. If you're finding it tough, try and think about the things that you are doing well.",
+        "ImageID": "D3",
+        "ratings": {
+          "content": "Good",
+          "design": "Very good",
+          "coping": "Moderately helpful",
+          "quitting": "Moderately helpful"
+        }
+      },
+      {
+        "input_message": "You don't have to act on this feeling by smoking or doing anything about it. Give it some space, breathe, and see if it changes. Let the urge and feeling be there while you focus on doing something you care about.",
+        "ImageID": "A41",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Moderately helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "Think about a happy memory to ease the difficulty of your urge. Is there something you have been wanting to do for a while that you know you would enjoy? Reading? Walking? Calling a friend? Doing a puzzle? Do something that matters to you instead of smoking.",
+        "ImageID": "D61",
+        "ratings": {
+          "content": "Good",
+          "design": "Very good",
+          "coping": "Moderately helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "If you're stuck at home and physical activity doesn't interest you, try gaming, needlework, drawing, or journaling.",
+        "ImageID": "D44",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Good",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "Picture the people or things you care deeply about. On a scale of 0-10, how willing are you to let this urge pass for those reasons?",
+        "ImageID": "A9",
+        "ratings": {
+          "content": "Good",
+          "design": "Acceptable",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      }
+    ]
+  },
+  "summary_text": "Age 28, Male, Every day, Motivation: Moderately motivated, Support: Moderately supportive, CPD: 2, TTF: Within 30 minutes"
+}

@@ -1,0 +1,137 @@
+{
+  "participant_id": "R_zS8b1z8J3S5YeT7",
+  "demographics": {
+    "age_years": 27,
+    "gender_identity": "Female",
+    "race_ethnicity": "Black or African American",
+    "is_hispanic_latino": "No",
+    "education_level": "Some college",
+    "household_income": "$25,000-39,999"
+  },
+  "smoking_behavior": {
+    "quit_intention": "Are currently trying to quit",
+    "days_smoked_past_30d": 20,
+    "cigs_per_day": "7",
+    "time_to_first_cig": "After 30 minutes",
+    "household_smokers": "No",
+    "friends_smoke_level": "None of them",
+    "quit_attempts_count": "2",
+    "smoking_status": "Some days",
+    "quit_motivation_level": "Extremely motivated",
+    "social_support_to_quit": "Extremely supportive"
+  },
+  "psychosocial": {
+    "pain_blocks_valued_life": "Never true",
+    "fear_of_feelings": "Never true",
+    "worry_about_control": "Never true",
+    "memories_block_fulfillment": "Never true",
+    "emotions_cause_problems": "Never true",
+    "others_handle_life_better": "Never true",
+    "worry_blocks_success": "Never true"
+  },
+  "history": {
+    "rated_messages": [
+      {
+        "input_message": "If you miss doing something with your hands, try turning a coin or pen over and over with your fingers.",
+        "ImageID": "D49",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Acceptable",
+          "coping": "Somewhat helpful",
+          "quitting": "Somewhat helpful"
+        }
+      },
+      {
+        "input_message": "If you have trouble resisting a craving when other smokers are around, try carrying a water bottle and taking a sip every time you want to ask for a cig.",
+        "ImageID": "D52",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Moderately helpful",
+          "quitting": "Moderately  helpful"
+        }
+      },
+      {
+        "input_message": "Reduce your stress by using your next break to list four things that have gone well so far today. It might feel like a bit of effort, but doing this will help your mind to refocus, and help you to feel calmer.",
+        "ImageID": "D1",
+        "ratings": {
+          "content": "Very poor",
+          "design": "Good",
+          "coping": "Not at all helpful",
+          "quitting": "Not at all helpful"
+        }
+      },
+      {
+        "input_message": "Urges to smoke usually only last a few minutes. Distract yourself by NOT thinking about giraffes, or leave the situation until it passes.",
+        "ImageID": "D23",
+        "ratings": {
+          "content": "Very poor",
+          "design": "Very poor",
+          "coping": "Not at all helpful",
+          "quitting": "Not at all helpful"
+        }
+      },
+      {
+        "input_message": "A funny thing about people is that we tend to believe what we tell ourselves. So make sure that whatever else happens today, tell yourself \"I can, and I will stick to not smoking!\"",
+        "ImageID": "D13",
+        "ratings": {
+          "content": "Poor",
+          "design": "Good",
+          "coping": "Not at all helpful",
+          "quitting": "Not at all helpful"
+        }
+      },
+      {
+        "input_message": "To help get through a 'risky situation', remind yourself of how far you've come and the effort that you've put in. Don't ruin your hard work - stay strong!",
+        "ImageID": "D24",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Moderately helpful",
+          "quitting": "Moderately helpful"
+        }
+      },
+      {
+        "input_message": "Ask yourself, \"What do I need right now? Is it really a smoke, or is there something else I need? How can I best take care of myself right now?\"",
+        "ImageID": "D62",
+        "ratings": {
+          "content": "Very poor",
+          "design": "Very poor",
+          "coping": "Not at all helpful",
+          "quitting": "Not at all helpful"
+        }
+      },
+      {
+        "input_message": "Instead of smoking, write a quick note to yourself explaining why ditching cigs is important to you. Carry it with you and read it when you feel like lighting up.",
+        "ImageID": "D64",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Moderately helpful",
+          "quitting": "Moderately helpful"
+        }
+      },
+      {
+        "input_message": "Just because letting an urge pass isn't easy, doesn't mean that you can't do it. Try it, you might surprise yourself.",
+        "ImageID": "A29",
+        "ratings": {
+          "content": "Very poor",
+          "design": "Very poor",
+          "coping": "Not at all helpful",
+          "quitting": "Not at all helpful"
+        }
+      },
+      {
+        "input_message": "If you find yourself with a few minutes to spare, it can be nice to read back over old messages. It's also a chance to reply to ones that you might have forgotten about!",
+        "ImageID": "D18",
+        "ratings": {
+          "content": "Poor",
+          "design": "Acceptable",
+          "coping": "Not at all helpful",
+          "quitting": "Somewhat helpful"
+        }
+      }
+    ]
+  },
+  "summary_text": "Age 27, Female, Some days, Motivation: Extremely motivated, Support: Extremely supportive, CPD: 7, TTF: After 30 minutes"
+}

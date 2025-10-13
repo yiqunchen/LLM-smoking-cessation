@@ -1,0 +1,147 @@
+{
+  "participant_id": "R_37WD4Tk0gT211Ch",
+  "demographics": {
+    "age_years": 22,
+    "gender_identity": "Female",
+    "race_ethnicity": "American Indian or Alaska Native",
+    "is_hispanic_latino": "Yes",
+    "education_level": "High school graduate or GED",
+    "household_income": "$15,000-24,999"
+  },
+  "smoking_behavior": {
+    "quit_intention": "Are currently trying to quit",
+    "days_smoked_past_30d": 27,
+    "cigs_per_day": "3",
+    "time_to_first_cig": "After 30 minutes",
+    "household_smokers": "Yes",
+    "friends_smoke_level": "Some of them",
+    "quit_attempts_count": "6",
+    "smoking_status": "Some days",
+    "quit_motivation_level": "Moderately motivated",
+    "social_support_to_quit": "Extremely supportive"
+  },
+  "psychosocial": {
+    "pain_blocks_valued_life": "Sometimes true",
+    "fear_of_feelings": "Frequently true",
+    "worry_about_control": "Almost always true",
+    "memories_block_fulfillment": "Frequently true",
+    "emotions_cause_problems": "Almost always true",
+    "others_handle_life_better": "Always true",
+    "worry_blocks_success": "Always true"
+  },
+  "history": {
+    "rated_messages": [
+      {
+        "input_message": "Instead of smoking, write a quick note to yourself explaining why ditching cigs is important to you. Carry it with you and read it when you feel like lighting up.",
+        "ImageID": "D64",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Acceptable",
+          "coping": "Moderately helpful",
+          "quitting": "Somewhat helpful"
+        }
+      },
+      {
+        "input_message": "If you get urges, remind yourself that cigarettes did that to you. If you go back to them, they will keep making you suffer. Now you are breaking free.",
+        "ImageID": "D17",
+        "ratings": {
+          "content": "Very good",
+          "design": "Good",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "Just because letting an urge pass isn't easy, doesn't mean that you can't do it. Try it, you might surprise yourself.",
+        "ImageID": "A29",
+        "ratings": {
+          "content": "Good",
+          "design": "Poor",
+          "coping": "Somewhat helpful",
+          "quitting": "Not at all helpful"
+        }
+      },
+      {
+        "input_message": "Feelings aren't permanent. They are always changing like the weather. Observe the storm that is coming, but don't fight it. Eventually the weather will change.",
+        "ImageID": "A42",
+        "ratings": {
+          "content": "Very good",
+          "design": "Poor",
+          "coping": "Moderately helpful",
+          "quitting": "Somewhat helpful"
+        }
+      },
+      {
+        "input_message": "Take one deep breath and see what it feels like to be triggered and choose not to smoke.",
+        "ImageID": "D66",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Poor",
+          "coping": "Somewhat helpful",
+          "quitting": "Somewhat helpful"
+        }
+      },
+      {
+        "input_message": "Write down why you want to stop smoking to resist a craving. Remember, trying something to beat the urge is always better than doing nothing. Each time you resist a cig, you're one step closer to being tobacco-free.",
+        "ImageID": "D46",
+        "ratings": {
+          "content": "Very good",
+          "design": "Good",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "Have confidence in knowing that you can have this urge, choose not to smoke, be okay, and choose to do things that matter most to you.",
+        "ImageID": "A28",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Poor",
+          "coping": "Moderately helpful",
+          "quitting": "Somewhat helpful"
+        }
+      },
+      {
+        "input_message": "The best way to deal with any urges from being around smokers is to get out of the situation briefly until it goes. Make an excuse, go to the toilet, go get some water, pretend you need to get some phone reception!",
+        "ImageID": "D21",
+        "ratings": {
+          "content": "Very good",
+          "design": "Good",
+          "coping": "Very helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "Imagine your 'you' from next year has come to visit, and guess what? You quit! How good is that?",
+        "ImageID": "D34",
+        "ratings": {
+          "content": "Very good",
+          "design": "Good",
+          "coping": "Extremely helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "Pause. Notice what triggered you to smoke in the past. Now take one deep breath and remind yourself that you do not need to smoke.",
+        "ImageID": "A8",
+        "ratings": {
+          "content": "Poor",
+          "design": "Poor",
+          "coping": "Not at all helpful",
+          "quitting": "Not at all helpful"
+        }
+      },
+      {
+        "input_message": "Pause. Notice what triggered you to smoke in the past. Now take one deep breath and remind yourself that you do not need to smoke.",
+        "ImageID": "A43",
+        "ratings": {
+          "content": "Poor",
+          "design": "Poor",
+          "coping": "Not at all helpful",
+          "quitting": "Not at all helpful"
+        }
+      }
+    ]
+  },
+  "summary_text": "Age 22, Female, Some days, Motivation: Moderately motivated, Support: Extremely supportive, CPD: 3, TTF: After 30 minutes"
+}

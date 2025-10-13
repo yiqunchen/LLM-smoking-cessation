@@ -1,0 +1,127 @@
+{
+  "participant_id": "R_1NyBd9879uhiFyx",
+  "demographics": {
+    "age_years": 21,
+    "gender_identity": "Male",
+    "race_ethnicity": "Black or African American",
+    "is_hispanic_latino": "No",
+    "education_level": "High school graduate or GED",
+    "household_income": "$15,000-24,999"
+  },
+  "smoking_behavior": {
+    "quit_intention": "Are currently trying to quit",
+    "days_smoked_past_30d": 30,
+    "cigs_per_day": "11",
+    "time_to_first_cig": "Within 30 minutes",
+    "household_smokers": "Yes",
+    "friends_smoke_level": "Most of them",
+    "quit_attempts_count": "8",
+    "smoking_status": "Every day",
+    "quit_motivation_level": "Moderately motivated",
+    "social_support_to_quit": "Somewhat supportive"
+  },
+  "psychosocial": {
+    "pain_blocks_valued_life": "Very seldom true",
+    "fear_of_feelings": "Very seldom true",
+    "worry_about_control": "Very seldom true",
+    "memories_block_fulfillment": "Very seldom true",
+    "emotions_cause_problems": "Sometimes true",
+    "others_handle_life_better": "Very seldom true",
+    "worry_blocks_success": "Sometimes true"
+  },
+  "history": {
+    "rated_messages": [
+      {
+        "input_message": "Each time you let an urge pass without smoking, you break the old habit a bit more.",
+        "ImageID": "A27",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Poor",
+          "coping": "Somewhat helpful",
+          "quitting": "Somewhat helpful"
+        }
+      },
+      {
+        "input_message": "Seeing other people smoke is a predictable and unavoidable trigger. Take 5 slow, deep breaths and remind yourself that the urge will pass and that you do not need to smoke.",
+        "ImageID": "A56",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Acceptable",
+          "coping": "Somewhat helpful",
+          "quitting": "Somewhat helpful"
+        }
+      },
+      {
+        "input_message": "Notice how stress and anxiety may pull you and make you want to smoke. Just notice this. You can choose to just notice and not smoke.",
+        "ImageID": "A36",
+        "ratings": {
+          "content": "Poor",
+          "design": "Poor",
+          "coping": "Not at all helpful",
+          "quitting": "Not at all helpful"
+        }
+      },
+      {
+        "input_message": "As smokers are usually with you in this location, it's really important that you're not with them when they smoke. Consider avoiding this place if possible until things settle down.",
+        "ImageID": "D37",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Acceptable",
+          "coping": "Moderately helpful",
+          "quitting": "Moderately helpful"
+        }
+      },
+      {
+        "input_message": "It's normal to have some doubts during a quit attempt. Keep your quit reasons on hand to remind yourself if ever you feel uncertain or undecided.",
+        "ImageID": "D4",
+        "ratings": {
+          "content": "Poor",
+          "design": "Poor",
+          "coping": "Not at all helpful",
+          "quitting": "Not at all helpful"
+        }
+      },
+      {
+        "input_message": "Just because letting an urge pass isn't easy, doesn't mean that you can't do it. Try it, you might surprise yourself.",
+        "ImageID": "A29",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Acceptable",
+          "coping": "Somewhat helpful",
+          "quitting": "Somewhat helpful"
+        }
+      },
+      {
+        "input_message": "Are you feeling down because you are thinking of smoking? It's really important to be kind to yourself, and to make sure you give yourself praise too!",
+        "ImageID": "D2",
+        "ratings": {
+          "content": "Very poor",
+          "design": "Very poor",
+          "coping": "Not at all helpful",
+          "quitting": "Not at all helpful"
+        }
+      },
+      {
+        "input_message": "This craving is just an event. A game. It will pass. The game gets easier the more you let your urge pass without smoking. But, it gets harder every time you give in to the urge and smoke.",
+        "ImageID": "A31",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Acceptable",
+          "coping": "Somewhat helpful",
+          "quitting": "Somewhat helpful"
+        }
+      },
+      {
+        "input_message": "If this situation becomes stressful for you, make an excuse to leave for a few minutes. If this doesn't help, it might be better to just leave early.",
+        "ImageID": "D31",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Acceptable",
+          "coping": "Somewhat helpful",
+          "quitting": "Somewhat helpful"
+        }
+      }
+    ]
+  },
+  "summary_text": "Age 21, Male, Every day, Motivation: Moderately motivated, Support: Somewhat supportive, CPD: 11, TTF: Within 30 minutes"
+}

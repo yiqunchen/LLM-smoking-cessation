@@ -1,0 +1,127 @@
+{
+  "participant_id": "R_22oaTRQmQd44IFl",
+  "demographics": {
+    "age_years": 25,
+    "gender_identity": "Female",
+    "race_ethnicity": "American Indian or Alaska Native",
+    "is_hispanic_latino": "Yes",
+    "education_level": "Bachelor's degree",
+    "household_income": "$40,000-59,999"
+  },
+  "smoking_behavior": {
+    "quit_intention": "Are currently trying to quit",
+    "days_smoked_past_30d": 29,
+    "cigs_per_day": "4",
+    "time_to_first_cig": "Within 30 minutes",
+    "household_smokers": "Yes",
+    "friends_smoke_level": "Most of them",
+    "quit_attempts_count": "5",
+    "smoking_status": "Every day",
+    "quit_motivation_level": "Moderately motivated",
+    "social_support_to_quit": "Extremely supportive"
+  },
+  "psychosocial": {
+    "pain_blocks_valued_life": "Almost always true",
+    "fear_of_feelings": "Seldom true",
+    "worry_about_control": "Never true",
+    "memories_block_fulfillment": "Almost always true",
+    "emotions_cause_problems": "Always true",
+    "others_handle_life_better": "Almost always true",
+    "worry_blocks_success": "Frequently true"
+  },
+  "history": {
+    "rated_messages": [
+      {
+        "input_message": "Take a deep breath and let it out slowly. Notice that you are completely OK for this one breath. Do it again.",
+        "ImageID": "A44",
+        "ratings": {
+          "content": "Good",
+          "design": "Very good",
+          "coping": "Moderately helpful",
+          "quitting": "Somewhat helpful"
+        }
+      },
+      {
+        "input_message": "Life can get you really stressed out, but turning to cigs isn't the answer. Call or text family and friends instead. Ask them to help you stay on track.",
+        "ImageID": "D55",
+        "ratings": {
+          "content": "Good",
+          "design": "Very good",
+          "coping": "Moderately helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "Just because other people are smoking, doesn't mean you have to. Practice allowing this urge to be present for 5 minutes. When it passes, give yourself credit.",
+        "ImageID": "A59",
+        "ratings": {
+          "content": "Good",
+          "design": "Acceptable",
+          "coping": "Somewhat helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "Don't test yourself needlessly. If this social situation gets uncomfortable then leave briefly if you can. It really helps and it's fine to do it more than once!",
+        "ImageID": "D28",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Very good",
+          "coping": "Somewhat helpful",
+          "quitting": "Moderately helpful"
+        }
+      },
+      {
+        "input_message": "One way to combat any urges is to keep your mouth busy - some people find that chewing sugar free gum, mints, or even a pen can be a good alternative.",
+        "ImageID": "D8",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Very good",
+          "coping": "Somewhat helpful",
+          "quitting": "Moderately helpful"
+        }
+      },
+      {
+        "input_message": "Try to stop smoking by setting yourself a rule. For example, \"IF I am tempted, THEN I will chew on some mints\" - make your own rule that will work for you.",
+        "ImageID": "D9",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Very good",
+          "coping": "Somewhat helpful",
+          "quitting": "Moderately helpful"
+        }
+      },
+      {
+        "input_message": "The best way to deal with any urges from being around smokers is to get out of the situation briefly until it goes. Make an excuse, go to the toilet, go get some water, pretend you need to get some phone reception!",
+        "ImageID": "D21",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Very good",
+          "coping": "Somewhat helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "Just because letting an urge pass isn't easy, doesn't mean that you can't do it. Try it, you might surprise yourself.",
+        "ImageID": "A29",
+        "ratings": {
+          "content": "Very good",
+          "design": "Acceptable",
+          "coping": "Very helpful",
+          "quitting": "Somewhat helpful"
+        }
+      },
+      {
+        "input_message": "If you usually smoke while you talk on the phone, keep a pen and paper nearby to occupy your hands with doodling rather than smoking.",
+        "ImageID": "D42",
+        "ratings": {
+          "content": "Very good",
+          "design": "Acceptable",
+          "coping": "Very helpful",
+          "quitting": "Extremely helpful"
+        }
+      }
+    ]
+  },
+  "summary_text": "Age 25, Female, Every day, Motivation: Moderately motivated, Support: Extremely supportive, CPD: 4, TTF: Within 30 minutes"
+}

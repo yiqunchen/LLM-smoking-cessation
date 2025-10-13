@@ -1,0 +1,147 @@
+{
+  "participant_id": "R_1dB5HW7R2HG2880",
+  "demographics": {
+    "age_years": 24,
+    "gender_identity": "Female",
+    "race_ethnicity": "Black or African American",
+    "is_hispanic_latino": "No",
+    "education_level": "High school graduate or GED",
+    "household_income": "< $15,000"
+  },
+  "smoking_behavior": {
+    "quit_intention": "Are currently trying to quit",
+    "days_smoked_past_30d": 6,
+    "cigs_per_day": "8",
+    "time_to_first_cig": "Within 30 minutes",
+    "household_smokers": "Yes",
+    "friends_smoke_level": "Most of them",
+    "quit_attempts_count": "3",
+    "smoking_status": "Every day",
+    "quit_motivation_level": "Moderately motivated",
+    "social_support_to_quit": "Somewhat supportive"
+  },
+  "psychosocial": {
+    "pain_blocks_valued_life": "Never true",
+    "fear_of_feelings": "Never true",
+    "worry_about_control": "Sometimes true",
+    "memories_block_fulfillment": "Very seldom true",
+    "emotions_cause_problems": "Almost always true",
+    "others_handle_life_better": "Almost always true",
+    "worry_blocks_success": "Sometimes true"
+  },
+  "history": {
+    "rated_messages": [
+      {
+        "input_message": "It's normal to have some doubts during a quit attempt. Keep your quit reasons on hand to remind yourself if ever you feel uncertain or undecided.",
+        "ImageID": "D4",
+        "ratings": {
+          "content": "Good",
+          "design": "Very good",
+          "coping": "Somewhat helpful",
+          "quitting": "Moderately helpful"
+        }
+      },
+      {
+        "input_message": "Have confidence in knowing that you can have this urge, choose not to smoke, be okay, and choose to do things that matter most to you.",
+        "ImageID": "A28",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Acceptable",
+          "coping": "Moderately helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "Are you feeling down because you are thinking of smoking? It's really important to be kind to yourself, and to make sure you give yourself praise too!",
+        "ImageID": "D2",
+        "ratings": {
+          "content": "Very good",
+          "design": "Very good",
+          "coping": "Extremely helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "Ways of dealing with urges: play a game or an online quiz.",
+        "ImageID": "D36",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Acceptable",
+          "coping": "Very helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "Now is a good time for BREAKS B=stop and Brake R=Read how your body feels E=Expand and take deep breaths A=Allow everything to be as it is K=Know what's important to you S=take 1 Step in a direction important to you",
+        "ImageID": "A24",
+        "ratings": {
+          "content": "Poor",
+          "design": "Acceptable",
+          "coping": "Somewhat helpful",
+          "quitting": "Somewhat helpful"
+        }
+      },
+      {
+        "input_message": "Pause and take 5 slow breaths. Pausing just for a moment breaks the automatic habit of reaching for a smoke.",
+        "ImageID": "D65",
+        "ratings": {
+          "content": "Good",
+          "design": "Acceptable",
+          "coping": "Not at all helpful",
+          "quitting": "Somewhat helpful"
+        }
+      },
+      {
+        "input_message": "When you notice yourself trapped in stressful thoughts or worry, say out loud, \"I'm noticing that I'm having some worrisome thoughts.\" This helps unhook you from your thoughts so you don't stay caught in them.",
+        "ImageID": "A34",
+        "ratings": {
+          "content": "Very good",
+          "design": "Very good",
+          "coping": "Extremely helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "Pause. Notice what triggered you to smoke in the past. Now take one deep breath and remind yourself that you do not need to smoke.",
+        "ImageID": "A8",
+        "ratings": {
+          "content": "Very good",
+          "design": "Very good",
+          "coping": "Extremely helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "Pause. Notice what triggered you to smoke in the past. Now take one deep breath and remind yourself that you do not need to smoke.",
+        "ImageID": "A43",
+        "ratings": {
+          "content": "Very good",
+          "design": "Very good",
+          "coping": "Extremely helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "Just because other people are smoking, doesn't mean you have to. Practice allowing this urge to be present for 5 minutes. When it passes, give yourself credit.",
+        "ImageID": "A59",
+        "ratings": {
+          "content": "Very good",
+          "design": "Acceptable",
+          "coping": "Extremely helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "Acknowledge your unhelpful thought by writing it down on a piece of paper. Then let it be on it's way by crumpling it up and tossing it in a trash can.",
+        "ImageID": "A49",
+        "ratings": {
+          "content": "Very good",
+          "design": "Very good",
+          "coping": "Extremely helpful",
+          "quitting": "Extremely helpful"
+        }
+      }
+    ]
+  },
+  "summary_text": "Age 24, Female, Every day, Motivation: Moderately motivated, Support: Somewhat supportive, CPD: 8, TTF: Within 30 minutes"
+}

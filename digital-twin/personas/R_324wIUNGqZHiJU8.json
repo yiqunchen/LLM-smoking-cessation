@@ -1,0 +1,137 @@
+{
+  "participant_id": "R_324wIUNGqZHiJU8",
+  "demographics": {
+    "age_years": 25,
+    "gender_identity": "Female",
+    "race_ethnicity": "Black or African American",
+    "is_hispanic_latino": "Yes",
+    "education_level": "Some college",
+    "household_income": "< $15,000"
+  },
+  "smoking_behavior": {
+    "quit_intention": "Are currently trying to quit",
+    "days_smoked_past_30d": 16,
+    "cigs_per_day": "5",
+    "time_to_first_cig": "After 30 minutes",
+    "household_smokers": "No",
+    "friends_smoke_level": "Some of them",
+    "quit_attempts_count": "6",
+    "smoking_status": "Some days",
+    "quit_motivation_level": "Very motivated",
+    "social_support_to_quit": "Not at all supportive"
+  },
+  "psychosocial": {
+    "pain_blocks_valued_life": "Frequently true",
+    "fear_of_feelings": "Frequently true",
+    "worry_about_control": "Frequently true",
+    "memories_block_fulfillment": "Almost always true",
+    "emotions_cause_problems": "Almost always true",
+    "others_handle_life_better": "Almost always true",
+    "worry_blocks_success": "Almost always true"
+  },
+  "history": {
+    "rated_messages": [
+      {
+        "input_message": "Imagine your 'you' from next year has come to visit, and guess what? You quit! How good is that?",
+        "ImageID": "D34",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Acceptable",
+          "coping": "Moderately helpful",
+          "quitting": "Somewhat helpful"
+        }
+      },
+      {
+        "input_message": "Imagine that your urge is a backseat passenger trying to distract you from reaching your destination. See if you can choose to keep driving instead of allowing your urges to distract you from where you want to go.",
+        "ImageID": "A7",
+        "ratings": {
+          "content": "Poor",
+          "design": "Poor",
+          "coping": "Not at all helpful",
+          "quitting": "Not at all helpful"
+        }
+      },
+      {
+        "input_message": "If you usually smoke while you talk on the phone, keep a pen and paper nearby to occupy your hands with doodling rather than smoking.",
+        "ImageID": "D42",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Acceptable",
+          "coping": "Very helpful",
+          "quitting": "Moderately helpful"
+        }
+      },
+      {
+        "input_message": "Urges to smoke usually only last a few minutes. Distract yourself by NOT thinking about giraffes, or leave the situation until it passes.",
+        "ImageID": "D23",
+        "ratings": {
+          "content": "Very poor",
+          "design": "Very poor",
+          "coping": "Not at all helpful",
+          "quitting": "Not at all helpful"
+        }
+      },
+      {
+        "input_message": "Each time you let an urge pass without smoking, you break the old habit a bit more.",
+        "ImageID": "A27",
+        "ratings": {
+          "content": "Poor",
+          "design": "Poor",
+          "coping": "Somewhat helpful",
+          "quitting": "Not at all helpful"
+        }
+      },
+      {
+        "input_message": "Imagine your urge is like a talk radio station going on about something you disagree with. Arguing with it doesn't change what they say. Instead, just let them talk while you focus on what's important to you.",
+        "ImageID": "A14",
+        "ratings": {
+          "content": "Very poor",
+          "design": "Very poor",
+          "coping": "Not at all helpful",
+          "quitting": "Somewhat helpful"
+        }
+      },
+      {
+        "input_message": "Think of your anxious mind like a toddler throwing a tantrum. The best way to respond is to quietly watch, but not give in.",
+        "ImageID": "A40",
+        "ratings": {
+          "content": "Very poor",
+          "design": "Very poor",
+          "coping": "Not at all helpful",
+          "quitting": "Not at all helpful"
+        }
+      },
+      {
+        "input_message": "If you usually smoke while you talk on the phone, try taking the next call in a place where you can't smoke and focus on the conversation. The urge will pass.",
+        "ImageID": "D43",
+        "ratings": {
+          "content": "Very poor",
+          "design": "Very poor",
+          "coping": "Not at all helpful",
+          "quitting": "Not at all helpful"
+        }
+      },
+      {
+        "input_message": "Think about times in the past when you have let urges pass during a stressful moment, and notice what helped make that moment easier.",
+        "ImageID": "A39",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Acceptable",
+          "coping": "Somewhat helpful",
+          "quitting": "Somewhat helpful"
+        }
+      },
+      {
+        "input_message": "Notice what it feels like to see other people smoke and choose not to smoke. Notice what thoughts or emotions come up. Allow them to come and go. They will pass and so will this urge.",
+        "ImageID": "A57",
+        "ratings": {
+          "content": "Very poor",
+          "design": "Very poor",
+          "coping": "Not at all helpful",
+          "quitting": "Not at all helpful"
+        }
+      }
+    ]
+  },
+  "summary_text": "Age 25, Female, Some days, Motivation: Very motivated, Support: Not at all supportive, CPD: 5, TTF: After 30 minutes"
+}

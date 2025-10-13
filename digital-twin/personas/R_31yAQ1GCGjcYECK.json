@@ -1,0 +1,137 @@
+{
+  "participant_id": "R_31yAQ1GCGjcYECK",
+  "demographics": {
+    "age_years": 25,
+    "gender_identity": "Female",
+    "race_ethnicity": "White",
+    "is_hispanic_latino": "No",
+    "education_level": "Bachelor's degree",
+    "household_income": ">=$100,000"
+  },
+  "smoking_behavior": {
+    "quit_intention": "Are currently trying to quit",
+    "days_smoked_past_30d": 8,
+    "cigs_per_day": "18",
+    "time_to_first_cig": "Within 30 minutes",
+    "household_smokers": "Yes",
+    "friends_smoke_level": "All of them",
+    "quit_attempts_count": "9",
+    "smoking_status": "Every day",
+    "quit_motivation_level": "Extremely motivated",
+    "social_support_to_quit": "Extremely supportive"
+  },
+  "psychosocial": {
+    "pain_blocks_valued_life": "Almost always true",
+    "fear_of_feelings": "Always true",
+    "worry_about_control": "Almost always true",
+    "memories_block_fulfillment": "Almost always true",
+    "emotions_cause_problems": "Almost always true",
+    "others_handle_life_better": "Frequently true",
+    "worry_blocks_success": "Frequently true"
+  },
+  "history": {
+    "rated_messages": [
+      {
+        "input_message": "Some places trigger powerful cravings, that is to be expected. Stop and notice where in your body you feel those cravings and remind yourself that cravings typically pass in 1 to 3 minutes",
+        "ImageID": "A50",
+        "ratings": {
+          "content": "Very good",
+          "design": "Good",
+          "coping": "Extremely helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "Add the phrase \u201cI\u2019m having the thought that\u2026\u201d in front of your unhelpful thoughts. For example, \u201cI\u2019m having the thought that I need a cigarette.\u201d Your thoughts are not always true or helpful! They are just thoughts.",
+        "ImageID": "A46",
+        "ratings": {
+          "content": "Very good",
+          "design": "Good",
+          "coping": "Extremely helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "It's quite common for people to try and give themselves reasons for having 'just one' when they start working on quitting smoking. If you have these thoughts, let them happen, then picture yourself putting them into a hot-air balloon and watch them float away.",
+        "ImageID": "A2",
+        "ratings": {
+          "content": "Very good",
+          "design": "Good",
+          "coping": "Very helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "You spent a long time training your brain to want a cig. Now you're retraining your brain, and it's natural that this might take time.",
+        "ImageID": "D12",
+        "ratings": {
+          "content": "Very good",
+          "design": "Very good",
+          "coping": "Very helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "Urges can feel like stormy weather. But if you're the sky, you just let that storm come and go on it's own knowing that it won't last forever.",
+        "ImageID": "A25",
+        "ratings": {
+          "content": "Very good",
+          "design": "Good",
+          "coping": "Extremely helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "To keep on track, small changes can really help. For example, keep a list of quit reasons where you used to keep cigarettes, rearrange your living space, or grab some extra pens to fiddle with to keep your hands busy.",
+        "ImageID": "D10",
+        "ratings": {
+          "content": "Very good",
+          "design": "Good",
+          "coping": "Extremely helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "One way to combat any urges is to keep your mouth busy - some people find that chewing sugar free gum, mints, or even a pen can be a good alternative.",
+        "ImageID": "D8",
+        "ratings": {
+          "content": "Very good",
+          "design": "Good",
+          "coping": "Very helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "Imagine walking into a social situation in three months' time as a non-smoker. Now hold that picture and imagine you're that person now. Seeing yourself as a non-smoker now can make it much easier to resist!",
+        "ImageID": "D27",
+        "ratings": {
+          "content": "Very good",
+          "design": "Good",
+          "coping": "Extremely helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "If you find yourself thinking: \"I can't do this\", \"I need a cig\", or \"I'll just have one\", make sure you tell yourself \"I absolutely CAN do this\", \"I'm in control\". Take control of your negative thoughts!",
+        "ImageID": "D29",
+        "ratings": {
+          "content": "Very good",
+          "design": "Good",
+          "coping": "Extremely helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "Think of your anxious mind like a toddler throwing a tantrum. The best way to respond is to quietly watch, but not give in.",
+        "ImageID": "A40",
+        "ratings": {
+          "content": "Very good",
+          "design": "Good",
+          "coping": "Extremely helpful",
+          "quitting": "Moderately helpful"
+        }
+      }
+    ]
+  },
+  "summary_text": "Age 25, Female, Every day, Motivation: Extremely motivated, Support: Extremely supportive, CPD: 18, TTF: Within 30 minutes"
+}

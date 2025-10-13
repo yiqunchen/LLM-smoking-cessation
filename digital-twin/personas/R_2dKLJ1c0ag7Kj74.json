@@ -1,0 +1,137 @@
+{
+  "participant_id": "R_2dKLJ1c0ag7Kj74",
+  "demographics": {
+    "age_years": 23,
+    "gender_identity": "Female",
+    "race_ethnicity": "Black or African American",
+    "is_hispanic_latino": "No",
+    "education_level": "Master's degree",
+    "household_income": "< $15,000"
+  },
+  "smoking_behavior": {
+    "quit_intention": "Are currently trying to quit",
+    "days_smoked_past_30d": 6,
+    "cigs_per_day": "7",
+    "time_to_first_cig": "Within 30 minutes",
+    "household_smokers": "Yes",
+    "friends_smoke_level": "Most of them",
+    "quit_attempts_count": "4",
+    "smoking_status": "Every day",
+    "quit_motivation_level": "Very motivated",
+    "social_support_to_quit": "Very supportive"
+  },
+  "psychosocial": {
+    "pain_blocks_valued_life": "Frequently true",
+    "fear_of_feelings": "Frequently true",
+    "worry_about_control": "Almost always true",
+    "memories_block_fulfillment": "Sometimes true",
+    "emotions_cause_problems": "Very seldom true",
+    "others_handle_life_better": "Frequently true",
+    "worry_blocks_success": "Almost always true"
+  },
+  "history": {
+    "rated_messages": [
+      {
+        "input_message": "See what it is like to let the urge pass. You can have an urge and choose not to smoke.",
+        "ImageID": "A18",
+        "ratings": {
+          "content": "Very poor",
+          "design": "Poor",
+          "coping": "Not at all helpful",
+          "quitting": "Not at all helpful"
+        }
+      },
+      {
+        "input_message": "Take a deep breath and let it out slowly. Notice that you are completely OK for this one breath. Do it again.",
+        "ImageID": "A44",
+        "ratings": {
+          "content": "Poor",
+          "design": "Acceptable",
+          "coping": "Not at all helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "Some people find that having a simple mantra can really help, especially if things feel stressful. Try repeating something simple to yourself like: \"I can do it!\".",
+        "ImageID": "D16",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Very poor",
+          "coping": "Somewhat helpful",
+          "quitting": "Not at all helpful"
+        }
+      },
+      {
+        "input_message": "You spent a long time training your brain to want a cig. Now you're retraining your brain, and it's natural that this might take time.",
+        "ImageID": "D12",
+        "ratings": {
+          "content": "Good",
+          "design": "Acceptable",
+          "coping": "Moderately helpful",
+          "quitting": "Somewhat helpful"
+        }
+      },
+      {
+        "input_message": "Take a deep breath. Focus on today and the things you have accomplished. How many urges have you let pass? Give yourself some credit!",
+        "ImageID": "A17",
+        "ratings": {
+          "content": "Good",
+          "design": "Acceptable",
+          "coping": "Somewhat helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "If this situation becomes stressful for you, make an excuse to leave for a few minutes. If this doesn't help, it might be better to just leave early.",
+        "ImageID": "D31",
+        "ratings": {
+          "content": "Very good",
+          "design": "Poor",
+          "coping": "Extremely helpful",
+          "quitting": "Moderately helpful"
+        }
+      },
+      {
+        "input_message": "Crumple a piece of paper into a ball and imagine it is your urge. Toss the \"urge\" into the garbage or against the wall. By doing this, you are letting go of your urges.",
+        "ImageID": "A16",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "Now is a good time for BREAKS B=stop and Brake R=Read how your body feels E=Expand and take deep breaths A=Allow everything to be as it is K=Know what's important to you S=take 1 Step in a direction important to you",
+        "ImageID": "A24",
+        "ratings": {
+          "content": "Good",
+          "design": "Very good",
+          "coping": "Moderately helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "Did you know that just seeing other people smoke activates a part of your brain that is connected with the action of you smoking? This can bring on strong urges to smoke. One simple solution is to avoid seeing others smoke.",
+        "ImageID": "D7",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Very good",
+          "coping": "Extremely helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "If you find yourself thinking: \"I can't do this\", \"I need a cig\", or \"I'll just have one\", make sure you tell yourself \"I absolutely CAN do this\", \"I'm in control\". Take control of your negative thoughts!",
+        "ImageID": "D29",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      }
+    ]
+  },
+  "summary_text": "Age 23, Female, Every day, Motivation: Very motivated, Support: Very supportive, CPD: 7, TTF: Within 30 minutes"
+}

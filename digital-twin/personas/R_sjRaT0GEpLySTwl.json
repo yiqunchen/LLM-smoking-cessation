@@ -1,0 +1,136 @@
+{
+  "participant_id": "R_sjRaT0GEpLySTwl",
+  "demographics": {
+    "age_years": 28,
+    "gender_identity": "Female",
+    "race_ethnicity": "Black or African American",
+    "is_hispanic_latino": "No",
+    "education_level": "Bachelor's degree",
+    "household_income": ">=$100,000"
+  },
+  "smoking_behavior": {
+    "quit_intention": "Are currently trying to quit",
+    "days_smoked_past_30d": 30,
+    "cigs_per_day": "6",
+    "time_to_first_cig": "After 30 minutes",
+    "household_smokers": "No",
+    "friends_smoke_level": "Most of them",
+    "smoking_status": "Every day",
+    "quit_motivation_level": "Very motivated",
+    "social_support_to_quit": "Extremely supportive"
+  },
+  "psychosocial": {
+    "pain_blocks_valued_life": "Never true",
+    "fear_of_feelings": "Never true",
+    "worry_about_control": "Never true",
+    "memories_block_fulfillment": "Never true",
+    "emotions_cause_problems": "Never true",
+    "others_handle_life_better": "Never true",
+    "worry_blocks_success": "Never true"
+  },
+  "history": {
+    "rated_messages": [
+      {
+        "input_message": "Sometimes an urge comes on like a wave. Imagine what it is like to ride the wave as it ebbs and flows. Instead of trying to swim against it, try riding it out until it disappears into the sea.",
+        "ImageID": "A12",
+        "ratings": {
+          "content": "Very good",
+          "design": "Very good",
+          "coping": "Extremely helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "Remind yourself that by staying quit, you'll be freeing yourself from the constant cycle of cigarette, nicotine withdrawal, feeling stressed as a result and wanting another cigarette. Keep going and this will be a thing of the past!",
+        "ImageID": "D14",
+        "ratings": {
+          "content": "Very good",
+          "design": "Very good",
+          "coping": "Extremely helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "Read this rule out loud (if you can): IF someone offers me a cigarette THEN I will say 'no thanks, I don't want one.' Reading out if/then rules has been shown to help people stick with their decisions.",
+        "ImageID": "D25",
+        "ratings": {
+          "content": "Very good",
+          "design": "Very good",
+          "coping": "Extremely helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "Take a deep breath and let it out slowly. Notice that you are completely OK for this one breath. Do it again.",
+        "ImageID": "A44",
+        "ratings": {
+          "content": "Very good",
+          "design": "Very good",
+          "coping": "Extremely helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "Now is a good time for BREAKS B=stop and Brake R=Read how your body feels E=Expand and take deep breaths A=Allow everything to be as it is K=Know what's important to you S=take 1 Step in a direction important to you",
+        "ImageID": "A24",
+        "ratings": {
+          "content": "Very good",
+          "design": "Very good",
+          "coping": "Extremely helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "Maybe you could use these few minutes to work out whose birthday is next and what message you'll write in their card? Then when it comes you'll have something original and well thought-out to write!",
+        "ImageID": "D33",
+        "ratings": {
+          "content": "Very good",
+          "design": "Very good",
+          "coping": "Extremely helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "Tell yourself, \u201cI am going to quit smoking soon.\u201d Say it out loud. Say to yourself, \u201cI am too strong to continue smoking for the rest of my life.\"",
+        "ImageID": "D40",
+        "ratings": {
+          "content": "Very good",
+          "design": "Very good",
+          "coping": "Extremely helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "Notice what it feels like to see other people smoke and choose not to smoke. Notice what thoughts or emotions come up. Allow them to come and go. They will pass and so will this urge.",
+        "ImageID": "A57",
+        "ratings": {
+          "content": "Very good",
+          "design": "Very good",
+          "coping": "Extremely helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "Imagine this urge as just another backseat passenger that hopped in after seeing other people smoke. You are the driver and you still get to call the shots.",
+        "ImageID": "A60",
+        "ratings": {
+          "content": "Very good",
+          "design": "Very good",
+          "coping": "Extremely helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "Picture the people or things you care deeply about. On a scale of 0-10, how willing are you to let this urge pass for those reasons?",
+        "ImageID": "A9",
+        "ratings": {
+          "content": "Very good",
+          "design": "Very good",
+          "coping": "Extremely helpful",
+          "quitting": "Extremely helpful"
+        }
+      }
+    ]
+  },
+  "summary_text": "Age 28, Female, Every day, Motivation: Very motivated, Support: Extremely supportive, CPD: 6, TTF: After 30 minutes"
+}

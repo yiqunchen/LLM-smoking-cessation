@@ -1,0 +1,127 @@
+{
+  "participant_id": "R_1eFc3o9lO4Xcg1L",
+  "demographics": {
+    "age_years": 20,
+    "gender_identity": "Female",
+    "race_ethnicity": "Black or African American",
+    "is_hispanic_latino": "No",
+    "education_level": "High school graduate or GED",
+    "household_income": "$40,000-59,999"
+  },
+  "smoking_behavior": {
+    "quit_intention": "Are currently trying to quit",
+    "days_smoked_past_30d": 5,
+    "cigs_per_day": "2",
+    "time_to_first_cig": "After 30 minutes",
+    "household_smokers": "No",
+    "friends_smoke_level": "None of them",
+    "quit_attempts_count": "4",
+    "smoking_status": "Some days",
+    "quit_motivation_level": "Extremely motivated",
+    "social_support_to_quit": "Extremely supportive"
+  },
+  "psychosocial": {
+    "pain_blocks_valued_life": "Never true",
+    "fear_of_feelings": "Never true",
+    "worry_about_control": "Never true",
+    "memories_block_fulfillment": "Never true",
+    "emotions_cause_problems": "Never true",
+    "others_handle_life_better": "Never true",
+    "worry_blocks_success": "Never true"
+  },
+  "history": {
+    "rated_messages": [
+      {
+        "input_message": "When your mind tells you that you will be less stressed after smoking a cigarette, remember that you don't have to listen to that thought. It's just a thought and nothing more.",
+        "ImageID": "A32",
+        "ratings": {
+          "content": "Very good",
+          "design": "Very good",
+          "coping": "Extremely helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "Have confidence in knowing that you can have this urge, choose not to smoke, be okay, and choose to do things that matter most to you.",
+        "ImageID": "A28",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Acceptable",
+          "coping": "Somewhat helpful",
+          "quitting": "Somewhat helpful"
+        }
+      },
+      {
+        "input_message": "Think of your anxious mind like a toddler throwing a tantrum. The best way to respond is to quietly watch, but not give in.",
+        "ImageID": "A40",
+        "ratings": {
+          "content": "Very poor",
+          "design": "Very poor",
+          "coping": "Not at all helpful",
+          "quitting": "Not at all helpful"
+        }
+      },
+      {
+        "input_message": "Read this rule out loud (if you can): IF someone offers me a cigarette THEN I will say 'no thanks, I don't want one.' Reading out if/then rules has been shown to help people stick with their decisions.",
+        "ImageID": "D25",
+        "ratings": {
+          "content": "Very good",
+          "design": "Very good",
+          "coping": "Extremely helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "Are you feeling down because you are thinking of smoking? It's really important to be kind to yourself, and to make sure you give yourself praise too!",
+        "ImageID": "D2",
+        "ratings": {
+          "content": "Very poor",
+          "design": "Very poor",
+          "coping": "Not at all helpful",
+          "quitting": "Not at all helpful"
+        }
+      },
+      {
+        "input_message": "You don't have to act on this feeling by smoking or doing anything about it. Give it some space, breathe, and see if it changes. Let the urge and feeling be there while you focus on doing something you care about.",
+        "ImageID": "A41",
+        "ratings": {
+          "content": "Very good",
+          "design": "Very good",
+          "coping": "Extremely helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "Instead of smoking, think of 3 things from today that you are grateful for. These can be anything, even small things! Now ask yourself, why are you grateful for these things?",
+        "ImageID": "D60",
+        "ratings": {
+          "content": "Very good",
+          "design": "Very good",
+          "coping": "Extremely helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "Pause and take 5 slow breaths. Pausing just for a moment breaks the automatic habit of reaching for a smoke.",
+        "ImageID": "D65",
+        "ratings": {
+          "content": "Very poor",
+          "design": "Very poor",
+          "coping": "Not at all helpful",
+          "quitting": "Not at all helpful"
+        }
+      },
+      {
+        "input_message": "Tell yourself, \u201cI am going to quit smoking soon.\u201d Say it out loud. Say to yourself, \u201cI am too strong to continue smoking for the rest of my life.\"",
+        "ImageID": "D40",
+        "ratings": {
+          "content": "Very good",
+          "design": "Very good",
+          "coping": "Extremely helpful",
+          "quitting": "Extremely helpful"
+        }
+      }
+    ]
+  },
+  "summary_text": "Age 20, Female, Some days, Motivation: Extremely motivated, Support: Extremely supportive, CPD: 2, TTF: After 30 minutes"
+}

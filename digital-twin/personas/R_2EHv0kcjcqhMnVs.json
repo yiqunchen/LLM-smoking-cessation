@@ -1,0 +1,137 @@
+{
+  "participant_id": "R_2EHv0kcjcqhMnVs",
+  "demographics": {
+    "age_years": 30,
+    "gender_identity": "Male",
+    "race_ethnicity": "White",
+    "is_hispanic_latino": "No",
+    "education_level": "Some college",
+    "household_income": "$80,000-99,000"
+  },
+  "smoking_behavior": {
+    "quit_intention": "Are currently trying to quit",
+    "days_smoked_past_30d": 20,
+    "cigs_per_day": "2",
+    "time_to_first_cig": "After 30 minutes",
+    "household_smokers": "No",
+    "friends_smoke_level": "Some of them",
+    "quit_attempts_count": "10 or more times",
+    "smoking_status": "Some days",
+    "quit_motivation_level": "Very motivated",
+    "social_support_to_quit": "Very supportive"
+  },
+  "psychosocial": {
+    "pain_blocks_valued_life": "Very seldom true",
+    "fear_of_feelings": "Seldom true",
+    "worry_about_control": "Seldom true",
+    "memories_block_fulfillment": "Seldom true",
+    "emotions_cause_problems": "Very seldom true",
+    "others_handle_life_better": "Seldom true",
+    "worry_blocks_success": "Seldom true"
+  },
+  "history": {
+    "rated_messages": [
+      {
+        "input_message": "Even though you are stressed, are you willing to sit with this urge until it passes if will help you break this habit?",
+        "ImageID": "A35",
+        "ratings": {
+          "content": "Good",
+          "design": "Very good",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "When smoking, it can feel like your hands are for holding a cigarette, your mouth is for smoking the cigarette, and your chest and lungs need to breathe in the smoke. Spend 3 minutes noticing how your hands feel, how your mouth feels, and how your chest feels. The more you practice noticing these things without smoking, the sooner your body will stop being a trigger for you.",
+        "ImageID": "A22",
+        "ratings": {
+          "content": "Good",
+          "design": "Very good",
+          "coping": "Extremely helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "Acknowledge your unhelpful thought by writing it down on a piece of paper. Then let it be on it's way by crumpling it up and tossing it in a trash can.",
+        "ImageID": "A49",
+        "ratings": {
+          "content": "Good",
+          "design": "Very good",
+          "coping": "Extremely helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "You don't have to act on this feeling by smoking or doing anything about it. Give it some space, breathe, and see if it changes. Let the urge and feeling be there while you focus on doing something you care about.",
+        "ImageID": "A41",
+        "ratings": {
+          "content": "Good",
+          "design": "Very good",
+          "coping": "Very helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "Try to avoid seeing other people smoke. It might sound basic but brain see, brain want! If you can, make life easier and avoid the people you used to smoke with for some time where possible.",
+        "ImageID": "D30",
+        "ratings": {
+          "content": "Good",
+          "design": "Very good",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "Stress is temporary. It comes and goes like passing clouds in the sky. When stress demands you to light up, remember you can let it pass by without smoking.",
+        "ImageID": "A33",
+        "ratings": {
+          "content": "Very good",
+          "design": "Acceptable",
+          "coping": "Moderately helpful",
+          "quitting": "Moderately helpful"
+        }
+      },
+      {
+        "input_message": "Think about times in the past when you have let urges pass during a stressful moment, and notice what helped make that moment easier.",
+        "ImageID": "A39",
+        "ratings": {
+          "content": "Good",
+          "design": "Very good",
+          "coping": "Very helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "Stop and take 3 deep breaths. Then decide if you really want to smoke right now or not. Pausing for a few breaths can help lessen the habit.",
+        "ImageID": "A26",
+        "ratings": {
+          "content": "Very good",
+          "design": "Good",
+          "coping": "Extremely helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "To keep on track, small changes can really help. For example, keep a list of quit reasons where you used to keep cigarettes, rearrange your living space, or grab some extra pens to fiddle with to keep your hands busy.",
+        "ImageID": "D10",
+        "ratings": {
+          "content": "Good",
+          "design": "Very good",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "Urges are like annoying ads. You might see them but you don't have to buy what they're selling.",
+        "ImageID": "A30",
+        "ratings": {
+          "content": "Very good",
+          "design": "Good",
+          "coping": "Extremely helpful",
+          "quitting": "Extremely helpful"
+        }
+      }
+    ]
+  },
+  "summary_text": "Age 30, Male, Some days, Motivation: Very motivated, Support: Very supportive, CPD: 2, TTF: After 30 minutes"
+}

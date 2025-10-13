@@ -1,0 +1,127 @@
+{
+  "participant_id": "R_2cC77JTlTPsjYUU",
+  "demographics": {
+    "age_years": 27,
+    "gender_identity": "Male",
+    "race_ethnicity": "White",
+    "is_hispanic_latino": "Yes",
+    "education_level": "Some college",
+    "household_income": "$40,000-59,999"
+  },
+  "smoking_behavior": {
+    "quit_intention": "Will quit in the next month",
+    "days_smoked_past_30d": 22,
+    "cigs_per_day": "6",
+    "time_to_first_cig": "Within 30 minutes",
+    "household_smokers": "No",
+    "friends_smoke_level": "Some of them",
+    "quit_attempts_count": "10 or more times",
+    "smoking_status": "Every day",
+    "quit_motivation_level": "Extremely motivated",
+    "social_support_to_quit": "Very supportive"
+  },
+  "psychosocial": {
+    "pain_blocks_valued_life": "Sometimes true",
+    "fear_of_feelings": "Very seldom true",
+    "worry_about_control": "Seldom true",
+    "memories_block_fulfillment": "Seldom true",
+    "emotions_cause_problems": "Sometimes true",
+    "others_handle_life_better": "Very seldom true",
+    "worry_blocks_success": "Seldom true"
+  },
+  "history": {
+    "rated_messages": [
+      {
+        "input_message": "If you get urges, remind yourself that cigarettes did that to you. If you go back to them, they will keep making you suffer. Now you are breaking free.",
+        "ImageID": "D17",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Extremely helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "Are you willing to let this urge pass for the sake of living a good long time with the people who matter most to you? When you have an urge, think about the people most important to you.",
+        "ImageID": "A15",
+        "ratings": {
+          "content": "Very good",
+          "design": "Good",
+          "coping": "Extremely helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "Take a minute to notice what the urge feels like in your body without smoking a cigarette. Notice what is going on. See what happens. Does the urge pass?",
+        "ImageID": "A21",
+        "ratings": {
+          "content": "Good",
+          "design": "Very good",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "Imagine that your urge is a backseat passenger trying to distract you from reaching your destination. See if you can choose to keep driving instead of allowing your urges to distract you from where you want to go.",
+        "ImageID": "A7",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Extremely helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "Reduce your stress by using your next break to list four things that have gone well so far today. It might feel like a bit of effort, but doing this will help your mind to refocus, and help you to feel calmer.",
+        "ImageID": "D1",
+        "ratings": {
+          "content": "Good",
+          "design": "Very good",
+          "coping": "Extremely helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "If this situation becomes stressful for you, make an excuse to leave for a few minutes. If this doesn't help, it might be better to just leave early.",
+        "ImageID": "D31",
+        "ratings": {
+          "content": "Very good",
+          "design": "Good",
+          "coping": "Very helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "Think about your hero, or someone you admire. What do you admire about them? Often our heroes are people who struggle and succeed in difficult circumstances. Now's the chance to be your own hero - by not smoking despite the challenges of stress and strong urges!",
+        "ImageID": "D20",
+        "ratings": {
+          "content": "Good",
+          "design": "Very good",
+          "coping": "Very helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "Instead of smoking, take 10 deep, slow breaths and count them. Pay attention to what your breathing feels like. If you lose count, that's okay, just start over at 1 until you get to 10.",
+        "ImageID": "D59",
+        "ratings": {
+          "content": "Very good",
+          "design": "Good",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "Read this rule out loud (if you can): IF someone offers me a cigarette THEN I will say 'no thanks, I don't want one.' Reading out if/then rules has been shown to help people stick with their decisions.",
+        "ImageID": "D25",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Extremely helpful",
+          "quitting": "Extremely helpful"
+        }
+      }
+    ]
+  },
+  "summary_text": "Age 27, Male, Every day, Motivation: Extremely motivated, Support: Very supportive, CPD: 6, TTF: Within 30 minutes"
+}

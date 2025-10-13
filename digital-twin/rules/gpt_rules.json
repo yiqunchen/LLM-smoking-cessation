@@ -1,0 +1,81 @@
+{
+  "content": {
+    "positive": [
+      {"phrase": "take a deep breath", "weight": 1.5},
+      "focus on today",
+      "give yourself some credit",
+      "remind yourself of how far you've come",
+      "hard work",
+      "favorite song",
+      "chewing gum",
+      "sit with that temptation",
+      "stay strong"
+    ],
+    "negative": [
+      "just let them pass by like a cloud",
+      "birthday card",
+      "I'm having the thought that",
+      "not thinking about giraffes",
+      "scented candle",
+      "burn some incense",
+      "your thoughts are not always true"
+    ]
+  },
+  "design": {
+    "positive": [
+      {"phrase": "urge comes on like a wave", "weight": 1.5},
+      "ride the wave",
+      "favorite song",
+      "chewing sugar free gum",
+      "running a marathon",
+      "sit with that temptation"
+    ],
+    "negative": [
+      "like a cloud in the sky",
+      "no need to get rid",
+      "self-talk",
+      "I don't need a cigarette",
+      "I'm having the thought that",
+      "completely OK for this one breath"
+    ]
+  },
+  "coping": {
+    "positive": [
+      "worrisome thoughts",
+      "play a game",
+      "online quiz",
+      "chewing gum",
+      "avoid seeing other people smoke",
+      "smoke-free day"
+    ],
+    "negative": [
+      "cloud in the sky",
+      "birthday card",
+      "not thinking about giraffes",
+      "make an excuse to leave",
+      "happy memory",
+      "puzzle"
+    ]
+  },
+  "quitting": {
+    "positive": [
+      "play a game",
+      "online quiz",
+      "chewing gum",
+      "risky situation",
+      "remind yourself of how far you've come",
+      "hard work",
+      "stay strong",
+      "give yourself some credit",
+      "thankful for this week"
+    ],
+    "negative": [
+      "cloud in the sky",
+      "not thinking about giraffes",
+      "I'm having the thought that",
+      "choose not to smoke",
+      "things that matter most to you",
+      "no need to get rid"
+    ]
+  }
+}

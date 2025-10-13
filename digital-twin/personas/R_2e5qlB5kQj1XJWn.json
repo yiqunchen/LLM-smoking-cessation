@@ -1,0 +1,137 @@
+{
+  "participant_id": "R_2e5qlB5kQj1XJWn",
+  "demographics": {
+    "age_years": 27,
+    "gender_identity": "Female",
+    "race_ethnicity": "White",
+    "is_hispanic_latino": "No",
+    "education_level": "Some college",
+    "household_income": "$25,000-39,999"
+  },
+  "smoking_behavior": {
+    "quit_intention": "Are currently trying to quit",
+    "days_smoked_past_30d": 21,
+    "cigs_per_day": "8",
+    "time_to_first_cig": "Within 30 minutes",
+    "household_smokers": "No",
+    "friends_smoke_level": "Some of them",
+    "quit_attempts_count": "6",
+    "smoking_status": "Every day",
+    "quit_motivation_level": "Very motivated",
+    "social_support_to_quit": "Very supportive"
+  },
+  "psychosocial": {
+    "pain_blocks_valued_life": "Seldom true",
+    "fear_of_feelings": "Sometimes true",
+    "worry_about_control": "Almost always true",
+    "memories_block_fulfillment": "Almost always true",
+    "emotions_cause_problems": "Always true",
+    "others_handle_life_better": "Frequently true",
+    "worry_blocks_success": "Almost always true"
+  },
+  "history": {
+    "rated_messages": [
+      {
+        "input_message": "When your mind tells you that you will be less stressed after smoking a cigarette, remember that you don't have to listen to that thought. It's just a thought and nothing more.",
+        "ImageID": "A32",
+        "ratings": {
+          "content": "Very good",
+          "design": "Good",
+          "coping": "Moderately helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "Instead of smoking, think of 3 things from today that you are grateful for. These can be anything, even small things! Now ask yourself, why are you grateful for these things?",
+        "ImageID": "D60",
+        "ratings": {
+          "content": "Very good",
+          "design": "Very good",
+          "coping": "Extremely helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "Maybe you could use these few minutes to work out whose birthday is next and what message you'll write in their card? Then when it comes you'll have something original and well thought-out to write!",
+        "ImageID": "D33",
+        "ratings": {
+          "content": "Good",
+          "design": "Very good",
+          "coping": "Extremely helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "Write down why you want to stop smoking to resist a craving. Remember, trying something to beat the urge is always better than doing nothing. Each time you resist a cig, you're one step closer to being tobacco-free.",
+        "ImageID": "D46",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Acceptable",
+          "coping": "Somewhat helpful",
+          "quitting": "Somewhat helpful"
+        }
+      },
+      {
+        "input_message": "Just because other people are smoking, doesn't mean you have to. Practice allowing this urge to be present for 5 minutes. When it passes, give yourself credit.",
+        "ImageID": "A59",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Poor",
+          "coping": "Not at all helpful",
+          "quitting": "Not at all helpful"
+        }
+      },
+      {
+        "input_message": "Practice going 10 minutes without smoking. Think of it just as practice. When the urge passes, reward yourself with a break from work or dinner from your favorite restaurant!",
+        "ImageID": "A11",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Very poor",
+          "coping": "Not at all helpful",
+          "quitting": "Not at all helpful"
+        }
+      },
+      {
+        "input_message": "Remind yourself that by staying quit, you'll be freeing yourself from the constant cycle of cigarette, nicotine withdrawal, feeling stressed as a result and wanting another cigarette. Keep going and this will be a thing of the past!",
+        "ImageID": "D14",
+        "ratings": {
+          "content": "Poor",
+          "design": "Very poor",
+          "coping": "Not at all helpful",
+          "quitting": "Not at all helpful"
+        }
+      },
+      {
+        "input_message": "When you begin to crave a cig, concentrate on your reasons for not smoking. Keep a list on your phone and look at it when you feel yourself beginning to falter.",
+        "ImageID": "D50",
+        "ratings": {
+          "content": "Very poor",
+          "design": "Very poor",
+          "coping": "Not at all helpful",
+          "quitting": "Not at all helpful"
+        }
+      },
+      {
+        "input_message": "When you notice yourself trapped in stressful thoughts or worry, say out loud, \"I'm noticing that I'm having some worrisome thoughts.\" This helps unhook you from your thoughts so you don't stay caught in them.",
+        "ImageID": "A34",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Acceptable",
+          "coping": "Somewhat helpful",
+          "quitting": "Somewhat helpful"
+        }
+      },
+      {
+        "input_message": "Don't test yourself needlessly. If this social situation gets uncomfortable then leave briefly if you can. It really helps and it's fine to do it more than once!",
+        "ImageID": "D28",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Poor",
+          "coping": "Not at all helpful",
+          "quitting": "Not at all helpful"
+        }
+      }
+    ]
+  },
+  "summary_text": "Age 27, Female, Every day, Motivation: Very motivated, Support: Very supportive, CPD: 8, TTF: Within 30 minutes"
+}

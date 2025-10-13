@@ -1,0 +1,127 @@
+{
+  "participant_id": "R_3lS0u7Fds4dvaHE",
+  "demographics": {
+    "age_years": 26,
+    "gender_identity": "Female",
+    "race_ethnicity": "White,Black or African American",
+    "is_hispanic_latino": "No",
+    "education_level": "Bachelor's degree",
+    "household_income": "$60,000-79,999"
+  },
+  "smoking_behavior": {
+    "quit_intention": "Are currently trying to quit",
+    "days_smoked_past_30d": 30,
+    "cigs_per_day": "2",
+    "time_to_first_cig": "After 30 minutes",
+    "household_smokers": "No",
+    "friends_smoke_level": "Some of them",
+    "quit_attempts_count": "3",
+    "smoking_status": "Every day",
+    "quit_motivation_level": "Very motivated",
+    "social_support_to_quit": "Very supportive"
+  },
+  "psychosocial": {
+    "pain_blocks_valued_life": "Frequently true",
+    "fear_of_feelings": "Never true",
+    "worry_about_control": "Never true",
+    "memories_block_fulfillment": "Never true",
+    "emotions_cause_problems": "Never true",
+    "others_handle_life_better": "Very seldom true",
+    "worry_blocks_success": "Very seldom true"
+  },
+  "history": {
+    "rated_messages": [
+      {
+        "input_message": "When a craving hits, keep your hands busy by doing the dishes or taking out the trash. Small chores will help pass the time during a craving.",
+        "ImageID": "D41",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Poor",
+          "coping": "Somewhat helpful",
+          "quitting": "Somewhat helpful"
+        }
+      },
+      {
+        "input_message": "Have confidence in knowing that you can have this urge, choose not to smoke, be okay, and choose to do things that matter most to you.",
+        "ImageID": "A28",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Good",
+          "coping": "Moderately helpful",
+          "quitting": "Moderately  helpful"
+        }
+      },
+      {
+        "input_message": "Take one deep breath and see what it feels like to be triggered and choose not to smoke.",
+        "ImageID": "D66",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "Now is a good time for BREAKS B=stop and Brake R=Read how your body feels E=Expand and take deep breaths A=Allow everything to be as it is K=Know what's important to you S=take 1 Step in a direction important to you",
+        "ImageID": "A24",
+        "ratings": {
+          "content": "Poor",
+          "design": "Poor",
+          "coping": "Somewhat helpful",
+          "quitting": "Moderately helpful"
+        }
+      },
+      {
+        "input_message": "You were often stressed in this location and this might trigger urges. What can you do to reduce your stress here? If you can avoid this place until things settle down, then do.",
+        "ImageID": "D38",
+        "ratings": {
+          "content": "Very poor",
+          "design": "Very poor",
+          "coping": "Somewhat helpful",
+          "quitting": "Moderately helpful"
+        }
+      },
+      {
+        "input_message": "It's quite common for people to try and give themselves reasons for having 'just one' when they start working on quitting smoking. If you have these thoughts, let them happen, then picture yourself putting them into a hot-air balloon and watch them float away.",
+        "ImageID": "A2",
+        "ratings": {
+          "content": "Good",
+          "design": "Acceptable",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "Maybe you could use these few minutes to work out whose birthday is next and what message you'll write in their card? Then when it comes you'll have something original and well thought-out to write!",
+        "ImageID": "D33",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Poor",
+          "coping": "Moderately helpful",
+          "quitting": "Moderately helpful"
+        }
+      },
+      {
+        "input_message": "Step back from what is stressful by taking 10 slow breaths. Count them as you go and notice your breath. If you get distracted, keep starting over until you get to 10.",
+        "ImageID": "D67",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Good",
+          "coping": "Somewhat helpful",
+          "quitting": "Somewhat helpful"
+        }
+      },
+      {
+        "input_message": "Think of urges as loud construction noises. Sometimes there's nothing you can do except agree that it's annoying. If you fight it, you feel more irritated, right? Let your urge be there until it passes on its own.",
+        "ImageID": "A13",
+        "ratings": {
+          "content": "Poor",
+          "design": "Poor",
+          "coping": "Somewhat helpful",
+          "quitting": "Not at all helpful"
+        }
+      }
+    ]
+  },
+  "summary_text": "Age 26, Female, Every day, Motivation: Very motivated, Support: Very supportive, CPD: 2, TTF: After 30 minutes"
+}

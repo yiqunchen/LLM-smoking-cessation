@@ -1,0 +1,137 @@
+{
+  "participant_id": "R_8Gm4PIZJeorKjwR",
+  "demographics": {
+    "age_years": 28,
+    "gender_identity": "Male",
+    "race_ethnicity": "White",
+    "is_hispanic_latino": "Yes",
+    "education_level": "Master's degree",
+    "household_income": "$80,000-99,000"
+  },
+  "smoking_behavior": {
+    "quit_intention": "Are currently trying to quit",
+    "days_smoked_past_30d": 30,
+    "cigs_per_day": "6",
+    "time_to_first_cig": "Within 30 minutes",
+    "household_smokers": "Yes",
+    "friends_smoke_level": "Most of them",
+    "quit_attempts_count": "6",
+    "smoking_status": "Every day",
+    "quit_motivation_level": "Moderately motivated",
+    "social_support_to_quit": "Moderately supportive"
+  },
+  "psychosocial": {
+    "pain_blocks_valued_life": "Frequently true",
+    "fear_of_feelings": "Frequently true",
+    "worry_about_control": "Frequently true",
+    "memories_block_fulfillment": "Frequently true",
+    "emotions_cause_problems": "Frequently true",
+    "others_handle_life_better": "Frequently true",
+    "worry_blocks_success": "Frequently true"
+  },
+  "history": {
+    "rated_messages": [
+      {
+        "input_message": "Take a slow, deep breath in. And let it out. Now, ask yourself, \"Am I willing to go one minute without smoking?\" When that minute is over, ask yourself this question again.",
+        "ImageID": "A20",
+        "ratings": {
+          "content": "Very good",
+          "design": "Very good",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "Each time you choose to not smoke after seeing someone else light up, you lessen the habit a little more.",
+        "ImageID": "A58",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "Life can get you really stressed out, but turning to cigs isn't the answer. Call or text family and friends instead. Ask them to help you stay on track.",
+        "ImageID": "D55",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "Spend 3 minutes noticing how your hands feel, how your mouth feels, and how your chest feels. The more you practice noticing these things without smoking, the sooner this place will stop being a trigger for you.",
+        "ImageID": "A53",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "Take a deep breath. Focus on today and the things you have accomplished. How many urges have you let pass? Give yourself some credit!",
+        "ImageID": "A17",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "If you miss doing something with your hands, try turning a coin or pen over and over with your fingers.",
+        "ImageID": "D49",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "Keep picturing yourself getting home later today knowing that you've gained a smoke-free day. It's nearly a reality!",
+        "ImageID": "D5",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "If you usually smoke while you talk on the phone, try taking the next call in a place where you can't smoke and focus on the conversation. The urge will pass.",
+        "ImageID": "D43",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "If you find yourself with a few minutes to spare, it can be nice to read back over old messages. It's also a chance to reply to ones that you might have forgotten about!",
+        "ImageID": "D18",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "Instead of smoking, take 10 deep, slow breaths and count them. Pay attention to what your breathing feels like. If you lose count, that's okay, just start over at 1 until you get to 10.",
+        "ImageID": "D59",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      }
+    ]
+  },
+  "summary_text": "Age 28, Male, Every day, Motivation: Moderately motivated, Support: Moderately supportive, CPD: 6, TTF: Within 30 minutes"
+}

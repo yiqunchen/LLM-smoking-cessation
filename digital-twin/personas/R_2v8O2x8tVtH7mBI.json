@@ -1,0 +1,137 @@
+{
+  "participant_id": "R_2v8O2x8tVtH7mBI",
+  "demographics": {
+    "age_years": 27,
+    "gender_identity": "Male",
+    "race_ethnicity": "White",
+    "is_hispanic_latino": "Yes",
+    "education_level": "Bachelor's degree",
+    "household_income": "$60,000-79,999"
+  },
+  "smoking_behavior": {
+    "quit_intention": "Will quit in the next month",
+    "days_smoked_past_30d": 27,
+    "cigs_per_day": "2",
+    "time_to_first_cig": "Within 30 minutes",
+    "household_smokers": "Yes",
+    "friends_smoke_level": "Most of them",
+    "quit_attempts_count": "2",
+    "smoking_status": "Every day",
+    "quit_motivation_level": "Extremely motivated",
+    "social_support_to_quit": "Extremely supportive"
+  },
+  "psychosocial": {
+    "pain_blocks_valued_life": "Always true",
+    "fear_of_feelings": "Almost always true",
+    "worry_about_control": "Always true",
+    "memories_block_fulfillment": "Always true",
+    "emotions_cause_problems": "Always true",
+    "others_handle_life_better": "Always true",
+    "worry_blocks_success": "Sometimes true"
+  },
+  "history": {
+    "rated_messages": [
+      {
+        "input_message": "If you're stuck at home and physical activity doesn't interest you, try gaming, needlework, drawing, or journaling.",
+        "ImageID": "D44",
+        "ratings": {
+          "content": "Very good",
+          "design": "Very good",
+          "coping": "Extremely helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "Practice going 10 minutes without smoking. Think of it just as practice. When the urge passes, reward yourself with a break from work or dinner from your favorite restaurant!",
+        "ImageID": "A11",
+        "ratings": {
+          "content": "Good",
+          "design": "Very good",
+          "coping": "Extremely helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "Recent research has found that people who use self-talk when they try not to smoke (e.g. telling yourself 'you can do it') are more successful than people who don't. It might seem a bit strange, but talking to yourself like this appears to really help.",
+        "ImageID": "D15",
+        "ratings": {
+          "content": "Very good",
+          "design": "Very good",
+          "coping": "Extremely helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "Just because other people are smoking, doesn't mean you have to. Practice allowing this urge to be present for 5 minutes. When it passes, give yourself credit.",
+        "ImageID": "A59",
+        "ratings": {
+          "content": "Good",
+          "design": "Very good",
+          "coping": "Extremely helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "Imagine your urge is like a talk radio station going on about something you disagree with. Arguing with it doesn't change what they say. Instead, just let them talk while you focus on what's important to you.",
+        "ImageID": "A14",
+        "ratings": {
+          "content": "Very good",
+          "design": "Good",
+          "coping": "Extremely helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "If you find sounds soothing, tune in to the soundtrack of nature, like crashing waves, the wind rustling through trees, or birds singing.",
+        "ImageID": "D48",
+        "ratings": {
+          "content": "Very good",
+          "design": "Very good",
+          "coping": "Extremely helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "How you would feel later on if you smoked during this social situation? Now think how good you'll feel for resisting!",
+        "ImageID": "D26",
+        "ratings": {
+          "content": "Very good",
+          "design": "Very good",
+          "coping": "Very helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "If you miss doing something with your hands, try turning a coin or pen over and over with your fingers.",
+        "ImageID": "D49",
+        "ratings": {
+          "content": "Very good",
+          "design": "Very good",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "If you get urges, remind yourself that cigarettes did that to you. If you go back to them, they will keep making you suffer. Now you are breaking free.",
+        "ImageID": "D17",
+        "ratings": {
+          "content": "Very good",
+          "design": "Very good",
+          "coping": "Extremely helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "Did you know that just seeing other people smoke activates a part of your brain that is connected with the action of you smoking? This can bring on strong urges to smoke. One simple solution is to avoid seeing others smoke.",
+        "ImageID": "D7",
+        "ratings": {
+          "content": "Very good",
+          "design": "Very good",
+          "coping": "Extremely helpful",
+          "quitting": "Very helpful"
+        }
+      }
+    ]
+  },
+  "summary_text": "Age 27, Male, Every day, Motivation: Extremely motivated, Support: Extremely supportive, CPD: 2, TTF: Within 30 minutes"
+}

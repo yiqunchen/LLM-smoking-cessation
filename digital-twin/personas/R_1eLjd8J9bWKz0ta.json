@@ -1,0 +1,137 @@
+{
+  "participant_id": "R_1eLjd8J9bWKz0ta",
+  "demographics": {
+    "age_years": 29,
+    "gender_identity": "Male",
+    "race_ethnicity": "White",
+    "is_hispanic_latino": "No",
+    "education_level": "Some college",
+    "household_income": "$60,000-79,999"
+  },
+  "smoking_behavior": {
+    "quit_intention": "Will quit in the next month",
+    "days_smoked_past_30d": 21,
+    "cigs_per_day": "2",
+    "time_to_first_cig": "After 30 minutes",
+    "household_smokers": "Yes",
+    "friends_smoke_level": "Some of them",
+    "quit_attempts_count": "4",
+    "smoking_status": "Some days",
+    "quit_motivation_level": "Extremely motivated",
+    "social_support_to_quit": "Extremely supportive"
+  },
+  "psychosocial": {
+    "pain_blocks_valued_life": "Very seldom true",
+    "fear_of_feelings": "Seldom true",
+    "worry_about_control": "Very seldom true",
+    "memories_block_fulfillment": "Seldom true",
+    "emotions_cause_problems": "Sometimes true",
+    "others_handle_life_better": "Seldom true",
+    "worry_blocks_success": "Never true"
+  },
+  "history": {
+    "rated_messages": [
+      {
+        "input_message": "To help get through a 'risky situation', remind yourself of how far you've come and the effort that you've put in. Don't ruin your hard work - stay strong!",
+        "ImageID": "D24",
+        "ratings": {
+          "content": "Good",
+          "design": "Acceptable",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "One way to combat any urges is to keep your mouth busy - some people find that chewing sugar free gum, mints, or even a pen can be a good alternative.",
+        "ImageID": "D8",
+        "ratings": {
+          "content": "Good",
+          "design": "Acceptable",
+          "coping": "Very helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "Imagine your urge is like a talk radio station going on about something you disagree with. Arguing with it doesn't change what they say. Instead, just let them talk while you focus on what's important to you.",
+        "ImageID": "A14",
+        "ratings": {
+          "content": "Good",
+          "design": "Acceptable",
+          "coping": "Moderately helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "The best way to deal with any urges from being around smokers is to get out of the situation briefly until it goes. Make an excuse, go to the toilet, go get some water, pretend you need to get some phone reception!",
+        "ImageID": "D21",
+        "ratings": {
+          "content": "Very good",
+          "design": "Good",
+          "coping": "Extremely helpful",
+          "quitting": "Moderately helpful"
+        }
+      },
+      {
+        "input_message": "Instead of lighting up a cigarette, light a scented candle or burn some incense.",
+        "ImageID": "D47",
+        "ratings": {
+          "content": "Very good",
+          "design": "Good",
+          "coping": "Moderately helpful",
+          "quitting": "Moderately helpful"
+        }
+      },
+      {
+        "input_message": "Instead of smoking, take 10 deep, slow breaths and count them. Pay attention to what your breathing feels like. If you lose count, that's okay, just start over at 1 until you get to 10.",
+        "ImageID": "D59",
+        "ratings": {
+          "content": "Very good",
+          "design": "Acceptable",
+          "coping": "Very helpful",
+          "quitting": "Moderately helpful"
+        }
+      },
+      {
+        "input_message": "Urges to smoke usually only last a few minutes. Distract yourself by NOT thinking about giraffes, or leave the situation until it passes.",
+        "ImageID": "D23",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Extremely helpful",
+          "quitting": "Moderately helpful"
+        }
+      },
+      {
+        "input_message": "Keep your mind occupied if you get an urge. Do a mental puzzle, make your next shopping list, read a book, write a poem\u2026you might be surprised how well occupying your mind can get rid of urges.",
+        "ImageID": "D35",
+        "ratings": {
+          "content": "Very good",
+          "design": "Acceptable",
+          "coping": "Moderately helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "If you find yourself thinking: \"I can't do this\", \"I need a cig\", or \"I'll just have one\", make sure you tell yourself \"I absolutely CAN do this\", \"I'm in control\". Take control of your negative thoughts!",
+        "ImageID": "D29",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Good",
+          "coping": "Moderately helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "Imagine that your urge is a backseat passenger trying to distract you from reaching your destination. See if you can choose to keep driving instead of allowing your urges to distract you from where you want to go.",
+        "ImageID": "A7",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Good",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      }
+    ]
+  },
+  "summary_text": "Age 29, Male, Some days, Motivation: Extremely motivated, Support: Extremely supportive, CPD: 2, TTF: After 30 minutes"
+}

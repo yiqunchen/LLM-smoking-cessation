@@ -1,0 +1,137 @@
+{
+  "participant_id": "R_sL886btNB2lJFip",
+  "demographics": {
+    "age_years": 28,
+    "gender_identity": "Female",
+    "race_ethnicity": "White,Asian",
+    "is_hispanic_latino": "No",
+    "education_level": "High school graduate or GED",
+    "household_income": "< $15,000"
+  },
+  "smoking_behavior": {
+    "quit_intention": "Will quit in the next month",
+    "days_smoked_past_30d": 4,
+    "cigs_per_day": "1",
+    "time_to_first_cig": "Within 30 minutes",
+    "household_smokers": "No",
+    "friends_smoke_level": "Most of them",
+    "quit_attempts_count": "3",
+    "smoking_status": "Some days",
+    "quit_motivation_level": "Very motivated",
+    "social_support_to_quit": "Extremely supportive"
+  },
+  "psychosocial": {
+    "pain_blocks_valued_life": "Frequently true",
+    "fear_of_feelings": "Almost always true",
+    "worry_about_control": "Always true",
+    "memories_block_fulfillment": "Always true",
+    "emotions_cause_problems": "Always true",
+    "others_handle_life_better": "Always true",
+    "worry_blocks_success": "Always true"
+  },
+  "history": {
+    "rated_messages": [
+      {
+        "input_message": "When your mind tells you that you will be less stressed after smoking a cigarette, remember that you don't have to listen to that thought. It's just a thought and nothing more.",
+        "ImageID": "A32",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Acceptable",
+          "coping": "Somewhat helpful",
+          "quitting": "Moderately helpful"
+        }
+      },
+      {
+        "input_message": "Spend 3 minutes noticing how your hands feel, how your mouth feels, and how your chest feels. The more you practice noticing these things without smoking, the sooner this place will stop being a trigger for you.",
+        "ImageID": "A53",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Poor",
+          "coping": "Somewhat helpful",
+          "quitting": "Somewhat helpful"
+        }
+      },
+      {
+        "input_message": "Practice staying in this location without smoking. Just notice your urge. Practicing this will weaken this trigger with time. Just think of it as practice.",
+        "ImageID": "A51",
+        "ratings": {
+          "content": "Very poor",
+          "design": "Very poor",
+          "coping": "Not at all helpful",
+          "quitting": "Not at all helpful"
+        }
+      },
+      {
+        "input_message": "Stop and take 3 deep breaths. Then decide if you really want to smoke right now or not. Pausing for a few breaths can help lessen the habit.",
+        "ImageID": "A26",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Acceptable",
+          "coping": "Moderately helpful",
+          "quitting": "Moderately helpful"
+        }
+      },
+      {
+        "input_message": "Think about what is really important to you. Maybe it's spending time with family or a friend, exercising, doing something spiritual, or creating something. Whatever it is, take a step in that direction.",
+        "ImageID": "D69",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Good",
+          "coping": "Moderately helpful",
+          "quitting": "Moderately helpful"
+        }
+      },
+      {
+        "input_message": "It's normal to have some doubts during a quit attempt. Keep your quit reasons on hand to remind yourself if ever you feel uncertain or undecided.",
+        "ImageID": "D4",
+        "ratings": {
+          "content": "Good",
+          "design": "Acceptable",
+          "coping": "Moderately helpful",
+          "quitting": "Somewhat helpful"
+        }
+      },
+      {
+        "input_message": "Stress is temporary. It comes and goes like passing clouds in the sky. When stress demands you to light up, remember you can let it pass by without smoking.",
+        "ImageID": "A33",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Very poor",
+          "coping": "Moderately helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "Think of your anxious mind like a toddler throwing a tantrum. The best way to respond is to quietly watch, but not give in.",
+        "ImageID": "A40",
+        "ratings": {
+          "content": "Good",
+          "design": "Poor",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "Don't test yourself needlessly. If this social situation gets uncomfortable then leave briefly if you can. It really helps and it's fine to do it more than once!",
+        "ImageID": "D28",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Acceptable",
+          "coping": "Not at all helpful",
+          "quitting": "Not at all helpful"
+        }
+      },
+      {
+        "input_message": "Use self-talk to stay motivated and determined. Say, \u201cI don't need a cigarette. I might WANT one, but I don\u2019t NEED it.\u201d",
+        "ImageID": "D53",
+        "ratings": {
+          "content": "Good",
+          "design": "Poor",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      }
+    ]
+  },
+  "summary_text": "Age 28, Female, Some days, Motivation: Very motivated, Support: Extremely supportive, CPD: 1, TTF: Within 30 minutes"
+}

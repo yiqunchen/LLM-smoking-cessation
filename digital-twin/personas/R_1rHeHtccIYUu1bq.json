@@ -1,0 +1,127 @@
+{
+  "participant_id": "R_1rHeHtccIYUu1bq",
+  "demographics": {
+    "age_years": 30,
+    "gender_identity": "Female",
+    "race_ethnicity": "White",
+    "is_hispanic_latino": "Yes",
+    "education_level": "High school graduate or GED",
+    "household_income": ">=$100,000"
+  },
+  "smoking_behavior": {
+    "quit_intention": "Are currently trying to quit",
+    "days_smoked_past_30d": 19,
+    "cigs_per_day": "3",
+    "time_to_first_cig": "Within 30 minutes",
+    "household_smokers": "No",
+    "friends_smoke_level": "Most of them",
+    "quit_attempts_count": "6",
+    "smoking_status": "Some days",
+    "quit_motivation_level": "Very motivated",
+    "social_support_to_quit": "Extremely supportive"
+  },
+  "psychosocial": {
+    "pain_blocks_valued_life": "Almost always true",
+    "fear_of_feelings": "Always true",
+    "worry_about_control": "Always true",
+    "memories_block_fulfillment": "Always true",
+    "emotions_cause_problems": "Sometimes true",
+    "others_handle_life_better": "Always true",
+    "worry_blocks_success": "Always true"
+  },
+  "history": {
+    "rated_messages": [
+      {
+        "input_message": "Don't test yourself needlessly. If this social situation gets uncomfortable then leave briefly if you can. It really helps and it's fine to do it more than once!",
+        "ImageID": "D28",
+        "ratings": {
+          "content": "Good",
+          "design": "Acceptable",
+          "coping": "Moderately helpful",
+          "quitting": "Not at all helpful"
+        }
+      },
+      {
+        "input_message": "When a craving hits, keep your hands busy by doing the dishes or taking out the trash. Small chores will help pass the time during a craving.",
+        "ImageID": "D41",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Acceptable",
+          "coping": "Moderately helpful",
+          "quitting": "Moderately  helpful"
+        }
+      },
+      {
+        "input_message": "Practice staying in this location without smoking. Just notice your urge. Practicing this will weaken this trigger with time. Just think of it as practice.",
+        "ImageID": "A51",
+        "ratings": {
+          "content": "Very poor",
+          "design": "Poor",
+          "coping": "Not at all helpful",
+          "quitting": "Not at all helpful"
+        }
+      },
+      {
+        "input_message": "Take a deep breath and let it out slowly. Notice that you are completely OK for this one breath. Do it again.",
+        "ImageID": "A44",
+        "ratings": {
+          "content": "Poor",
+          "design": "Poor",
+          "coping": "Not at all helpful",
+          "quitting": "Not at all helpful"
+        }
+      },
+      {
+        "input_message": "Add the phrase \u201cI\u2019m having the thought that\u2026\u201d in front of your unhelpful thoughts. For example, \u201cI\u2019m having the thought that I need a cigarette.\u201d Your thoughts are not always true or helpful! They are just thoughts.",
+        "ImageID": "A46",
+        "ratings": {
+          "content": "Poor",
+          "design": "Poor",
+          "coping": "Not at all helpful",
+          "quitting": "Not at all helpful"
+        }
+      },
+      {
+        "input_message": "Don't let anyone tell you how you should or shouldn't feel today. You feel how you feel and that's it. If you're happy and grateful then enjoy the moment, if you're angry and frustrated, know that this will pass.",
+        "ImageID": "A5",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Acceptable",
+          "coping": "Somewhat helpful",
+          "quitting": "Somewhat helpful"
+        }
+      },
+      {
+        "input_message": "Tell yourself, \u201cI am going to quit smoking soon.\u201d Say it out loud. Say to yourself, \u201cI am too strong to continue smoking for the rest of my life.\"",
+        "ImageID": "D40",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Good",
+          "coping": "Somewhat helpful",
+          "quitting": "Somewhat helpful"
+        }
+      },
+      {
+        "input_message": "Instead of smoking, keep your fingers busy by scrolling through your phone.",
+        "ImageID": "D39",
+        "ratings": {
+          "content": "Very poor",
+          "design": "Poor",
+          "coping": "Not at all helpful",
+          "quitting": "Not at all helpful"
+        }
+      },
+      {
+        "input_message": "If you're stuck at home and physical activity doesn't interest you, try gaming, needlework, drawing, or journaling.",
+        "ImageID": "D44",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Acceptable",
+          "coping": "Moderately helpful",
+          "quitting": "Moderately helpful"
+        }
+      }
+    ]
+  },
+  "summary_text": "Age 30, Female, Some days, Motivation: Very motivated, Support: Extremely supportive, CPD: 3, TTF: Within 30 minutes"
+}

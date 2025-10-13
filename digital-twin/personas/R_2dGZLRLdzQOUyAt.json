@@ -1,0 +1,137 @@
+{
+  "participant_id": "R_2dGZLRLdzQOUyAt",
+  "demographics": {
+    "age_years": 30,
+    "gender_identity": "Male",
+    "race_ethnicity": "White,American Indian or Alaska Native,Asian",
+    "is_hispanic_latino": "Yes",
+    "education_level": "Some college",
+    "household_income": "$40,000-59,999"
+  },
+  "smoking_behavior": {
+    "quit_intention": "Will quit in the next month",
+    "days_smoked_past_30d": 20,
+    "cigs_per_day": "4",
+    "time_to_first_cig": "Within 30 minutes",
+    "household_smokers": "Yes",
+    "friends_smoke_level": "Most of them",
+    "quit_attempts_count": "2",
+    "smoking_status": "Some days",
+    "quit_motivation_level": "Very motivated",
+    "social_support_to_quit": "Moderately supportive"
+  },
+  "psychosocial": {
+    "pain_blocks_valued_life": "Frequently true",
+    "fear_of_feelings": "Frequently true",
+    "worry_about_control": "Frequently true",
+    "memories_block_fulfillment": "Almost always true",
+    "emotions_cause_problems": "Almost always true",
+    "others_handle_life_better": "Frequently true",
+    "worry_blocks_success": "Frequently true"
+  },
+  "history": {
+    "rated_messages": [
+      {
+        "input_message": "As smokers are usually with you in this location, it's really important that you're not with them when they smoke. Consider avoiding this place if possible until things settle down.",
+        "ImageID": "D37",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Good",
+          "coping": "Moderately helpful",
+          "quitting": "Somewhat helpful"
+        }
+      },
+      {
+        "input_message": "Each time you choose to not smoke after seeing someone else light up, you lessen the habit a little more.",
+        "ImageID": "A58",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Acceptable",
+          "coping": "Moderately helpful",
+          "quitting": "Moderately  helpful"
+        }
+      },
+      {
+        "input_message": "Sometimes an urge comes on like a wave. Imagine what it is like to ride the wave as it ebbs and flows. Instead of trying to swim against it, try riding it out until it disappears into the sea.",
+        "ImageID": "A12",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "Try to avoid seeing other people smoke. It might sound basic but brain see, brain want! If you can, make life easier and avoid the people you used to smoke with for some time where possible.",
+        "ImageID": "D30",
+        "ratings": {
+          "content": "Poor",
+          "design": "Acceptable",
+          "coping": "Somewhat helpful",
+          "quitting": "Somewhat helpful"
+        }
+      },
+      {
+        "input_message": "Instead of smoking, keep your fingers busy by scrolling through your phone.",
+        "ImageID": "D39",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Acceptable",
+          "coping": "Moderately helpful",
+          "quitting": "Moderately helpful"
+        }
+      },
+      {
+        "input_message": "Urges to smoke usually only last a few minutes. Distract yourself by NOT thinking about giraffes, or leave the situation until it passes.",
+        "ImageID": "D23",
+        "ratings": {
+          "content": "Poor",
+          "design": "Good",
+          "coping": "Not at all helpful",
+          "quitting": "Not at all helpful"
+        }
+      },
+      {
+        "input_message": "When you are stressed, it is easy to focus on the things that are going wrong. Take a few moments to focus on 5 things that have gone well or that you are thankful for this week.",
+        "ImageID": "A38",
+        "ratings": {
+          "content": "Good",
+          "design": "Acceptable",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "Crumple a piece of paper into a ball and imagine it is your urge. Toss the \"urge\" into the garbage or against the wall. By doing this, you are letting go of your urges.",
+        "ImageID": "A16",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Acceptable",
+          "coping": "Moderately helpful",
+          "quitting": "Moderately helpful"
+        }
+      },
+      {
+        "input_message": "If leaving social situations to avoid smokers feels awkward, make sure you have something to do instead - take sugar free mints, lollipops or low fat snacks to chew, or use a stress ball.",
+        "ImageID": "D22",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Acceptable",
+          "coping": "Somewhat helpful",
+          "quitting": "Moderately helpful"
+        }
+      },
+      {
+        "input_message": "Think about your hero, or someone you admire. What do you admire about them? Often our heroes are people who struggle and succeed in difficult circumstances. Now's the chance to be your own hero - by not smoking despite the challenges of stress and strong urges!",
+        "ImageID": "D20",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Good",
+          "coping": "Moderately helpful",
+          "quitting": "Somewhat helpful"
+        }
+      }
+    ]
+  },
+  "summary_text": "Age 30, Male, Some days, Motivation: Very motivated, Support: Moderately supportive, CPD: 4, TTF: Within 30 minutes"
+}

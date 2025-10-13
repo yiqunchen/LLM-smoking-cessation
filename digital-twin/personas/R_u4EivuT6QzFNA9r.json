@@ -1,0 +1,137 @@
+{
+  "participant_id": "R_u4EivuT6QzFNA9r",
+  "demographics": {
+    "age_years": 26,
+    "gender_identity": "Female",
+    "race_ethnicity": "Black or African American",
+    "is_hispanic_latino": "No",
+    "education_level": "Less than high school",
+    "household_income": "< $15,000"
+  },
+  "smoking_behavior": {
+    "quit_intention": "Are currently trying to quit",
+    "days_smoked_past_30d": 30,
+    "cigs_per_day": "6",
+    "time_to_first_cig": "Within 30 minutes",
+    "household_smokers": "Yes",
+    "friends_smoke_level": "Some of them",
+    "quit_attempts_count": "5",
+    "smoking_status": "Every day",
+    "quit_motivation_level": "Somewhat motivated",
+    "social_support_to_quit": "Not at all supportive"
+  },
+  "psychosocial": {
+    "pain_blocks_valued_life": "Sometimes true",
+    "fear_of_feelings": "Sometimes true",
+    "worry_about_control": "Sometimes true",
+    "memories_block_fulfillment": "Frequently true",
+    "emotions_cause_problems": "Almost always true",
+    "others_handle_life_better": "Sometimes true",
+    "worry_blocks_success": "Sometimes true"
+  },
+  "history": {
+    "rated_messages": [
+      {
+        "input_message": "Try chewing gum if you have trouble resisting smoking when other people light up around you.",
+        "ImageID": "D51",
+        "ratings": {
+          "content": "Good",
+          "design": "Poor",
+          "coping": "Somewhat helpful",
+          "quitting": "Somewhat helpful"
+        }
+      },
+      {
+        "input_message": "Stop! Breathe. What is going on around you? Inside you? Allow everything to be just as it is. Breathe again.",
+        "ImageID": "D63",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Not at all helpful",
+          "quitting": "Not at all helpful"
+        }
+      },
+      {
+        "input_message": "Take a minute to notice what the urge feels like in your body without smoking a cigarette. Notice what is going on. See what happens. Does the urge pass?",
+        "ImageID": "A21",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Not at all helpful",
+          "quitting": "Not at all helpful"
+        }
+      },
+      {
+        "input_message": "When you begin to crave a cig, concentrate on your reasons for not smoking. Keep a list on your phone and look at it when you feel yourself beginning to falter.",
+        "ImageID": "D50",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Somewhat helpful",
+          "quitting": "Not at all helpful"
+        }
+      },
+      {
+        "input_message": "Urges to smoke usually only last a few minutes. Distract yourself by NOT thinking about giraffes, or leave the situation until it passes.",
+        "ImageID": "D23",
+        "ratings": {
+          "content": "Poor",
+          "design": "Poor",
+          "coping": "Not at all helpful",
+          "quitting": "Not at all helpful"
+        }
+      },
+      {
+        "input_message": "What can you do right now to break the automatic habit of smoking when you are here? Pause. Close your eyes. And take 10 slow breaths.",
+        "ImageID": "A54",
+        "ratings": {
+          "content": "Poor",
+          "design": "Poor",
+          "coping": "Not at all helpful",
+          "quitting": "Not at all helpful"
+        }
+      },
+      {
+        "input_message": "Think about a happy memory to ease the difficulty of your urge. Is there something you have been wanting to do for a while that you know you would enjoy? Reading? Walking? Calling a friend? Doing a puzzle? Do something that matters to you instead of smoking.",
+        "ImageID": "D61",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Not at all helpful",
+          "quitting": "Not at all helpful"
+        }
+      },
+      {
+        "input_message": "Imagine that your urge is a backseat passenger trying to distract you from reaching your destination. See if you can choose to keep driving instead of allowing your urges to distract you from where you want to go.",
+        "ImageID": "A7",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Poor",
+          "coping": "Not at all helpful",
+          "quitting": "Not at all helpful"
+        }
+      },
+      {
+        "input_message": "Some people find that having a simple mantra can really help, especially if things feel stressful. Try repeating something simple to yourself like: \"I can do it!\".",
+        "ImageID": "D16",
+        "ratings": {
+          "content": "Very poor",
+          "design": "Very poor",
+          "coping": "Not at all helpful",
+          "quitting": "Not at all helpful"
+        }
+      },
+      {
+        "input_message": "If this situation becomes stressful for you, make an excuse to leave for a few minutes. If this doesn't help, it might be better to just leave early.",
+        "ImageID": "D31",
+        "ratings": {
+          "content": "Poor",
+          "design": "Poor",
+          "coping": "Not at all helpful",
+          "quitting": "Not at all helpful"
+        }
+      }
+    ]
+  },
+  "summary_text": "Age 26, Female, Every day, Motivation: Somewhat motivated, Support: Not at all supportive, CPD: 6, TTF: Within 30 minutes"
+}

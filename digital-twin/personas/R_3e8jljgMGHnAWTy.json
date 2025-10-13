@@ -1,0 +1,136 @@
+{
+  "participant_id": "R_3e8jljgMGHnAWTy",
+  "demographics": {
+    "age_years": 23,
+    "gender_identity": "Male",
+    "race_ethnicity": "White",
+    "is_hispanic_latino": "No",
+    "education_level": "Bachelor's degree",
+    "household_income": "$80,000-99,000"
+  },
+  "smoking_behavior": {
+    "quit_intention": "Are currently trying to quit",
+    "days_smoked_past_30d": 28,
+    "cigs_per_day": "12",
+    "time_to_first_cig": "Within 30 minutes",
+    "household_smokers": "Yes",
+    "friends_smoke_level": "Most of them",
+    "smoking_status": "Every day",
+    "quit_motivation_level": "Somewhat motivated",
+    "social_support_to_quit": "Very supportive"
+  },
+  "psychosocial": {
+    "pain_blocks_valued_life": "Very seldom true",
+    "fear_of_feelings": "Very seldom true",
+    "worry_about_control": "Never true",
+    "memories_block_fulfillment": "Very seldom true",
+    "emotions_cause_problems": "Never true",
+    "others_handle_life_better": "Very seldom true",
+    "worry_blocks_success": "Never true"
+  },
+  "history": {
+    "rated_messages": [
+      {
+        "input_message": "Think about your hero, or someone you admire. What do you admire about them? Often our heroes are people who struggle and succeed in difficult circumstances. Now's the chance to be your own hero - by not smoking despite the challenges of stress and strong urges!",
+        "ImageID": "D20",
+        "ratings": {
+          "content": "Very good",
+          "design": "Good",
+          "coping": "Extremely helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "Think about times in the past when you have let urges pass during a stressful moment, and notice what helped make that moment easier.",
+        "ImageID": "A39",
+        "ratings": {
+          "content": "Good",
+          "design": "Very good",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "Some people find it helpful to give a name to their urge. If you're experiencing regular urges, give that feeling a name ('Olga the urge'?), and tell it that you won't give in to it. It may make it easier to live with (e.g. \"ok Olga, I need to be by myself now...\").",
+        "ImageID": "A3",
+        "ratings": {
+          "content": "Good",
+          "design": "Very good",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "If you usually smoke while you talk on the phone, try taking the next call in a place where you can't smoke and focus on the conversation. The urge will pass.",
+        "ImageID": "D43",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Extremely helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "Try to avoid seeing other people smoke. It might sound basic but brain see, brain want! If you can, make life easier and avoid the people you used to smoke with for some time where possible.",
+        "ImageID": "D30",
+        "ratings": {
+          "content": "Good",
+          "design": "Very good",
+          "coping": "Extremely helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "If you find yourself thinking: \"I can't do this\", \"I need a cig\", or \"I'll just have one\", make sure you tell yourself \"I absolutely CAN do this\", \"I'm in control\". Take control of your negative thoughts!",
+        "ImageID": "D29",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Extremely helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "If you get urges, remind yourself that cigarettes did that to you. If you go back to them, they will keep making you suffer. Now you are breaking free.",
+        "ImageID": "D17",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Very good",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "No need to get rid of these feelings or control them with a smoke. They are not permanent.",
+        "ImageID": "A45",
+        "ratings": {
+          "content": "Good",
+          "design": "Very good",
+          "coping": "Very helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "You might find that you have more time now that you're trying to cut some cigarettes. Some people find that going for a walk can help fill the gap. Or take a nap if you can!",
+        "ImageID": "D19",
+        "ratings": {
+          "content": "Very good",
+          "design": "Acceptable",
+          "coping": "Very helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "Read this rule out loud (if you can): IF someone offers me a cigarette THEN I will say 'no thanks, I don't want one.' Reading out if/then rules has been shown to help people stick with their decisions.",
+        "ImageID": "D25",
+        "ratings": {
+          "content": "Very good",
+          "design": "Very good",
+          "coping": "Extremely helpful",
+          "quitting": "Very helpful"
+        }
+      }
+    ]
+  },
+  "summary_text": "Age 23, Male, Every day, Motivation: Somewhat motivated, Support: Very supportive, CPD: 12, TTF: Within 30 minutes"
+}

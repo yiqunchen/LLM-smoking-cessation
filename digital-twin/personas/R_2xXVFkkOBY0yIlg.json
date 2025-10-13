@@ -1,0 +1,147 @@
+{
+  "participant_id": "R_2xXVFkkOBY0yIlg",
+  "demographics": {
+    "age_years": 24,
+    "gender_identity": "Male",
+    "race_ethnicity": "White",
+    "is_hispanic_latino": "No",
+    "education_level": "High school graduate or GED",
+    "household_income": "$80,000-99,000"
+  },
+  "smoking_behavior": {
+    "quit_intention": "Will quit in the next month",
+    "days_smoked_past_30d": 28,
+    "cigs_per_day": "17",
+    "time_to_first_cig": "Within 30 minutes",
+    "household_smokers": "No",
+    "friends_smoke_level": "Most of them",
+    "quit_attempts_count": "5",
+    "smoking_status": "Every day",
+    "quit_motivation_level": "Very motivated",
+    "social_support_to_quit": "Extremely supportive"
+  },
+  "psychosocial": {
+    "pain_blocks_valued_life": "Always true",
+    "fear_of_feelings": "Almost always true",
+    "worry_about_control": "Frequently true",
+    "memories_block_fulfillment": "Almost always true",
+    "emotions_cause_problems": "Always true",
+    "others_handle_life_better": "Almost always true",
+    "worry_blocks_success": "Always true"
+  },
+  "history": {
+    "rated_messages": [
+      {
+        "input_message": "Some places trigger powerful cravings, that is to be expected. Stop and notice where in your body you feel those cravings and remind yourself that cravings typically pass in 1 to 3 minutes",
+        "ImageID": "A50",
+        "ratings": {
+          "content": "Poor",
+          "design": "Very poor",
+          "coping": "Very helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "Some people find it helpful to give a name to their urge. If you're experiencing regular urges, give that feeling a name ('Olga the urge'?), and tell it that you won't give in to it. It may make it easier to live with (e.g. \"ok Olga, I need to be by myself now...\").",
+        "ImageID": "A3",
+        "ratings": {
+          "content": "Good",
+          "design": "Very good",
+          "coping": "Very helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "Instead of smoking, take 10 deep, slow breaths and count them. Pay attention to what your breathing feels like. If you lose count, that's okay, just start over at 1 until you get to 10.",
+        "ImageID": "D59",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "Pause. Notice the feelings you are having without judgement. Let them come and go. Being aware of your feelings means you can make a new choice about how you respond to your urges instead of smoking on autopilot.",
+        "ImageID": "A8",
+        "ratings": {
+          "content": "Very good",
+          "design": "Good",
+          "coping": "Very helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "Pause. Notice the feelings you are having without judgement. Let them come and go. Being aware of your feelings means you can make a new choice about how you respond to your urges instead of smoking on autopilot.",
+        "ImageID": "A43",
+        "ratings": {
+          "content": "Very good",
+          "design": "Good",
+          "coping": "Very helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "It's normal to have some doubts during a quit attempt. Keep your quit reasons on hand to remind yourself if ever you feel uncertain or undecided.",
+        "ImageID": "D4",
+        "ratings": {
+          "content": "Good",
+          "design": "Very good",
+          "coping": "Extremely helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "You might find that you have more time now that you're trying to cut some cigarettes. Some people find that going for a walk can help fill the gap. Or take a nap if you can!",
+        "ImageID": "D19",
+        "ratings": {
+          "content": "Very good",
+          "design": "Good",
+          "coping": "Very helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "Stop and take 3 deep breaths. Then decide if you really want to smoke right now or not. Pausing for a few breaths can help lessen the habit.",
+        "ImageID": "A26",
+        "ratings": {
+          "content": "Very good",
+          "design": "Good",
+          "coping": "Very helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "As smokers are usually with you in this location, it's really important that you're not with them when they smoke. Consider avoiding this place if possible until things settle down.",
+        "ImageID": "D37",
+        "ratings": {
+          "content": "Very good",
+          "design": "Good",
+          "coping": "Extremely helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "Urges can feel like stormy weather. But if you're the sky, you just let that storm come and go on it's own knowing that it won't last forever.",
+        "ImageID": "A25",
+        "ratings": {
+          "content": "Good",
+          "design": "Very good",
+          "coping": "Very helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "If you have trouble resisting a craving when other smokers are around, try carrying a water bottle and taking a sip every time you want to ask for a cig.",
+        "ImageID": "D52",
+        "ratings": {
+          "content": "Very good",
+          "design": "Good",
+          "coping": "Extremely helpful",
+          "quitting": "Very helpful"
+        }
+      }
+    ]
+  },
+  "summary_text": "Age 24, Male, Every day, Motivation: Very motivated, Support: Extremely supportive, CPD: 17, TTF: Within 30 minutes"
+}

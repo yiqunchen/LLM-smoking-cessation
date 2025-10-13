@@ -1,0 +1,74 @@
+{
+  "content": {
+    "model_type": "logistic",
+    "model_path": "digital-twin/rule_model_sample_part_logreg/content_model.joblib",
+    "train_samples": 1511,
+    "feature_names": [
+      "baseline_mean",
+      "positive_weight_sum",
+      "negative_weight_sum",
+      "net_weight_sum",
+      "token_length",
+      "auto_positive_weight_sum",
+      "auto_negative_weight_sum",
+      "auto_net_weight_sum"
+    ],
+    "baseline_stats_path": "digital-twin/rule_model_sample_part_logreg/content_baseline_stats.json",
+    "auto_lexicon_positive": 15,
+    "auto_lexicon_negative": 15
+  },
+  "design": {
+    "model_type": "logistic",
+    "model_path": "digital-twin/rule_model_sample_part_logreg/design_model.joblib",
+    "train_samples": 1509,
+    "feature_names": [
+      "baseline_mean",
+      "positive_weight_sum",
+      "negative_weight_sum",
+      "net_weight_sum",
+      "token_length",
+      "auto_positive_weight_sum",
+      "auto_negative_weight_sum",
+      "auto_net_weight_sum"
+    ],
+    "baseline_stats_path": "digital-twin/rule_model_sample_part_logreg/design_baseline_stats.json",
+    "auto_lexicon_positive": 15,
+    "auto_lexicon_negative": 15
+  },
+  "coping": {
+    "model_type": "logistic",
+    "model_path": "digital-twin/rule_model_sample_part_logreg/coping_model.joblib",
+    "train_samples": 1357,
+    "feature_names": [
+      "baseline_mean",
+      "positive_weight_sum",
+      "negative_weight_sum",
+      "net_weight_sum",
+      "token_length",
+      "auto_positive_weight_sum",
+      "auto_negative_weight_sum",
+      "auto_net_weight_sum"
+    ],
+    "baseline_stats_path": "digital-twin/rule_model_sample_part_logreg/coping_baseline_stats.json",
+    "auto_lexicon_positive": 15,
+    "auto_lexicon_negative": 15
+  },
+  "quitting": {
+    "model_type": "logistic",
+    "model_path": "digital-twin/rule_model_sample_part_logreg/quitting_model.joblib",
+    "train_samples": 1327,
+    "feature_names": [
+      "baseline_mean",
+      "positive_weight_sum",
+      "negative_weight_sum",
+      "net_weight_sum",
+      "token_length",
+      "auto_positive_weight_sum",
+      "auto_negative_weight_sum",
+      "auto_net_weight_sum"
+    ],
+    "baseline_stats_path": "digital-twin/rule_model_sample_part_logreg/quitting_baseline_stats.json",
+    "auto_lexicon_positive": 15,
+    "auto_lexicon_negative": 15
+  }
+}

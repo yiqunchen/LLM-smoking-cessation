@@ -1,0 +1,127 @@
+{
+  "participant_id": "R_PHxxPmpTAyXYltn",
+  "demographics": {
+    "age_years": 21,
+    "gender_identity": "Male",
+    "race_ethnicity": "White",
+    "is_hispanic_latino": "No",
+    "education_level": "High school graduate or GED",
+    "household_income": "$15,000-24,999"
+  },
+  "smoking_behavior": {
+    "quit_intention": "Are currently trying to quit",
+    "days_smoked_past_30d": 15,
+    "cigs_per_day": "2",
+    "time_to_first_cig": "After 30 minutes",
+    "household_smokers": "No",
+    "friends_smoke_level": "Most of them",
+    "quit_attempts_count": "3",
+    "smoking_status": "Some days",
+    "quit_motivation_level": "Moderately motivated",
+    "social_support_to_quit": "Moderately supportive"
+  },
+  "psychosocial": {
+    "pain_blocks_valued_life": "Very seldom true",
+    "fear_of_feelings": "Never true",
+    "worry_about_control": "Never true",
+    "memories_block_fulfillment": "Never true",
+    "emotions_cause_problems": "Seldom true",
+    "others_handle_life_better": "Very seldom true",
+    "worry_blocks_success": "Never true"
+  },
+  "history": {
+    "rated_messages": [
+      {
+        "input_message": "Notice what it feels like to see other people smoke and choose not to smoke. Notice what thoughts or emotions come up. Allow them to come and go. They will pass and so will this urge.",
+        "ImageID": "A57",
+        "ratings": {
+          "content": "Poor",
+          "design": "Very poor",
+          "coping": "Not at all helpful",
+          "quitting": "Not at all helpful"
+        }
+      },
+      {
+        "input_message": "No need to get rid of these feelings or control them with a smoke. They are not permanent.",
+        "ImageID": "A45",
+        "ratings": {
+          "content": "Poor",
+          "design": "Poor",
+          "coping": "Somewhat helpful",
+          "quitting": "Somewhat helpful"
+        }
+      },
+      {
+        "input_message": "Ask yourself, \"What do I need right now? Is it really a smoke, or is there something else I need? How can I best take care of myself right now?\"",
+        "ImageID": "D62",
+        "ratings": {
+          "content": "Very good",
+          "design": "Very good",
+          "coping": "Extremely helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "Just because letting an urge pass isn't easy, doesn't mean that you can't do it. Try it, you might surprise yourself.",
+        "ImageID": "A29",
+        "ratings": {
+          "content": "Very poor",
+          "design": "Very poor",
+          "coping": "Moderately helpful",
+          "quitting": "Not at all helpful"
+        }
+      },
+      {
+        "input_message": "Add the phrase \u201cI\u2019m having the thought that\u2026\u201d in front of your unhelpful thoughts. For example, \u201cI\u2019m having the thought that I need a cigarette.\u201d Your thoughts are not always true or helpful! They are just thoughts.",
+        "ImageID": "A46",
+        "ratings": {
+          "content": "Very poor",
+          "design": "Very poor",
+          "coping": "Not at all helpful",
+          "quitting": "Not at all helpful"
+        }
+      },
+      {
+        "input_message": "When a craving hits, keep your hands busy by doing the dishes or taking out the trash. Small chores will help pass the time during a craving.",
+        "ImageID": "D41",
+        "ratings": {
+          "content": "Poor",
+          "design": "Poor",
+          "coping": "Moderately helpful",
+          "quitting": "Not at all helpful"
+        }
+      },
+      {
+        "input_message": "Urges to smoke usually only last a few minutes. Distract yourself by NOT thinking about giraffes, or leave the situation until it passes.",
+        "ImageID": "D23",
+        "ratings": {
+          "content": "Very poor",
+          "design": "Very poor",
+          "coping": "Not at all helpful",
+          "quitting": "Not at all helpful"
+        }
+      },
+      {
+        "input_message": "If you are tempted to smoke by being in this location, see if you can sit with that temptation for 1 minute. When the minute is over, do it again. Soon, it should pass.",
+        "ImageID": "A52",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Acceptable",
+          "coping": "Moderately helpful",
+          "quitting": "Moderately helpful"
+        }
+      },
+      {
+        "input_message": "What can you do right now to break the automatic habit of smoking when you are here? Pause. Close your eyes. And take 10 slow breaths.",
+        "ImageID": "A54",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Good",
+          "coping": "Moderately helpful",
+          "quitting": "Moderately helpful"
+        }
+      }
+    ]
+  },
+  "summary_text": "Age 21, Male, Some days, Motivation: Moderately motivated, Support: Moderately supportive, CPD: 2, TTF: After 30 minutes"
+}

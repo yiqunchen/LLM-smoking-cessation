@@ -1,0 +1,62 @@
+{
+  "content": {
+    "intercept": 1.2745719080038977,
+    "coefficients": {
+      "baseline_mean": 0.69892945393362,
+      "positive_weight_sum": -0.022614904022116977,
+      "negative_weight_sum": -0.15316055501026615,
+      "net_weight_sum": 0.1305456509881488,
+      "token_length": -0.0030559904033678163,
+      "auto_positive_weight_sum": -0.028249071440341795,
+      "auto_negative_weight_sum": -0.04843585227738009,
+      "auto_net_weight_sum": 0.0201867808370383
+    },
+    "train_samples": 1545,
+    "baseline_stats_path": "digital-twin/rule_model_gpt/content_baseline_stats.json"
+  },
+  "design": {
+    "intercept": 1.3095703889098331,
+    "coefficients": {
+      "baseline_mean": 0.6930667700887249,
+      "positive_weight_sum": 0.1699501075550516,
+      "negative_weight_sum": -0.06828209778611584,
+      "net_weight_sum": 0.2382322053411675,
+      "token_length": -0.004633500251374508,
+      "auto_positive_weight_sum": -0.044528923965636624,
+      "auto_negative_weight_sum": -0.039087614445438,
+      "auto_net_weight_sum": -0.005441309520199149
+    },
+    "train_samples": 1545,
+    "baseline_stats_path": "digital-twin/rule_model_gpt/design_baseline_stats.json"
+  },
+  "coping": {
+    "intercept": 1.0008320422120307,
+    "coefficients": {
+      "baseline_mean": 0.7181839002703632,
+      "positive_weight_sum": 0.08715498306858349,
+      "negative_weight_sum": -0.0863029447251952,
+      "net_weight_sum": 0.17345792779377872,
+      "token_length": 0.0024497119262600953,
+      "auto_positive_weight_sum": -0.006187620712266387,
+      "auto_negative_weight_sum": -0.025767619344929757,
+      "auto_net_weight_sum": 0.01957999863266326
+    },
+    "train_samples": 1362,
+    "baseline_stats_path": "digital-twin/rule_model_gpt/coping_baseline_stats.json"
+  },
+  "quitting": {
+    "intercept": 0.8892728584078342,
+    "coefficients": {
+      "baseline_mean": 0.7694767231759295,
+      "positive_weight_sum": 0.0022952220295882997,
+      "negative_weight_sum": -0.11150643409763188,
+      "net_weight_sum": 0.1138016561272201,
+      "token_length": -4.019036371336142e-05,
+      "auto_positive_weight_sum": -0.0007172061720270825,
+      "auto_negative_weight_sum": -0.026835831142642236,
+      "auto_net_weight_sum": 0.026118624970615324
+    },
+    "train_samples": 1350,
+    "baseline_stats_path": "digital-twin/rule_model_gpt/quitting_baseline_stats.json"
+  }
+}

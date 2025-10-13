@@ -1,0 +1,137 @@
+{
+  "participant_id": "R_3PuSTNLM9GLlWcY",
+  "demographics": {
+    "age_years": 29,
+    "gender_identity": "Female",
+    "race_ethnicity": "White",
+    "is_hispanic_latino": "No",
+    "education_level": "Some college",
+    "household_income": "$15,000-24,999"
+  },
+  "smoking_behavior": {
+    "quit_intention": "Are currently trying to quit",
+    "days_smoked_past_30d": 30,
+    "cigs_per_day": "5",
+    "time_to_first_cig": "Within 30 minutes",
+    "household_smokers": "Yes",
+    "friends_smoke_level": "Most of them",
+    "quit_attempts_count": "2",
+    "smoking_status": "Some days",
+    "quit_motivation_level": "Very motivated",
+    "social_support_to_quit": "Very supportive"
+  },
+  "psychosocial": {
+    "pain_blocks_valued_life": "Always true",
+    "fear_of_feelings": "Almost always true",
+    "worry_about_control": "Always true",
+    "memories_block_fulfillment": "Almost always true",
+    "emotions_cause_problems": "Always true",
+    "others_handle_life_better": "Almost always true",
+    "worry_blocks_success": "Sometimes true"
+  },
+  "history": {
+    "rated_messages": [
+      {
+        "input_message": "Stress is temporary. It comes and goes like passing clouds in the sky. When stress demands you to light up, remember you can let it pass by without smoking.",
+        "ImageID": "A33",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Poor",
+          "coping": "Moderately helpful",
+          "quitting": "Moderately helpful"
+        }
+      },
+      {
+        "input_message": "Urges to smoke usually only last a few minutes. Distract yourself by NOT thinking about giraffes, or leave the situation until it passes.",
+        "ImageID": "D23",
+        "ratings": {
+          "content": "Very poor",
+          "design": "Poor",
+          "coping": "Moderately helpful",
+          "quitting": "Not at all helpful"
+        }
+      },
+      {
+        "input_message": "When you notice yourself trapped in stressful thoughts or worry, say out loud, \"I'm noticing that I'm having some worrisome thoughts.\" This helps unhook you from your thoughts so you don't stay caught in them.",
+        "ImageID": "A34",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Acceptable",
+          "coping": "Somewhat helpful",
+          "quitting": "Somewhat helpful"
+        }
+      },
+      {
+        "input_message": "When your mind tells you that you will be less stressed after smoking a cigarette, remember that you don't have to listen to that thought. It's just a thought and nothing more.",
+        "ImageID": "A32",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Good",
+          "coping": "Not at all helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "Picture the people or things you care deeply about. On a scale of 0-10, how willing are you to let this urge pass for those reasons?",
+        "ImageID": "A9",
+        "ratings": {
+          "content": "Good",
+          "design": "Very good",
+          "coping": "Not at all helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "A funny thing about people is that we tend to believe what we tell ourselves. So make sure that whatever else happens today, tell yourself \"I can, and I will stick to not smoking!\"",
+        "ImageID": "D13",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Poor",
+          "coping": "Moderately helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "Tell yourself, \u201cI am going to quit smoking soon.\u201d Say it out loud. Say to yourself, \u201cI am too strong to continue smoking for the rest of my life.\"",
+        "ImageID": "D40",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Poor",
+          "coping": "Somewhat helpful",
+          "quitting": "Somewhat helpful"
+        }
+      },
+      {
+        "input_message": "Instead of smoking, keep your fingers busy by scrolling through your phone.",
+        "ImageID": "D39",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Acceptable",
+          "coping": "Somewhat helpful",
+          "quitting": "Somewhat helpful"
+        }
+      },
+      {
+        "input_message": "Notice what is triggering your urge. Have understanding and kindness for yourself for feeling this urge. It isn't easy, but can you choose to let it be there without smoking?",
+        "ImageID": "A19",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Acceptable",
+          "coping": "Somewhat helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "Remind yourself that by staying quit, you'll be freeing yourself from the constant cycle of cigarette, nicotine withdrawal, feeling stressed as a result and wanting another cigarette. Keep going and this will be a thing of the past!",
+        "ImageID": "D14",
+        "ratings": {
+          "content": "Good",
+          "design": "Very good",
+          "coping": "Somewhat helpful",
+          "quitting": "Moderately helpful"
+        }
+      }
+    ]
+  },
+  "summary_text": "Age 29, Female, Some days, Motivation: Very motivated, Support: Very supportive, CPD: 5, TTF: Within 30 minutes"
+}

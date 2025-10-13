@@ -24,7 +24,7 @@ from sklearn.metrics import mean_squared_error, mean_absolute_error
 from prompt_config import generate_continuous_rating_prompt
 
 # Replace with your own API key
-api_key = os.environ['CHEN_OPENAI_API_KEY']
+api_key = os.environ['OPENAI_API_KEY']
 
 # Default file paths
 DEFAULT_EVAL_FILE = "evaluation_continuous_{model}_{mode}.json"

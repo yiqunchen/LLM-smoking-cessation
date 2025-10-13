@@ -1,0 +1,38 @@
+{
+  "residual_r2": [
+    {
+      "dimension": "content",
+      "r2": 0.016798134428881006
+    },
+    {
+      "dimension": "design",
+      "r2": 0.014454431608739382
+    },
+    {
+      "dimension": "coping",
+      "r2": 0.02430587278062224
+    },
+    {
+      "dimension": "quitting",
+      "r2": 0.017368475915079173
+    }
+  ],
+  "fusion_accuracy": [
+    {
+      "dimension": "content",
+      "acc_from_residual_fusion": 0.5665749067107114
+    },
+    {
+      "dimension": "design",
+      "acc_from_residual_fusion": 0.530754636146643
+    },
+    {
+      "dimension": "coping",
+      "acc_from_residual_fusion": 0.5381351846495034
+    },
+    {
+      "dimension": "quitting",
+      "acc_from_residual_fusion": 0.5502661766966145
+    }
+  ]
+}

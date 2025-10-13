@@ -1,0 +1,136 @@
+{
+  "participant_id": "R_3qX1qtZP29pwbZU",
+  "demographics": {
+    "age_years": 28,
+    "gender_identity": "Male",
+    "race_ethnicity": "White",
+    "is_hispanic_latino": "No",
+    "education_level": "Bachelor's degree",
+    "household_income": "$60,000-79,999"
+  },
+  "smoking_behavior": {
+    "quit_intention": "Are currently trying to quit",
+    "days_smoked_past_30d": 16,
+    "cigs_per_day": "2",
+    "time_to_first_cig": "After 30 minutes",
+    "household_smokers": "No",
+    "friends_smoke_level": "Some of them",
+    "smoking_status": "Some days",
+    "quit_motivation_level": "Moderately motivated",
+    "social_support_to_quit": "Moderately supportive"
+  },
+  "psychosocial": {
+    "pain_blocks_valued_life": "Sometimes true",
+    "fear_of_feelings": "Frequently true",
+    "worry_about_control": "Sometimes true",
+    "memories_block_fulfillment": "Frequently true",
+    "emotions_cause_problems": "Seldom true",
+    "others_handle_life_better": "Frequently true",
+    "worry_blocks_success": "Sometimes true"
+  },
+  "history": {
+    "rated_messages": [
+      {
+        "input_message": "You might find that you have more time now that you're trying to cut some cigarettes. Some people find that going for a walk can help fill the gap. Or take a nap if you can!",
+        "ImageID": "D19",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Good",
+          "coping": "Moderately helpful",
+          "quitting": "Moderately helpful"
+        }
+      },
+      {
+        "input_message": "If you find yourself with a few minutes to spare, it can be nice to read back over old messages. It's also a chance to reply to ones that you might have forgotten about!",
+        "ImageID": "D18",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "Instead of smoking, write a quick note to yourself explaining why ditching cigs is important to you. Carry it with you and read it when you feel like lighting up.",
+        "ImageID": "D64",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Poor",
+          "coping": "Moderately helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "Pause and take 5 slow breaths. Pausing just for a moment breaks the automatic habit of reaching for a smoke.",
+        "ImageID": "D65",
+        "ratings": {
+          "content": "Good",
+          "design": "Very good",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "Don't let anyone tell you how you should or shouldn't feel today. You feel how you feel and that's it. If you're happy and grateful then enjoy the moment, if you're angry and frustrated, know that this will pass.",
+        "ImageID": "A5",
+        "ratings": {
+          "content": "Very good",
+          "design": "Acceptable",
+          "coping": "Extremely helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "When smoking, it can feel like your hands are for holding a cigarette, your mouth is for smoking the cigarette, and your chest and lungs need to breathe in the smoke. Spend 3 minutes noticing how your hands feel, how your mouth feels, and how your chest feels. The more you practice noticing these things without smoking, the sooner your body will stop being a trigger for you.",
+        "ImageID": "A22",
+        "ratings": {
+          "content": "Good",
+          "design": "Very good",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "If you get urges, remind yourself that cigarettes did that to you. If you go back to them, they will keep making you suffer. Now you are breaking free.",
+        "ImageID": "D17",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "Try to avoid seeing other people smoke. It might sound basic but brain see, brain want! If you can, make life easier and avoid the people you used to smoke with for some time where possible.",
+        "ImageID": "D30",
+        "ratings": {
+          "content": "Good",
+          "design": "Acceptable",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "If you miss doing something with your hands, try turning a coin or pen over and over with your fingers.",
+        "ImageID": "D49",
+        "ratings": {
+          "content": "Very good",
+          "design": "Good",
+          "coping": "Very helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "Take a slow, deep breath in. And let it out. Now, ask yourself, \"Am I willing to go one minute without smoking?\" When that minute is over, ask yourself this question again.",
+        "ImageID": "A20",
+        "ratings": {
+          "content": "Good",
+          "design": "Acceptable",
+          "coping": "Very helpful",
+          "quitting": "Extremely helpful"
+        }
+      }
+    ]
+  },
+  "summary_text": "Age 28, Male, Some days, Motivation: Moderately motivated, Support: Moderately supportive, CPD: 2, TTF: After 30 minutes"
+}

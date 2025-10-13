@@ -1,0 +1,137 @@
+{
+  "participant_id": "R_QcZ397s04VIIIaB",
+  "demographics": {
+    "age_years": 27,
+    "gender_identity": "Male",
+    "race_ethnicity": "Black or African American",
+    "is_hispanic_latino": "Yes",
+    "education_level": "High school graduate or GED",
+    "household_income": "$40,000-59,999"
+  },
+  "smoking_behavior": {
+    "quit_intention": "Are currently trying to quit",
+    "days_smoked_past_30d": 14,
+    "cigs_per_day": "2",
+    "time_to_first_cig": "After 30 minutes",
+    "household_smokers": "Yes",
+    "friends_smoke_level": "Some of them",
+    "quit_attempts_count": "3",
+    "smoking_status": "Some days",
+    "quit_motivation_level": "Moderately motivated",
+    "social_support_to_quit": "Very supportive"
+  },
+  "psychosocial": {
+    "pain_blocks_valued_life": "Seldom true",
+    "fear_of_feelings": "Sometimes true",
+    "worry_about_control": "Almost always true",
+    "memories_block_fulfillment": "Very seldom true",
+    "emotions_cause_problems": "Frequently true",
+    "others_handle_life_better": "Seldom true",
+    "worry_blocks_success": "Seldom true"
+  },
+  "history": {
+    "rated_messages": [
+      {
+        "input_message": "If you find yourself thinking: \"I can't do this\", \"I need a cig\", or \"I'll just have one\", make sure you tell yourself \"I absolutely CAN do this\", \"I'm in control\". Take control of your negative thoughts!",
+        "ImageID": "D29",
+        "ratings": {
+          "content": "Good",
+          "design": "Very good",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "How you would feel later on if you smoked during this social situation? Now think how good you'll feel for resisting!",
+        "ImageID": "D26",
+        "ratings": {
+          "content": "Good",
+          "design": "Very good",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "Try to avoid seeing other people smoke. It might sound basic but brain see, brain want! If you can, make life easier and avoid the people you used to smoke with for some time where possible.",
+        "ImageID": "D30",
+        "ratings": {
+          "content": "Good",
+          "design": "Very good",
+          "coping": "Extremely helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "Setting small goals when you feel unmotivated is best. Maybe a small goal for now is to breathe deeply for the next 3 minutes instead of smoking.",
+        "ImageID": "D68",
+        "ratings": {
+          "content": "Poor",
+          "design": "Poor",
+          "coping": "Somewhat helpful",
+          "quitting": "Moderately helpful"
+        }
+      },
+      {
+        "input_message": "Recent research has found that people who use self-talk when they try not to smoke (e.g. telling yourself 'you can do it') are more successful than people who don't. It might seem a bit strange, but talking to yourself like this appears to really help.",
+        "ImageID": "D15",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Good",
+          "coping": "Very helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "When you notice yourself trapped in stressful thoughts or worry, say out loud, \"I'm noticing that I'm having some worrisome thoughts.\" This helps unhook you from your thoughts so you don't stay caught in them.",
+        "ImageID": "A34",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Good",
+          "coping": "Extremely helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "Take a deep breath. Focus on today and the things you have accomplished. How many urges have you let pass? Give yourself some credit!",
+        "ImageID": "A17",
+        "ratings": {
+          "content": "Very good",
+          "design": "Acceptable",
+          "coping": "Moderately helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "Now is a good time for BREAKS B=stop and Brake R=Read how your body feels E=Expand and take deep breaths A=Allow everything to be as it is K=Know what's important to you S=take 1 Step in a direction important to you",
+        "ImageID": "A24",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Moderately helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "Ways of dealing with urges: play a game or an online quiz.",
+        "ImageID": "D36",
+        "ratings": {
+          "content": "Poor",
+          "design": "Good",
+          "coping": "Very helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "Tell yourself, \u201cI am going to quit smoking soon.\u201d Say it out loud. Say to yourself, \u201cI am too strong to continue smoking for the rest of my life.\"",
+        "ImageID": "D40",
+        "ratings": {
+          "content": "Good",
+          "design": "Very good",
+          "coping": "Extremely helpful",
+          "quitting": "Extremely helpful"
+        }
+      }
+    ]
+  },
+  "summary_text": "Age 27, Male, Some days, Motivation: Moderately motivated, Support: Very supportive, CPD: 2, TTF: After 30 minutes"
+}

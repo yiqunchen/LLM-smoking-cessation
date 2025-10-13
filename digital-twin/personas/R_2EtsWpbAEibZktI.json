@@ -1,0 +1,137 @@
+{
+  "participant_id": "R_2EtsWpbAEibZktI",
+  "demographics": {
+    "age_years": 24,
+    "gender_identity": "Female",
+    "race_ethnicity": "White",
+    "is_hispanic_latino": "No",
+    "education_level": "High school graduate or GED",
+    "household_income": "$15,000-24,999"
+  },
+  "smoking_behavior": {
+    "quit_intention": "Are currently trying to quit",
+    "days_smoked_past_30d": 15,
+    "cigs_per_day": "5",
+    "time_to_first_cig": "After 30 minutes",
+    "household_smokers": "Yes",
+    "friends_smoke_level": "Some of them",
+    "quit_attempts_count": "2",
+    "smoking_status": "Some days",
+    "quit_motivation_level": "Moderately motivated",
+    "social_support_to_quit": "Very supportive"
+  },
+  "psychosocial": {
+    "pain_blocks_valued_life": "Never true",
+    "fear_of_feelings": "Sometimes true",
+    "worry_about_control": "Sometimes true",
+    "memories_block_fulfillment": "Never true",
+    "emotions_cause_problems": "Never true",
+    "others_handle_life_better": "Never true",
+    "worry_blocks_success": "Very seldom true"
+  },
+  "history": {
+    "rated_messages": [
+      {
+        "input_message": "If you find sounds soothing, tune in to the soundtrack of nature, like crashing waves, the wind rustling through trees, or birds singing.",
+        "ImageID": "D48",
+        "ratings": {
+          "content": "Good",
+          "design": "Very good",
+          "coping": "Not at all helpful",
+          "quitting": "Not at all helpful"
+        }
+      },
+      {
+        "input_message": "Did you know that just seeing other people smoke activates a part of your brain that is connected with the action of you smoking? This can bring on strong urges to smoke. One simple solution is to avoid seeing others smoke.",
+        "ImageID": "D7",
+        "ratings": {
+          "content": "Very good",
+          "design": "Good",
+          "coping": "Moderately helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "Use self-talk to stay motivated and determined. Say, \u201cI don't need a cigarette. I might WANT one, but I don\u2019t NEED it.\u201d",
+        "ImageID": "D53",
+        "ratings": {
+          "content": "Very good",
+          "design": "Acceptable",
+          "coping": "Moderately helpful",
+          "quitting": "Moderately helpful"
+        }
+      },
+      {
+        "input_message": "When you begin to crave a cig, concentrate on your reasons for not smoking. Keep a list on your phone and look at it when you feel yourself beginning to falter.",
+        "ImageID": "D50",
+        "ratings": {
+          "content": "Very good",
+          "design": "Very good",
+          "coping": "Extremely helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "If you miss doing something with your hands, try turning a coin or pen over and over with your fingers.",
+        "ImageID": "D49",
+        "ratings": {
+          "content": "Poor",
+          "design": "Acceptable",
+          "coping": "Not at all helpful",
+          "quitting": "Not at all helpful"
+        }
+      },
+      {
+        "input_message": "What can you do right now to break the automatic habit of smoking to help you feel better? Pause. Close your eyes. And take 10 slow breaths.",
+        "ImageID": "A37",
+        "ratings": {
+          "content": "Good",
+          "design": "Very good",
+          "coping": "Very helpful",
+          "quitting": "Moderately helpful"
+        }
+      },
+      {
+        "input_message": "You might find that you have more time now that you're trying to cut some cigarettes. Some people find that going for a walk can help fill the gap. Or take a nap if you can!",
+        "ImageID": "D19",
+        "ratings": {
+          "content": "Very good",
+          "design": "Good",
+          "coping": "Moderately helpful",
+          "quitting": "Moderately helpful"
+        }
+      },
+      {
+        "input_message": "Some people find that having a simple mantra can really help, especially if things feel stressful. Try repeating something simple to yourself like: \"I can do it!\".",
+        "ImageID": "D16",
+        "ratings": {
+          "content": "Very good",
+          "design": "Good",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "When your mind tells you that you will be less stressed after smoking a cigarette, remember that you don't have to listen to that thought. It's just a thought and nothing more.",
+        "ImageID": "A32",
+        "ratings": {
+          "content": "Good",
+          "design": "Very good",
+          "coping": "Extremely helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "Are you willing to let this urge pass for the sake of living a good long time with the people who matter most to you? When you have an urge, think about the people most important to you.",
+        "ImageID": "A15",
+        "ratings": {
+          "content": "Very good",
+          "design": "Very good",
+          "coping": "Very helpful",
+          "quitting": "Extremely helpful"
+        }
+      }
+    ]
+  },
+  "summary_text": "Age 24, Female, Some days, Motivation: Moderately motivated, Support: Very supportive, CPD: 5, TTF: After 30 minutes"
+}

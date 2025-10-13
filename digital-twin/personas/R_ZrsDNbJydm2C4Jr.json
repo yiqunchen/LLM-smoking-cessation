@@ -1,0 +1,137 @@
+{
+  "participant_id": "R_ZrsDNbJydm2C4Jr",
+  "demographics": {
+    "age_years": 21,
+    "gender_identity": "Female",
+    "race_ethnicity": "White",
+    "is_hispanic_latino": "Yes",
+    "education_level": "Less than high school",
+    "household_income": "< $15,000"
+  },
+  "smoking_behavior": {
+    "quit_intention": "Are currently trying to quit",
+    "days_smoked_past_30d": 4,
+    "cigs_per_day": "1",
+    "time_to_first_cig": "After 30 minutes",
+    "household_smokers": "No",
+    "friends_smoke_level": "None of them",
+    "quit_attempts_count": "1",
+    "smoking_status": "Some days",
+    "quit_motivation_level": "Extremely motivated",
+    "social_support_to_quit": "Extremely supportive"
+  },
+  "psychosocial": {
+    "pain_blocks_valued_life": "Always true",
+    "fear_of_feelings": "Very seldom true",
+    "worry_about_control": "Frequently true",
+    "memories_block_fulfillment": "Very seldom true",
+    "emotions_cause_problems": "Always true",
+    "others_handle_life_better": "Sometimes true",
+    "worry_blocks_success": "Sometimes true"
+  },
+  "history": {
+    "rated_messages": [
+      {
+        "input_message": "Take a minute to notice what the urge feels like in your body without smoking a cigarette. Notice what is going on. See what happens. Does the urge pass?",
+        "ImageID": "A21",
+        "ratings": {
+          "content": "Good",
+          "design": "Acceptable",
+          "coping": "Very helpful",
+          "quitting": "Not at all helpful"
+        }
+      },
+      {
+        "input_message": "Instead of smoking, keep your fingers busy by scrolling through your phone.",
+        "ImageID": "D39",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Very good",
+          "coping": "Extremely helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "Take a slow, deep breath in. And let it out. Now, ask yourself, \"Am I willing to go one minute without smoking?\" When that minute is over, ask yourself this question again.",
+        "ImageID": "A20",
+        "ratings": {
+          "content": "Very good",
+          "design": "Very good",
+          "coping": "Extremely helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "Setting small goals when you feel unmotivated is best. Maybe a small goal for now is to breathe deeply for the next 3 minutes instead of smoking.",
+        "ImageID": "D68",
+        "ratings": {
+          "content": "Good",
+          "design": "Acceptable",
+          "coping": "Moderately helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "Think of urges as loud construction noises. Sometimes there's nothing you can do except agree that it's annoying. If you fight it, you feel more irritated, right? Let your urge be there until it passes on its own.",
+        "ImageID": "A13",
+        "ratings": {
+          "content": "Very good",
+          "design": "Acceptable",
+          "coping": "Moderately helpful",
+          "quitting": "Moderately helpful"
+        }
+      },
+      {
+        "input_message": "Instead of smoking, write a quick note to yourself explaining why ditching cigs is important to you. Carry it with you and read it when you feel like lighting up.",
+        "ImageID": "D64",
+        "ratings": {
+          "content": "Very good",
+          "design": "Good",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "Are you willing to let this urge pass for the sake of living a good long time with the people who matter most to you? When you have an urge, think about the people most important to you.",
+        "ImageID": "A15",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Acceptable",
+          "coping": "Extremely helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "You don't have to act on this feeling by smoking or doing anything about it. Give it some space, breathe, and see if it changes. Let the urge and feeling be there while you focus on doing something you care about.",
+        "ImageID": "A41",
+        "ratings": {
+          "content": "Very good",
+          "design": "Acceptable",
+          "coping": "Moderately helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "Write down why you want to stop smoking to resist a craving. Remember, trying something to beat the urge is always better than doing nothing. Each time you resist a cig, you're one step closer to being tobacco-free.",
+        "ImageID": "D46",
+        "ratings": {
+          "content": "Very good",
+          "design": "Acceptable",
+          "coping": "Very helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "Reduce your stress by using your next break to list four things that have gone well so far today. It might feel like a bit of effort, but doing this will help your mind to refocus, and help you to feel calmer.",
+        "ImageID": "D1",
+        "ratings": {
+          "content": "Very good",
+          "design": "Very poor",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      }
+    ]
+  },
+  "summary_text": "Age 21, Female, Some days, Motivation: Extremely motivated, Support: Extremely supportive, CPD: 1, TTF: After 30 minutes"
+}

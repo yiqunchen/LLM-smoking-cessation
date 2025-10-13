@@ -1,0 +1,127 @@
+{
+  "participant_id": "R_2YbN5gubGXzJndw",
+  "demographics": {
+    "age_years": 28,
+    "gender_identity": "Male",
+    "race_ethnicity": "Black or African American",
+    "is_hispanic_latino": "No",
+    "education_level": "Some college",
+    "household_income": "$80,000-99,000"
+  },
+  "smoking_behavior": {
+    "quit_intention": "Will quit in the next month",
+    "days_smoked_past_30d": 15,
+    "cigs_per_day": "3",
+    "time_to_first_cig": "After 30 minutes",
+    "household_smokers": "Yes",
+    "friends_smoke_level": "Some of them",
+    "quit_attempts_count": "5",
+    "smoking_status": "Some days",
+    "quit_motivation_level": "Very motivated",
+    "social_support_to_quit": "Very supportive"
+  },
+  "psychosocial": {
+    "pain_blocks_valued_life": "Very seldom true",
+    "fear_of_feelings": "Very seldom true",
+    "worry_about_control": "Seldom true",
+    "memories_block_fulfillment": "Seldom true",
+    "emotions_cause_problems": "Very seldom true",
+    "others_handle_life_better": "Seldom true",
+    "worry_blocks_success": "Very seldom true"
+  },
+  "history": {
+    "rated_messages": [
+      {
+        "input_message": "Notice what it feels like to see other people smoke and choose not to smoke. Notice what thoughts or emotions come up. Allow them to come and go. They will pass and so will this urge.",
+        "ImageID": "A57",
+        "ratings": {
+          "content": "Good",
+          "design": "Acceptable",
+          "coping": "Extremely helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "Some people find that having a simple mantra can really help, especially if things feel stressful. Try repeating something simple to yourself like: \"I can do it!\".",
+        "ImageID": "D16",
+        "ratings": {
+          "content": "Good",
+          "design": "Very good",
+          "coping": "Extremely helpful",
+          "quitting": "Moderately  helpful"
+        }
+      },
+      {
+        "input_message": "Stop! Breathe. What is going on around you? Inside you? Allow everything to be just as it is. Breathe again.",
+        "ImageID": "D63",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Moderately helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "It's normal to have some doubts during a quit attempt. Keep your quit reasons on hand to remind yourself if ever you feel uncertain or undecided.",
+        "ImageID": "D4",
+        "ratings": {
+          "content": "Good",
+          "design": "Acceptable",
+          "coping": "Extremely helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "Add the phrase \u201cI\u2019m having the thought that\u2026\u201d in front of your unhelpful thoughts. For example, \u201cI\u2019m having the thought that I need a cigarette.\u201d Your thoughts are not always true or helpful! They are just thoughts.",
+        "ImageID": "A46",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Acceptable",
+          "coping": "Very helpful",
+          "quitting": "Moderately helpful"
+        }
+      },
+      {
+        "input_message": "What can you do right now to break the automatic habit of smoking when you are here? Pause. Close your eyes. And take 10 slow breaths.",
+        "ImageID": "A54",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Moderately helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "Step back from what is stressful by taking 10 slow breaths. Count them as you go and notice your breath. If you get distracted, keep starting over until you get to 10.",
+        "ImageID": "D67",
+        "ratings": {
+          "content": "Good",
+          "design": "Acceptable",
+          "coping": "Extremely helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "You spent a long time training your brain to want a cig. Now you're retraining your brain, and it's natural that this might take time.",
+        "ImageID": "D12",
+        "ratings": {
+          "content": "Good",
+          "design": "Acceptable",
+          "coping": "Moderately helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "If you usually smoke while you talk on the phone, keep a pen and paper nearby to occupy your hands with doodling rather than smoking.",
+        "ImageID": "D42",
+        "ratings": {
+          "content": "Very good",
+          "design": "Acceptable",
+          "coping": "Moderately helpful",
+          "quitting": "Somewhat helpful"
+        }
+      }
+    ]
+  },
+  "summary_text": "Age 28, Male, Some days, Motivation: Very motivated, Support: Very supportive, CPD: 3, TTF: After 30 minutes"
+}

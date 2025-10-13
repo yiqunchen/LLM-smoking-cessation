@@ -1,0 +1,137 @@
+{
+  "participant_id": "R_2f2t38YdAmanMyj",
+  "demographics": {
+    "age_years": 25,
+    "gender_identity": "Male",
+    "race_ethnicity": "White",
+    "is_hispanic_latino": "No",
+    "education_level": "Some college",
+    "household_income": "$80,000-99,000"
+  },
+  "smoking_behavior": {
+    "quit_intention": "Are currently trying to quit",
+    "days_smoked_past_30d": 20,
+    "cigs_per_day": "4",
+    "time_to_first_cig": "Within 30 minutes",
+    "household_smokers": "Yes",
+    "friends_smoke_level": "Most of them",
+    "quit_attempts_count": "7",
+    "smoking_status": "Every day",
+    "quit_motivation_level": "Moderately motivated",
+    "social_support_to_quit": "Somewhat supportive"
+  },
+  "psychosocial": {
+    "pain_blocks_valued_life": "Very seldom true",
+    "fear_of_feelings": "Very seldom true",
+    "worry_about_control": "Seldom true",
+    "memories_block_fulfillment": "Seldom true",
+    "emotions_cause_problems": "Sometimes true",
+    "others_handle_life_better": "Seldom true",
+    "worry_blocks_success": "Sometimes true"
+  },
+  "history": {
+    "rated_messages": [
+      {
+        "input_message": "Imagine that your urge is a backseat passenger trying to distract you from reaching your destination. See if you can choose to keep driving instead of allowing your urges to distract you from where you want to go.",
+        "ImageID": "A7",
+        "ratings": {
+          "content": "Very good",
+          "design": "Very good",
+          "coping": "Very helpful",
+          "quitting": "Moderately helpful"
+        }
+      },
+      {
+        "input_message": "When smoking, it can feel like your hands are for holding a cigarette, your mouth is for smoking the cigarette, and your chest and lungs need to breathe in the smoke. Spend 3 minutes noticing how your hands feel, how your mouth feels, and how your chest feels. The more you practice noticing these things without smoking, the sooner your body will stop being a trigger for you.",
+        "ImageID": "A22",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Good",
+          "coping": "Somewhat helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "If leaving social situations to avoid smokers feels awkward, make sure you have something to do instead - take sugar free mints, lollipops or low fat snacks to chew, or use a stress ball.",
+        "ImageID": "D22",
+        "ratings": {
+          "content": "Very good",
+          "design": "Acceptable",
+          "coping": "Extremely helpful",
+          "quitting": "Moderately helpful"
+        }
+      },
+      {
+        "input_message": "Imagine walking into a social situation in three months' time as a non-smoker. Now hold that picture and imagine you're that person now. Seeing yourself as a non-smoker now can make it much easier to resist!",
+        "ImageID": "D27",
+        "ratings": {
+          "content": "Very good",
+          "design": "Acceptable",
+          "coping": "Moderately helpful",
+          "quitting": "Moderately helpful"
+        }
+      },
+      {
+        "input_message": "If this situation becomes stressful for you, make an excuse to leave for a few minutes. If this doesn't help, it might be better to just leave early.",
+        "ImageID": "D31",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Very good",
+          "coping": "Very helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "Feelings aren't permanent. They are always changing like the weather. Observe the storm that is coming, but don't fight it. Eventually the weather will change.",
+        "ImageID": "A42",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Good",
+          "coping": "Extremely helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "You don't have to act on this feeling by smoking or doing anything about it. Give it some space, breathe, and see if it changes. Let the urge and feeling be there while you focus on doing something you care about.",
+        "ImageID": "A41",
+        "ratings": {
+          "content": "Good",
+          "design": "Good",
+          "coping": "Moderately helpful",
+          "quitting": "Very helpful"
+        }
+      },
+      {
+        "input_message": "Read this rule out loud (if you can): IF someone offers me a cigarette THEN I will say 'no thanks, I don't want one.' Reading out if/then rules has been shown to help people stick with their decisions.",
+        "ImageID": "D25",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Very good",
+          "coping": "Extremely helpful",
+          "quitting": "Extremely helpful"
+        }
+      },
+      {
+        "input_message": "Take a deep breath and let it out slowly. Notice that you are completely OK for this one breath. Do it again.",
+        "ImageID": "A44",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Acceptable",
+          "coping": "Extremely helpful",
+          "quitting": "Moderately helpful"
+        }
+      },
+      {
+        "input_message": "You cant always control when you will see other people smoking. But you can control how you respond to your urge when you do.",
+        "ImageID": "A55",
+        "ratings": {
+          "content": "Acceptable",
+          "design": "Good",
+          "coping": "Extremely helpful",
+          "quitting": "Somewhat helpful"
+        }
+      }
+    ]
+  },
+  "summary_text": "Age 25, Male, Every day, Motivation: Moderately motivated, Support: Somewhat supportive, CPD: 4, TTF: Within 30 minutes"
+}

@@ -1,0 +1,16 @@
+{
+  "student_model": "openrouter/openai/gpt-4.1-mini",
+  "reflection_model": "openrouter/openai/gpt-4.1",
+  "train_size": 320,
+  "val_size": 80,
+  "dimensions": [
+    "content",
+    "design",
+    "coping",
+    "quitting"
+  ],
+  "log_dir": "digital-twin/gepa_logs",
+  "instructions_initial": "You are simulating the participant described in persona_json. Use the persona to adopt their goals, concerns, and style. Read message_text carefully and focus on the specified dimension. Answer the question with a single digit from 1-5 in the rating field. Provide concise reasoning in the rationale field before the rating. Never output words like 'Rating:' or additional text in the rating field.",
+  "dry_run": true,
+  "note": "Dry run requested; skipped LM evaluation and GEPA compile."
+}

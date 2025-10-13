@@ -1,0 +1,74 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "SmokingCessationPersona",
+  "type": "object",
+  "properties": {
+    "participant_id": {"type": "string"},
+    "demographics": {
+      "type": "object",
+      "properties": {
+        "age_years": {"type": ["number", "null"]},
+        "gender_identity": {"type": ["string", "null"]},
+        "race_ethnicity": {"type": ["string", "null"]},
+        "is_hispanic_latino": {"type": ["string", "null"]},
+        "education_level": {"type": ["string", "null"]},
+        "household_income": {"type": ["string", "null"]}
+      }
+    },
+    "smoking_behavior": {
+      "type": "object",
+      "properties": {
+        "smoking_status": {"type": ["string", "null"]},
+        "cigs_per_day": {"type": ["number", "null"]},
+        "days_smoked_past_30d": {"type": ["number", "null"]},
+        "time_to_first_cig": {"type": ["string", "null"]},
+        "quit_motivation_level": {"type": ["string", "null"]},
+        "social_support_to_quit": {"type": ["string", "null"]},
+        "quit_attempts_count": {"type": ["number", "null"]},
+        "quit_intention": {"type": ["string", "null"]}
+      }
+    },
+    "psychosocial": {
+      "type": "object",
+      "properties": {
+        "pain_blocks_valued_life": {"type": ["number", "null"]},
+        "fear_of_feelings": {"type": ["number", "null"]},
+        "worry_about_control": {"type": ["number", "null"]},
+        "memories_block_fulfillment": {"type": ["number", "null"]},
+        "emotions_cause_problems": {"type": ["number", "null"]},
+        "others_handle_life_better": {"type": ["number", "null"]},
+        "worry_blocks_success": {"type": ["number", "null"]},
+        "friends_smoke_level": {"type": ["string", "null"]},
+        "household_smokers": {"type": ["string", "null"]}
+      }
+    },
+    "history": {
+      "type": "object",
+      "properties": {
+        "rated_messages": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "input_message": {"type": "string"},
+              "ImageID": {"type": ["string", "null"]},
+              "ratings": {
+                "type": "object",
+                "properties": {
+                  "content": {"type": ["string", "null"]},
+                  "design": {"type": ["string", "null"]},
+                  "coping": {"type": ["string", "null"]},
+                  "quitting": {"type": ["string", "null"]}
+                }
+              }
+            },
+            "required": ["input_message"]
+          }
+        }
+      }
+    },
+    "summary_text": {"type": ["string", "null"]}
+  },
+  "required": ["participant_id"]
+}
+

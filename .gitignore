@@ -220,7 +220,13 @@ pyrightconfig.json
 .env*.local
 *.key
 
+# Project-specific: Archive directories (don't track old experiments)
+archive_code/
+archive_results/
+archive/
+
 # Project-specific: Large result files
 checkpoint_results_*.json
 evaluation_results_*.json
 temp_checkpoint/
+results_manuscript/*.json

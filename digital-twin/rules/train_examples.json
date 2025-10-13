@@ -1,0 +1,229 @@
+{
+  "top_k": 5,
+  "dimensions": {
+    "content": {
+      "high_examples": [
+        {
+          "input_message": "Take a deep breath. Focus on today and the things you have accomplished. How many urges have you let pass? Give yourself some credit!",
+          "mean_label": 4.333,
+          "num_ratings": 30
+        },
+        {
+          "input_message": "To help get through a 'risky situation', remind yourself of how far you've come and the effort that you've put in. Don't ruin your hard work - stay strong!",
+          "mean_label": 4.316,
+          "num_ratings": 19
+        },
+        {
+          "input_message": "Whenever you think about smoking, listen to your favorite song and sing it out loud!",
+          "mean_label": 4.308,
+          "num_ratings": 13
+        },
+        {
+          "input_message": "Try chewing gum if you have trouble resisting smoking when other people light up around you.",
+          "mean_label": 4.28,
+          "num_ratings": 25
+        },
+        {
+          "input_message": "If you are tempted to smoke by being in this location, see if you can sit with that temptation for 1 minute. When the minute is over, do it again. Soon, it should pass.",
+          "mean_label": 4.261,
+          "num_ratings": 23
+        }
+      ],
+      "low_examples": [
+        {
+          "input_message": "You don\u2019t need to get rid of or change your thoughts about smoking\u2014just let them pass by like a cloud in the sky.",
+          "mean_label": 3.158,
+          "num_ratings": 19
+        },
+        {
+          "input_message": "Maybe you could use these few minutes to work out whose birthday is next and what message you'll write in their card? Then when it comes you'll have something original and well thought-out to write!",
+          "mean_label": 3.182,
+          "num_ratings": 22
+        },
+        {
+          "input_message": "Add the phrase \u201cI\u2019m having the thought that\u2026\u201d in front of your unhelpful thoughts. For example, \u201cI\u2019m having the thought that I need a cigarette.\u201d Your thoughts are not always true or helpful! They are just thoughts.",
+          "mean_label": 3.348,
+          "num_ratings": 23
+        },
+        {
+          "input_message": "Urges to smoke usually only last a few minutes. Distract yourself by NOT thinking about giraffes, or leave the situation until it passes.",
+          "mean_label": 3.4,
+          "num_ratings": 35
+        },
+        {
+          "input_message": "Instead of lighting up a cigarette, light a scented candle or burn some incense.",
+          "mean_label": 3.594,
+          "num_ratings": 32
+        }
+      ]
+    },
+    "design": {
+      "high_examples": [
+        {
+          "input_message": "Sometimes an urge comes on like a wave. Imagine what it is like to ride the wave as it ebbs and flows. Instead of trying to swim against it, try riding it out until it disappears into the sea.",
+          "mean_label": 4.519,
+          "num_ratings": 27
+        },
+        {
+          "input_message": "Whenever you think about smoking, listen to your favorite song and sing it out loud!",
+          "mean_label": 4.385,
+          "num_ratings": 13
+        },
+        {
+          "input_message": "One way to combat any urges is to keep your mouth busy - some people find that chewing sugar free gum, mints, or even a pen can be a good alternative.",
+          "mean_label": 4.304,
+          "num_ratings": 23
+        },
+        {
+          "input_message": "When running a marathon, the hardest part is often towards the end, but many runners stick with it, knowing that the pain will pass. Learning to quit smoking is like running a marathon - if it gets hard, you may be closer to succeeding than you realize!",
+          "mean_label": 4.176,
+          "num_ratings": 17
+        },
+        {
+          "input_message": "If you are tempted to smoke by being in this location, see if you can sit with that temptation for 1 minute. When the minute is over, do it again. Soon, it should pass.",
+          "mean_label": 4.174,
+          "num_ratings": 23
+        }
+      ],
+      "low_examples": [
+        {
+          "input_message": "You don\u2019t need to get rid of or change your thoughts about smoking\u2014just let them pass by like a cloud in the sky.",
+          "mean_label": 3.263,
+          "num_ratings": 19
+        },
+        {
+          "input_message": "No need to get rid of these feelings or control them with a smoke. They are not permanent.",
+          "mean_label": 3.35,
+          "num_ratings": 20
+        },
+        {
+          "input_message": "Use self-talk to stay motivated and determined. Say, \u201cI don't need a cigarette. I might WANT one, but I don\u2019t NEED it.\u201d",
+          "mean_label": 3.368,
+          "num_ratings": 19
+        },
+        {
+          "input_message": "Take a deep breath and let it out slowly. Notice that you are completely OK for this one breath. Do it again.",
+          "mean_label": 3.429,
+          "num_ratings": 28
+        },
+        {
+          "input_message": "Add the phrase \u201cI\u2019m having the thought that\u2026\u201d in front of your unhelpful thoughts. For example, \u201cI\u2019m having the thought that I need a cigarette.\u201d Your thoughts are not always true or helpful! They are just thoughts.",
+          "mean_label": 3.435,
+          "num_ratings": 23
+        }
+      ]
+    },
+    "coping": {
+      "high_examples": [
+        {
+          "input_message": "When you notice yourself trapped in stressful thoughts or worry, say out loud, \"I'm noticing that I'm having some worrisome thoughts.\" This helps unhook you from your thoughts so you don't stay caught in them.",
+          "mean_label": 4.312,
+          "num_ratings": 16
+        },
+        {
+          "input_message": "Ways of dealing with urges: play a game or an online quiz.",
+          "mean_label": 4.278,
+          "num_ratings": 18
+        },
+        {
+          "input_message": "Try chewing gum if you have trouble resisting smoking when other people light up around you.",
+          "mean_label": 4.273,
+          "num_ratings": 22
+        },
+        {
+          "input_message": "Try to avoid seeing other people smoke. It might sound basic but brain see, brain want! If you can, make life easier and avoid the people you used to smoke with for some time where possible.",
+          "mean_label": 4.25,
+          "num_ratings": 24
+        },
+        {
+          "input_message": "Keep picturing yourself getting home later today knowing that you've gained a smoke-free day. It's nearly a reality!",
+          "mean_label": 4.25,
+          "num_ratings": 20
+        }
+      ],
+      "low_examples": [
+        {
+          "input_message": "You don\u2019t need to get rid of or change your thoughts about smoking\u2014just let them pass by like a cloud in the sky.",
+          "mean_label": 2.812,
+          "num_ratings": 16
+        },
+        {
+          "input_message": "Maybe you could use these few minutes to work out whose birthday is next and what message you'll write in their card? Then when it comes you'll have something original and well thought-out to write!",
+          "mean_label": 3.316,
+          "num_ratings": 19
+        },
+        {
+          "input_message": "Urges to smoke usually only last a few minutes. Distract yourself by NOT thinking about giraffes, or leave the situation until it passes.",
+          "mean_label": 3.344,
+          "num_ratings": 32
+        },
+        {
+          "input_message": "If this situation becomes stressful for you, make an excuse to leave for a few minutes. If this doesn't help, it might be better to just leave early.",
+          "mean_label": 3.346,
+          "num_ratings": 26
+        },
+        {
+          "input_message": "Think about a happy memory to ease the difficulty of your urge. Is there something you have been wanting to do for a while that you know you would enjoy? Reading? Walking? Calling a friend? Doing a puzzle? Do something that matters to you instead of smoking.",
+          "mean_label": 3.35,
+          "num_ratings": 20
+        }
+      ]
+    },
+    "quitting": {
+      "high_examples": [
+        {
+          "input_message": "Ways of dealing with urges: play a game or an online quiz.",
+          "mean_label": 4.375,
+          "num_ratings": 16
+        },
+        {
+          "input_message": "Try chewing gum if you have trouble resisting smoking when other people light up around you.",
+          "mean_label": 4.364,
+          "num_ratings": 22
+        },
+        {
+          "input_message": "To help get through a 'risky situation', remind yourself of how far you've come and the effort that you've put in. Don't ruin your hard work - stay strong!",
+          "mean_label": 4.333,
+          "num_ratings": 18
+        },
+        {
+          "input_message": "Take a deep breath. Focus on today and the things you have accomplished. How many urges have you let pass? Give yourself some credit!",
+          "mean_label": 4.296,
+          "num_ratings": 27
+        },
+        {
+          "input_message": "When you are stressed, it is easy to focus on the things that are going wrong. Take a few moments to focus on 5 things that have gone well or that you are thankful for this week.",
+          "mean_label": 4.286,
+          "num_ratings": 21
+        }
+      ],
+      "low_examples": [
+        {
+          "input_message": "You don\u2019t need to get rid of or change your thoughts about smoking\u2014just let them pass by like a cloud in the sky.",
+          "mean_label": 2.667,
+          "num_ratings": 18
+        },
+        {
+          "input_message": "Urges to smoke usually only last a few minutes. Distract yourself by NOT thinking about giraffes, or leave the situation until it passes.",
+          "mean_label": 3.188,
+          "num_ratings": 32
+        },
+        {
+          "input_message": "Add the phrase \u201cI\u2019m having the thought that\u2026\u201d in front of your unhelpful thoughts. For example, \u201cI\u2019m having the thought that I need a cigarette.\u201d Your thoughts are not always true or helpful! They are just thoughts.",
+          "mean_label": 3.333,
+          "num_ratings": 18
+        },
+        {
+          "input_message": "Have confidence in knowing that you can have this urge, choose not to smoke, be okay, and choose to do things that matter most to you.",
+          "mean_label": 3.353,
+          "num_ratings": 17
+        },
+        {
+          "input_message": "No need to get rid of these feelings or control them with a smoke. They are not permanent.",
+          "mean_label": 3.375,
+          "num_ratings": 16
+        }
+      ]
+    }
+  }
+}

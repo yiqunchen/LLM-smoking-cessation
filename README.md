@@ -1,180 +1,318 @@
-# LLM Smoking Cessation Project
+# LLM-Based Smoking Cessation Message Evaluation
 
-Evaluate LLM-generated smoking cessation messages with configurable prompt strategies and calibration.
+Evaluating smoking cessation messages using Large Language Models (LLMs) to predict participant ratings across multiple dimensions.
 
-## 🎯 Core Components
+---
 
-```
-analysis-script/
-├── prompt_config.py      # ⭐ CORE - All prompt generation functions
-├── main_eval.py          # ⭐ CORE - Main evaluation pipeline  
-├── calibration_eval.py   # ⭐ CORE - Calibration evaluation
-├── plot_results.py       # 📊 Results visualization
-├── preprocess_data.py    # 🔧 Data preprocessing
-└── find_unmatched_messages.py  # 🔍 Data validation
-```
+## 🚀 Quick Start
 
-### Key Features
-- **6 Prompt Configurations** testing different strategies
-- **3 LLM Models** (GPT-4o-mini, GPT-4o, O3-2025-04-16)
-- **2 Evaluation Modes** (text-only, vision)
-- **Calibration Analysis** for confidence assessment
-
-## 📊 Data Preparation
-
-### Required Raw Data Files
-Before running any evaluations, you need these files in the `data/` directory:
-
-```
-data/
-├── R01 Message Summary for message testing paper.xlsx    # Message metadata
-├── Messaging_Testing_Data.xlsx                          # Participant responses
-└── downloaded_smoke_images/                             # Image files (A1.jpg, A2.jpg, etc.)
-```
-
-### Step 1: Generate Processed Data
+### 1. Setup Environment
 ```bash
-# Generate the main processed JSON file
-python analysis-script/preprocess_data.py
+conda activate research
+source ~/.bash_profile  # Loads OPENAI_API_KEY
 ```
-**Output:** `data/processed_llm_data.json` (5.2MB, ~8000 entries)
 
-### Step 2: Validate Data (Optional)
+### 2. Run Generic LLM Experiments (Ready Now!)
 ```bash
-# Check for unmatched messages between data files
-python analysis-script/find_unmatched_messages.py
+# Run all 6 Generic LLM methods at once
+bash run_manuscript_evaluations.sh --methods generic_llm
+
+# OR run individually
+python analysis-script/main_eval.py \
+  --mode text-only \
+  --model gpt-4o-mini \
+  --prompt-config zero-shot \
+  --data-file data_splits/canonical/test_participant_7030.json \
+  --max-concurrent 10 \
+  --output-file results_manuscript/generic_llm_1_zero_shot_all.json
 ```
 
-## Quick Start
-
-1. **Install dependencies:**
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-2. **Set API key:**
-   ```bash
-   export CHEN_OPENAI_API_KEY="your-api-key-here"
-   ```
-
-3. **Prepare data (if not already done):**
-   ```bash
-   python analysis-script/preprocess_data.py
-   ```
-
-4. **🚀 Run all evaluations:**
-   ```bash
-   ./run_categorical_eval.sh    # 18 categorical evaluations
-   ```
-
-## Prompt Configurations
-
-The system supports 6 different prompt strategies, each testing different approaches:
-
-| Configuration | Description | Features Used | Examples |
-|---------------|-------------|---------------|----------|
-| `zero-shot` | All participant features | Full metadata | None |
-| `zero-shot-feature-select` | Key features only | Selected features | None |
-| `zero-shot-feature-select-balanced` | Key features + rating range emphasis | Selected features | None |
-| `few-shot` | All features + examples | Full metadata | High/low examples |
-| `few-shot-feature-select` | Key features + examples | Selected features | High/low examples |
-| `few-shot-feature-select-balanced` | Key features + all rating examples | Selected features | All 5 rating levels |
-
-### Selected Features
-The feature-selected configurations use only these key participant demographics:
-- `age_years`
-- `gender_identity` 
-- `race_ethnicity`
-- `quit_motivation_level`
-- `social_support_to_quit`
-
-## Models Supported
-
-- `gpt-4o-mini` 
-- `gpt-4o` 
-- `o3-2025-04-16` 
-
-## Manual Usage
-
-### Basic Evaluation
+### 3. Analyze Results
 ```bash
-# Specific configuration (vision mode)
-python analysis-script/main_eval.py --mode vision --model gpt-4o --prompt-config few-shot-feature-select-balanced --sample-size 500
-
-# Specific configuration (text-only mode)
-python analysis-script/main_eval.py --mode text-only --model gpt-4o --prompt-config few-shot-feature-select-balanced --sample-size 500
+python analysis-script/analyze_manuscript_results.py
 ```
 
-### Calibration Analysis
+Output: `results_manuscript/summary_table.csv`, `summary_table.md`, `method_comparison.png`
+
+---
+
+## 📊 Manuscript Methods (Section 2.2)
+
+Based on `wip-manuscript.md`. All methods use canonical splits (seed=202509) for fair comparison.
+
+### 2.2.1 Benchmark Models
+- **Random Guess**: Baseline using uniform random selection
+- **Regression**: Logistic regression on participant characteristics
+- **Status**: ⚠️ Needs implementation (`analysis-script/run_benchmarks.py`)
+
+### 2.2.2 Generic LLM Models (Using 70/30 Participant Split)
+All use `data_splits/canonical/test_participant_7030.json`
+
+| # | Method | Config | Status |
+|---|--------|--------|--------|
+| 1 | Zero-shot + all features | `--prompt-config zero-shot` | ✅ Ready |
+| 2 | Zero-shot + selected features | `--prompt-config zero-shot-feature-select` | ✅ Ready |
+| 3 | Few-shot + all features | `--prompt-config few-shot` | ✅ Ready |
+| 4 | Few-shot + selected features | `--prompt-config few-shot-feature-select` | ✅ Ready |
+| 5 | Continuous + all features | `--prompt-config zero-shot-natural-lang` | ✅ Ready |
+| 6 | Continuous + selected features | `--prompt-config zero-shot-prob` | ✅ Ready |
+
+### 2.2.3 Hybrid ML-LLM Models (Using 70/30 Participant Split)
+- **ML + LLM embeddings**: Combine participant features (ML) with message embeddings (LLM)
+- **Status**: ⚠️ Needs implementation (extend `compare_llm_vs_individual.py`)
+
+### 2.2.4 Digital Twin Models (Using Digital Twin Splits)
+Each participant has messages split into "profile" (train) and "test" sets.
+
+| # | Method | Split | Config | Status |
+|---|--------|-------|--------|--------|
+| 1 | Full-feature | 50/50 | `--prompt-config digital-twin` | ⚠️ Needs script fix |
+| 2 | Selected-feature | 50/50 | `--prompt-config digital-twin-select` | ⚠️ Needs script fix |
+| 3 | Full + feedback | 50/50 | `--prompt-config digital-twin-feedback` | ⚠️ Needs script fix |
+| 4a | CBT/ACT-informed | 50/50 | `--prompt-config digital-twin-cbtact` | ⚠️ Needs script fix |
+| 4b | CBT/ACT-informed | 70/30 | `--prompt-config digital-twin-cbtact` | ⚠️ Needs script fix |
+| 4c | CBT/ACT-informed | 90/10 | `--prompt-config digital-twin-cbtact` | ⚠️ Needs script fix |
+
+**Issue**: Functions in `prompt_config.py` load from `data/digitalTwin_msg.xlsx` instead of canonical split JSONs.
+
+---
+
+## 📁 Directory Structure
+
+```
+LLM-smoking-cessation/
+├── README.md                          # This file
+├── wip-manuscript.md                  # Paper draft
+├── run_manuscript_evaluations.sh      # Master evaluation script
+│
+├── data/                              # Original data
+│   ├── processed_llm_data.json        # Full dataset
+│   ├── message_embeddings.pkl         # Message embeddings
+│   └── digitalTwin_msg.xlsx           # Digital twin training data
+│
+├── data_splits/
+│   └── canonical/                     # ⭐ Canonical splits (NEVER MODIFY)
+│       ├── train_participant_7030.json
+│       ├── test_participant_7030.json
+│       ├── train_digital_twin_5050.json
+│       └── ... (all splits with metadata)
+│
+├── analysis-script/                   # Analysis & evaluation scripts
+│   ├── main_eval.py                   # Main evaluation script
+│   ├── prompt_config.py               # Prompt templates
+│   ├── create_canonical_splits.py     # Generate data splits
+│   ├── analyze_manuscript_results.py  # Analyze all methods
+│   ├── analyze_ranking_performance.py # Cohen's Kappa & Spearman
+│   ├── analyze_llm_calibration.py     # Calibration analysis
+│   ├── compare_llm_vs_individual.py   # Compare LLM vs regression
+│   └── plot_results_3cat.py           # Plotting utilities
+│
+├── results_manuscript/                # ⭐ New results go here
+│   ├── generic_llm_*.json             # LLM experiment results
+│   ├── summary_table.csv              # Final comparison table
+│   └── method_comparison.png          # Visualization
+│
+├── digital-twin/                      # Digital twin experiments
+│
+├── archive_code/                      # Old experimental code
+├── archive_results/                   # Old experimental results
+└── archive/                           # Legacy archive
+```
+
+---
+
+## 🔧 Main Scripts
+
+### Evaluation: `main_eval.py`
 ```bash
-# Calibration (vision mode)
-python analysis-script/calibration_eval.py --mode vision --model gpt-4o
-
-# Calibration (text-only mode)
-python analysis-script/calibration_eval.py --mode text-only --model gpt-4o
+python analysis-script/main_eval.py \
+  --mode text-only \                    # or 'vision'
+  --model gpt-4o-mini \                 # Model name
+  --prompt-config zero-shot \           # Prompt type
+  --data-file data_splits/canonical/test_participant_7030.json \  # ⚠️ USE SPLITS
+  --max-concurrent 10 \                 # Parallel API calls
+  --output-file results_manuscript/output.json
 ```
 
-### Results Visualization
+**Prompt configs:**
+- `zero-shot`: Basic zero-shot with all features
+- `zero-shot-feature-select`: Zero-shot with selected features
+- `zero-shot-natural-lang`: Natural language profile + probabilities
+- `zero-shot-prob`: Feature-select + probabilities
+- `few-shot`: Few-shot with all features
+- `few-shot-feature-select`: Few-shot with selected features
+- `digital-twin*`: Digital twin variants (needs fix)
+
+### Analysis: `analyze_manuscript_results.py`
 ```bash
-# Generate plots for categorical results
-python analysis-script/plot_results.py evaluation_results_gpt-4o_vision_few-shot.json
-python analysis-script/plot_results.py evaluation_results_gpt-4o_text-only_few-shot.json
-
-# Generate plots for calibration results
-python analysis-script/plot_calibration_results.py calibrated_results_gpt-4o_vision.json
-python analysis-script/plot_calibration_results.py calibrated_results_gpt-4o_text-only.json
+python analysis-script/analyze_manuscript_results.py
 ```
 
-## Output Files
+Generates:
+- `results_manuscript/summary_table.csv` - Metrics by method & domain
+- `results_manuscript/summary_table.md` - Markdown table
+- `results_manuscript/method_comparison.png` - Bar chart comparison
 
-### Categorical Evaluations
-- Results: `evaluation_results_{model}_{mode}_{config}.json`
-- Plots: `plots_{model}_{mode}_{config}/`
+Metrics: Accuracy, Cohen's Kappa, Spearman's Rho (per-participant ranking)
 
-### Calibration Evaluations  
-- Results: `calibrated_results_{model}_{mode}.json`
-- Plots: `calibration_plots_{model}_{mode}/`
-
-## Data Requirements
-
-The system expects data in the following format:
-```json
-{
-  "response_id": "unique_id",
-  "input_message": "smoking cessation message text",
-  "metadata": {
-    "age_years": 35,
-    "gender_identity": "Female",
-    "race_ethnicity": "White",
-    "quit_motivation_level": "Very motivated",
-    "social_support_to_quit": "Very supportive"
-  },
-  "ratings": {
-    "content": "Good",
-    "design": "Very good", 
-    "coping": "Very helpful",
-    "quitting": "Extremely helpful"
-  }
-}
-```
-
-## Troubleshooting
-
-### Common Issues
-1. **API Key Not Set**: Ensure `CHEN_OPENAI_API_KEY` environment variable is set (or replace it with your local API key)
-2. **Data Not Found**: Run `preprocess_data.py` first to generate required JSON files
-3. **Memory Issues**: Reduce `--max-concurrent` parameter for large datasets
-4. **Rate Limits**: The system includes automatic retry logic with exponential backoff
-
-### Debug Mode
-Add `--sample-size 10` to test with a small subset before running full evaluations.
-
-### Data Validation
-If you encounter data issues:
+### Ranking Analysis: `analyze_ranking_performance.py`
 ```bash
-# Check for unmatched messages
-python analysis-script/find_unmatched_messages.py
-
-# Verify processed data structure
-python -c "import json; data=json.load(open('data/processed_llm_data.json')); print(f'Loaded {len(data)} entries')"
+python analysis-script/analyze_ranking_performance.py <result_file.json>
 ```
+
+Outputs:
+- Cohen's Kappa: Agreement accounting for chance
+- Spearman's Rho: Per-participant rank correlation (directional correctness)
+
+### Calibration Analysis: `analyze_llm_calibration.py`
+```bash
+python analysis-script/analyze_llm_calibration.py <result_file_with_probabilities.json>
+```
+
+Outputs:
+- Accuracy & AUC
+- ECE (Expected Calibration Error)
+- Reliability diagrams
+- Temperature scaling for calibration
+
+---
+
+## 📊 Evaluation Domains
+
+Per manuscript, we focus on **3 domains** (excluding design):
+
+1. **Content**: Quality of message words/meaning (Very poor → Very good)
+2. **Coping**: Helpfulness for coping with cravings (Not at all helpful → Extremely helpful)
+3. **Quitting**: Helpfulness for quitting smoking (Not at all helpful → Extremely helpful)
+
+---
+
+## 🔑 Requirements
+
+### Environment
+```bash
+conda activate research
+```
+
+### API Keys
+Set in `~/.bash_profile`:
+```bash
+export OPENAI_API_KEY='sk-...'
+export OPENROUTER_API_KEY='sk-or-...'  # For alternative models
+```
+
+### Python Packages
+See `requirements.txt`. Key dependencies:
+- `openai` - API client
+- `pandas`, `numpy` - Data processing
+- `scikit-learn` - Metrics & ML models
+- `scipy` - Statistical tests
+- `matplotlib`, `seaborn` - Visualization
+
+---
+
+## 🎯 To-Do List
+
+### ✅ Can Run Now (6 experiments)
+- [ ] Generic LLM 1: Zero-shot + all features
+- [ ] Generic LLM 2: Zero-shot + selected features
+- [ ] Generic LLM 3: Few-shot + all features
+- [ ] Generic LLM 4: Few-shot + selected features
+- [ ] Generic LLM 5: Continuous + all features
+- [ ] Generic LLM 6: Continuous + selected features
+
+**Command:** `bash run_manuscript_evaluations.sh --methods generic_llm`
+
+### ⚠️ Needs Implementation (9 experiments)
+- [ ] Implement benchmarks (random guess, regression)
+- [ ] Fix digital twin scripts to use canonical splits
+- [ ] Run Digital Twin 1-6
+- [ ] Implement hybrid ML-LLM model
+- [ ] Run hybrid model
+
+---
+
+## ⚠️ Critical Notes
+
+### ALWAYS Use Canonical Splits
+✅ **Correct:**
+```bash
+--data-file data_splits/canonical/test_participant_7030.json
+```
+
+❌ **Wrong (uses full dataset):**
+```bash
+# Missing --data-file argument
+```
+
+### Data Split Types
+- **Participant splits** (`*_participant_*.json`): For Generic LLM & Hybrid models
+  - No participant appears in both train and test
+  - Use: `test_participant_7030.json` for evaluation
+  
+- **Digital twin splits** (`*_digital_twin_*.json`): For Digital Twin models
+  - Each participant has messages in both train (profile) and test
+  - Use: `test_digital_twin_5050.json` (or 7030/9010) for evaluation
+
+### Reproducibility
+- All splits use seed: `202509`
+- Fixed in `create_canonical_splits.py`
+- Documented in split metadata files
+
+---
+
+## 💰 Cost Estimates
+
+| Method Category | # Experiments | Runtime | Cost |
+|----------------|---------------|---------|------|
+| Generic LLM (gpt-4o-mini) | 6 | 2-3 hrs | $12-18 |
+| Digital Twin (gpt-4o) | 6 | 2-3 hrs | $6-12 |
+| Hybrid | 1 | 30 min | $2-3 |
+| **Total** | **13** | **5-7 hrs** | **$20-35** |
+
+---
+
+## 🐛 Troubleshooting
+
+### "No such file: data_splits/canonical/..."
+```bash
+python analysis-script/create_canonical_splits.py
+```
+
+### "OPENAI_API_KEY not found"
+```bash
+source ~/.bash_profile
+echo $OPENAI_API_KEY  # Should not be empty
+```
+
+### "No results found" when analyzing
+```bash
+# Run evaluations first
+bash run_manuscript_evaluations.sh --methods generic_llm
+```
+
+### Digital twin errors
+Scripts need updating to load from JSON splits instead of Excel. See issue in `prompt_config.py` lines with `pd.read_excel("data/digitalTwin_msg.xlsx")`.
+
+---
+
+## 📚 Related Files
+
+- **`wip-manuscript.md`**: Paper draft with methods descriptions
+- **`run_manuscript_evaluations.sh`**: Master script to run all methods
+- **`data_splits/canonical/README.md`**: Documentation of canonical splits
+
+---
+
+## 📝 Citation
+
+If you use this code, please cite:
+```
+[Paper citation to be added]
+```
+
+---
+
+**Last Updated**: 2025-10-13  
+**Repository**: Clean and ready for manuscript experiments  
+**Status**: Generic LLM methods ready to run
