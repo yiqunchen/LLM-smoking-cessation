@@ -237,3 +237,6 @@ results_hybrid*/
 
 # Project-specific: Generated PDF figures (can be regenerated from PNGs)
 figures/*.pdf
+
+# Project-specific: WIP manuscript (local only, not for version control)
+wip-manuscript.md
