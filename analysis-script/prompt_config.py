@@ -43,8 +43,13 @@ def prepare_few_shot_examples(all_question_data: dict):
 
     print("Preparing examples for few-shot prompts...")
     
-    # Convert dict to list of tuples for easier processing
-    dataset = [(qid, qdata) for qid, qdata in all_question_data.items()]
+    # Convert dict to list of tuples for easier processing, filtering out invalid entries
+    dataset = [(qid, qdata) for qid, qdata in all_question_data.items() 
+               if isinstance(qdata, dict) and isinstance(qdata.get('ratings'), dict)]
+    
+    if not dataset:
+        print("⚠️  WARNING: No valid data for few-shot examples!")
+        return
     
     # Define rating dimensions and their high/low values
     dimensions = {
