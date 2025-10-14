@@ -422,8 +422,8 @@ def create_heatmap_all_methods(df: pd.DataFrame, output_dir: str):
     
     # Filter out supervised learning baselines for heatmaps
     df_llm_only = df[~df['Model'].isin(['Logistic Regression', 'Random Forest'])].copy()
-    
-    metrics = ['Accuracy', 'Kappa', 'Directional Accuracy', 'Directional Macro-F1', 'F1']
+
+    metrics = ['Accuracy', 'Kappa', 'Directional Accuracy', 'Directional Macro-F1', 'F1', 'Spearman_Rho']
     
     for metric in metrics:
         fig, axes = plt.subplots(1, 3, figsize=(22, 8))
@@ -473,7 +473,7 @@ def create_grouped_bar_charts(df: pd.DataFrame, output_dir: str):
     os.makedirs(output_dir, exist_ok=True)
     
     # One figure per metric (F1 grouped with accuracies)
-    metrics = ['Accuracy', 'Directional Accuracy', 'Directional Macro-F1', 'F1', 'Kappa']
+    metrics = ['Accuracy', 'Directional Accuracy', 'Directional Macro-F1', 'F1', 'Kappa', 'Spearman_Rho']
     
     # Separate supervised learning baselines from LLM models
     llm_models = ['GPT-4o-mini', 'GPT-5', 'DeepSeek-R1', 'Grok-4-Fast', 'Gemini-2.5-Pro']
@@ -706,17 +706,19 @@ def main():
     print(f"Output directory: {output_dir}/")
     print("\nGenerated files:")
     print("  Heatmaps:")
-    print("    - heatmap_all_methods_accuracy.png")
-    print("    - heatmap_all_methods_kappa.png")
-    print("    - heatmap_all_methods_directional_accuracy.png")
-    print("    - heatmap_all_methods_directional_macro_f1.png")
-    print("    - heatmap_all_methods_f1.png")
+    print("    - heatmap_all_methods_accuracy.png/pdf")
+    print("    - heatmap_all_methods_kappa.png/pdf")
+    print("    - heatmap_all_methods_directional_accuracy.png/pdf")
+    print("    - heatmap_all_methods_directional_macro_f1.png/pdf")
+    print("    - heatmap_all_methods_f1.png/pdf")
+    print("    - heatmap_all_methods_spearman_rho.png/pdf")
     print("  Bar Charts (with vertical labels, supervised ML as dashed lines):")
-    print("    - bars_all_methods_accuracy.png")
-    print("    - bars_all_methods_directional_accuracy.png")
-    print("    - bars_all_methods_directional_macro_f1.png")
-    print("    - bars_all_methods_f1.png")
-    print("    - bars_all_methods_kappa.png")
+    print("    - bars_all_methods_accuracy.png/pdf")
+    print("    - bars_all_methods_directional_accuracy.png/pdf")
+    print("    - bars_all_methods_directional_macro_f1.png/pdf")
+    print("    - bars_all_methods_f1.png/pdf")
+    print("    - bars_all_methods_kappa.png/pdf")
+    print("    - bars_all_methods_spearman_rho.png/pdf")
     print("  Tables:")
     print("    - comprehensive_results_all_methods.csv")
     print("    - comprehensive_results_all_methods.md")
