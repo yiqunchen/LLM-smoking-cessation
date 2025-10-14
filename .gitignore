@@ -225,6 +225,9 @@ archive_code/
 archive_results/
 archive/
 
+# Project-specific: Data splits (can be regenerated)
+data_splits/
+
 # Project-specific: Large result files
 checkpoint_results_*.json
 evaluation_results_*.json
