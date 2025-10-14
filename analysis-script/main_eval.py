@@ -169,34 +169,43 @@ async def evaluate_questions_parallel(
             return {}
         
         # Select the appropriate prompt generation function
-        if prompt_config == 'zero-shot':
-            text_prompt = generate_zero_shot_prompt(data)
-        elif prompt_config == 'zero-shot-feature-select':
-            text_prompt = generate_zero_shot_feature_select_prompt(data)
-        elif prompt_config == 'zero-shot-feature-select-balanced':
-            text_prompt = generate_zero_shot_feature_select_balanced_prompt(data)
-        elif prompt_config == 'few-shot':
-            text_prompt = generate_few_shot_prompt(data)
-        elif prompt_config == 'few-shot-feature-select':
-            text_prompt = generate_few_shot_feature_select_prompt(data)
-        elif prompt_config == 'few-shot-feature-select-balanced':
-            text_prompt = generate_few_shot_feature_select_balanced_prompt(data)
-        elif prompt_config == 'enhanced-zero-shot':
-            text_prompt = generate_enhanced_zero_shot_prompt(data)
-        elif prompt_config == 'zero-shot-prob':
-            text_prompt = generate_zero_shot_feature_select_prob_prompt(data)
-        elif prompt_config == 'zero-shot-natural-lang':
-            text_prompt = generate_zero_shot_natural_lang_prob_prompt(data)
-        elif prompt_config == 'digital-twin':
-            text_prompt = generate_digital_twin_prompt(data)
-        elif prompt_config == 'digital-twin-select':
-            text_prompt = generate_digital_twin_select_prompt(data)
-        elif prompt_config == 'digital-twin-feedback':
-            text_prompt = generate_digital_twin_feedback_prompt(data)
-        elif prompt_config == 'digital-twin-cbtact':
-            text_prompt = generate_digital_twin_cbtact_prompt(data)
-        else:
-            raise ValueError(f"Unknown prompt config: {prompt_config}")
+        try:
+            if prompt_config == 'zero-shot':
+                text_prompt = generate_zero_shot_prompt(data)
+            elif prompt_config == 'zero-shot-feature-select':
+                text_prompt = generate_zero_shot_feature_select_prompt(data)
+            elif prompt_config == 'zero-shot-feature-select-balanced':
+                text_prompt = generate_zero_shot_feature_select_balanced_prompt(data)
+            elif prompt_config == 'few-shot':
+                text_prompt = generate_few_shot_prompt(data)
+            elif prompt_config == 'few-shot-feature-select':
+                text_prompt = generate_few_shot_feature_select_prompt(data)
+            elif prompt_config == 'few-shot-feature-select-balanced':
+                text_prompt = generate_few_shot_feature_select_balanced_prompt(data)
+            elif prompt_config == 'enhanced-zero-shot':
+                text_prompt = generate_enhanced_zero_shot_prompt(data)
+            elif prompt_config == 'zero-shot-prob':
+                text_prompt = generate_zero_shot_feature_select_prob_prompt(data)
+            elif prompt_config == 'zero-shot-natural-lang':
+                text_prompt = generate_zero_shot_natural_lang_prob_prompt(data)
+            elif prompt_config == 'digital-twin':
+                text_prompt = generate_digital_twin_prompt(data)
+            elif prompt_config == 'digital-twin-select':
+                text_prompt = generate_digital_twin_select_prompt(data)
+            elif prompt_config == 'digital-twin-feedback':
+                text_prompt = generate_digital_twin_feedback_prompt(data)
+            elif prompt_config == 'digital-twin-cbtact':
+                text_prompt = generate_digital_twin_cbtact_prompt(data)
+            else:
+                raise ValueError(f"Unknown prompt config: {prompt_config}")
+        except AttributeError as e:
+            print(f"ERROR: {str(e)}")
+            print(f"  QID: {qid}, data type: {type(data)}, config: {prompt_config}")
+            if isinstance(data, list):
+                print(f"  Data is a list with {len(data)} items")
+            elif isinstance(data, dict):
+                print(f"  Data has keys: {list(data.keys())[:10]}")
+            raise
         
         prompt_messages = [{"role": "user", "content": []}]
         prompt_messages[0]["content"].append({"type": "text", "text": text_prompt})
