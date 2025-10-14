@@ -331,8 +331,8 @@ def collect_all_results(include_baselines: bool = True) -> pd.DataFrame:
 
 
 def create_scatter_plots(df: pd.DataFrame, output_dir: str):
-    """Create 4 scatter plots: Accuracy vs Spearman, Accuracy vs Kappa, 
-    Directional vs Spearman, Directional vs Kappa."""
+    """Create separate scatter plots for each domain: Accuracy vs Spearman, 
+    Accuracy vs Kappa, Directional vs Spearman, Directional vs Kappa."""
     
     os.makedirs(output_dir, exist_ok=True)
     
@@ -343,17 +343,15 @@ def create_scatter_plots(df: pd.DataFrame, output_dir: str):
         ('directional_accuracy', 'kappa', 'Directional Accuracy (±1)', 'Cohen\'s κ')
     ]
     
-    fig, axes = plt.subplots(2, 2, figsize=(16, 14))
-    axes = axes.flatten()
-    
-    for idx, (x_metric, y_metric, x_label, y_label) in enumerate(pairs):
-        ax = axes[idx]
+    # Create SEPARATE figure for each domain
+    for domain in ['Content', 'Coping', 'Quitting']:
+        fig, axes = plt.subplots(2, 2, figsize=(16, 14))
+        axes = axes.flatten()
         
-        # Plot each domain with different markers
-        markers = {'Content': 'o', 'Coping': 's', 'Quitting': '^'}
+        domain_data = df[df['Domain'] == domain]
         
-        for domain in ['Content', 'Coping', 'Quitting']:
-            domain_data = df[df['Domain'] == domain]
+        for idx, (x_metric, y_metric, x_label, y_label) in enumerate(pairs):
+            ax = axes[idx]
             
             for model in domain_data['Model'].unique():
                 model_data = domain_data[domain_data['Model'] == model]
@@ -365,48 +363,41 @@ def create_scatter_plots(df: pd.DataFrame, output_dir: str):
                     model_data[x_metric],
                     model_data[y_metric],
                     color=COLORS.get(model, '#999999'),
-                    marker=markers[domain],
-                    s=150,
-                    alpha=0.8,
+                    s=200,
+                    alpha=0.85,
                     edgecolors='black',
-                    linewidth=1.5,
-                    label=f'{model} ({domain})' if idx == 0 else None  # Only label in first plot
+                    linewidth=2
                 )
+            
+            ax.set_xlabel(x_label, fontsize=13, fontweight='bold')
+            ax.set_ylabel(y_label, fontsize=13, fontweight='bold')
+            ax.set_title(f'{x_label} vs {y_label}', fontsize=14, fontweight='bold', pad=15)
+            ax.grid(True, alpha=0.3)
+            ax.tick_params(labelsize=11)
         
-        ax.set_xlabel(x_label, fontsize=13, fontweight='bold')
-        ax.set_ylabel(y_label, fontsize=13, fontweight='bold')
-        ax.set_title(f'{x_label} vs {y_label}', fontsize=14, fontweight='bold', pad=15)
-        ax.grid(True, alpha=0.3)
-        ax.tick_params(labelsize=11)
-    
-    # Create single shared legend at bottom
-    handles, labels = [], []
-    for model in sorted(df['Model'].unique()):
-        from matplotlib.patches import Patch
-        handles.append(Patch(facecolor=COLORS.get(model, '#999999'), edgecolor='black', label=model))
-    
-    # Add domain markers
-    from matplotlib.lines import Line2D
-    for domain, marker in markers.items():
-        handles.append(Line2D([0], [0], marker=marker, color='gray', linestyle='', 
-                             markersize=10, label=domain, markeredgecolor='black', markeredgewidth=1.5))
-    
-    fig.legend(handles=handles, loc='lower center', ncol=4, 
-              bbox_to_anchor=(0.5, -0.05), fontsize=11, frameon=True, 
-              title='Models (colors) & Domains (shapes)', title_fontsize=12)
-    
-    plt.suptitle('Performance Metrics Comparison Across Models and Domains', 
-                fontsize=16, fontweight='bold', y=0.995)
-    plt.tight_layout(rect=[0, 0.05, 1, 0.99])
-    
-    plot_path = os.path.join(output_dir, 'scatter_metrics_comparison.png')
-    plt.savefig(plot_path, dpi=DPI, bbox_inches='tight')
-    print(f"✓ Scatter plots saved: {plot_path}")
-    plt.close()
+        # Create single shared legend at bottom
+        handles = []
+        for model in sorted(df['Model'].unique()):
+            from matplotlib.patches import Patch
+            handles.append(Patch(facecolor=COLORS.get(model, '#999999'), 
+                                edgecolor='black', linewidth=1.5, label=model))
+        
+        fig.legend(handles=handles, loc='lower center', ncol=4, 
+                  bbox_to_anchor=(0.5, -0.03), fontsize=12, frameon=True, 
+                  title='Models', title_fontsize=13)
+        
+        plt.suptitle(f'Performance Metrics Comparison: {domain} Domain', 
+                    fontsize=16, fontweight='bold', y=0.995)
+        plt.tight_layout(rect=[0, 0.05, 1, 0.99])
+        
+        plot_path = os.path.join(output_dir, f'scatter_{domain.lower()}.png')
+        plt.savefig(plot_path, dpi=DPI, bbox_inches='tight')
+        print(f"✓ Scatter plot saved: {plot_path}")
+        plt.close()
 
 
 def create_learning_curves(output_dir: str):
-    """Create learning curves for digital twin models (10/30/70/90 splits)."""
+    """Create separate learning curves for each metric (10/30/70/90 splits)."""
     
     os.makedirs(output_dir, exist_ok=True)
     
@@ -438,15 +429,13 @@ def create_learning_curves(output_dir: str):
                         learning_data[model_display][domain]['kappa'].append(metrics[domain]['kappa'])
                         learning_data[model_display][domain]['spearman_rho'].append(metrics[domain]['spearman_rho'])
     
-    # Create 4 subplots (one per metric)
-    fig, axes = plt.subplots(2, 2, figsize=(18, 14))
-    axes = axes.flatten()
-    
+    # Create SEPARATE figure for each metric
     metrics_to_plot = ['accuracy', 'directional_accuracy', 'kappa', 'spearman_rho']
     metric_labels = ['Accuracy', 'Directional Accuracy (±1)', 'Cohen\'s κ', 'Spearman\'s ρ']
+    metric_filenames = ['accuracy', 'directional_accuracy', 'kappa', 'spearman_rho']
     
-    for metric_idx, (metric, label) in enumerate(zip(metrics_to_plot, metric_labels)):
-        ax = axes[metric_idx]
+    for metric, label, filename in zip(metrics_to_plot, metric_labels, metric_filenames):
+        fig, ax = plt.subplots(1, 1, figsize=(12, 8))
         
         # Plot each domain
         for domain_idx, domain in enumerate(DOMAINS):
@@ -457,42 +446,40 @@ def create_learning_curves(output_dir: str):
                     linestyle = ['-', '--', '-.'][domain_idx]
                     ax.plot(train_pcts, values, 
                            linestyle=linestyle,
-                           linewidth=2.5, 
+                           linewidth=3, 
                            marker='o',
-                           markersize=8,
+                           markersize=10,
                            color=COLORS.get(model_display, '#999999'),
-                           label=f'{model_display} ({domain.capitalize()})' if metric_idx == 0 else None)
+                           alpha=0.85)
         
-        ax.set_xlabel('Training Set Size (%)', fontsize=13, fontweight='bold')
-        ax.set_ylabel(label, fontsize=13, fontweight='bold')
-        ax.set_title(f'Digital Twin Learning Curve: {label}', fontsize=14, fontweight='bold', pad=15)
+        ax.set_xlabel('Training Set Size (%)', fontsize=14, fontweight='bold')
+        ax.set_ylabel(label, fontsize=14, fontweight='bold')
+        ax.set_title(f'Digital Twin Learning Curve: {label}', fontsize=16, fontweight='bold', pad=20)
         ax.grid(True, alpha=0.3)
         ax.set_xticks(train_pcts)
-        ax.tick_params(labelsize=11)
-    
-    # Create single shared legend at bottom
-    handles, labels_legend = [], []
-    for model in sorted(learning_data.keys()):
-        from matplotlib.patches import Patch
-        handles.append(Patch(facecolor=COLORS.get(model, '#999999'), label=model))
-    
-    # Add domain linestyles
-    from matplotlib.lines import Line2D
-    for domain, style in zip(['Content', 'Coping', 'Quitting'], ['-', '--', '-.']):
-        handles.append(Line2D([0], [0], linestyle=style, color='gray', linewidth=2.5, label=domain))
-    
-    fig.legend(handles=handles, loc='lower center', ncol=4, 
-              bbox_to_anchor=(0.5, -0.05), fontsize=11, frameon=True,
-              title='Models (colors) & Domains (linestyles)', title_fontsize=12)
-    
-    plt.suptitle('Digital Twin Performance vs Training Size (10% → 90%)', 
-                fontsize=16, fontweight='bold', y=0.995)
-    plt.tight_layout(rect=[0, 0.05, 1, 0.99])
-    
-    plot_path = os.path.join(output_dir, 'learning_curves_digital_twin.png')
-    plt.savefig(plot_path, dpi=DPI, bbox_inches='tight')
-    print(f"✓ Learning curves saved: {plot_path}")
-    plt.close()
+        ax.tick_params(labelsize=12)
+        
+        # Create single shared legend at bottom for this figure
+        handles = []
+        for model in sorted(learning_data.keys()):
+            from matplotlib.patches import Patch
+            handles.append(Patch(facecolor=COLORS.get(model, '#999999'), label=model))
+        
+        # Add domain linestyles
+        from matplotlib.lines import Line2D
+        for domain, style in zip(['Content', 'Coping', 'Quitting'], ['-', '--', '-.']):
+            handles.append(Line2D([0], [0], linestyle=style, color='gray', linewidth=3, label=domain))
+        
+        fig.legend(handles=handles, loc='lower center', ncol=4, 
+                  bbox_to_anchor=(0.5, -0.05), fontsize=12, frameon=True,
+                  title='Models (colors) & Domains (linestyles)', title_fontsize=13)
+        
+        plt.tight_layout(rect=[0, 0.08, 1, 1])
+        
+        plot_path = os.path.join(output_dir, f'learning_curve_{filename}.png')
+        plt.savefig(plot_path, dpi=DPI, bbox_inches='tight')
+        print(f"✓ Learning curve saved: {plot_path}")
+        plt.close()
 
 
 def main():
@@ -535,15 +522,23 @@ def main():
     print(f"{'='*80}\n")
     print(f"Output directory: {output_dir}/")
     print("\nGenerated files:")
-    print("  - scatter_metrics_comparison.png (4-panel scatter plots)")
-    print("  - learning_curves_digital_twin.png (4-panel learning curves)")
-    print("  - all_results_with_baselines.csv (complete data table)")
+    print("  Scatter plots (separate by domain):")
+    print("    - scatter_content.png")
+    print("    - scatter_coping.png")
+    print("    - scatter_quitting.png")
+    print("  Learning curves (separate by metric):")
+    print("    - learning_curve_accuracy.png")
+    print("    - learning_curve_directional_accuracy.png")
+    print("    - learning_curve_kappa.png")
+    print("    - learning_curve_spearman_rho.png")
+    print("  Data:")
+    print("    - all_results_with_baselines.csv")
     print("\n💡 Features:")
     print("  ✓ Colorblind-friendly Okabe-Ito palette")
-    print("  ✓ Single shared legend at bottom")
+    print("  ✓ Single shared legend at bottom on each figure")
     print("  ✓ Supervised learning baselines included")
-    print("  ✓ No radar plots")
-    print("  ✓ Meaningful metric comparisons")
+    print("  ✓ Separate figures for each domain/metric (clean, not overloaded)")
+    print("  ✓ No size encoding needed - each domain separate")
 
 
 if __name__ == '__main__':

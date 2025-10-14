@@ -26,7 +26,6 @@ warnings.filterwarnings('ignore')
 
 # Set style
 plt.style.use('seaborn-v0_8-paper')
-sns.set_palette("husl")
 DPI = 300
 
 # Rating mappings
@@ -45,13 +44,13 @@ RATING_MAPS = {
 
 DOMAINS = ['content', 'coping', 'quitting']
 
-# Model configurations
+# Model configurations with Okabe-Ito colorblind-friendly palette (SAME AS PUBLICATION FIGURES)
 MODEL_CONFIGS = {
-    'gpt-4o-mini': {'dir': 'results_manuscript_gpt-4o-mini', 'display': 'GPT-4o-mini', 'color': '#1f77b4'},
-    'gpt-5': {'dir': 'results_manuscript_gpt-5', 'display': 'GPT-5', 'color': '#ff7f0e'},
-    'deepseek_deepseek-r1-0528': {'dir': 'results_manuscript_deepseek_deepseek-r1-0528', 'display': 'DeepSeek-R1', 'color': '#2ca02c'},
-    'x-ai_grok-4-fast': {'dir': 'results_manuscript_x-ai_grok-4-fast', 'display': 'Grok-4-Fast', 'color': '#d62728'},
-    'gemini-2.5-pro': {'dir': 'results_manuscript_gemini-2.5-pro', 'display': 'Gemini-2.5-Pro', 'color': '#9467bd'}
+    'gpt-4o-mini': {'dir': 'results_manuscript_gpt-4o-mini', 'display': 'GPT-4o-mini', 'color': '#0173B2'},  # Blue
+    'gpt-5': {'dir': 'results_manuscript_gpt-5', 'display': 'GPT-5', 'color': '#DE8F05'},  # Orange
+    'deepseek_deepseek-r1-0528': {'dir': 'results_manuscript_deepseek_deepseek-r1-0528', 'display': 'DeepSeek-R1', 'color': '#029E73'},  # Green
+    'x-ai_grok-4-fast': {'dir': 'results_manuscript_x-ai_grok-4-fast', 'display': 'Grok-4-Fast', 'color': '#CC78BC'},  # Purple
+    'gemini-2.5-pro': {'dir': 'results_manuscript_gemini-2.5-pro', 'display': 'Gemini-2.5-Pro', 'color': '#CA9161'}  # Brown
 }
 
 # Method configurations
@@ -295,17 +294,18 @@ def create_heatmap_all_methods(df: pd.DataFrame, output_dir: str):
             pivot = pivot[[c for c in col_order if c in pivot.columns]]
             
             # Plot
-            sns.heatmap(pivot, annot=True, fmt='.3f', cmap='RdYlGn', 
+            sns.heatmap(pivot, annot=True, fmt='.2f', cmap='RdYlGn', 
                        vmin=0, vmax=1 if metric != 'Kappa' else 0.5,
-                       cbar_kws={'label': metric}, ax=ax, linewidths=0.5)
+                       cbar_kws={'label': metric}, ax=ax, linewidths=1.5, 
+                       linecolor='white', annot_kws={'fontsize': 10, 'fontweight': 'bold'})
             
-            ax.set_title(f'{domain}', fontsize=14, fontweight='bold')
-            ax.set_xlabel('Method', fontsize=11, fontweight='bold')
-            ax.set_ylabel('Model' if idx == 0 else '', fontsize=11, fontweight='bold')
+            ax.set_title(f'{domain} Domain', fontsize=15, fontweight='bold', pad=15)
+            ax.set_xlabel('', fontsize=1)  # Remove xlabel, methods are clear from ticks
+            ax.set_ylabel('', fontsize=1)   # Remove ylabel, clean look
             
-            # Rotate labels
-            ax.set_xticklabels(ax.get_xticklabels(), rotation=45, ha='right', fontsize=9)
-            ax.set_yticklabels(ax.get_yticklabels(), rotation=0, fontsize=10)
+            # Better tick labels
+            ax.set_xticklabels(ax.get_xticklabels(), rotation=45, ha='right', fontsize=11, fontweight='normal')
+            ax.set_yticklabels(ax.get_yticklabels(), rotation=0, fontsize=12, fontweight='normal')
         
         plt.suptitle(f'{metric} Across All Models and Methods', 
                     fontsize=16, fontweight='bold', y=1.02)
@@ -345,18 +345,23 @@ def create_grouped_bar_charts(df: pd.DataFrame, output_dir: str):
             row_order = [m['display'] for m in METHOD_CONFIGS.values()]
             pivot = pivot.reindex([r for r in row_order if r in pivot.index])
             
-            # Plot
-            pivot.plot(kind='bar', ax=ax, width=0.8, rot=45)
+            # Create color map for models using Okabe-Ito colors
+            model_color_map = {cfg['display']: cfg['color'] for cfg in MODEL_CONFIGS.values()}
+            colors = [model_color_map.get(col, '#999999') for col in pivot.columns]
             
-            ax.set_title(f'{domain}', fontsize=14, fontweight='bold')
-            ax.set_xlabel('Method', fontsize=11, fontweight='bold')
-            ax.set_ylabel(metric, fontsize=11, fontweight='bold')
-            ax.legend(title='Model', fontsize=9, title_fontsize=10)
-            ax.grid(axis='y', alpha=0.3)
+            # Plot with consistent colors
+            pivot.plot(kind='bar', ax=ax, width=0.8, rot=45, color=colors, edgecolor='black', linewidth=1.2)
             
-            # Add value labels on bars
+            ax.set_title(f'{domain} Domain', fontsize=15, fontweight='bold', pad=15)
+            ax.set_xlabel('', fontsize=1)  # Remove xlabel, methods clear from ticks
+            ax.set_ylabel(metric, fontsize=13, fontweight='bold')
+            ax.legend(title='Model', fontsize=10, title_fontsize=11, loc='upper right')
+            ax.grid(axis='y', alpha=0.3, linestyle='--')
+            ax.set_xticklabels(ax.get_xticklabels(), fontsize=10, fontweight='normal')
+            
+            # Add value labels on bars (smaller, less cluttered)
             for container in ax.containers:
-                ax.bar_label(container, fmt='%.2f', fontsize=7, padding=2)
+                ax.bar_label(container, fmt='%.2f', fontsize=6, padding=1)
         
         plt.suptitle(f'{metric} Comparison: All Models × All Methods', 
                     fontsize=16, fontweight='bold', y=1.00)
