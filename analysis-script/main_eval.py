@@ -30,6 +30,7 @@ from prompt_config import (
     generate_digital_twin_select_prompt,
     generate_digital_twin_feedback_prompt,
     generate_digital_twin_cbtact_prompt,
+    generate_hybrid_rf_digital_twin_prompt,
     prepare_few_shot_examples
 )
 
@@ -196,6 +197,8 @@ async def evaluate_questions_parallel(
                 text_prompt = generate_digital_twin_feedback_prompt(data)
             elif prompt_config == 'digital-twin-cbtact':
                 text_prompt = generate_digital_twin_cbtact_prompt(data)
+            elif prompt_config == 'hybrid-rf-digital-twin':
+                text_prompt = generate_hybrid_rf_digital_twin_prompt(data, profile_messages=data.get('profile_messages'))
             else:
                 raise ValueError(f"Unknown prompt config: {prompt_config}")
         except AttributeError as e:
@@ -318,6 +321,7 @@ async def evaluate_questions_parallel(
             # Save checkpoint periodically
             if completed_count % checkpoint_interval == 0:
                 print(f"\nSaving checkpoint after {completed_count} completed items...")
+                os.makedirs(os.path.dirname(checkpoint_file), exist_ok=True)
                 with open(checkpoint_file, "w") as f:
                     json.dump(results, f, indent=2)
                 print(f"Checkpoint saved to {checkpoint_file}")
@@ -331,6 +335,7 @@ async def evaluate_questions_parallel(
     
     # Final save
     print(f"Saving final results with {len(results)} items...")
+    os.makedirs(os.path.dirname(checkpoint_file), exist_ok=True)
     with open(checkpoint_file, "w") as f:
         json.dump(results, f, indent=2)
     
@@ -341,7 +346,7 @@ async def main():
     parser.add_argument('--mode', type=str, choices=['text-only', 'vision'], default='text-only', help="Evaluation mode: 'text-only' or 'vision'")
     parser.add_argument('--model', type=str, default="gpt-4o-mini", help="Name of the model to use.")
     parser.add_argument('--provider', type=str, choices=['openai', 'openrouter', 'gemini'], default='openai', help="API provider: openai, openrouter, or gemini")
-    parser.add_argument('--prompt-config', type=str, choices=['zero-shot', 'zero-shot-feature-select', 'zero-shot-feature-select-balanced', 'few-shot', 'few-shot-feature-select', 'few-shot-feature-select-balanced', 'enhanced-zero-shot', 'zero-shot-prob', 'zero-shot-natural-lang', 'digital-twin', 'digital-twin-select', 'digital-twin-feedback', 'digital-twin-cbtact'], default='zero-shot', help="Prompt configuration")
+    parser.add_argument('--prompt-config', type=str, choices=['zero-shot', 'zero-shot-feature-select', 'zero-shot-feature-select-balanced', 'few-shot', 'few-shot-feature-select', 'few-shot-feature-select-balanced', 'enhanced-zero-shot', 'zero-shot-prob', 'zero-shot-natural-lang', 'digital-twin', 'digital-twin-select', 'digital-twin-feedback', 'digital-twin-cbtact', 'hybrid-rf-digital-twin'], default='zero-shot', help="Prompt configuration")
     parser.add_argument('--sample-size', type=int, default=None, help="Number of samples to process for testing (if not specified, processes all data)")
     parser.add_argument('--adaptive', action='store_true', help="Run adaptive prompt optimization instead of regular evaluation")
     parser.add_argument('--checkpoint-file', type=str, default=DEFAULT_CHECKPOINT_FILE, help="Path template for checkpoint file (use {model}, {mode}, and {prompt_config} placeholders).")
@@ -436,7 +441,9 @@ async def main():
         print("Attached profile_messages to test items where available.")
 
     # Re-key data for async processing
-    question_data = {f"{i}": data for i, data in enumerate(question_data)}
+    if isinstance(question_data, list):
+        question_data = {f"{i}": data for i, data in enumerate(question_data)}
+    # If already a dict, keep as is
     
     # Sample data if specified
     if args.sample_size:
@@ -485,6 +492,7 @@ async def main():
         )
         
         # Save to final file
+        os.makedirs(os.path.dirname(final_output_file), exist_ok=True)
         with open(final_output_file, "w") as f:
             json.dump(results, f, indent=2)
         print(f"Final results saved to {final_output_file}")

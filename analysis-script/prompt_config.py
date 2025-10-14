@@ -1119,3 +1119,75 @@ Return **exactly** this JSON object:
     #print(prompt)
     #print("==========================")
     return prompt
+
+
+def generate_hybrid_rf_digital_twin_prompt(data: dict, profile_messages: list = None) -> str:
+    """
+    Generate a hybrid prompt that combines:
+    1. Digital Twin (participant history from 70/30 split)
+    2. Random Forest predictions (trained on ALL participant features)
+    
+    The RF predictions are provided as PRIOR information, not as ground truth.
+    """
+    
+    # First, generate the base digital twin prompt
+    # Note: data should already have 'profile_messages' attached by main_eval.py
+    base_prompt = generate_digital_twin_prompt(data)
+    
+    # Load RF predictions if available
+    rf_pred_path = 'results_manuscript_hybrid_rf_grok4/rf_predictions_all_features.json'
+    rf_predictions = None
+    
+    try:
+        import json
+        with open(rf_pred_path, 'r') as f:
+            all_rf_preds = json.load(f)
+            rf_predictions = all_rf_preds.get(data['response_id'], {})
+    except:
+        pass
+    
+    # If we have RF predictions, add them to the prompt
+    if rf_predictions:
+        # Map numeric predictions back to rating labels
+        rating_map_content_design = {
+            1: "Very poor",
+            2: "Poor", 
+            3: "Acceptable",
+            4: "Good",
+            5: "Very good"
+        }
+        rating_map_coping_quitting = {
+            1: "Not at all helpful",
+            2: "Somewhat helpful",
+            3: "Moderately helpful",
+            4: "Very helpful",
+            5: "Extremely helpful"
+        }
+        
+        rf_context = "\n\n---\n\n### ADDITIONAL CONTEXT: PRIOR MODEL PREDICTIONS\n\n"
+        rf_context += "A Random Forest model trained on participant characteristics has made the following predictions for this message:\n\n"
+        
+        if 'rf_pred_content' in rf_predictions:
+            rf_context += f"- **Content**: {rating_map_content_design.get(rf_predictions['rf_pred_content'], 'Unknown')}\n"
+        if 'rf_pred_design' in rf_predictions:
+            rf_context += f"- **Design**: {rating_map_content_design.get(rf_predictions['rf_pred_design'], 'Unknown')}\n"
+        if 'rf_pred_coping' in rf_predictions:
+            rf_context += f"- **Coping**: {rating_map_coping_quitting.get(rf_predictions['rf_pred_coping'], 'Unknown')}\n"
+        if 'rf_pred_quitting' in rf_predictions:
+            rf_context += f"- **Quitting**: {rating_map_coping_quitting.get(rf_predictions['rf_pred_quitting'], 'Unknown')}\n"
+        
+        rf_context += "\n**IMPORTANT**: These are PRIOR predictions based solely on participant demographics and smoking history. "
+        rf_context += "They are **NOT 100% accurate** and should be treated as ONE input among many. "
+        rf_context += "Please make your final prediction by considering:\n"
+        rf_context += "1. The participant's complete history (messages shown above)\n"
+        rf_context += "2. The actual message content and image\n"
+        rf_context += "3. The prior model predictions as a reasonable baseline\n"
+        rf_context += "4. Your own assessment of how THIS specific participant would respond\n"
+        
+        # Insert RF context before the OUTPUT FORMAT section
+        base_prompt = base_prompt.replace(
+            "### OUTPUT FORMAT",
+            rf_context + "\n### OUTPUT FORMAT"
+        )
+    
+    return base_prompt

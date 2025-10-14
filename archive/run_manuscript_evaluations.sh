@@ -213,41 +213,41 @@ if [[ "$METHODS" == "all" || "$METHODS" == *"digital_twin"* ]]; then
   # Note: Digital twin prompts need to be updated to load from split files
   # rather than from a single Excel file
   
-  # Method 1: Full-feature (50/50)
-  echo -e "${GREEN}Method 1: Full-feature (50/50 split)${NC}"
+  # Method 1: Full-feature (70/30 - DEFAULT)
+  echo -e "${GREEN}Method 1: Full-feature (70/30 split)${NC}"
   run_cmd "python analysis-script/main_eval.py \
     --mode text-only \
     --model $DEFAULT_MODEL \
     --prompt-config digital-twin \
-    --data-file $CANONICAL_SPLITS_DIR/test_digital_twin_5050.json \
-    --train-file $CANONICAL_SPLITS_DIR/train_digital_twin_5050.json \
+    --data-file $CANONICAL_SPLITS_DIR/test_digital_twin_7030.json \
+    --train-file $CANONICAL_SPLITS_DIR/train_digital_twin_7030.json \
     --max-concurrent $MAX_CONCURRENT \
-    --output-file $OUTPUT_DIR/digital_twin_1_full_5050.json \
-    --checkpoint-file $OUTPUT_DIR/checkpoint_digital_twin_1_5050.json"
+    --output-file $OUTPUT_DIR/digital_twin_1_full_7030.json \
+    --checkpoint-file $OUTPUT_DIR/checkpoint_digital_twin_1_7030.json"
 
-  # Method 2: Selected-feature (50/50)
-  echo -e "${GREEN}Method 2: Selected-feature (50/50 split)${NC}"
+  # Method 2: Selected-feature (70/30)
+  echo -e "${GREEN}Method 2: Selected-feature (70/30 split)${NC}"
   run_cmd "python analysis-script/main_eval.py \
     --mode text-only \
     --model $DEFAULT_MODEL \
     --prompt-config digital-twin-select \
-    --data-file $CANONICAL_SPLITS_DIR/test_digital_twin_5050.json \
-    --train-file $CANONICAL_SPLITS_DIR/train_digital_twin_5050.json \
+    --data-file $CANONICAL_SPLITS_DIR/test_digital_twin_7030.json \
+    --train-file $CANONICAL_SPLITS_DIR/train_digital_twin_7030.json \
     --max-concurrent $MAX_CONCURRENT \
-    --output-file $OUTPUT_DIR/digital_twin_2_select_5050.json \
-    --checkpoint-file $OUTPUT_DIR/checkpoint_digital_twin_2_5050.json"
+    --output-file $OUTPUT_DIR/digital_twin_2_select_7030.json \
+    --checkpoint-file $OUTPUT_DIR/checkpoint_digital_twin_2_7030.json"
 
-  # Method 3: Full-feature + feedback (50/50)
-  echo -e "${GREEN}Method 3: Full-feature + feedback (50/50 split)${NC}"
+  # Method 3: Full-feature + feedback (70/30)
+  echo -e "${GREEN}Method 3: Full-feature + feedback (70/30 split)${NC}"
   run_cmd "python analysis-script/main_eval.py \
     --mode text-only \
     --model $DEFAULT_MODEL \
     --prompt-config digital-twin-feedback \
-    --data-file $CANONICAL_SPLITS_DIR/test_digital_twin_5050.json \
-    --train-file $CANONICAL_SPLITS_DIR/train_digital_twin_5050.json \
+    --data-file $CANONICAL_SPLITS_DIR/test_digital_twin_7030.json \
+    --train-file $CANONICAL_SPLITS_DIR/train_digital_twin_7030.json \
     --max-concurrent $MAX_CONCURRENT \
-    --output-file $OUTPUT_DIR/digital_twin_3_feedback_5050.json \
-    --checkpoint-file $OUTPUT_DIR/checkpoint_digital_twin_3_5050.json"
+    --output-file $OUTPUT_DIR/digital_twin_3_feedback_7030.json \
+    --checkpoint-file $OUTPUT_DIR/checkpoint_digital_twin_3_7030.json"
 
   # Method 4: Domain-informed CBT/ACT across splits (DEFAULT: 70/30)
   for split_name in "1090" "3070" "7030" "9010"; do
