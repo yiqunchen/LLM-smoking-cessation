@@ -229,4 +229,5 @@ archive/
 checkpoint_results_*.json
 evaluation_results_*.json
 temp_checkpoint/
-results_manuscript/*.json
+results_manuscript*/
+results_hybrid*/
