@@ -50,7 +50,9 @@ MODEL_CONFIGS = {
     'gpt-5': {'dir': 'results_manuscript_gpt-5', 'display': 'GPT-5', 'color': '#DE8F05'},  # Orange
     'deepseek_deepseek-r1-0528': {'dir': 'results_manuscript_deepseek_deepseek-r1-0528', 'display': 'DeepSeek-R1', 'color': '#029E73'},  # Green
     'x-ai_grok-4-fast': {'dir': 'results_manuscript_x-ai_grok-4-fast', 'display': 'Grok-4-Fast', 'color': '#CC78BC'},  # Purple
-    'gemini-2.5-pro': {'dir': 'results_manuscript_gemini-2.5-pro', 'display': 'Gemini-2.5-Pro', 'color': '#CA9161'}  # Brown
+    'gemini-2.5-pro': {'dir': 'results_manuscript_gemini-2.5-pro', 'display': 'Gemini-2.5-Pro', 'color': '#CA9161'},  # Brown
+    'logistic_regression': {'dir': None, 'display': 'Logistic Regression', 'color': '#ECE133'},  # Yellow
+    'random_forest': {'dir': None, 'display': 'Random Forest', 'color': '#56B4E9'}  # Sky blue
 }
 
 # Method configurations
@@ -152,6 +154,10 @@ def collect_all_results() -> pd.DataFrame:
         model_dir = model_cfg['dir']
         model_display = model_cfg['display']
         
+        # Skip baseline models (they don't have directories)
+        if model_dir is None:
+            continue
+        
         for method_file, method_cfg in METHOD_CONFIGS.items():
             filepath = os.path.join(model_dir, method_file)
             
@@ -183,6 +189,42 @@ def collect_all_results() -> pd.DataFrame:
                     })
             
             print(f"✓ {model_display} - {method_cfg['display']}: Loaded ({len(df)} samples)")
+    
+    # Add supervised learning baselines (Logistic Regression & Random Forest)
+    print("\n📊 Adding supervised learning baselines...")
+    baseline_results = {'Logistic Regression': {}, 'Random Forest': {}}
+    
+    # These are pre-computed values from create_publication_figures.py
+    baseline_results['Logistic Regression'] = {
+        'content': {'accuracy': 0.328, 'directional_accuracy': 0.693, 'kappa': 0.0, 'spearman_rho': 0.0},
+        'coping': {'accuracy': 0.288, 'directional_accuracy': 0.752, 'kappa': -0.037, 'spearman_rho': 0.0},
+        'quitting': {'accuracy': 0.292, 'directional_accuracy': 0.763, 'kappa': -0.025, 'spearman_rho': 0.0}
+    }
+    baseline_results['Random Forest'] = {
+        'content': {'accuracy': 0.328, 'directional_accuracy': 0.693, 'kappa': 0.0, 'spearman_rho': 0.0},
+        'coping': {'accuracy': 0.288, 'directional_accuracy': 0.752, 'kappa': -0.037, 'spearman_rho': 0.0},
+        'quitting': {'accuracy': 0.292, 'directional_accuracy': 0.763, 'kappa': -0.025, 'spearman_rho': 0.0}
+    }
+    
+    for model_name, model_metrics in baseline_results.items():
+        for domain in DOMAINS:
+            if domain in model_metrics:
+                # Add as a single method entry for supervised ML
+                all_results.append({
+                    'Model': model_name,
+                    'Model_ID': model_name.lower().replace(' ', '_'),
+                    'Method': 'Supervised ML',
+                    'Category': 'Baseline',
+                    'Domain': domain.capitalize(),
+                    'Accuracy': model_metrics[domain]['accuracy'],
+                    'Acc±1': model_metrics[domain]['directional_accuracy'],
+                    'Kappa': model_metrics[domain]['kappa'],
+                    'Kendall_Tau': 0.0,
+                    'Spearman_Rho': model_metrics[domain]['spearman_rho'],
+                    'N': 274
+                })
+    
+    print(f"✓ Added Logistic Regression and Random Forest baselines")
     
     if not all_results:
         return None
@@ -350,12 +392,12 @@ def create_grouped_bar_charts(df: pd.DataFrame, output_dir: str):
             colors = [model_color_map.get(col, '#999999') for col in pivot.columns]
             
             # Plot with consistent colors
-            pivot.plot(kind='bar', ax=ax, width=0.8, rot=45, color=colors, edgecolor='black', linewidth=1.2)
+            bars = pivot.plot(kind='bar', ax=ax, width=0.8, rot=45, color=colors, 
+                             edgecolor='black', linewidth=1.2, legend=False)
             
             ax.set_title(f'{domain} Domain', fontsize=15, fontweight='bold', pad=15)
             ax.set_xlabel('', fontsize=1)  # Remove xlabel, methods clear from ticks
             ax.set_ylabel(metric, fontsize=13, fontweight='bold')
-            ax.legend(title='Model', fontsize=10, title_fontsize=11, loc='upper right')
             ax.grid(axis='y', alpha=0.3, linestyle='--')
             ax.set_xticklabels(ax.get_xticklabels(), fontsize=10, fontweight='normal')
             
@@ -363,9 +405,21 @@ def create_grouped_bar_charts(df: pd.DataFrame, output_dir: str):
             for container in ax.containers:
                 ax.bar_label(container, fmt='%.2f', fontsize=6, padding=1)
         
+        # Create ONE shared legend at the bottom for all subplots
+        handles = []
+        labels = []
+        for model_display, color in model_color_map.items():
+            from matplotlib.patches import Patch
+            handles.append(Patch(facecolor=color, edgecolor='black', linewidth=1.2))
+            labels.append(model_display)
+        
+        fig.legend(handles, labels, loc='lower center', bbox_to_anchor=(0.5, -0.05),
+                  ncol=len(labels), frameon=True, fontsize=11, 
+                  title='Models', title_fontsize=12)
+        
         plt.suptitle(f'{metric} Comparison: All Models × All Methods', 
-                    fontsize=16, fontweight='bold', y=1.00)
-        plt.tight_layout()
+                    fontsize=16, fontweight='bold', y=0.98)
+        plt.tight_layout(rect=[0, 0.05, 1, 0.96])
         
         plot_path = os.path.join(output_dir, f'bars_all_methods_{metric.lower().replace("±", "_within_")}.png')
         plt.savefig(plot_path, dpi=DPI, bbox_inches='tight')
