@@ -304,9 +304,13 @@ def create_hybrid_vs_rf_confusion_matrix(output_dir: str):
                     vmin=0, vmax=100, linewidths=1, linecolor='white',
                     cbar_kws={'label': '% of RF predictions'}, annot_kws={'fontsize': 9})
 
-        ax.set_xlabel('Hybrid Prediction', fontsize=12, fontweight='bold')
-        ax.set_ylabel('RF Prediction', fontsize=12, fontweight='bold')
-        ax.set_title(f'{domain.capitalize()} (n={len(y_rf)})', fontsize=14, fontweight='bold', pad=10)
+        ax.set_xlabel('Hybrid Prediction', fontsize=14, fontweight='bold')
+        ax.set_ylabel('RF Prediction', fontsize=14, fontweight='bold')
+        ax.set_title(f'{domain.capitalize()} (n={len(y_rf)})', fontsize=15, fontweight='bold', pad=10)
+        ax.tick_params(labelsize=12, width=2, length=6)
+        # Make tick labels bold
+        for label in ax.get_xticklabels() + ax.get_yticklabels():
+            label.set_fontweight('bold')
 
     plt.suptitle('How Predictions Changed: RF → Hybrid (Grok-4-Fast)',
                  fontsize=16, fontweight='bold', y=1.02)
@@ -425,6 +429,10 @@ def create_predicted_vs_true_distributions(output_dir: str):
                         ax.set_ylabel('Predicted Score', fontsize=14, fontweight='bold')
                         ax.set_title(f'{method}\n{bias_text}', fontsize=16, fontweight='bold', pad=10)
                         ax.set_facecolor('white')
+                        ax.tick_params(labelsize=12, width=2, length=6)
+                        # Make tick labels bold
+                        for label in ax.get_xticklabels() + ax.get_yticklabels():
+                            label.set_fontweight('bold')
 
                 else:
                     # LLM methods
@@ -468,6 +476,10 @@ def create_predicted_vs_true_distributions(output_dir: str):
                             ax.set_ylabel('Predicted Score', fontsize=14, fontweight='bold')
                             ax.set_title(f'{method}\n{bias_text}', fontsize=16, fontweight='bold', pad=10)
                             ax.set_facecolor('white')
+                            ax.tick_params(labelsize=12, width=2, length=6)
+                            # Make tick labels bold
+                            for label in ax.get_xticklabels() + ax.get_yticklabels():
+                                label.set_fontweight('bold')
 
             plt.suptitle(f'Predicted vs True Score: {domain.capitalize()} Domain ({model_display})',
                         fontsize=20, fontweight='bold', y=0.995)

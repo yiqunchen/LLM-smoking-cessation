@@ -109,7 +109,9 @@ ALL_METHOD_FILES = [
 
 def load_results(filepath: str) -> pd.DataFrame:
     """Load evaluation results and convert to DataFrame."""
+    print(f"  - Loading results from: {filepath}")
     if not os.path.exists(filepath):
+        print("    - File not found.")
         return None
     
     with open(filepath, 'r') as f:
@@ -252,6 +254,8 @@ def run_supervised_baselines(data_path: str = 'data_splits/canonical') -> Dict:
     X_train = extract_features(train_df)
     X_test = extract_features(test_df)
     
+    print(f"    - Extracted features. Train shape: {X_train.shape}, Test shape: {X_test.shape}")
+
     # Align columns
     all_cols = list(set(X_train.columns) | set(X_test.columns))
     for col in all_cols:
@@ -377,12 +381,14 @@ def collect_all_results(include_baselines: bool = True) -> pd.DataFrame:
     for model_id, model_cfg in MODEL_CONFIGS.items():
         model_dir = model_cfg['dir']
         model_display = model_cfg['display']
+        print(f"\nProcessing model: {model_display}")
 
         # Track best metrics across all methods for each domain
         best_metrics_by_domain = {domain: {} for domain in DOMAINS}
 
         # Load all methods
         for method_file in ALL_METHOD_FILES:
+            print(f"  - Evaluating method: {method_file}")
             filepath = os.path.join(model_dir, method_file)
             df = load_results(filepath)
 
@@ -466,6 +472,7 @@ def create_scatter_plots(df: pd.DataFrame, output_dir: str):
     
     # Create SEPARATE figure for each domain
     for domain in ['Content', 'Coping', 'Quitting']:
+        print(f"  - Creating scatter plot for domain: {domain}")
         fig, axes = plt.subplots(2, 2, figsize=(16, 14))
         axes = axes.flatten()
         
@@ -490,11 +497,14 @@ def create_scatter_plots(df: pd.DataFrame, output_dir: str):
                     linewidth=2
                 )
             
-            ax.set_xlabel(x_label, fontsize=13, fontweight='bold')
-            ax.set_ylabel(y_label, fontsize=13, fontweight='bold')
-            ax.set_title(f'{x_label} vs {y_label}', fontsize=14, fontweight='bold', pad=15)
+            ax.set_xlabel(x_label, fontsize=14, fontweight='bold')
+            ax.set_ylabel(y_label, fontsize=14, fontweight='bold')
+            ax.set_title(f'{x_label} vs {y_label}', fontsize=15, fontweight='bold', pad=15)
             ax.grid(True, alpha=0.3)
-            ax.tick_params(labelsize=11)
+            ax.tick_params(labelsize=12, width=2, length=6)
+            # Make tick labels bold
+            for label in ax.get_xticklabels() + ax.get_yticklabels():
+                label.set_fontweight('bold')
         
         # Create single shared legend at bottom
         handles = []
@@ -518,19 +528,19 @@ def create_scatter_plots(df: pd.DataFrame, output_dir: str):
 
 def create_learning_curves(output_dir: str):
     """Create separate learning curves for each metric (10/30/70/90 splits)."""
-    
+
     os.makedirs(output_dir, exist_ok=True)
-    
+
     splits = ['1090', '3070', '7030', '9010']
     train_pcts = [10, 30, 70, 90]
-    
+
     # Collect data for each model
     learning_data = {}
-    
+
     for model_id, model_cfg in MODEL_CONFIGS.items():
         model_display = model_cfg['display']
         model_dir = model_cfg['dir']
-        
+
         learning_data[model_display] = {domain: {
             'accuracy': [],
             'directional_accuracy': [],
@@ -538,14 +548,14 @@ def create_learning_curves(output_dir: str):
             'kappa': [],
             'spearman_rho': []
         } for domain in DOMAINS}
-        
+
         for split in splits:
             filepath = os.path.join(model_dir, f'digital_twin_4_cbtact_{split}.json')
             df = load_results(filepath)
-            
+
             if df is not None:
                 metrics = calculate_metrics(df, DOMAINS)
-                
+
                 for domain in DOMAINS:
                     if domain in metrics:
                         learning_data[model_display][domain]['accuracy'].append(metrics[domain]['accuracy'])
@@ -553,6 +563,10 @@ def create_learning_curves(output_dir: str):
                         learning_data[model_display][domain]['directional_macro_f1'].append(metrics[domain]['directional_macro_f1'])
                         learning_data[model_display][domain]['kappa'].append(metrics[domain]['kappa'])
                         learning_data[model_display][domain]['spearman_rho'].append(metrics[domain]['spearman_rho'])
+
+    # Filter out models with incomplete data (need all 4 splits)
+    learning_data = {model: data for model, data in learning_data.items()
+                     if len(data['content']['accuracy']) == len(splits)}
     
     # Create SEPARATE figure for each metric: 1 row × 3 columns (one per domain)
     metrics_to_plot = ['accuracy', 'directional_accuracy', 'directional_macro_f1', 'kappa', 'spearman_rho']
@@ -560,6 +574,7 @@ def create_learning_curves(output_dir: str):
     metric_filenames = ['accuracy', 'directional_accuracy', 'directional_macro_f1', 'kappa', 'spearman_rho']
     
     for metric, label, filename in zip(metrics_to_plot, metric_labels, metric_filenames):
+        print(f"  - Creating learning curve for metric: {label}")
         fig, axes = plt.subplots(1, 3, figsize=(20, 6))
         
         # Plot each domain in its own subplot
@@ -580,12 +595,16 @@ def create_learning_curves(output_dir: str):
                            alpha=0.9,
                            label=model_display if domain_idx == 0 else None)  # Only label in first plot
             
-            ax.set_xlabel('Training Set Size (%)', fontsize=13, fontweight='bold')
-            ax.set_ylabel(label if domain_idx == 0 else '', fontsize=13, fontweight='bold')
-            ax.set_title(f'{domain.capitalize()}', fontsize=14, fontweight='bold', pad=15)
+            ax.set_xlabel('Training Set Size (%)', fontsize=14, fontweight='bold')
+            ax.set_ylabel(label if domain_idx == 0 else '', fontsize=14, fontweight='bold')
+            ax.set_title(f'{domain.capitalize()}', fontsize=15, fontweight='bold', pad=15)
             ax.grid(True, alpha=0.3)
             ax.set_xticks(train_pcts)
-            ax.tick_params(labelsize=11)
+            ax.set_ylim(0, 1)  # Set y-axis from 0 to 1 to show stability
+            ax.tick_params(labelsize=12, width=2, length=6)
+            # Make tick labels bold
+            for label_item in ax.get_xticklabels() + ax.get_yticklabels():
+                label_item.set_fontweight('bold')
         
         # Create single shared legend at bottom for all subplots
         handles = []
