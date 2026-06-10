@@ -19,7 +19,7 @@ bash e2e_pipeline.sh
 ```
 
 This will:
-- Run all 6 Generic LLM methods + 1 Digital Twin method per model
+- Run all 6 Generic LLM methods + 1 PP method per model
 - Generate comprehensive results and figures
 - Output to `figures/` directory
 
@@ -29,9 +29,9 @@ This will:
 bash run_full_manuscript_pipeline.sh gpt-4o-mini openai 10
 ```
 
-### 4. Run Hybrid RF + Digital Twin
+### 4. Run Hybrid RF+PP
 ```bash
-# Run hybrid Random Forest + Digital Twin for all models
+# Run hybrid Random Forest + PP for all models
 bash run_hybrid_rf_all_models.sh
 ```
 ---
@@ -49,15 +49,15 @@ bash run_hybrid_rf_all_models.sh
 | 5 | Continuous | `zero-shot-natural-lang` | All (natural language) | None |
 | 6 | Continuous | `zero-shot-prob` | Selected + probabilities | None |
 
-### Digital Twin Method
-Uses digital twin split (`test_digital_twin_7030.json`) - each participant has messages in both train (profile) and test.
+### Personalized Prompt (PP) Method
+Uses the PP split (`test_digital_twin_7030.json`) - each participant has messages in both train (profile) and test.
 
 | # | Method | Prompt Config | Split | Description |
 |---|--------|---------------|-------|-------------|
 | 4 | CBT/ACT-informed | `digital-twin-cbtact` | 70/30 | Personalized using participant's historical ratings |
 
-### Hybrid RF Method
-Combines Random Forest (trained on metadata) with Digital Twin LLM prompts.
+### Hybrid RF+PP Method
+Combines Random Forest predictions with PP prompts.
 
 ### Supervised ML Baselines
 - **Logistic Regression**: Trained on participant metadata (age, gender, race, education, income, smoking status, quit motivation, cigarettes/day)
@@ -80,6 +80,7 @@ Per manuscript, we evaluate **3 domains**:
 - **Directional Accuracy**: 3-bucket accuracy (low/neutral/high ratings)
 - **Directional Macro-F1**: F1 score for 3-bucket classification
 - **Cohen's Kappa**: Inter-rater agreement accounting for chance
+- **Quadratic Weighted Kappa (QWK)**: Ordinal agreement with larger penalties for larger rating disagreements
 - **Spearman's ρ**: Per-participant ranking correlation
 
 ---
@@ -89,11 +90,12 @@ Per manuscript, we evaluate **3 domains**:
 ### Figures (`figures/`)
 - `bars_all_methods_accuracy.png` - Bar chart comparing accuracy across models
 - `bars_all_methods_kappa.png` - Bar chart comparing Cohen's Kappa
+- `bars_all_methods_qwk.png` - Bar chart comparing Quadratic Weighted Kappa
 - `bars_all_methods_acc_within_1.png` - Bar chart comparing directional accuracy
 - `bars_all_methods_f1.png` - Bar chart comparing F1 macro
 - `heatmap_all_methods_*.png` - Heatmaps showing performance by model/domain
 - `scatter_content.png`, `scatter_coping.png`, `scatter_quitting.png` - Scatter plots (accuracy vs other metrics)
-- `learning_curve_*.png` - Digital twin learning curves (10%, 30%, 70%, 90% training data)
+- `learning_curve_*.png` - PP learning curves (10%, 30%, 70%, 90% training data)
 
 ---
 

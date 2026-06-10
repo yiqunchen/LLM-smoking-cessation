@@ -1,0 +1,37 @@
+Feature_Set,Classifier,Domain,Accuracy,F1,Kappa,QWK,Directional Accuracy,Directional Macro-F1,Spearman_Rho,N
+Avg History Score,LR,Content,0.4463,0.2558,0.1618,0.4088,0.7383,0.3952,,298
+Avg History Score,RF,Content,0.5034,0.3777,0.2806,0.3562,0.7081,0.4844,,298
+Demographics,LR,Content,0.4228,0.2427,0.1346,0.2419,0.6913,0.3886,,298
+Demographics,RF,Content,0.4866,0.3332,0.2551,0.3529,0.7114,0.4866,,298
+Demographics + History + Message Embedding,LR,Content,0.4899,0.2933,0.2362,0.3318,0.7282,0.4352,,298
+Demographics + History + Message Embedding,RF,Content,0.3658,0.2114,0.0504,0.0440,0.6443,0.3313,,298
+Embedding,LR,Content,0.3926,0.1933,0.0522,-0.0016,0.7114,0.2984,,298
+Embedding,RF,Content,0.3523,0.2172,0.0305,-0.0009,0.6208,0.3226,,298
+Embedding + Demo,LR,Content,0.4161,0.2400,0.1243,0.1305,0.6745,0.3763,,298
+Embedding + Demo,RF,Content,0.3758,0.2118,0.0641,-0.0428,0.6242,0.3120,,298
+Embedding + History,LR,Content,0.4966,0.2940,0.2378,0.3732,0.7550,0.4196,,298
+Embedding + History,RF,Content,0.3658,0.2111,0.0434,0.0770,0.6678,0.3417,,298
+Avg History Score,LR,Coping,0.4396,0.2713,0.2047,0.3916,0.6510,0.3653,,298
+Avg History Score,RF,Coping,0.4262,0.3630,0.2108,0.4407,0.6879,0.5259,,298
+Demographics,LR,Coping,0.3557,0.2356,0.0763,0.1114,0.6309,0.3411,,298
+Demographics,RF,Coping,0.4564,0.3867,0.2590,0.3691,0.6510,0.5210,,298
+Demographics + History + Message Embedding,LR,Coping,0.4396,0.3422,0.2163,0.3432,0.6611,0.4625,-1.0000,298
+Demographics + History + Message Embedding,RF,Coping,0.3523,0.2223,0.0839,0.0617,0.5839,0.3360,0.0000,298
+Embedding,LR,Coping,0.3389,0.1602,0.0373,0.0225,0.6342,0.2587,-1.0000,298
+Embedding,RF,Coping,0.3087,0.1976,0.0171,-0.0064,0.5940,0.3414,0.0000,298
+Embedding + Demo,LR,Coping,0.3523,0.2489,0.0781,0.1100,0.6107,0.3484,-1.0000,298
+Embedding + Demo,RF,Coping,0.3356,0.2135,0.0551,-0.0069,0.5839,0.3362,1.0000,298
+Embedding + History,LR,Coping,0.4497,0.2809,0.2194,0.3998,0.6644,0.3843,-1.0000,298
+Embedding + History,RF,Coping,0.3624,0.2316,0.0966,0.0388,0.5839,0.3312,1.0000,298
+Avg History Score,LR,Quitting,0.4631,0.2594,0.2190,0.4049,0.6678,0.3340,,298
+Avg History Score,RF,Quitting,0.5403,0.4525,0.3575,0.5437,0.7483,0.5988,,298
+Demographics,LR,Quitting,0.3691,0.2498,0.0859,0.1520,0.6644,0.4039,,298
+Demographics,RF,Quitting,0.4664,0.3853,0.2729,0.4722,0.6879,0.5472,,298
+Demographics + History + Message Embedding,LR,Quitting,0.5000,0.3742,0.2979,0.4898,0.7483,0.5904,,298
+Demographics + History + Message Embedding,RF,Quitting,0.3490,0.2088,0.0499,0.0795,0.6409,0.3357,-1.0000,298
+Embedding,LR,Quitting,0.3658,0.1664,0.0446,0.0364,0.6611,0.2653,1.0000,298
+Embedding,RF,Quitting,0.3154,0.1999,0.0068,-0.0178,0.5973,0.3081,-1.0000,298
+Embedding + Demo,LR,Quitting,0.3826,0.2668,0.1102,0.1972,0.6678,0.4312,,298
+Embedding + Demo,RF,Quitting,0.3188,0.1874,0.0060,0.0060,0.6107,0.3044,-1.0000,298
+Embedding + History,LR,Quitting,0.4832,0.2918,0.2499,0.4206,0.6779,0.3631,,298
+Embedding + History,RF,Quitting,0.3389,0.2043,0.0302,0.0128,0.6342,0.3232,-1.0000,298

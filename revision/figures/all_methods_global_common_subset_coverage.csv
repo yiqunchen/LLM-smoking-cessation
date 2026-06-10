@@ -1,0 +1,91 @@
+Model,Method,Domain,N_Available,N_Common
+GPT-4o-mini,Zero-shot (all),Content,302,298
+GPT-4o-mini,Zero-shot (select),Content,302,298
+GPT-4o-mini,Few-shot (all),Content,302,298
+GPT-4o-mini,Few-shot (select),Content,302,298
+GPT-4o-mini,PP,Content,302,298
+GPT-4o-mini,Hybrid RF+PP,Content,302,298
+GPT-5,Zero-shot (all),Content,302,298
+GPT-5,Zero-shot (select),Content,302,298
+GPT-5,Few-shot (all),Content,302,298
+GPT-5,Few-shot (select),Content,302,298
+GPT-5,PP,Content,302,298
+GPT-5,Hybrid RF+PP,Content,302,298
+DeepSeek-R1,Zero-shot (all),Content,302,298
+DeepSeek-R1,Zero-shot (select),Content,302,298
+DeepSeek-R1,Few-shot (all),Content,302,298
+DeepSeek-R1,Few-shot (select),Content,302,298
+DeepSeek-R1,PP,Content,302,298
+DeepSeek-R1,Hybrid RF+PP,Content,298,298
+Grok-4-Fast,Zero-shot (all),Content,302,298
+Grok-4-Fast,Zero-shot (select),Content,302,298
+Grok-4-Fast,Few-shot (all),Content,302,298
+Grok-4-Fast,Few-shot (select),Content,302,298
+Grok-4-Fast,PP,Content,302,298
+Grok-4-Fast,Hybrid RF+PP,Content,302,298
+Gemini-2.5-Pro,Zero-shot (all),Content,302,298
+Gemini-2.5-Pro,Zero-shot (select),Content,302,298
+Gemini-2.5-Pro,Few-shot (all),Content,302,298
+Gemini-2.5-Pro,Few-shot (select),Content,302,298
+Gemini-2.5-Pro,PP,Content,302,298
+Gemini-2.5-Pro,Hybrid RF+PP,Content,302,298
+GPT-4o-mini,Zero-shot (all),Coping,303,299
+GPT-4o-mini,Zero-shot (select),Coping,303,299
+GPT-4o-mini,Few-shot (all),Coping,303,299
+GPT-4o-mini,Few-shot (select),Coping,303,299
+GPT-4o-mini,PP,Coping,303,299
+GPT-4o-mini,Hybrid RF+PP,Coping,303,299
+GPT-5,Zero-shot (all),Coping,303,299
+GPT-5,Zero-shot (select),Coping,303,299
+GPT-5,Few-shot (all),Coping,303,299
+GPT-5,Few-shot (select),Coping,303,299
+GPT-5,PP,Coping,303,299
+GPT-5,Hybrid RF+PP,Coping,303,299
+DeepSeek-R1,Zero-shot (all),Coping,303,299
+DeepSeek-R1,Zero-shot (select),Coping,303,299
+DeepSeek-R1,Few-shot (all),Coping,303,299
+DeepSeek-R1,Few-shot (select),Coping,303,299
+DeepSeek-R1,PP,Coping,303,299
+DeepSeek-R1,Hybrid RF+PP,Coping,299,299
+Grok-4-Fast,Zero-shot (all),Coping,303,299
+Grok-4-Fast,Zero-shot (select),Coping,303,299
+Grok-4-Fast,Few-shot (all),Coping,303,299
+Grok-4-Fast,Few-shot (select),Coping,303,299
+Grok-4-Fast,PP,Coping,303,299
+Grok-4-Fast,Hybrid RF+PP,Coping,303,299
+Gemini-2.5-Pro,Zero-shot (all),Coping,303,299
+Gemini-2.5-Pro,Zero-shot (select),Coping,303,299
+Gemini-2.5-Pro,Few-shot (all),Coping,303,299
+Gemini-2.5-Pro,Few-shot (select),Coping,303,299
+Gemini-2.5-Pro,PP,Coping,303,299
+Gemini-2.5-Pro,Hybrid RF+PP,Coping,303,299
+GPT-4o-mini,Zero-shot (all),Quitting,303,299
+GPT-4o-mini,Zero-shot (select),Quitting,303,299
+GPT-4o-mini,Few-shot (all),Quitting,303,299
+GPT-4o-mini,Few-shot (select),Quitting,303,299
+GPT-4o-mini,PP,Quitting,303,299
+GPT-4o-mini,Hybrid RF+PP,Quitting,303,299
+GPT-5,Zero-shot (all),Quitting,303,299
+GPT-5,Zero-shot (select),Quitting,303,299
+GPT-5,Few-shot (all),Quitting,303,299
+GPT-5,Few-shot (select),Quitting,303,299
+GPT-5,PP,Quitting,303,299
+GPT-5,Hybrid RF+PP,Quitting,303,299
+DeepSeek-R1,Zero-shot (all),Quitting,303,299
+DeepSeek-R1,Zero-shot (select),Quitting,303,299
+DeepSeek-R1,Few-shot (all),Quitting,303,299
+DeepSeek-R1,Few-shot (select),Quitting,303,299
+DeepSeek-R1,PP,Quitting,303,299
+DeepSeek-R1,Hybrid RF+PP,Quitting,299,299
+Grok-4-Fast,Zero-shot (all),Quitting,303,299
+Grok-4-Fast,Zero-shot (select),Quitting,303,299
+Grok-4-Fast,Few-shot (all),Quitting,303,299
+Grok-4-Fast,Few-shot (select),Quitting,303,299
+Grok-4-Fast,PP,Quitting,303,299
+Grok-4-Fast,Hybrid RF+PP,Quitting,303,299
+Gemini-2.5-Pro,Zero-shot (all),Quitting,303,299
+Gemini-2.5-Pro,Zero-shot (select),Quitting,303,299
+Gemini-2.5-Pro,Few-shot (all),Quitting,303,299
+Gemini-2.5-Pro,Few-shot (select),Quitting,303,299
+Gemini-2.5-Pro,PP,Quitting,303,299
+Gemini-2.5-Pro,Hybrid RF+PP,Quitting,303,299

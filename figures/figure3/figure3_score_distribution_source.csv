@@ -1,0 +1,316 @@
+Domain,Display_Order,Row_Label,Label,Method,Series_Type,Series_Label,Series,Rating,Percent,N,Color
+Content,0,Zero-shot (select),Zero-shot (select),Zero-shot (select),Human reference,Human ratings,Human ratings,1,3.9735,302,#4D4D4D
+Content,0,Zero-shot (select),Zero-shot (select),Zero-shot (select),Human reference,Human ratings,Human ratings,2,5.2980,302,#4D4D4D
+Content,0,Zero-shot (select),Zero-shot (select),Zero-shot (select),Human reference,Human ratings,Human ratings,3,17.2185,302,#4D4D4D
+Content,0,Zero-shot (select),Zero-shot (select),Zero-shot (select),Human reference,Human ratings,Human ratings,4,37.0861,302,#4D4D4D
+Content,0,Zero-shot (select),Zero-shot (select),Zero-shot (select),Human reference,Human ratings,Human ratings,5,36.4238,302,#4D4D4D
+Content,0,Zero-shot (select),Zero-shot (select),Zero-shot (select),Prediction,GPT-4o-mini,GPT-4o-mini,1,0.0000,302,#0173B2
+Content,0,Zero-shot (select),Zero-shot (select),Zero-shot (select),Prediction,GPT-4o-mini,GPT-4o-mini,2,0.0000,302,#0173B2
+Content,0,Zero-shot (select),Zero-shot (select),Zero-shot (select),Prediction,GPT-4o-mini,GPT-4o-mini,3,3.3113,302,#0173B2
+Content,0,Zero-shot (select),Zero-shot (select),Zero-shot (select),Prediction,GPT-4o-mini,GPT-4o-mini,4,78.1457,302,#0173B2
+Content,0,Zero-shot (select),Zero-shot (select),Zero-shot (select),Prediction,GPT-4o-mini,GPT-4o-mini,5,18.5430,302,#0173B2
+Content,0,Zero-shot (select),Zero-shot (select),Zero-shot (select),Prediction,GPT-5,GPT-5,1,0.3311,302,#DE8F05
+Content,0,Zero-shot (select),Zero-shot (select),Zero-shot (select),Prediction,GPT-5,GPT-5,2,0.6623,302,#DE8F05
+Content,0,Zero-shot (select),Zero-shot (select),Zero-shot (select),Prediction,GPT-5,GPT-5,3,7.9470,302,#DE8F05
+Content,0,Zero-shot (select),Zero-shot (select),Zero-shot (select),Prediction,GPT-5,GPT-5,4,77.4834,302,#DE8F05
+Content,0,Zero-shot (select),Zero-shot (select),Zero-shot (select),Prediction,GPT-5,GPT-5,5,13.5762,302,#DE8F05
+Content,0,Zero-shot (select),Zero-shot (select),Zero-shot (select),Prediction,DeepSeek-R1,DeepSeek-R1,1,0.3311,302,#029E73
+Content,0,Zero-shot (select),Zero-shot (select),Zero-shot (select),Prediction,DeepSeek-R1,DeepSeek-R1,2,2.6490,302,#029E73
+Content,0,Zero-shot (select),Zero-shot (select),Zero-shot (select),Prediction,DeepSeek-R1,DeepSeek-R1,3,9.9338,302,#029E73
+Content,0,Zero-shot (select),Zero-shot (select),Zero-shot (select),Prediction,DeepSeek-R1,DeepSeek-R1,4,68.2119,302,#029E73
+Content,0,Zero-shot (select),Zero-shot (select),Zero-shot (select),Prediction,DeepSeek-R1,DeepSeek-R1,5,18.8742,302,#029E73
+Content,0,Zero-shot (select),Zero-shot (select),Zero-shot (select),Prediction,Grok-4-Fast,Grok-4-Fast,1,0.0000,302,#CC78BC
+Content,0,Zero-shot (select),Zero-shot (select),Zero-shot (select),Prediction,Grok-4-Fast,Grok-4-Fast,2,0.0000,302,#CC78BC
+Content,0,Zero-shot (select),Zero-shot (select),Zero-shot (select),Prediction,Grok-4-Fast,Grok-4-Fast,3,1.9868,302,#CC78BC
+Content,0,Zero-shot (select),Zero-shot (select),Zero-shot (select),Prediction,Grok-4-Fast,Grok-4-Fast,4,43.0464,302,#CC78BC
+Content,0,Zero-shot (select),Zero-shot (select),Zero-shot (select),Prediction,Grok-4-Fast,Grok-4-Fast,5,54.9669,302,#CC78BC
+Content,0,Zero-shot (select),Zero-shot (select),Zero-shot (select),Prediction,Gemini-2.5-Pro,Gemini-2.5-Pro,1,0.3311,302,#CA9161
+Content,0,Zero-shot (select),Zero-shot (select),Zero-shot (select),Prediction,Gemini-2.5-Pro,Gemini-2.5-Pro,2,2.3179,302,#CA9161
+Content,0,Zero-shot (select),Zero-shot (select),Zero-shot (select),Prediction,Gemini-2.5-Pro,Gemini-2.5-Pro,3,4.9669,302,#CA9161
+Content,0,Zero-shot (select),Zero-shot (select),Zero-shot (select),Prediction,Gemini-2.5-Pro,Gemini-2.5-Pro,4,41.0596,302,#CA9161
+Content,0,Zero-shot (select),Zero-shot (select),Zero-shot (select),Prediction,Gemini-2.5-Pro,Gemini-2.5-Pro,5,51.3245,302,#CA9161
+Content,1,Supervised,Supervised,Supervised,Human reference,Human ratings,Human ratings,1,3.9216,306,#4D4D4D
+Content,1,Supervised,Supervised,Supervised,Human reference,Human ratings,Human ratings,2,5.2288,306,#4D4D4D
+Content,1,Supervised,Supervised,Supervised,Human reference,Human ratings,Human ratings,3,16.9935,306,#4D4D4D
+Content,1,Supervised,Supervised,Supervised,Human reference,Human ratings,Human ratings,4,37.2549,306,#4D4D4D
+Content,1,Supervised,Supervised,Supervised,Human reference,Human ratings,Human ratings,5,36.6013,306,#4D4D4D
+Content,1,Supervised,Supervised,Supervised,Prediction,RF (demo),RF (demo),1,1.3072,306,#7F7F7F
+Content,1,Supervised,Supervised,Supervised,Prediction,RF (demo),RF (demo),2,2.9412,306,#7F7F7F
+Content,1,Supervised,Supervised,Supervised,Prediction,RF (demo),RF (demo),3,21.8954,306,#7F7F7F
+Content,1,Supervised,Supervised,Supervised,Prediction,RF (demo),RF (demo),4,36.9281,306,#7F7F7F
+Content,1,Supervised,Supervised,Supervised,Prediction,RF (demo),RF (demo),5,36.9281,306,#7F7F7F
+Content,1,Supervised,Supervised,Supervised,Prediction,LR (full),LR (full),1,0.3268,306,#E02020
+Content,1,Supervised,Supervised,Supervised,Prediction,LR (full),LR (full),2,0.3268,306,#E02020
+Content,1,Supervised,Supervised,Supervised,Prediction,LR (full),LR (full),3,16.9935,306,#E02020
+Content,1,Supervised,Supervised,Supervised,Prediction,LR (full),LR (full),4,35.2941,306,#E02020
+Content,1,Supervised,Supervised,Supervised,Prediction,LR (full),LR (full),5,47.0588,306,#E02020
+Content,2,Few-shot (select),Few-shot (select),Few-shot (select),Human reference,Human ratings,Human ratings,1,3.9735,302,#4D4D4D
+Content,2,Few-shot (select),Few-shot (select),Few-shot (select),Human reference,Human ratings,Human ratings,2,5.2980,302,#4D4D4D
+Content,2,Few-shot (select),Few-shot (select),Few-shot (select),Human reference,Human ratings,Human ratings,3,17.2185,302,#4D4D4D
+Content,2,Few-shot (select),Few-shot (select),Few-shot (select),Human reference,Human ratings,Human ratings,4,37.0861,302,#4D4D4D
+Content,2,Few-shot (select),Few-shot (select),Few-shot (select),Human reference,Human ratings,Human ratings,5,36.4238,302,#4D4D4D
+Content,2,Few-shot (select),Few-shot (select),Few-shot (select),Prediction,GPT-4o-mini,GPT-4o-mini,1,0.3311,302,#0173B2
+Content,2,Few-shot (select),Few-shot (select),Few-shot (select),Prediction,GPT-4o-mini,GPT-4o-mini,2,2.6490,302,#0173B2
+Content,2,Few-shot (select),Few-shot (select),Few-shot (select),Prediction,GPT-4o-mini,GPT-4o-mini,3,6.9536,302,#0173B2
+Content,2,Few-shot (select),Few-shot (select),Few-shot (select),Prediction,GPT-4o-mini,GPT-4o-mini,4,83.4437,302,#0173B2
+Content,2,Few-shot (select),Few-shot (select),Few-shot (select),Prediction,GPT-4o-mini,GPT-4o-mini,5,6.6225,302,#0173B2
+Content,2,Few-shot (select),Few-shot (select),Few-shot (select),Prediction,GPT-5,GPT-5,1,2.6490,302,#DE8F05
+Content,2,Few-shot (select),Few-shot (select),Few-shot (select),Prediction,GPT-5,GPT-5,2,1.3245,302,#DE8F05
+Content,2,Few-shot (select),Few-shot (select),Few-shot (select),Prediction,GPT-5,GPT-5,3,18.5430,302,#DE8F05
+Content,2,Few-shot (select),Few-shot (select),Few-shot (select),Prediction,GPT-5,GPT-5,4,55.9603,302,#DE8F05
+Content,2,Few-shot (select),Few-shot (select),Few-shot (select),Prediction,GPT-5,GPT-5,5,21.5232,302,#DE8F05
+Content,2,Few-shot (select),Few-shot (select),Few-shot (select),Prediction,DeepSeek-R1,DeepSeek-R1,1,4.9669,302,#029E73
+Content,2,Few-shot (select),Few-shot (select),Few-shot (select),Prediction,DeepSeek-R1,DeepSeek-R1,2,6.9536,302,#029E73
+Content,2,Few-shot (select),Few-shot (select),Few-shot (select),Prediction,DeepSeek-R1,DeepSeek-R1,3,16.2252,302,#029E73
+Content,2,Few-shot (select),Few-shot (select),Few-shot (select),Prediction,DeepSeek-R1,DeepSeek-R1,4,42.3841,302,#029E73
+Content,2,Few-shot (select),Few-shot (select),Few-shot (select),Prediction,DeepSeek-R1,DeepSeek-R1,5,29.4702,302,#029E73
+Content,2,Few-shot (select),Few-shot (select),Few-shot (select),Prediction,Grok-4-Fast,Grok-4-Fast,1,0.9934,302,#CC78BC
+Content,2,Few-shot (select),Few-shot (select),Few-shot (select),Prediction,Grok-4-Fast,Grok-4-Fast,2,4.3046,302,#CC78BC
+Content,2,Few-shot (select),Few-shot (select),Few-shot (select),Prediction,Grok-4-Fast,Grok-4-Fast,3,4.6358,302,#CC78BC
+Content,2,Few-shot (select),Few-shot (select),Few-shot (select),Prediction,Grok-4-Fast,Grok-4-Fast,4,28.4768,302,#CC78BC
+Content,2,Few-shot (select),Few-shot (select),Few-shot (select),Prediction,Grok-4-Fast,Grok-4-Fast,5,61.5894,302,#CC78BC
+Content,2,Few-shot (select),Few-shot (select),Few-shot (select),Prediction,Gemini-2.5-Pro,Gemini-2.5-Pro,1,0.9934,302,#CA9161
+Content,2,Few-shot (select),Few-shot (select),Few-shot (select),Prediction,Gemini-2.5-Pro,Gemini-2.5-Pro,2,6.2914,302,#CA9161
+Content,2,Few-shot (select),Few-shot (select),Few-shot (select),Prediction,Gemini-2.5-Pro,Gemini-2.5-Pro,3,12.9139,302,#CA9161
+Content,2,Few-shot (select),Few-shot (select),Few-shot (select),Prediction,Gemini-2.5-Pro,Gemini-2.5-Pro,4,38.7417,302,#CA9161
+Content,2,Few-shot (select),Few-shot (select),Few-shot (select),Prediction,Gemini-2.5-Pro,Gemini-2.5-Pro,5,41.0596,302,#CA9161
+Content,3,PP,PP,PP,Human reference,Human ratings,Human ratings,1,3.9735,302,#4D4D4D
+Content,3,PP,PP,PP,Human reference,Human ratings,Human ratings,2,5.2980,302,#4D4D4D
+Content,3,PP,PP,PP,Human reference,Human ratings,Human ratings,3,17.2185,302,#4D4D4D
+Content,3,PP,PP,PP,Human reference,Human ratings,Human ratings,4,37.0861,302,#4D4D4D
+Content,3,PP,PP,PP,Human reference,Human ratings,Human ratings,5,36.4238,302,#4D4D4D
+Content,3,PP,PP,PP,Prediction,GPT-4o-mini,GPT-4o-mini,1,0.0000,302,#0173B2
+Content,3,PP,PP,PP,Prediction,GPT-4o-mini,GPT-4o-mini,2,0.0000,302,#0173B2
+Content,3,PP,PP,PP,Prediction,GPT-4o-mini,GPT-4o-mini,3,15.8940,302,#0173B2
+Content,3,PP,PP,PP,Prediction,GPT-4o-mini,GPT-4o-mini,4,76.1589,302,#0173B2
+Content,3,PP,PP,PP,Prediction,GPT-4o-mini,GPT-4o-mini,5,7.9470,302,#0173B2
+Content,3,PP,PP,PP,Prediction,GPT-5,GPT-5,1,0.6623,302,#DE8F05
+Content,3,PP,PP,PP,Prediction,GPT-5,GPT-5,2,2.9801,302,#DE8F05
+Content,3,PP,PP,PP,Prediction,GPT-5,GPT-5,3,24.1722,302,#DE8F05
+Content,3,PP,PP,PP,Prediction,GPT-5,GPT-5,4,45.3642,302,#DE8F05
+Content,3,PP,PP,PP,Prediction,GPT-5,GPT-5,5,26.8212,302,#DE8F05
+Content,3,PP,PP,PP,Prediction,DeepSeek-R1,DeepSeek-R1,1,0.3311,302,#029E73
+Content,3,PP,PP,PP,Prediction,DeepSeek-R1,DeepSeek-R1,2,6.9536,302,#029E73
+Content,3,PP,PP,PP,Prediction,DeepSeek-R1,DeepSeek-R1,3,26.1589,302,#029E73
+Content,3,PP,PP,PP,Prediction,DeepSeek-R1,DeepSeek-R1,4,47.6821,302,#029E73
+Content,3,PP,PP,PP,Prediction,DeepSeek-R1,DeepSeek-R1,5,18.8742,302,#029E73
+Content,3,PP,PP,PP,Prediction,Grok-4-Fast,Grok-4-Fast,1,0.0000,302,#CC78BC
+Content,3,PP,PP,PP,Prediction,Grok-4-Fast,Grok-4-Fast,2,2.6490,302,#CC78BC
+Content,3,PP,PP,PP,Prediction,Grok-4-Fast,Grok-4-Fast,3,15.8940,302,#CC78BC
+Content,3,PP,PP,PP,Prediction,Grok-4-Fast,Grok-4-Fast,4,43.3775,302,#CC78BC
+Content,3,PP,PP,PP,Prediction,Grok-4-Fast,Grok-4-Fast,5,38.0795,302,#CC78BC
+Content,3,PP,PP,PP,Prediction,Gemini-2.5-Pro,Gemini-2.5-Pro,1,0.3311,302,#CA9161
+Content,3,PP,PP,PP,Prediction,Gemini-2.5-Pro,Gemini-2.5-Pro,2,8.9404,302,#CA9161
+Content,3,PP,PP,PP,Prediction,Gemini-2.5-Pro,Gemini-2.5-Pro,3,13.2450,302,#CA9161
+Content,3,PP,PP,PP,Prediction,Gemini-2.5-Pro,Gemini-2.5-Pro,4,35.4305,302,#CA9161
+Content,3,PP,PP,PP,Prediction,Gemini-2.5-Pro,Gemini-2.5-Pro,5,42.0530,302,#CA9161
+Coping,0,Zero-shot (select),Zero-shot (select),Zero-shot (select),Human reference,Human ratings,Human ratings,1,6.6007,303,#4D4D4D
+Coping,0,Zero-shot (select),Zero-shot (select),Zero-shot (select),Human reference,Human ratings,Human ratings,2,10.2310,303,#4D4D4D
+Coping,0,Zero-shot (select),Zero-shot (select),Zero-shot (select),Human reference,Human ratings,Human ratings,3,19.8020,303,#4D4D4D
+Coping,0,Zero-shot (select),Zero-shot (select),Zero-shot (select),Human reference,Human ratings,Human ratings,4,31.3531,303,#4D4D4D
+Coping,0,Zero-shot (select),Zero-shot (select),Zero-shot (select),Human reference,Human ratings,Human ratings,5,32.0132,303,#4D4D4D
+Coping,0,Zero-shot (select),Zero-shot (select),Zero-shot (select),Prediction,GPT-4o-mini,GPT-4o-mini,1,0.0000,303,#0173B2
+Coping,0,Zero-shot (select),Zero-shot (select),Zero-shot (select),Prediction,GPT-4o-mini,GPT-4o-mini,2,2.6403,303,#0173B2
+Coping,0,Zero-shot (select),Zero-shot (select),Zero-shot (select),Prediction,GPT-4o-mini,GPT-4o-mini,3,26.7327,303,#0173B2
+Coping,0,Zero-shot (select),Zero-shot (select),Zero-shot (select),Prediction,GPT-4o-mini,GPT-4o-mini,4,70.6271,303,#0173B2
+Coping,0,Zero-shot (select),Zero-shot (select),Zero-shot (select),Prediction,GPT-4o-mini,GPT-4o-mini,5,0.0000,303,#0173B2
+Coping,0,Zero-shot (select),Zero-shot (select),Zero-shot (select),Prediction,GPT-5,GPT-5,1,0.6601,303,#DE8F05
+Coping,0,Zero-shot (select),Zero-shot (select),Zero-shot (select),Prediction,GPT-5,GPT-5,2,5.6106,303,#DE8F05
+Coping,0,Zero-shot (select),Zero-shot (select),Zero-shot (select),Prediction,GPT-5,GPT-5,3,50.1650,303,#DE8F05
+Coping,0,Zero-shot (select),Zero-shot (select),Zero-shot (select),Prediction,GPT-5,GPT-5,4,43.5644,303,#DE8F05
+Coping,0,Zero-shot (select),Zero-shot (select),Zero-shot (select),Prediction,GPT-5,GPT-5,5,0.0000,303,#DE8F05
+Coping,0,Zero-shot (select),Zero-shot (select),Zero-shot (select),Prediction,DeepSeek-R1,DeepSeek-R1,1,1.3201,303,#029E73
+Coping,0,Zero-shot (select),Zero-shot (select),Zero-shot (select),Prediction,DeepSeek-R1,DeepSeek-R1,2,7.2607,303,#029E73
+Coping,0,Zero-shot (select),Zero-shot (select),Zero-shot (select),Prediction,DeepSeek-R1,DeepSeek-R1,3,28.0528,303,#029E73
+Coping,0,Zero-shot (select),Zero-shot (select),Zero-shot (select),Prediction,DeepSeek-R1,DeepSeek-R1,4,62.3762,303,#029E73
+Coping,0,Zero-shot (select),Zero-shot (select),Zero-shot (select),Prediction,DeepSeek-R1,DeepSeek-R1,5,0.9901,303,#029E73
+Coping,0,Zero-shot (select),Zero-shot (select),Zero-shot (select),Prediction,Grok-4-Fast,Grok-4-Fast,1,0.0000,303,#CC78BC
+Coping,0,Zero-shot (select),Zero-shot (select),Zero-shot (select),Prediction,Grok-4-Fast,Grok-4-Fast,2,2.3102,303,#CC78BC
+Coping,0,Zero-shot (select),Zero-shot (select),Zero-shot (select),Prediction,Grok-4-Fast,Grok-4-Fast,3,21.7822,303,#CC78BC
+Coping,0,Zero-shot (select),Zero-shot (select),Zero-shot (select),Prediction,Grok-4-Fast,Grok-4-Fast,4,74.5875,303,#CC78BC
+Coping,0,Zero-shot (select),Zero-shot (select),Zero-shot (select),Prediction,Grok-4-Fast,Grok-4-Fast,5,1.3201,303,#CC78BC
+Coping,0,Zero-shot (select),Zero-shot (select),Zero-shot (select),Prediction,Gemini-2.5-Pro,Gemini-2.5-Pro,1,2.6403,303,#CA9161
+Coping,0,Zero-shot (select),Zero-shot (select),Zero-shot (select),Prediction,Gemini-2.5-Pro,Gemini-2.5-Pro,2,4.6205,303,#CA9161
+Coping,0,Zero-shot (select),Zero-shot (select),Zero-shot (select),Prediction,Gemini-2.5-Pro,Gemini-2.5-Pro,3,11.5512,303,#CA9161
+Coping,0,Zero-shot (select),Zero-shot (select),Zero-shot (select),Prediction,Gemini-2.5-Pro,Gemini-2.5-Pro,4,68.6469,303,#CA9161
+Coping,0,Zero-shot (select),Zero-shot (select),Zero-shot (select),Prediction,Gemini-2.5-Pro,Gemini-2.5-Pro,5,12.5413,303,#CA9161
+Coping,1,Supervised,Supervised,Supervised,Human reference,Human ratings,Human ratings,1,6.5147,307,#4D4D4D
+Coping,1,Supervised,Supervised,Supervised,Human reference,Human ratings,Human ratings,2,10.4235,307,#4D4D4D
+Coping,1,Supervised,Supervised,Supervised,Human reference,Human ratings,Human ratings,3,19.8697,307,#4D4D4D
+Coping,1,Supervised,Supervised,Supervised,Human reference,Human ratings,Human ratings,4,31.5961,307,#4D4D4D
+Coping,1,Supervised,Supervised,Supervised,Human reference,Human ratings,Human ratings,5,31.5961,307,#4D4D4D
+Coping,1,Supervised,Supervised,Supervised,Prediction,RF (demo),RF (demo),1,4.5603,307,#7F7F7F
+Coping,1,Supervised,Supervised,Supervised,Prediction,RF (demo),RF (demo),2,7.4919,307,#7F7F7F
+Coping,1,Supervised,Supervised,Supervised,Prediction,RF (demo),RF (demo),3,18.2410,307,#7F7F7F
+Coping,1,Supervised,Supervised,Supervised,Prediction,RF (demo),RF (demo),4,38.7622,307,#7F7F7F
+Coping,1,Supervised,Supervised,Supervised,Prediction,RF (demo),RF (demo),5,30.9446,307,#7F7F7F
+Coping,1,Supervised,Supervised,Supervised,Prediction,LR (full),LR (full),1,3.2573,307,#E02020
+Coping,1,Supervised,Supervised,Supervised,Prediction,LR (full),LR (full),2,0.6515,307,#E02020
+Coping,1,Supervised,Supervised,Supervised,Prediction,LR (full),LR (full),3,17.2638,307,#E02020
+Coping,1,Supervised,Supervised,Supervised,Prediction,LR (full),LR (full),4,46.2541,307,#E02020
+Coping,1,Supervised,Supervised,Supervised,Prediction,LR (full),LR (full),5,32.5733,307,#E02020
+Coping,2,Few-shot (select),Few-shot (select),Few-shot (select),Human reference,Human ratings,Human ratings,1,6.6007,303,#4D4D4D
+Coping,2,Few-shot (select),Few-shot (select),Few-shot (select),Human reference,Human ratings,Human ratings,2,10.2310,303,#4D4D4D
+Coping,2,Few-shot (select),Few-shot (select),Few-shot (select),Human reference,Human ratings,Human ratings,3,19.8020,303,#4D4D4D
+Coping,2,Few-shot (select),Few-shot (select),Few-shot (select),Human reference,Human ratings,Human ratings,4,31.3531,303,#4D4D4D
+Coping,2,Few-shot (select),Few-shot (select),Few-shot (select),Human reference,Human ratings,Human ratings,5,32.0132,303,#4D4D4D
+Coping,2,Few-shot (select),Few-shot (select),Few-shot (select),Prediction,GPT-4o-mini,GPT-4o-mini,1,0.3300,303,#0173B2
+Coping,2,Few-shot (select),Few-shot (select),Few-shot (select),Prediction,GPT-4o-mini,GPT-4o-mini,2,5.9406,303,#0173B2
+Coping,2,Few-shot (select),Few-shot (select),Few-shot (select),Prediction,GPT-4o-mini,GPT-4o-mini,3,45.5446,303,#0173B2
+Coping,2,Few-shot (select),Few-shot (select),Few-shot (select),Prediction,GPT-4o-mini,GPT-4o-mini,4,47.5248,303,#0173B2
+Coping,2,Few-shot (select),Few-shot (select),Few-shot (select),Prediction,GPT-4o-mini,GPT-4o-mini,5,0.6601,303,#0173B2
+Coping,2,Few-shot (select),Few-shot (select),Few-shot (select),Prediction,GPT-5,GPT-5,1,2.9703,303,#DE8F05
+Coping,2,Few-shot (select),Few-shot (select),Few-shot (select),Prediction,GPT-5,GPT-5,2,18.8119,303,#DE8F05
+Coping,2,Few-shot (select),Few-shot (select),Few-shot (select),Prediction,GPT-5,GPT-5,3,37.6238,303,#DE8F05
+Coping,2,Few-shot (select),Few-shot (select),Few-shot (select),Prediction,GPT-5,GPT-5,4,37.2937,303,#DE8F05
+Coping,2,Few-shot (select),Few-shot (select),Few-shot (select),Prediction,GPT-5,GPT-5,5,3.3003,303,#DE8F05
+Coping,2,Few-shot (select),Few-shot (select),Few-shot (select),Prediction,DeepSeek-R1,DeepSeek-R1,1,10.5611,303,#029E73
+Coping,2,Few-shot (select),Few-shot (select),Few-shot (select),Prediction,DeepSeek-R1,DeepSeek-R1,2,13.8614,303,#029E73
+Coping,2,Few-shot (select),Few-shot (select),Few-shot (select),Prediction,DeepSeek-R1,DeepSeek-R1,3,19.8020,303,#029E73
+Coping,2,Few-shot (select),Few-shot (select),Few-shot (select),Prediction,DeepSeek-R1,DeepSeek-R1,4,33.6634,303,#029E73
+Coping,2,Few-shot (select),Few-shot (select),Few-shot (select),Prediction,DeepSeek-R1,DeepSeek-R1,5,22.1122,303,#029E73
+Coping,2,Few-shot (select),Few-shot (select),Few-shot (select),Prediction,Grok-4-Fast,Grok-4-Fast,1,2.6403,303,#CC78BC
+Coping,2,Few-shot (select),Few-shot (select),Few-shot (select),Prediction,Grok-4-Fast,Grok-4-Fast,2,6.6007,303,#CC78BC
+Coping,2,Few-shot (select),Few-shot (select),Few-shot (select),Prediction,Grok-4-Fast,Grok-4-Fast,3,13.5314,303,#CC78BC
+Coping,2,Few-shot (select),Few-shot (select),Few-shot (select),Prediction,Grok-4-Fast,Grok-4-Fast,4,60.7261,303,#CC78BC
+Coping,2,Few-shot (select),Few-shot (select),Few-shot (select),Prediction,Grok-4-Fast,Grok-4-Fast,5,16.5017,303,#CC78BC
+Coping,2,Few-shot (select),Few-shot (select),Few-shot (select),Prediction,Gemini-2.5-Pro,Gemini-2.5-Pro,1,6.2706,303,#CA9161
+Coping,2,Few-shot (select),Few-shot (select),Few-shot (select),Prediction,Gemini-2.5-Pro,Gemini-2.5-Pro,2,18.1518,303,#CA9161
+Coping,2,Few-shot (select),Few-shot (select),Few-shot (select),Prediction,Gemini-2.5-Pro,Gemini-2.5-Pro,3,15.1815,303,#CA9161
+Coping,2,Few-shot (select),Few-shot (select),Few-shot (select),Prediction,Gemini-2.5-Pro,Gemini-2.5-Pro,4,35.9736,303,#CA9161
+Coping,2,Few-shot (select),Few-shot (select),Few-shot (select),Prediction,Gemini-2.5-Pro,Gemini-2.5-Pro,5,24.4224,303,#CA9161
+Coping,3,PP,PP,PP,Human reference,Human ratings,Human ratings,1,6.6007,303,#4D4D4D
+Coping,3,PP,PP,PP,Human reference,Human ratings,Human ratings,2,10.2310,303,#4D4D4D
+Coping,3,PP,PP,PP,Human reference,Human ratings,Human ratings,3,19.8020,303,#4D4D4D
+Coping,3,PP,PP,PP,Human reference,Human ratings,Human ratings,4,31.3531,303,#4D4D4D
+Coping,3,PP,PP,PP,Human reference,Human ratings,Human ratings,5,32.0132,303,#4D4D4D
+Coping,3,PP,PP,PP,Prediction,GPT-4o-mini,GPT-4o-mini,1,0.0000,303,#0173B2
+Coping,3,PP,PP,PP,Prediction,GPT-4o-mini,GPT-4o-mini,2,2.9703,303,#0173B2
+Coping,3,PP,PP,PP,Prediction,GPT-4o-mini,GPT-4o-mini,3,55.4455,303,#0173B2
+Coping,3,PP,PP,PP,Prediction,GPT-4o-mini,GPT-4o-mini,4,40.9241,303,#0173B2
+Coping,3,PP,PP,PP,Prediction,GPT-4o-mini,GPT-4o-mini,5,0.6601,303,#0173B2
+Coping,3,PP,PP,PP,Prediction,GPT-5,GPT-5,1,3.3003,303,#DE8F05
+Coping,3,PP,PP,PP,Prediction,GPT-5,GPT-5,2,11.2211,303,#DE8F05
+Coping,3,PP,PP,PP,Prediction,GPT-5,GPT-5,3,26.4026,303,#DE8F05
+Coping,3,PP,PP,PP,Prediction,GPT-5,GPT-5,4,40.5941,303,#DE8F05
+Coping,3,PP,PP,PP,Prediction,GPT-5,GPT-5,5,18.4818,303,#DE8F05
+Coping,3,PP,PP,PP,Prediction,DeepSeek-R1,DeepSeek-R1,1,5.6106,303,#029E73
+Coping,3,PP,PP,PP,Prediction,DeepSeek-R1,DeepSeek-R1,2,15.1815,303,#029E73
+Coping,3,PP,PP,PP,Prediction,DeepSeek-R1,DeepSeek-R1,3,16.8317,303,#029E73
+Coping,3,PP,PP,PP,Prediction,DeepSeek-R1,DeepSeek-R1,4,42.2442,303,#029E73
+Coping,3,PP,PP,PP,Prediction,DeepSeek-R1,DeepSeek-R1,5,20.1320,303,#029E73
+Coping,3,PP,PP,PP,Prediction,Grok-4-Fast,Grok-4-Fast,1,1.9802,303,#CC78BC
+Coping,3,PP,PP,PP,Prediction,Grok-4-Fast,Grok-4-Fast,2,8.2508,303,#CC78BC
+Coping,3,PP,PP,PP,Prediction,Grok-4-Fast,Grok-4-Fast,3,18.8119,303,#CC78BC
+Coping,3,PP,PP,PP,Prediction,Grok-4-Fast,Grok-4-Fast,4,44.8845,303,#CC78BC
+Coping,3,PP,PP,PP,Prediction,Grok-4-Fast,Grok-4-Fast,5,26.0726,303,#CC78BC
+Coping,3,PP,PP,PP,Prediction,Gemini-2.5-Pro,Gemini-2.5-Pro,1,7.5908,303,#CA9161
+Coping,3,PP,PP,PP,Prediction,Gemini-2.5-Pro,Gemini-2.5-Pro,2,8.2508,303,#CA9161
+Coping,3,PP,PP,PP,Prediction,Gemini-2.5-Pro,Gemini-2.5-Pro,3,16.1716,303,#CA9161
+Coping,3,PP,PP,PP,Prediction,Gemini-2.5-Pro,Gemini-2.5-Pro,4,40.2640,303,#CA9161
+Coping,3,PP,PP,PP,Prediction,Gemini-2.5-Pro,Gemini-2.5-Pro,5,27.7228,303,#CA9161
+Quitting,0,Zero-shot (select),Zero-shot (select),Zero-shot (select),Human reference,Human ratings,Human ratings,1,7.5908,303,#4D4D4D
+Quitting,0,Zero-shot (select),Zero-shot (select),Zero-shot (select),Human reference,Human ratings,Human ratings,2,9.5710,303,#4D4D4D
+Quitting,0,Zero-shot (select),Zero-shot (select),Zero-shot (select),Human reference,Human ratings,Human ratings,3,16.5017,303,#4D4D4D
+Quitting,0,Zero-shot (select),Zero-shot (select),Zero-shot (select),Human reference,Human ratings,Human ratings,4,32.3432,303,#4D4D4D
+Quitting,0,Zero-shot (select),Zero-shot (select),Zero-shot (select),Human reference,Human ratings,Human ratings,5,33.9934,303,#4D4D4D
+Quitting,0,Zero-shot (select),Zero-shot (select),Zero-shot (select),Prediction,GPT-4o-mini,GPT-4o-mini,1,0.3300,303,#0173B2
+Quitting,0,Zero-shot (select),Zero-shot (select),Zero-shot (select),Prediction,GPT-4o-mini,GPT-4o-mini,2,7.5908,303,#0173B2
+Quitting,0,Zero-shot (select),Zero-shot (select),Zero-shot (select),Prediction,GPT-4o-mini,GPT-4o-mini,3,15.8416,303,#0173B2
+Quitting,0,Zero-shot (select),Zero-shot (select),Zero-shot (select),Prediction,GPT-4o-mini,GPT-4o-mini,4,59.0759,303,#0173B2
+Quitting,0,Zero-shot (select),Zero-shot (select),Zero-shot (select),Prediction,GPT-4o-mini,GPT-4o-mini,5,17.1617,303,#0173B2
+Quitting,0,Zero-shot (select),Zero-shot (select),Zero-shot (select),Prediction,GPT-5,GPT-5,1,1.9802,303,#DE8F05
+Quitting,0,Zero-shot (select),Zero-shot (select),Zero-shot (select),Prediction,GPT-5,GPT-5,2,34.3234,303,#DE8F05
+Quitting,0,Zero-shot (select),Zero-shot (select),Zero-shot (select),Prediction,GPT-5,GPT-5,3,46.5347,303,#DE8F05
+Quitting,0,Zero-shot (select),Zero-shot (select),Zero-shot (select),Prediction,GPT-5,GPT-5,4,17.1617,303,#DE8F05
+Quitting,0,Zero-shot (select),Zero-shot (select),Zero-shot (select),Prediction,GPT-5,GPT-5,5,0.0000,303,#DE8F05
+Quitting,0,Zero-shot (select),Zero-shot (select),Zero-shot (select),Prediction,DeepSeek-R1,DeepSeek-R1,1,3.9604,303,#029E73
+Quitting,0,Zero-shot (select),Zero-shot (select),Zero-shot (select),Prediction,DeepSeek-R1,DeepSeek-R1,2,19.1419,303,#029E73
+Quitting,0,Zero-shot (select),Zero-shot (select),Zero-shot (select),Prediction,DeepSeek-R1,DeepSeek-R1,3,44.2244,303,#029E73
+Quitting,0,Zero-shot (select),Zero-shot (select),Zero-shot (select),Prediction,DeepSeek-R1,DeepSeek-R1,4,32.3432,303,#029E73
+Quitting,0,Zero-shot (select),Zero-shot (select),Zero-shot (select),Prediction,DeepSeek-R1,DeepSeek-R1,5,0.3300,303,#029E73
+Quitting,0,Zero-shot (select),Zero-shot (select),Zero-shot (select),Prediction,Grok-4-Fast,Grok-4-Fast,1,1.3201,303,#CC78BC
+Quitting,0,Zero-shot (select),Zero-shot (select),Zero-shot (select),Prediction,Grok-4-Fast,Grok-4-Fast,2,7.9208,303,#CC78BC
+Quitting,0,Zero-shot (select),Zero-shot (select),Zero-shot (select),Prediction,Grok-4-Fast,Grok-4-Fast,3,21.4521,303,#CC78BC
+Quitting,0,Zero-shot (select),Zero-shot (select),Zero-shot (select),Prediction,Grok-4-Fast,Grok-4-Fast,4,48.8449,303,#CC78BC
+Quitting,0,Zero-shot (select),Zero-shot (select),Zero-shot (select),Prediction,Grok-4-Fast,Grok-4-Fast,5,20.4620,303,#CC78BC
+Quitting,0,Zero-shot (select),Zero-shot (select),Zero-shot (select),Prediction,Gemini-2.5-Pro,Gemini-2.5-Pro,1,2.9703,303,#CA9161
+Quitting,0,Zero-shot (select),Zero-shot (select),Zero-shot (select),Prediction,Gemini-2.5-Pro,Gemini-2.5-Pro,2,5.9406,303,#CA9161
+Quitting,0,Zero-shot (select),Zero-shot (select),Zero-shot (select),Prediction,Gemini-2.5-Pro,Gemini-2.5-Pro,3,13.8614,303,#CA9161
+Quitting,0,Zero-shot (select),Zero-shot (select),Zero-shot (select),Prediction,Gemini-2.5-Pro,Gemini-2.5-Pro,4,66.0066,303,#CA9161
+Quitting,0,Zero-shot (select),Zero-shot (select),Zero-shot (select),Prediction,Gemini-2.5-Pro,Gemini-2.5-Pro,5,11.2211,303,#CA9161
+Quitting,1,Supervised,Supervised,Supervised,Human reference,Human ratings,Human ratings,1,7.8176,307,#4D4D4D
+Quitting,1,Supervised,Supervised,Supervised,Human reference,Human ratings,Human ratings,2,9.4463,307,#4D4D4D
+Quitting,1,Supervised,Supervised,Supervised,Human reference,Human ratings,Human ratings,3,16.6124,307,#4D4D4D
+Quitting,1,Supervised,Supervised,Supervised,Human reference,Human ratings,Human ratings,4,31.9218,307,#4D4D4D
+Quitting,1,Supervised,Supervised,Supervised,Human reference,Human ratings,Human ratings,5,34.2020,307,#4D4D4D
+Quitting,1,Supervised,Supervised,Supervised,Prediction,RF (demo),RF (demo),1,6.1889,307,#7F7F7F
+Quitting,1,Supervised,Supervised,Supervised,Prediction,RF (demo),RF (demo),2,7.8176,307,#7F7F7F
+Quitting,1,Supervised,Supervised,Supervised,Prediction,RF (demo),RF (demo),3,17.5896,307,#7F7F7F
+Quitting,1,Supervised,Supervised,Supervised,Prediction,RF (demo),RF (demo),4,34.2020,307,#7F7F7F
+Quitting,1,Supervised,Supervised,Supervised,Prediction,RF (demo),RF (demo),5,34.2020,307,#7F7F7F
+Quitting,1,Supervised,Supervised,Supervised,Prediction,LR (full),LR (full),1,5.8632,307,#E02020
+Quitting,1,Supervised,Supervised,Supervised,Prediction,LR (full),LR (full),2,0.6515,307,#E02020
+Quitting,1,Supervised,Supervised,Supervised,Prediction,LR (full),LR (full),3,16.2866,307,#E02020
+Quitting,1,Supervised,Supervised,Supervised,Prediction,LR (full),LR (full),4,32.5733,307,#E02020
+Quitting,1,Supervised,Supervised,Supervised,Prediction,LR (full),LR (full),5,44.6254,307,#E02020
+Quitting,2,Few-shot (select),Few-shot (select),Few-shot (select),Human reference,Human ratings,Human ratings,1,7.5908,303,#4D4D4D
+Quitting,2,Few-shot (select),Few-shot (select),Few-shot (select),Human reference,Human ratings,Human ratings,2,9.5710,303,#4D4D4D
+Quitting,2,Few-shot (select),Few-shot (select),Few-shot (select),Human reference,Human ratings,Human ratings,3,16.5017,303,#4D4D4D
+Quitting,2,Few-shot (select),Few-shot (select),Few-shot (select),Human reference,Human ratings,Human ratings,4,32.3432,303,#4D4D4D
+Quitting,2,Few-shot (select),Few-shot (select),Few-shot (select),Human reference,Human ratings,Human ratings,5,33.9934,303,#4D4D4D
+Quitting,2,Few-shot (select),Few-shot (select),Few-shot (select),Prediction,GPT-4o-mini,GPT-4o-mini,1,0.6601,303,#0173B2
+Quitting,2,Few-shot (select),Few-shot (select),Few-shot (select),Prediction,GPT-4o-mini,GPT-4o-mini,2,13.8614,303,#0173B2
+Quitting,2,Few-shot (select),Few-shot (select),Few-shot (select),Prediction,GPT-4o-mini,GPT-4o-mini,3,22.4422,303,#0173B2
+Quitting,2,Few-shot (select),Few-shot (select),Few-shot (select),Prediction,GPT-4o-mini,GPT-4o-mini,4,47.5248,303,#0173B2
+Quitting,2,Few-shot (select),Few-shot (select),Few-shot (select),Prediction,GPT-4o-mini,GPT-4o-mini,5,15.5116,303,#0173B2
+Quitting,2,Few-shot (select),Few-shot (select),Few-shot (select),Prediction,GPT-5,GPT-5,1,5.2805,303,#DE8F05
+Quitting,2,Few-shot (select),Few-shot (select),Few-shot (select),Prediction,GPT-5,GPT-5,2,27.0627,303,#DE8F05
+Quitting,2,Few-shot (select),Few-shot (select),Few-shot (select),Prediction,GPT-5,GPT-5,3,30.0330,303,#DE8F05
+Quitting,2,Few-shot (select),Few-shot (select),Few-shot (select),Prediction,GPT-5,GPT-5,4,34.6535,303,#DE8F05
+Quitting,2,Few-shot (select),Few-shot (select),Few-shot (select),Prediction,GPT-5,GPT-5,5,2.9703,303,#DE8F05
+Quitting,2,Few-shot (select),Few-shot (select),Few-shot (select),Prediction,DeepSeek-R1,DeepSeek-R1,1,12.5413,303,#029E73
+Quitting,2,Few-shot (select),Few-shot (select),Few-shot (select),Prediction,DeepSeek-R1,DeepSeek-R1,2,8.9109,303,#029E73
+Quitting,2,Few-shot (select),Few-shot (select),Few-shot (select),Prediction,DeepSeek-R1,DeepSeek-R1,3,11.5512,303,#029E73
+Quitting,2,Few-shot (select),Few-shot (select),Few-shot (select),Prediction,DeepSeek-R1,DeepSeek-R1,4,35.3135,303,#029E73
+Quitting,2,Few-shot (select),Few-shot (select),Few-shot (select),Prediction,DeepSeek-R1,DeepSeek-R1,5,31.6832,303,#029E73
+Quitting,2,Few-shot (select),Few-shot (select),Few-shot (select),Prediction,Grok-4-Fast,Grok-4-Fast,1,5.2805,303,#CC78BC
+Quitting,2,Few-shot (select),Few-shot (select),Few-shot (select),Prediction,Grok-4-Fast,Grok-4-Fast,2,5.6106,303,#CC78BC
+Quitting,2,Few-shot (select),Few-shot (select),Few-shot (select),Prediction,Grok-4-Fast,Grok-4-Fast,3,7.5908,303,#CC78BC
+Quitting,2,Few-shot (select),Few-shot (select),Few-shot (select),Prediction,Grok-4-Fast,Grok-4-Fast,4,49.5050,303,#CC78BC
+Quitting,2,Few-shot (select),Few-shot (select),Few-shot (select),Prediction,Grok-4-Fast,Grok-4-Fast,5,32.0132,303,#CC78BC
+Quitting,2,Few-shot (select),Few-shot (select),Few-shot (select),Prediction,Gemini-2.5-Pro,Gemini-2.5-Pro,1,7.2607,303,#CA9161
+Quitting,2,Few-shot (select),Few-shot (select),Few-shot (select),Prediction,Gemini-2.5-Pro,Gemini-2.5-Pro,2,15.5116,303,#CA9161
+Quitting,2,Few-shot (select),Few-shot (select),Few-shot (select),Prediction,Gemini-2.5-Pro,Gemini-2.5-Pro,3,10.5611,303,#CA9161
+Quitting,2,Few-shot (select),Few-shot (select),Few-shot (select),Prediction,Gemini-2.5-Pro,Gemini-2.5-Pro,4,34.9835,303,#CA9161
+Quitting,2,Few-shot (select),Few-shot (select),Few-shot (select),Prediction,Gemini-2.5-Pro,Gemini-2.5-Pro,5,31.6832,303,#CA9161
+Quitting,3,PP,PP,PP,Human reference,Human ratings,Human ratings,1,7.5908,303,#4D4D4D
+Quitting,3,PP,PP,PP,Human reference,Human ratings,Human ratings,2,9.5710,303,#4D4D4D
+Quitting,3,PP,PP,PP,Human reference,Human ratings,Human ratings,3,16.5017,303,#4D4D4D
+Quitting,3,PP,PP,PP,Human reference,Human ratings,Human ratings,4,32.3432,303,#4D4D4D
+Quitting,3,PP,PP,PP,Human reference,Human ratings,Human ratings,5,33.9934,303,#4D4D4D
+Quitting,3,PP,PP,PP,Prediction,GPT-4o-mini,GPT-4o-mini,1,0.3300,303,#0173B2
+Quitting,3,PP,PP,PP,Prediction,GPT-4o-mini,GPT-4o-mini,2,7.9208,303,#0173B2
+Quitting,3,PP,PP,PP,Prediction,GPT-4o-mini,GPT-4o-mini,3,32.3432,303,#0173B2
+Quitting,3,PP,PP,PP,Prediction,GPT-4o-mini,GPT-4o-mini,4,58.4158,303,#0173B2
+Quitting,3,PP,PP,PP,Prediction,GPT-4o-mini,GPT-4o-mini,5,0.9901,303,#0173B2
+Quitting,3,PP,PP,PP,Prediction,GPT-5,GPT-5,1,4.9505,303,#DE8F05
+Quitting,3,PP,PP,PP,Prediction,GPT-5,GPT-5,2,15.1815,303,#DE8F05
+Quitting,3,PP,PP,PP,Prediction,GPT-5,GPT-5,3,19.1419,303,#DE8F05
+Quitting,3,PP,PP,PP,Prediction,GPT-5,GPT-5,4,42.9043,303,#DE8F05
+Quitting,3,PP,PP,PP,Prediction,GPT-5,GPT-5,5,17.8218,303,#DE8F05
+Quitting,3,PP,PP,PP,Prediction,DeepSeek-R1,DeepSeek-R1,1,6.6007,303,#029E73
+Quitting,3,PP,PP,PP,Prediction,DeepSeek-R1,DeepSeek-R1,2,15.1815,303,#029E73
+Quitting,3,PP,PP,PP,Prediction,DeepSeek-R1,DeepSeek-R1,3,16.1716,303,#029E73
+Quitting,3,PP,PP,PP,Prediction,DeepSeek-R1,DeepSeek-R1,4,45.2145,303,#029E73
+Quitting,3,PP,PP,PP,Prediction,DeepSeek-R1,DeepSeek-R1,5,16.8317,303,#029E73
+Quitting,3,PP,PP,PP,Prediction,Grok-4-Fast,Grok-4-Fast,1,3.3003,303,#CC78BC
+Quitting,3,PP,PP,PP,Prediction,Grok-4-Fast,Grok-4-Fast,2,8.9109,303,#CC78BC
+Quitting,3,PP,PP,PP,Prediction,Grok-4-Fast,Grok-4-Fast,3,18.1518,303,#CC78BC
+Quitting,3,PP,PP,PP,Prediction,Grok-4-Fast,Grok-4-Fast,4,46.8647,303,#CC78BC
+Quitting,3,PP,PP,PP,Prediction,Grok-4-Fast,Grok-4-Fast,5,22.7723,303,#CC78BC
+Quitting,3,PP,PP,PP,Prediction,Gemini-2.5-Pro,Gemini-2.5-Pro,1,8.9109,303,#CA9161
+Quitting,3,PP,PP,PP,Prediction,Gemini-2.5-Pro,Gemini-2.5-Pro,2,8.5809,303,#CA9161
+Quitting,3,PP,PP,PP,Prediction,Gemini-2.5-Pro,Gemini-2.5-Pro,3,16.1716,303,#CA9161
+Quitting,3,PP,PP,PP,Prediction,Gemini-2.5-Pro,Gemini-2.5-Pro,4,35.9736,303,#CA9161
+Quitting,3,PP,PP,PP,Prediction,Gemini-2.5-Pro,Gemini-2.5-Pro,5,30.3630,303,#CA9161

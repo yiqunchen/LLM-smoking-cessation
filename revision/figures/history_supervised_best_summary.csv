@@ -1,0 +1,37 @@
+Domain,Metric,Feature_Set,Winning_Classifier,Value
+Content,Accuracy,Demographics,RF,0.48366013071895425
+Content,Accuracy,Embedding,LR,0.39215686274509803
+Content,Accuracy,Embedding + Demo,LR,0.4117647058823529
+Content,Accuracy,Avg History Score,RF,0.5
+Content,Accuracy,Embedding + History,LR,0.4934640522875817
+Content,Accuracy,Demographics + History + Message Embedding,LR,0.48366013071895425
+Content,F1,Demographics,RF,0.33028324633818285
+Content,F1,Embedding,RF,0.21547754575190564
+Content,F1,Embedding + Demo,LR,0.2370856620619354
+Content,F1,Avg History Score,RF,0.3748933135383111
+Content,F1,Embedding + History,LR,0.29135841563821224
+Content,F1,Demographics + History + Message Embedding,LR,0.2886488652113652
+Coping,Accuracy,Demographics,RF,0.4592833876221498
+Coping,Accuracy,Embedding,LR,0.34201954397394135
+Coping,Accuracy,Embedding + Demo,LR,0.3517915309446254
+Coping,Accuracy,Avg History Score,LR,0.4364820846905538
+Coping,Accuracy,Embedding + History,LR,0.44299674267100975
+Coping,Accuracy,Demographics + History + Message Embedding,LR,0.43322475570032576
+Coping,F1,Demographics,RF,0.3885840113045996
+Coping,F1,Embedding,RF,0.19790443721293752
+Coping,F1,Embedding + Demo,LR,0.247833081950729
+Coping,F1,Avg History Score,RF,0.3613642640493225
+Coping,F1,Embedding + History,LR,0.2768459449262256
+Coping,F1,Demographics + History + Message Embedding,LR,0.3366827196036808
+Quitting,Accuracy,Demographics,RF,0.46905537459283386
+Quitting,Accuracy,Embedding,LR,0.36807817589576547
+Quitting,Accuracy,Embedding + Demo,LR,0.3811074918566775
+Quitting,Accuracy,Avg History Score,RF,0.5472312703583062
+Quitting,Accuracy,Embedding + History,LR,0.48859934853420195
+Quitting,Accuracy,Demographics + History + Message Embedding,LR,0.501628664495114
+Quitting,F1,Demographics,RF,0.38650729045306215
+Quitting,F1,Embedding,RF,0.1975478317677561
+Quitting,F1,Embedding + Demo,LR,0.2668883843271545
+Quitting,F1,Avg History Score,RF,0.4553454140639495
+Quitting,F1,Embedding + History,LR,0.2930275561789545
+Quitting,F1,Demographics + History + Message Embedding,LR,0.37430444343135616

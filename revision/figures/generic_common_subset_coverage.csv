@@ -1,0 +1,76 @@
+Model,Method,Domain,N_Available,N_Common
+GPT-4o-mini,Zero-shot (all),Content,270,270
+GPT-4o-mini,Zero-shot (select),Content,270,270
+GPT-4o-mini,Few-shot (all),Content,270,270
+GPT-4o-mini,Few-shot (select),Content,270,270
+GPT-4o-mini,Zero-shot (w/ prob),Content,270,270
+GPT-5,Zero-shot (all),Content,270,270
+GPT-5,Zero-shot (select),Content,270,270
+GPT-5,Few-shot (all),Content,270,270
+GPT-5,Few-shot (select),Content,270,270
+GPT-5,Zero-shot (w/ prob),Content,270,270
+DeepSeek-R1,Zero-shot (all),Content,270,270
+DeepSeek-R1,Zero-shot (select),Content,270,270
+DeepSeek-R1,Few-shot (all),Content,270,270
+DeepSeek-R1,Few-shot (select),Content,270,270
+DeepSeek-R1,Zero-shot (w/ prob),Content,270,270
+Grok-4-Fast,Zero-shot (all),Content,270,270
+Grok-4-Fast,Zero-shot (select),Content,270,270
+Grok-4-Fast,Few-shot (all),Content,270,270
+Grok-4-Fast,Few-shot (select),Content,270,270
+Grok-4-Fast,Zero-shot (w/ prob),Content,270,270
+Gemini-2.5-Pro,Zero-shot (all),Content,270,270
+Gemini-2.5-Pro,Zero-shot (select),Content,270,270
+Gemini-2.5-Pro,Few-shot (all),Content,270,270
+Gemini-2.5-Pro,Few-shot (select),Content,270,270
+Gemini-2.5-Pro,Zero-shot (w/ prob),Content,270,270
+GPT-4o-mini,Zero-shot (all),Coping,270,270
+GPT-4o-mini,Zero-shot (select),Coping,270,270
+GPT-4o-mini,Few-shot (all),Coping,270,270
+GPT-4o-mini,Few-shot (select),Coping,270,270
+GPT-4o-mini,Zero-shot (w/ prob),Coping,270,270
+GPT-5,Zero-shot (all),Coping,270,270
+GPT-5,Zero-shot (select),Coping,270,270
+GPT-5,Few-shot (all),Coping,270,270
+GPT-5,Few-shot (select),Coping,270,270
+GPT-5,Zero-shot (w/ prob),Coping,270,270
+DeepSeek-R1,Zero-shot (all),Coping,270,270
+DeepSeek-R1,Zero-shot (select),Coping,270,270
+DeepSeek-R1,Few-shot (all),Coping,270,270
+DeepSeek-R1,Few-shot (select),Coping,270,270
+DeepSeek-R1,Zero-shot (w/ prob),Coping,270,270
+Grok-4-Fast,Zero-shot (all),Coping,270,270
+Grok-4-Fast,Zero-shot (select),Coping,270,270
+Grok-4-Fast,Few-shot (all),Coping,270,270
+Grok-4-Fast,Few-shot (select),Coping,270,270
+Grok-4-Fast,Zero-shot (w/ prob),Coping,270,270
+Gemini-2.5-Pro,Zero-shot (all),Coping,270,270
+Gemini-2.5-Pro,Zero-shot (select),Coping,270,270
+Gemini-2.5-Pro,Few-shot (all),Coping,270,270
+Gemini-2.5-Pro,Few-shot (select),Coping,270,270
+Gemini-2.5-Pro,Zero-shot (w/ prob),Coping,270,270
+GPT-4o-mini,Zero-shot (all),Quitting,270,270
+GPT-4o-mini,Zero-shot (select),Quitting,270,270
+GPT-4o-mini,Few-shot (all),Quitting,270,270
+GPT-4o-mini,Few-shot (select),Quitting,270,270
+GPT-4o-mini,Zero-shot (w/ prob),Quitting,270,270
+GPT-5,Zero-shot (all),Quitting,270,270
+GPT-5,Zero-shot (select),Quitting,270,270
+GPT-5,Few-shot (all),Quitting,270,270
+GPT-5,Few-shot (select),Quitting,270,270
+GPT-5,Zero-shot (w/ prob),Quitting,270,270
+DeepSeek-R1,Zero-shot (all),Quitting,270,270
+DeepSeek-R1,Zero-shot (select),Quitting,270,270
+DeepSeek-R1,Few-shot (all),Quitting,270,270
+DeepSeek-R1,Few-shot (select),Quitting,270,270
+DeepSeek-R1,Zero-shot (w/ prob),Quitting,270,270
+Grok-4-Fast,Zero-shot (all),Quitting,270,270
+Grok-4-Fast,Zero-shot (select),Quitting,270,270
+Grok-4-Fast,Few-shot (all),Quitting,270,270
+Grok-4-Fast,Few-shot (select),Quitting,270,270
+Grok-4-Fast,Zero-shot (w/ prob),Quitting,270,270
+Gemini-2.5-Pro,Zero-shot (all),Quitting,270,270
+Gemini-2.5-Pro,Zero-shot (select),Quitting,270,270
+Gemini-2.5-Pro,Few-shot (all),Quitting,270,270
+Gemini-2.5-Pro,Few-shot (select),Quitting,270,270
+Gemini-2.5-Pro,Zero-shot (w/ prob),Quitting,270,270
