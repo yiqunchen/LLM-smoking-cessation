@@ -617,7 +617,7 @@ def create_learning_curves(output_dir: str):
                   bbox_to_anchor=(0.5, -0.08), fontsize=12, frameon=True,
                   title='Models', title_fontsize=13)
         
-        fig.suptitle(f'Digital Twin Learning Curves: {label}',
+        fig.suptitle(f'PP Learning Curves: {label}',
                     fontsize=16, fontweight='bold', y=1.00)
         plt.tight_layout(rect=[0, 0.08, 1, 0.98])
 
@@ -653,7 +653,7 @@ def main():
     print("📈 Creating scatter plots (Accuracy/Directional vs Spearman/Kappa)...")
     create_scatter_plots(df, output_dir)
     
-    print("\n📈 Creating digital twin learning curves...")
+    print("\n📈 Creating PP learning curves...")
     create_learning_curves(output_dir)
     
     # Save data table

@@ -1,0 +1,97 @@
+Model,Method,Domain,Spearman_Rho,Series
+GPT-4o-mini,Zero-shot (all),Content,,LLM
+GPT-4o-mini,Zero-shot (select),Content,,LLM
+GPT-4o-mini,Few-shot (all),Content,,LLM
+GPT-4o-mini,Few-shot (select),Content,,LLM
+GPT-4o-mini,PP,Content,,LLM
+GPT-4o-mini,Hybrid RF+PP,Content,,LLM
+GPT-5,Zero-shot (all),Content,,LLM
+GPT-5,Zero-shot (select),Content,,LLM
+GPT-5,Few-shot (all),Content,,LLM
+GPT-5,Few-shot (select),Content,,LLM
+GPT-5,PP,Content,,LLM
+GPT-5,Hybrid RF+PP,Content,,LLM
+DeepSeek-R1,Zero-shot (all),Content,,LLM
+DeepSeek-R1,Zero-shot (select),Content,,LLM
+DeepSeek-R1,Few-shot (all),Content,,LLM
+DeepSeek-R1,Few-shot (select),Content,,LLM
+DeepSeek-R1,PP,Content,,LLM
+DeepSeek-R1,Hybrid RF+PP,Content,,LLM
+Grok-4-Fast,Zero-shot (all),Content,,LLM
+Grok-4-Fast,Zero-shot (select),Content,,LLM
+Grok-4-Fast,Few-shot (all),Content,,LLM
+Grok-4-Fast,Few-shot (select),Content,,LLM
+Grok-4-Fast,PP,Content,,LLM
+Grok-4-Fast,Hybrid RF+PP,Content,,LLM
+Gemini-2.5-Pro,Zero-shot (all),Content,,LLM
+Gemini-2.5-Pro,Zero-shot (select),Content,,LLM
+Gemini-2.5-Pro,Few-shot (all),Content,,LLM
+Gemini-2.5-Pro,Few-shot (select),Content,,LLM
+Gemini-2.5-Pro,PP,Content,,LLM
+Gemini-2.5-Pro,Hybrid RF+PP,Content,,LLM
+GPT-4o-mini,Zero-shot (all),Coping,1.0000,LLM
+GPT-4o-mini,Zero-shot (select),Coping,,LLM
+GPT-4o-mini,Few-shot (all),Coping,1.0000,LLM
+GPT-4o-mini,Few-shot (select),Coping,1.0000,LLM
+GPT-4o-mini,PP,Coping,,LLM
+GPT-4o-mini,Hybrid RF+PP,Coping,,LLM
+GPT-5,Zero-shot (all),Coping,-1.0000,LLM
+GPT-5,Zero-shot (select),Coping,0.0000,LLM
+GPT-5,Few-shot (all),Coping,1.0000,LLM
+GPT-5,Few-shot (select),Coping,1.0000,LLM
+GPT-5,PP,Coping,0.0000,LLM
+GPT-5,Hybrid RF+PP,Coping,,LLM
+DeepSeek-R1,Zero-shot (all),Coping,,LLM
+DeepSeek-R1,Zero-shot (select),Coping,,LLM
+DeepSeek-R1,Few-shot (all),Coping,1.0000,LLM
+DeepSeek-R1,Few-shot (select),Coping,1.0000,LLM
+DeepSeek-R1,PP,Coping,1.0000,LLM
+DeepSeek-R1,Hybrid RF+PP,Coping,1.0000,LLM
+Grok-4-Fast,Zero-shot (all),Coping,,LLM
+Grok-4-Fast,Zero-shot (select),Coping,,LLM
+Grok-4-Fast,Few-shot (all),Coping,1.0000,LLM
+Grok-4-Fast,Few-shot (select),Coping,1.0000,LLM
+Grok-4-Fast,PP,Coping,0.0000,LLM
+Grok-4-Fast,Hybrid RF+PP,Coping,1.0000,LLM
+Gemini-2.5-Pro,Zero-shot (all),Coping,1.0000,LLM
+Gemini-2.5-Pro,Zero-shot (select),Coping,1.0000,LLM
+Gemini-2.5-Pro,Few-shot (all),Coping,0.0000,LLM
+Gemini-2.5-Pro,Few-shot (select),Coping,1.0000,LLM
+Gemini-2.5-Pro,PP,Coping,0.0000,LLM
+Gemini-2.5-Pro,Hybrid RF+PP,Coping,1.0000,LLM
+GPT-4o-mini,Zero-shot (all),Quitting,,LLM
+GPT-4o-mini,Zero-shot (select),Quitting,,LLM
+GPT-4o-mini,Few-shot (all),Quitting,-1.0000,LLM
+GPT-4o-mini,Few-shot (select),Quitting,,LLM
+GPT-4o-mini,PP,Quitting,,LLM
+GPT-4o-mini,Hybrid RF+PP,Quitting,,LLM
+GPT-5,Zero-shot (all),Quitting,,LLM
+GPT-5,Zero-shot (select),Quitting,,LLM
+GPT-5,Few-shot (all),Quitting,1.0000,LLM
+GPT-5,Few-shot (select),Quitting,1.0000,LLM
+GPT-5,PP,Quitting,,LLM
+GPT-5,Hybrid RF+PP,Quitting,,LLM
+DeepSeek-R1,Zero-shot (all),Quitting,-1.0000,LLM
+DeepSeek-R1,Zero-shot (select),Quitting,-1.0000,LLM
+DeepSeek-R1,Few-shot (all),Quitting,-1.0000,LLM
+DeepSeek-R1,Few-shot (select),Quitting,-1.0000,LLM
+DeepSeek-R1,PP,Quitting,,LLM
+DeepSeek-R1,Hybrid RF+PP,Quitting,,LLM
+Grok-4-Fast,Zero-shot (all),Quitting,,LLM
+Grok-4-Fast,Zero-shot (select),Quitting,,LLM
+Grok-4-Fast,Few-shot (all),Quitting,,LLM
+Grok-4-Fast,Few-shot (select),Quitting,1.0000,LLM
+Grok-4-Fast,PP,Quitting,,LLM
+Grok-4-Fast,Hybrid RF+PP,Quitting,,LLM
+Gemini-2.5-Pro,Zero-shot (all),Quitting,,LLM
+Gemini-2.5-Pro,Zero-shot (select),Quitting,1.0000,LLM
+Gemini-2.5-Pro,Few-shot (all),Quitting,1.0000,LLM
+Gemini-2.5-Pro,Few-shot (select),Quitting,1.0000,LLM
+Gemini-2.5-Pro,PP,Quitting,,LLM
+Gemini-2.5-Pro,Hybrid RF+PP,Quitting,1.0000,LLM
+Demographics + History + Message Embedding (LR),Baseline reference,Content,,Best baseline LR
+Demographics (RF),Baseline reference,Content,,Best baseline RF
+Demographics + History + Message Embedding (LR),Baseline reference,Coping,-1.0000,Best baseline LR
+Embedding + Demo (RF),Baseline reference,Coping,1.0000,Best baseline RF
+Embedding (LR),Baseline reference,Quitting,1.0000,Best baseline LR
+Demographics + History + Message Embedding (RF),Baseline reference,Quitting,-1.0000,Best baseline RF

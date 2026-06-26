@@ -1,0 +1,37 @@
+panel,method,domain,metric,value,N,split,feature_set,source_file
+main,Supervised RF,content,Accuracy,0.5234,898,dt10_k7,Demographics,lc_dt10_ensemble_k7.csv
+main,LLM-PP (Grok-4-Fast),content,Accuracy,0.4989,898,dt10_k7,Demographics,lc_dt10_ensemble_k7.csv
+main,Supervised RF,content,F1,0.3931,898,dt10_k7,Demographics,lc_dt10_ensemble_k7.csv
+main,LLM-PP (Grok-4-Fast),content,F1,0.3366,898,dt10_k7,Demographics,lc_dt10_ensemble_k7.csv
+main,Supervised RF,content,QWK,0.4487,898,dt10_k7,Demographics,lc_dt10_ensemble_k7.csv
+main,LLM-PP (Grok-4-Fast),content,QWK,0.4021,898,dt10_k7,Demographics,lc_dt10_ensemble_k7.csv
+context,Zero-shot,content,Accuracy,0.3862,87,dt10_k7,n/a,lc_dt10_generic_llm.csv
+context,Zero-shot,content,F1,0.1723,87,dt10_k7,n/a,lc_dt10_generic_llm.csv
+context,Zero-shot,content,QWK,0.0213,87,dt10_k7,n/a,lc_dt10_generic_llm.csv
+context,Few-shot,content,Accuracy,0.3770,87,dt10_k7,n/a,lc_dt10_generic_llm.csv
+context,Few-shot,content,F1,0.2230,87,dt10_k7,n/a,lc_dt10_generic_llm.csv
+context,Few-shot,content,QWK,0.0584,87,dt10_k7,n/a,lc_dt10_generic_llm.csv
+main,Supervised RF,coping,Accuracy,0.4499,898,dt10_k7,Demographics,lc_dt10_ensemble_k7.csv
+main,LLM-PP (Grok-4-Fast),coping,Accuracy,0.4310,898,dt10_k7,Demographics,lc_dt10_ensemble_k7.csv
+main,Supervised RF,coping,F1,0.4068,898,dt10_k7,Demographics,lc_dt10_ensemble_k7.csv
+main,LLM-PP (Grok-4-Fast),coping,F1,0.3667,898,dt10_k7,Demographics,lc_dt10_ensemble_k7.csv
+main,Supervised RF,coping,QWK,0.5432,898,dt10_k7,Demographics,lc_dt10_ensemble_k7.csv
+main,LLM-PP (Grok-4-Fast),coping,QWK,0.5026,898,dt10_k7,Demographics,lc_dt10_ensemble_k7.csv
+context,Zero-shot,coping,Accuracy,0.2667,87,dt10_k7,n/a,lc_dt10_generic_llm.csv
+context,Zero-shot,coping,F1,0.1617,87,dt10_k7,n/a,lc_dt10_generic_llm.csv
+context,Zero-shot,coping,QWK,0.0304,87,dt10_k7,n/a,lc_dt10_generic_llm.csv
+context,Few-shot,coping,Accuracy,0.2736,87,dt10_k7,n/a,lc_dt10_generic_llm.csv
+context,Few-shot,coping,F1,0.1962,87,dt10_k7,n/a,lc_dt10_generic_llm.csv
+context,Few-shot,coping,QWK,0.0637,87,dt10_k7,n/a,lc_dt10_generic_llm.csv
+main,Supervised RF,quitting,Accuracy,0.4499,898,dt10_k7,Demographics,lc_dt10_ensemble_k7.csv
+main,LLM-PP (Grok-4-Fast),quitting,Accuracy,0.4566,898,dt10_k7,Demographics,lc_dt10_ensemble_k7.csv
+main,Supervised RF,quitting,F1,0.4083,898,dt10_k7,Demographics,lc_dt10_ensemble_k7.csv
+main,LLM-PP (Grok-4-Fast),quitting,F1,0.4062,898,dt10_k7,Demographics,lc_dt10_ensemble_k7.csv
+main,Supervised RF,quitting,QWK,0.5888,898,dt10_k7,Demographics,lc_dt10_ensemble_k7.csv
+main,LLM-PP (Grok-4-Fast),quitting,QWK,0.5589,898,dt10_k7,Demographics,lc_dt10_ensemble_k7.csv
+context,Zero-shot,quitting,Accuracy,0.2322,87,dt10_k7,n/a,lc_dt10_generic_llm.csv
+context,Zero-shot,quitting,F1,0.1364,87,dt10_k7,n/a,lc_dt10_generic_llm.csv
+context,Zero-shot,quitting,QWK,0.0063,87,dt10_k7,n/a,lc_dt10_generic_llm.csv
+context,Few-shot,quitting,Accuracy,0.3287,87,dt10_k7,n/a,lc_dt10_generic_llm.csv
+context,Few-shot,quitting,F1,0.2402,87,dt10_k7,n/a,lc_dt10_generic_llm.csv
+context,Few-shot,quitting,QWK,0.0671,87,dt10_k7,n/a,lc_dt10_generic_llm.csv

@@ -1,0 +1,40 @@
+Source_File,Exists,Raw_Result_Rows,Rows_After_Error_Filter,Rows_Removed_As_Duplicates,Rows_After_Duplicate_Filter,Duplicate_Filter,Model,Method,Category,Split
+results_manuscript_gpt-4o-mini/generic_llm_1_zero_shot_dt7030.json,True,323,323,16,307,known_dt7030_duplicates,GPT-4o-mini,Zero-shot (all),Generic LLM,digital_twin_7030
+results_manuscript_gpt-4o-mini/generic_llm_2_zero_shot_select_dt7030.json,True,323,323,16,307,known_dt7030_duplicates,GPT-4o-mini,Zero-shot (select),Generic LLM,digital_twin_7030
+results_manuscript_gpt-4o-mini/generic_llm_3_few_shot_dt7030.json,True,323,323,16,307,known_dt7030_duplicates,GPT-4o-mini,Few-shot (all),Generic LLM,digital_twin_7030
+results_manuscript_gpt-4o-mini/generic_llm_4_few_shot_select_dt7030.json,True,323,323,16,307,known_dt7030_duplicates,GPT-4o-mini,Few-shot (select),Generic LLM,digital_twin_7030
+results_manuscript_gpt-4o-mini/generic_llm_5_continuous_dt7030.json,False,0,0,0,0,known_dt7030_duplicates,GPT-4o-mini,Zero-shot (w/ prob),Generic LLM,digital_twin_7030
+results_manuscript_gpt-4o-mini/digital_twin_4_cbtact_7030.json,True,323,323,16,307,known_dt7030_duplicates,GPT-4o-mini,PP,Personalized Prompt,digital_twin_7030
+results_manuscript_hybrid_gpt-4o-mini/evaluation_results_gpt-4o-mini_text-only_hybrid-rf-digital-twin.json,True,323,323,16,307,known_dt7030_duplicates,GPT-4o-mini,Hybrid RF+PP,Hybrid,digital_twin_7030
+results_manuscript_gpt-5/generic_llm_1_zero_shot_dt7030.json,True,323,323,16,307,known_dt7030_duplicates,GPT-5,Zero-shot (all),Generic LLM,digital_twin_7030
+results_manuscript_gpt-5/generic_llm_2_zero_shot_select_dt7030.json,True,323,323,16,307,known_dt7030_duplicates,GPT-5,Zero-shot (select),Generic LLM,digital_twin_7030
+results_manuscript_gpt-5/generic_llm_3_few_shot_dt7030.json,True,323,323,16,307,known_dt7030_duplicates,GPT-5,Few-shot (all),Generic LLM,digital_twin_7030
+results_manuscript_gpt-5/generic_llm_4_few_shot_select_dt7030.json,True,323,323,16,307,known_dt7030_duplicates,GPT-5,Few-shot (select),Generic LLM,digital_twin_7030
+results_manuscript_gpt-5/generic_llm_5_continuous_dt7030.json,False,0,0,0,0,known_dt7030_duplicates,GPT-5,Zero-shot (w/ prob),Generic LLM,digital_twin_7030
+results_manuscript_gpt-5/digital_twin_4_cbtact_7030.json,True,323,323,16,307,known_dt7030_duplicates,GPT-5,PP,Personalized Prompt,digital_twin_7030
+results_manuscript_hybrid_gpt-5/evaluation_results_gpt-5_text-only_hybrid-rf-digital-twin.json,True,323,323,16,307,known_dt7030_duplicates,GPT-5,Hybrid RF+PP,Hybrid,digital_twin_7030
+results_manuscript_deepseek_deepseek-r1-0528/generic_llm_1_zero_shot_dt7030.json,True,323,323,16,307,known_dt7030_duplicates,DeepSeek-R1,Zero-shot (all),Generic LLM,digital_twin_7030
+results_manuscript_deepseek_deepseek-r1-0528/generic_llm_2_zero_shot_select_dt7030.json,True,323,323,16,307,known_dt7030_duplicates,DeepSeek-R1,Zero-shot (select),Generic LLM,digital_twin_7030
+results_manuscript_deepseek_deepseek-r1-0528/generic_llm_3_few_shot_dt7030.json,True,323,323,16,307,known_dt7030_duplicates,DeepSeek-R1,Few-shot (all),Generic LLM,digital_twin_7030
+results_manuscript_deepseek_deepseek-r1-0528/generic_llm_4_few_shot_select_dt7030.json,True,323,323,16,307,known_dt7030_duplicates,DeepSeek-R1,Few-shot (select),Generic LLM,digital_twin_7030
+results_manuscript_deepseek_deepseek-r1-0528/generic_llm_5_continuous_dt7030.json,False,0,0,0,0,known_dt7030_duplicates,DeepSeek-R1,Zero-shot (w/ prob),Generic LLM,digital_twin_7030
+results_manuscript_deepseek_deepseek-r1-0528/digital_twin_4_cbtact_7030.json,True,323,323,16,307,known_dt7030_duplicates,DeepSeek-R1,PP,Personalized Prompt,digital_twin_7030
+results_manuscript_hybrid_deepseek_deepseek-r1-0528/evaluation_results_deepseek_deepseek-r1-0528_text-only_hybrid-rf-digital-twin.json,True,323,319,16,303,known_dt7030_duplicates,DeepSeek-R1,Hybrid RF+PP,Hybrid,digital_twin_7030
+results_manuscript_x-ai_grok-4-fast/generic_llm_1_zero_shot_dt7030.json,True,323,323,16,307,known_dt7030_duplicates,Grok-4-Fast,Zero-shot (all),Generic LLM,digital_twin_7030
+results_manuscript_x-ai_grok-4-fast/generic_llm_2_zero_shot_select_dt7030.json,True,323,323,16,307,known_dt7030_duplicates,Grok-4-Fast,Zero-shot (select),Generic LLM,digital_twin_7030
+results_manuscript_x-ai_grok-4-fast/generic_llm_3_few_shot_dt7030.json,True,323,323,16,307,known_dt7030_duplicates,Grok-4-Fast,Few-shot (all),Generic LLM,digital_twin_7030
+results_manuscript_x-ai_grok-4-fast/generic_llm_4_few_shot_select_dt7030.json,True,323,323,16,307,known_dt7030_duplicates,Grok-4-Fast,Few-shot (select),Generic LLM,digital_twin_7030
+results_manuscript_x-ai_grok-4-fast/generic_llm_5_continuous_dt7030.json,False,0,0,0,0,known_dt7030_duplicates,Grok-4-Fast,Zero-shot (w/ prob),Generic LLM,digital_twin_7030
+results_manuscript_x-ai_grok-4-fast/digital_twin_4_cbtact_7030.json,True,323,323,16,307,known_dt7030_duplicates,Grok-4-Fast,PP,Personalized Prompt,digital_twin_7030
+results_manuscript_hybrid_x-ai_grok-4-fast/evaluation_results_x-ai_grok-4-fast_text-only_hybrid-rf-digital-twin.json,True,323,323,16,307,known_dt7030_duplicates,Grok-4-Fast,Hybrid RF+PP,Hybrid,digital_twin_7030
+results_manuscript_gemini-2.5-pro/generic_llm_1_zero_shot_dt7030.json,True,323,323,16,307,known_dt7030_duplicates,Gemini-2.5-Pro,Zero-shot (all),Generic LLM,digital_twin_7030
+results_manuscript_gemini-2.5-pro/generic_llm_2_zero_shot_select_dt7030.json,True,323,323,16,307,known_dt7030_duplicates,Gemini-2.5-Pro,Zero-shot (select),Generic LLM,digital_twin_7030
+results_manuscript_gemini-2.5-pro/generic_llm_3_few_shot_dt7030.json,True,323,323,16,307,known_dt7030_duplicates,Gemini-2.5-Pro,Few-shot (all),Generic LLM,digital_twin_7030
+results_manuscript_gemini-2.5-pro/generic_llm_4_few_shot_select_dt7030.json,True,323,323,16,307,known_dt7030_duplicates,Gemini-2.5-Pro,Few-shot (select),Generic LLM,digital_twin_7030
+results_manuscript_gemini-2.5-pro/generic_llm_5_continuous_dt7030.json,False,0,0,0,0,known_dt7030_duplicates,Gemini-2.5-Pro,Zero-shot (w/ prob),Generic LLM,digital_twin_7030
+results_manuscript_gemini-2.5-pro/digital_twin_4_cbtact_7030.json,True,323,323,16,307,known_dt7030_duplicates,Gemini-2.5-Pro,PP,Personalized Prompt,digital_twin_7030
+results_manuscript_hybrid_gemini-2.5-pro/evaluation_results_gemini-2.5-pro_text-only_hybrid-rf-digital-twin.json,True,323,323,16,307,known_dt7030_duplicates,Gemini-2.5-Pro,Hybrid RF+PP,Hybrid,digital_twin_7030
+revision/figures/history_supervised_baselines.csv,True,3,3,0,3,handled_by_history_supervised_baselines.py,Logistic Regression,Supervised — Demographics,Supervised Baseline,digital_twin_7030
+revision/figures/history_supervised_baselines.csv,True,3,3,0,3,handled_by_history_supervised_baselines.py,Random Forest,Supervised — Demographics,Supervised Baseline,digital_twin_7030
+revision/figures/history_supervised_baselines.csv,True,3,3,0,3,handled_by_history_supervised_baselines.py,Logistic Regression,Supervised — Demographics + History + Message Embedding,Supervised Baseline,digital_twin_7030
+revision/figures/history_supervised_baselines.csv,True,3,3,0,3,handled_by_history_supervised_baselines.py,Random Forest,Supervised — Demographics + History + Message Embedding,Supervised Baseline,digital_twin_7030

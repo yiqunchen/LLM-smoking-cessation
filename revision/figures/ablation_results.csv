@@ -1,0 +1,10 @@
+Model,Condition,Domain,Data_Source,Accuracy,F1,Kappa,QWK
+GPT-5,full-PP,Content,observed,0.4534,0.3209,0.2083,0.3338
+GPT-5,full-PP,Coping,observed,0.3777,0.3295,0.1652,0.3931
+GPT-5,full-PP,Quitting,observed,0.4056,0.3767,0.2101,0.4905
+DeepSeek-R1,full-PP,Content,observed,0.4379,0.3053,0.2006,0.2764
+DeepSeek-R1,full-PP,Coping,observed,0.3870,0.3474,0.1800,0.3861
+DeepSeek-R1,full-PP,Quitting,observed,0.4025,0.3698,0.2054,0.4434
+Gemini-2.5-Pro,full-PP,Content,observed,0.4224,0.2815,0.1626,0.2758
+Gemini-2.5-Pro,full-PP,Coping,observed,0.4334,0.3836,0.2335,0.4033
+Gemini-2.5-Pro,full-PP,Quitting,observed,0.4489,0.3970,0.2562,0.4805

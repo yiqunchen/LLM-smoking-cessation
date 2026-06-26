@@ -1,0 +1,5 @@
+Check_Type,Description,N_Overlapping,Total_Checked,Pct_Overlap,Risk_Level
+Few-shot exemplar overlap,"Exemplar (response_id, input_message) pairs that also appear in participant test set",0,2,0.0,None
+PP exact text overlap,"Profile items with identical (response_id, input_message) in test set",16,319,5.02,Medium
+PP TF-IDF cosine similarity,"Per-participant max cosine sim between profile & test messages (mean=0.209, median=0.163)",16,301,5.32,Medium
+Cross-split message text overlap,Same input_message text in both train & test (expected with participant-level split; not a label leak),104,107,97.2,Low

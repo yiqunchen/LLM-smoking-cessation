@@ -1,0 +1,7 @@
+Method,Domain,ACT_Mean_Rating,CBT_Mean_Rating,Diff_CBT_minus_ACT,N_ACT,N_CBT
+Best Text Baseline,Content,3.9113,3.9333,0.0220,124,150
+Best Text Baseline,Coping,3.7339,3.5600,-0.1739,124,150
+Best Text Baseline,Quitting,3.7097,3.7067,-0.0030,124,150
+PP,Content,3.9257,3.9770,0.0513,148,174
+PP,Coping,3.6913,3.7356,0.0444,149,174
+PP,Quitting,3.6644,3.8103,0.1459,149,174

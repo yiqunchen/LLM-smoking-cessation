@@ -1,0 +1,16 @@
+Split,Test_Filter,Removed_Duplicate_Test_N,Domain,Rating,Rating_Label,Train_N,Test_N,Train_Pct,Test_Pct
+digital_twin_7030,known_dt7030_duplicates_removed,16,Content,1,Very poor,11,12,1.85,3.92
+digital_twin_7030,known_dt7030_duplicates_removed,16,Content,2,Poor,30,16,5.06,5.23
+digital_twin_7030,known_dt7030_duplicates_removed,16,Content,3,Acceptable,139,52,23.44,16.99
+digital_twin_7030,known_dt7030_duplicates_removed,16,Content,4,Good,196,114,33.05,37.25
+digital_twin_7030,known_dt7030_duplicates_removed,16,Content,5,Very good,217,112,36.59,36.6
+digital_twin_7030,known_dt7030_duplicates_removed,16,Coping,1,Not at all helpful,41,20,6.91,6.51
+digital_twin_7030,known_dt7030_duplicates_removed,16,Coping,2,Somewhat helpful,51,32,8.6,10.42
+digital_twin_7030,known_dt7030_duplicates_removed,16,Coping,3,Moderately helpful,117,61,19.73,19.87
+digital_twin_7030,known_dt7030_duplicates_removed,16,Coping,4,Very helpful,208,97,35.08,31.6
+digital_twin_7030,known_dt7030_duplicates_removed,16,Coping,5,Extremely helpful,176,97,29.68,31.6
+digital_twin_7030,known_dt7030_duplicates_removed,16,Quitting,1,Not at all helpful,46,24,7.76,7.82
+digital_twin_7030,known_dt7030_duplicates_removed,16,Quitting,2,Somewhat helpful,52,29,8.77,9.45
+digital_twin_7030,known_dt7030_duplicates_removed,16,Quitting,3,Moderately helpful,104,51,17.54,16.61
+digital_twin_7030,known_dt7030_duplicates_removed,16,Quitting,4,Very helpful,184,98,31.03,31.92
+digital_twin_7030,known_dt7030_duplicates_removed,16,Quitting,5,Extremely helpful,207,105,34.91,34.2

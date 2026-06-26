@@ -1,0 +1,151 @@
+k_train,domain,method,class,n,accuracy
+1,content,RF if RF predicts 1/5 else LLM,1,74,0.12162162162162163
+1,content,RF if RF predicts 1/5 else LLM,2,173,0.10404624277456648
+1,content,RF if RF predicts 1/5 else LLM,3,623,0.33868378812199035
+1,content,RF if RF predicts 1/5 else LLM,4,903,0.5393133997785161
+1,content,RF if RF predicts 1/5 else LLM,5,931,0.5789473684210527
+1,content,LLM if LLM predicts 2-4 else RF,1,74,0.05405405405405406
+1,content,LLM if LLM predicts 2-4 else RF,2,173,0.10982658959537572
+1,content,LLM if LLM predicts 2-4 else RF,3,623,0.3434991974317817
+1,content,LLM if LLM predicts 2-4 else RF,4,903,0.5802879291251384
+1,content,LLM if LLM predicts 2-4 else RF,5,931,0.5241675617615468
+1,content,Oracle true 1/5 RF else LLM,1,74,0.12162162162162163
+1,content,Oracle true 1/5 RF else LLM,2,173,0.10982658959537572
+1,content,Oracle true 1/5 RF else LLM,3,623,0.3434991974317817
+1,content,Oracle true 1/5 RF else LLM,4,903,0.5791805094130675
+1,content,Oracle true 1/5 RF else LLM,5,931,0.5778732545649838
+1,content,RF selected,1,74,0.12162162162162163
+1,content,RF selected,2,173,0.1791907514450867
+1,content,RF selected,3,623,0.41252006420545745
+1,content,RF selected,4,903,0.4440753045404208
+1,content,RF selected,5,931,0.5778732545649838
+1,content,LLM only,1,74,0.05405405405405406
+1,content,LLM only,2,173,0.10982658959537572
+1,content,LLM only,3,623,0.3434991974317817
+1,content,LLM only,4,903,0.5791805094130675
+1,content,LLM only,5,931,0.5252416756176155
+1,coping,RF if RF predicts 1/5 else LLM,1,236,0.3601694915254237
+1,coping,RF if RF predicts 1/5 else LLM,2,308,0.16883116883116883
+1,coping,RF if RF predicts 1/5 else LLM,3,523,0.372848948374761
+1,coping,RF if RF predicts 1/5 else LLM,4,849,0.44876325088339225
+1,coping,RF if RF predicts 1/5 else LLM,5,788,0.5456852791878173
+1,coping,LLM if LLM predicts 2-4 else RF,1,236,0.18220338983050846
+1,coping,LLM if LLM predicts 2-4 else RF,2,308,0.2305194805194805
+1,coping,LLM if LLM predicts 2-4 else RF,3,523,0.4072657743785851
+1,coping,LLM if LLM predicts 2-4 else RF,4,849,0.5265017667844523
+1,coping,LLM if LLM predicts 2-4 else RF,5,788,0.3553299492385787
+1,coping,Oracle true 1/5 RF else LLM,1,236,0.3601694915254237
+1,coping,Oracle true 1/5 RF else LLM,2,308,0.2305194805194805
+1,coping,Oracle true 1/5 RF else LLM,3,523,0.4072657743785851
+1,coping,Oracle true 1/5 RF else LLM,4,849,0.5265017667844523
+1,coping,Oracle true 1/5 RF else LLM,5,788,0.5456852791878173
+1,coping,RF selected,1,236,0.3601694915254237
+1,coping,RF selected,2,308,0.21103896103896103
+1,coping,RF selected,3,523,0.34608030592734224
+1,coping,RF selected,4,849,0.43934040047114253
+1,coping,RF selected,5,788,0.5456852791878173
+1,coping,LLM only,1,236,0.18220338983050846
+1,coping,LLM only,2,308,0.2305194805194805
+1,coping,LLM only,3,523,0.4072657743785851
+1,coping,LLM only,4,849,0.5265017667844523
+1,coping,LLM only,5,788,0.3553299492385787
+1,quitting,RF if RF predicts 1/5 else LLM,1,261,0.3716475095785441
+1,quitting,RF if RF predicts 1/5 else LLM,2,304,0.16776315789473684
+1,quitting,RF if RF predicts 1/5 else LLM,3,480,0.32916666666666666
+1,quitting,RF if RF predicts 1/5 else LLM,4,835,0.4347305389221557
+1,quitting,RF if RF predicts 1/5 else LLM,5,824,0.6007281553398058
+1,quitting,LLM if LLM predicts 2-4 else RF,1,261,0.20689655172413793
+1,quitting,LLM if LLM predicts 2-4 else RF,2,304,0.25
+1,quitting,LLM if LLM predicts 2-4 else RF,3,480,0.35
+1,quitting,LLM if LLM predicts 2-4 else RF,4,835,0.518562874251497
+1,quitting,LLM if LLM predicts 2-4 else RF,5,824,0.42597087378640774
+1,quitting,Oracle true 1/5 RF else LLM,1,261,0.3716475095785441
+1,quitting,Oracle true 1/5 RF else LLM,2,304,0.25
+1,quitting,Oracle true 1/5 RF else LLM,3,480,0.35
+1,quitting,Oracle true 1/5 RF else LLM,4,835,0.518562874251497
+1,quitting,Oracle true 1/5 RF else LLM,5,824,0.5995145631067961
+1,quitting,RF selected,1,261,0.3716475095785441
+1,quitting,RF selected,2,304,0.19736842105263158
+1,quitting,RF selected,3,480,0.3
+1,quitting,RF selected,4,835,0.43952095808383235
+1,quitting,RF selected,5,824,0.5995145631067961
+1,quitting,LLM only,1,261,0.20689655172413793
+1,quitting,LLM only,2,304,0.25
+1,quitting,LLM only,3,480,0.35
+1,quitting,LLM only,4,835,0.518562874251497
+1,quitting,LLM only,5,824,0.42718446601941745
+3,content,RF if RF predicts 1/5 else LLM,1,54,0.1111111111111111
+3,content,RF if RF predicts 1/5 else LLM,2,138,0.057971014492753624
+3,content,RF if RF predicts 1/5 else LLM,3,476,0.3634453781512605
+3,content,RF if RF predicts 1/5 else LLM,4,702,0.5071225071225072
+3,content,RF if RF predicts 1/5 else LLM,5,732,0.6844262295081968
+3,content,LLM if LLM predicts 2-4 else RF,1,54,0.05555555555555555
+3,content,LLM if LLM predicts 2-4 else RF,2,138,0.06521739130434782
+3,content,LLM if LLM predicts 2-4 else RF,3,476,0.3949579831932773
+3,content,LLM if LLM predicts 2-4 else RF,4,702,0.6267806267806267
+3,content,LLM if LLM predicts 2-4 else RF,5,732,0.5300546448087432
+3,content,Oracle true 1/5 RF else LLM,1,54,0.1111111111111111
+3,content,Oracle true 1/5 RF else LLM,2,138,0.06521739130434782
+3,content,Oracle true 1/5 RF else LLM,3,476,0.3802521008403361
+3,content,Oracle true 1/5 RF else LLM,4,702,0.5655270655270656
+3,content,Oracle true 1/5 RF else LLM,5,732,0.6188524590163934
+3,content,RF selected,1,54,0.1111111111111111
+3,content,RF selected,2,138,0.057971014492753624
+3,content,RF selected,3,476,0.48739495798319327
+3,content,RF selected,4,702,0.5227920227920227
+3,content,RF selected,5,732,0.6188524590163934
+3,content,LLM only,1,54,0.05555555555555555
+3,content,LLM only,2,138,0.06521739130434782
+3,content,LLM only,3,476,0.3802521008403361
+3,content,LLM only,4,702,0.5655270655270656
+3,content,LLM only,5,732,0.587431693989071
+3,coping,RF if RF predicts 1/5 else LLM,1,183,0.36065573770491804
+3,coping,RF if RF predicts 1/5 else LLM,2,238,0.16806722689075632
+3,coping,RF if RF predicts 1/5 else LLM,3,406,0.33497536945812806
+3,coping,RF if RF predicts 1/5 else LLM,4,639,0.5117370892018779
+3,coping,RF if RF predicts 1/5 else LLM,5,636,0.5314465408805031
+3,coping,LLM if LLM predicts 2-4 else RF,1,183,0.14754098360655737
+3,coping,LLM if LLM predicts 2-4 else RF,2,238,0.2184873949579832
+3,coping,LLM if LLM predicts 2-4 else RF,3,406,0.3768472906403941
+3,coping,LLM if LLM predicts 2-4 else RF,4,639,0.6056338028169014
+3,coping,LLM if LLM predicts 2-4 else RF,5,636,0.41509433962264153
+3,coping,Oracle true 1/5 RF else LLM,1,183,0.2896174863387978
+3,coping,Oracle true 1/5 RF else LLM,2,238,0.19327731092436976
+3,coping,Oracle true 1/5 RF else LLM,3,406,0.35467980295566504
+3,coping,Oracle true 1/5 RF else LLM,4,639,0.5414710485133021
+3,coping,Oracle true 1/5 RF else LLM,5,636,0.4827044025157233
+3,coping,RF selected,1,183,0.2896174863387978
+3,coping,RF selected,2,238,0.2689075630252101
+3,coping,RF selected,3,406,0.33251231527093594
+3,coping,RF selected,4,639,0.5868544600938967
+3,coping,RF selected,5,636,0.4827044025157233
+3,coping,LLM only,1,183,0.20765027322404372
+3,coping,LLM only,2,238,0.19327731092436976
+3,coping,LLM only,3,406,0.35467980295566504
+3,coping,LLM only,4,639,0.5414710485133021
+3,coping,LLM only,5,636,0.4669811320754717
+3,quitting,RF if RF predicts 1/5 else LLM,1,208,0.32211538461538464
+3,quitting,RF if RF predicts 1/5 else LLM,2,222,0.1981981981981982
+3,quitting,RF if RF predicts 1/5 else LLM,3,368,0.30978260869565216
+3,quitting,RF if RF predicts 1/5 else LLM,4,662,0.4259818731117825
+3,quitting,RF if RF predicts 1/5 else LLM,5,642,0.6074766355140186
+3,quitting,LLM if LLM predicts 2-4 else RF,1,208,0.16826923076923078
+3,quitting,LLM if LLM predicts 2-4 else RF,2,222,0.25225225225225223
+3,quitting,LLM if LLM predicts 2-4 else RF,3,368,0.3532608695652174
+3,quitting,LLM if LLM predicts 2-4 else RF,4,662,0.5377643504531722
+3,quitting,LLM if LLM predicts 2-4 else RF,5,642,0.45482866043613707
+3,quitting,Oracle true 1/5 RF else LLM,1,208,0.27403846153846156
+3,quitting,Oracle true 1/5 RF else LLM,2,222,0.24324324324324326
+3,quitting,Oracle true 1/5 RF else LLM,3,368,0.3423913043478261
+3,quitting,Oracle true 1/5 RF else LLM,4,662,0.5030211480362538
+3,quitting,Oracle true 1/5 RF else LLM,5,642,0.5716510903426791
+3,quitting,RF selected,1,208,0.27403846153846156
+3,quitting,RF selected,2,222,0.25675675675675674
+3,quitting,RF selected,3,368,0.36684782608695654
+3,quitting,RF selected,4,662,0.486404833836858
+3,quitting,RF selected,5,642,0.5716510903426791
+3,quitting,LLM only,1,208,0.20673076923076922
+3,quitting,LLM only,2,222,0.24324324324324326
+3,quitting,LLM only,3,368,0.3423913043478261
+3,quitting,LLM only,4,662,0.5030211480362538
+3,quitting,LLM only,5,642,0.48909657320872274

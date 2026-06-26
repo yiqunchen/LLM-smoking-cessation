@@ -87,7 +87,7 @@ echo ""
 echo "This pipeline will:"
 echo "  1. Generate canonical train/test splits (70/30 default)"
 echo "  2. Run Generic LLM methods (6 configurations)"
-echo "  3. Run Digital Twin methods (7 configurations)"
+echo "  3. Run PP methods (7 configurations)"
 echo "  4. Generate Traditional ML comparisons"
 echo "  5. Analyze all results with comprehensive metrics"
 echo ""
@@ -223,12 +223,12 @@ run_with_logging \
     "Generic LLM 6: Continuous rating (with probabilities)"
 
 ################################################################################
-# STEP 3: Run Digital Twin Methods
+# STEP 3: Run PP Methods
 ################################################################################
 
 log ""
 log "=========================================="
-log "STEP 3: Run Digital Twin Methods"
+log "STEP 3: Run PP Methods"
 log "=========================================="
 
 # Method 1: Full features (70/30 split - default)
@@ -243,7 +243,7 @@ run_with_logging \
         --checkpoint-interval $CHECKPOINT_INTERVAL \
         --output-file $OUTPUT_DIR/digital_twin_1_full_7030.json \
         --checkpoint-file $CHECKPOINT_DIR/checkpoint_digital_twin_1_7030.json" \
-    "Digital Twin 1: Full features (70/30)"
+    "PP 1: Full features (70/30)"
 
 # Method 2: Selected features (70/30 split)
 run_with_logging \
@@ -257,7 +257,7 @@ run_with_logging \
         --checkpoint-interval $CHECKPOINT_INTERVAL \
         --output-file $OUTPUT_DIR/digital_twin_2_select_7030.json \
         --checkpoint-file $CHECKPOINT_DIR/checkpoint_digital_twin_2_7030.json" \
-    "Digital Twin 2: Selected features (70/30)"
+    "PP 2: Selected features (70/30)"
 
 # Method 3: With feedback (70/30 split)
 run_with_logging \
@@ -271,7 +271,7 @@ run_with_logging \
         --checkpoint-interval $CHECKPOINT_INTERVAL \
         --output-file $OUTPUT_DIR/digital_twin_3_feedback_7030.json \
         --checkpoint-file $CHECKPOINT_DIR/checkpoint_digital_twin_3_7030.json" \
-    "Digital Twin 3: With feedback (70/30)"
+    "PP 3: With feedback (70/30)"
 
 # Method 4: CBT/ACT-informed (multiple splits)
 for split_name in "1090" "3070" "7030" "9010"; do
@@ -286,7 +286,7 @@ for split_name in "1090" "3070" "7030" "9010"; do
             --checkpoint-interval $CHECKPOINT_INTERVAL \
             --output-file $OUTPUT_DIR/digital_twin_4_cbtact_${split_name}.json \
             --checkpoint-file $CHECKPOINT_DIR/checkpoint_digital_twin_4_${split_name}.json" \
-        "Digital Twin 4: CBT/ACT-informed (${split_name})"
+        "PP 4: CBT/ACT-informed (${split_name})"
 done
 
 ################################################################################
@@ -358,4 +358,3 @@ echo "  cat $OUTPUT_DIR/summary_table.md"
 echo ""
 echo "To compare methods:"
 echo "  open $OUTPUT_DIR/method_comparison_all_metrics.png"
-

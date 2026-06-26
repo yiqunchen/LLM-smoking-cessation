@@ -1,18 +1,18 @@
 #!/bin/bash
 
 ################################################################################
-# Hybrid RF + Digital Twin Evaluation
-# Runs Digital Twin (70/30) with Random Forest predictions as additional context
+# Hybrid RF+PP Evaluation
+# Runs PP (70/30) with Random Forest predictions as additional context
 # Tests ALL 5 models: GPT-4o-mini, GPT-5, DeepSeek-R1, Grok-4-Fast, Gemini-2.5-Pro
 ################################################################################
 
 set -e  # Exit on error
 
 echo "================================================================================"
-echo "HYBRID RF + DIGITAL TWIN EVALUATION (ALL MODELS)"
+echo "HYBRID RF+PP EVALUATION (ALL MODELS)"
 echo "================================================================================"
 echo ""
-echo "This script will run Digital Twin (70/30 split) with Random Forest predictions"
+echo "This script will run PP (70/30 source) with Random Forest predictions"
 echo "as additional context for ALL 5 models."
 echo ""
 echo "Models to test:"
@@ -28,19 +28,20 @@ echo "==========================================================================
 # source ~/.bash_profile
 # conda activate research
 
-# Paths (MUST match all other methods - participant 70/30 split!)
-TRAIN_FILE="data_splits/canonical/train_participant_7030.json"
-TEST_FILE="data_splits/canonical/test_participant_7030.json"
+# Paths (cleaned canonical PP 70/30 source)
+TRAIN_FILE="data_splits/canonical/train_digital_twin_7030.json"
+TEST_FILE="data_splits/canonical/test_digital_twin_7030.json"
+RF_PREDICTIONS_FILE="results_manuscript_hybrid_rf_history/rf_predictions_history_features.json"
 MAX_CONCURRENT=5
 
 # Check if RF predictions exist
-if [ ! -f "results_manuscript_hybrid_rf_grok4/rf_predictions_all_features.json" ]; then
+if [ ! -f "$RF_PREDICTIONS_FILE" ]; then
     echo "❌ ERROR: RF predictions not found!"
-    echo "Please run: python analysis-script/run_hybrid_rf_digital_twin.py"
+    echo "Please run: python analysis-script/build_hybrid_history_rf_predictions.py"
     exit 1
 fi
 
-echo "✓ Found RF predictions: results_manuscript_hybrid_rf_grok4/rf_predictions_all_features.json"
+echo "✓ Found RF predictions: $RF_PREDICTIONS_FILE"
 echo ""
 
 # Array of models to test
@@ -82,7 +83,7 @@ for model_spec in "${MODELS[@]}"; do
     fi
     
     # Run evaluation (text-only for efficiency, vision mode not needed for hybrid)
-    python analysis-script/main_eval.py \
+    HYBRID_RF_PREDICTIONS="$RF_PREDICTIONS_FILE" python analysis-script/main_eval.py \
         --mode text-only \
         --model "$model" \
         --provider "$provider" \
@@ -99,7 +100,7 @@ for model_spec in "${MODELS[@]}"; do
 done
 
 echo "================================================================================"
-echo "✓ HYBRID EVALUATION COMPLETE FOR ALL MODELS!"
+echo "✓ HYBRID RF+PP EVALUATION COMPLETE FOR ALL MODELS!"
 echo "================================================================================"
 echo ""
 echo "Results saved to:"
@@ -113,4 +114,3 @@ echo "Next steps:"
 echo "  1. Run analysis: python analysis-script/analyze_manuscript_results.py"
 echo "  2. Generate figures: python analysis-script/create_comprehensive_figures.py"
 echo ""
-

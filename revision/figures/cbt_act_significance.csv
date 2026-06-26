@@ -1,0 +1,16 @@
+Panel,Model,Method,Domain,ACT_Accuracy,CBT_Accuracy,Diff_CBT_minus_ACT,p_raw,N_ACT,N_CBT,Bootstrap_N,p_bh,Significant_BH_0_05
+PP LLM Accuracy,GPT-4o-mini,PP,Content,0.4257,0.4080,-0.0176,0.7620,148,174,2000,0.7620,False
+PP LLM Accuracy,GPT-5,PP,Content,0.4392,0.4655,0.0263,0.6530,148,174,2000,0.7620,False
+PP LLM Accuracy,DeepSeek-R1,PP,Content,0.4797,0.4023,-0.0774,0.1560,148,174,2000,0.3900,False
+PP LLM Accuracy,Grok-4-Fast,PP,Content,0.4662,0.4943,0.0280,0.6080,148,174,2000,0.7620,False
+PP LLM Accuracy,Gemini-2.5-Pro,PP,Content,0.3716,0.4655,0.0939,0.0810,148,174,2000,0.3900,False
+PP LLM Accuracy,GPT-4o-mini,PP,Coping,0.3691,0.2931,-0.0760,0.1560,149,174,2000,0.4000,False
+PP LLM Accuracy,GPT-5,PP,Coping,0.3758,0.3793,0.0035,0.9500,149,174,2000,0.9690,False
+PP LLM Accuracy,DeepSeek-R1,PP,Coping,0.3893,0.3851,-0.0042,0.9690,149,174,2000,0.9690,False
+PP LLM Accuracy,Grok-4-Fast,PP,Coping,0.3960,0.4713,0.0753,0.1600,149,174,2000,0.4000,False
+PP LLM Accuracy,Gemini-2.5-Pro,PP,Coping,0.4430,0.4253,-0.0177,0.7550,149,174,2000,0.9690,False
+PP LLM Accuracy,GPT-4o-mini,PP,Quitting,0.3221,0.3276,0.0054,0.9450,149,174,2000,0.9450,False
+PP LLM Accuracy,GPT-5,PP,Quitting,0.4094,0.4023,-0.0071,0.9010,149,174,2000,0.9450,False
+PP LLM Accuracy,DeepSeek-R1,PP,Quitting,0.4228,0.3851,-0.0378,0.5070,149,174,2000,0.9450,False
+PP LLM Accuracy,Grok-4-Fast,PP,Quitting,0.4497,0.4253,-0.0244,0.6530,149,174,2000,0.9450,False
+PP LLM Accuracy,Gemini-2.5-Pro,PP,Quitting,0.4698,0.4310,-0.0388,0.4890,149,174,2000,0.9450,False

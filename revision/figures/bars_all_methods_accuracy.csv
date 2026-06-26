@@ -1,0 +1,97 @@
+Model,Method,Domain,Accuracy,Series
+GPT-4o-mini,Zero-shot (all),Content,0.3826,LLM
+GPT-4o-mini,Zero-shot (select),Content,0.4262,LLM
+GPT-4o-mini,Few-shot (all),Content,0.3691,LLM
+GPT-4o-mini,Few-shot (select),Content,0.3758,LLM
+GPT-4o-mini,PP,Content,0.4228,LLM
+GPT-4o-mini,Hybrid RF+PP,Content,0.4262,LLM
+GPT-5,Zero-shot (all),Content,0.3993,LLM
+GPT-5,Zero-shot (select),Content,0.3859,LLM
+GPT-5,Few-shot (all),Content,0.3960,LLM
+GPT-5,Few-shot (select),Content,0.3389,LLM
+GPT-5,PP,Content,0.4597,LLM
+GPT-5,Hybrid RF+PP,Content,0.4732,LLM
+DeepSeek-R1,Zero-shot (all),Content,0.2987,LLM
+DeepSeek-R1,Zero-shot (select),Content,0.3658,LLM
+DeepSeek-R1,Few-shot (all),Content,0.3121,LLM
+DeepSeek-R1,Few-shot (select),Content,0.3188,LLM
+DeepSeek-R1,PP,Content,0.4430,LLM
+DeepSeek-R1,Hybrid RF+PP,Content,0.3356,LLM
+Grok-4-Fast,Zero-shot (all),Content,0.3993,LLM
+Grok-4-Fast,Zero-shot (select),Content,0.4228,LLM
+Grok-4-Fast,Few-shot (all),Content,0.3960,LLM
+Grok-4-Fast,Few-shot (select),Content,0.3926,LLM
+Grok-4-Fast,PP,Content,0.4933,LLM
+Grok-4-Fast,Hybrid RF+PP,Content,0.4765,LLM
+Gemini-2.5-Pro,Zero-shot (all),Content,0.3893,LLM
+Gemini-2.5-Pro,Zero-shot (select),Content,0.3960,LLM
+Gemini-2.5-Pro,Few-shot (all),Content,0.3658,LLM
+Gemini-2.5-Pro,Few-shot (select),Content,0.3792,LLM
+Gemini-2.5-Pro,PP,Content,0.4295,LLM
+Gemini-2.5-Pro,Hybrid RF+PP,Content,0.4195,LLM
+GPT-4o-mini,Zero-shot (all),Coping,0.2475,LLM
+GPT-4o-mini,Zero-shot (select),Coping,0.2742,LLM
+GPT-4o-mini,Few-shot (all),Coping,0.2542,LLM
+GPT-4o-mini,Few-shot (select),Coping,0.2910,LLM
+GPT-4o-mini,PP,Coping,0.3077,LLM
+GPT-4o-mini,Hybrid RF+PP,Coping,0.3445,LLM
+GPT-5,Zero-shot (all),Coping,0.2375,LLM
+GPT-5,Zero-shot (select),Coping,0.2843,LLM
+GPT-5,Few-shot (all),Coping,0.2408,LLM
+GPT-5,Few-shot (select),Coping,0.2542,LLM
+GPT-5,PP,Coping,0.3746,LLM
+GPT-5,Hybrid RF+PP,Coping,0.4281,LLM
+DeepSeek-R1,Zero-shot (all),Coping,0.1973,LLM
+DeepSeek-R1,Zero-shot (select),Coping,0.2809,LLM
+DeepSeek-R1,Few-shot (all),Coping,0.2174,LLM
+DeepSeek-R1,Few-shot (select),Coping,0.2542,LLM
+DeepSeek-R1,PP,Coping,0.3913,LLM
+DeepSeek-R1,Hybrid RF+PP,Coping,0.3813,LLM
+Grok-4-Fast,Zero-shot (all),Coping,0.3043,LLM
+Grok-4-Fast,Zero-shot (select),Coping,0.3211,LLM
+Grok-4-Fast,Few-shot (all),Coping,0.3177,LLM
+Grok-4-Fast,Few-shot (select),Coping,0.3378,LLM
+Grok-4-Fast,PP,Coping,0.4482,LLM
+Grok-4-Fast,Hybrid RF+PP,Coping,0.4281,LLM
+Gemini-2.5-Pro,Zero-shot (all),Coping,0.2876,LLM
+Gemini-2.5-Pro,Zero-shot (select),Coping,0.2876,LLM
+Gemini-2.5-Pro,Few-shot (all),Coping,0.2341,LLM
+Gemini-2.5-Pro,Few-shot (select),Coping,0.3010,LLM
+Gemini-2.5-Pro,PP,Coping,0.4415,LLM
+Gemini-2.5-Pro,Hybrid RF+PP,Coping,0.4114,LLM
+GPT-4o-mini,Zero-shot (all),Quitting,0.3110,LLM
+GPT-4o-mini,Zero-shot (select),Quitting,0.3244,LLM
+GPT-4o-mini,Few-shot (all),Quitting,0.2709,LLM
+GPT-4o-mini,Few-shot (select),Quitting,0.3712,LLM
+GPT-4o-mini,PP,Quitting,0.3244,LLM
+GPT-4o-mini,Hybrid RF+PP,Quitting,0.3880,LLM
+GPT-5,Zero-shot (all),Quitting,0.1405,LLM
+GPT-5,Zero-shot (select),Quitting,0.1639,LLM
+GPT-5,Few-shot (all),Quitting,0.2040,LLM
+GPT-5,Few-shot (select),Quitting,0.2207,LLM
+GPT-5,PP,Quitting,0.4114,LLM
+GPT-5,Hybrid RF+PP,Quitting,0.4548,LLM
+DeepSeek-R1,Zero-shot (all),Quitting,0.1338,LLM
+DeepSeek-R1,Zero-shot (select),Quitting,0.1973,LLM
+DeepSeek-R1,Few-shot (all),Quitting,0.2876,LLM
+DeepSeek-R1,Few-shot (select),Quitting,0.3177,LLM
+DeepSeek-R1,PP,Quitting,0.4047,LLM
+DeepSeek-R1,Hybrid RF+PP,Quitting,0.4147,LLM
+Grok-4-Fast,Zero-shot (all),Quitting,0.2776,LLM
+Grok-4-Fast,Zero-shot (select),Quitting,0.3144,LLM
+Grok-4-Fast,Few-shot (all),Quitting,0.3478,LLM
+Grok-4-Fast,Few-shot (select),Quitting,0.3579,LLM
+Grok-4-Fast,PP,Quitting,0.4415,LLM
+Grok-4-Fast,Hybrid RF+PP,Quitting,0.4916,LLM
+Gemini-2.5-Pro,Zero-shot (all),Quitting,0.2977,LLM
+Gemini-2.5-Pro,Zero-shot (select),Quitting,0.3344,LLM
+Gemini-2.5-Pro,Few-shot (all),Quitting,0.3077,LLM
+Gemini-2.5-Pro,Few-shot (select),Quitting,0.3110,LLM
+Gemini-2.5-Pro,PP,Quitting,0.4515,LLM
+Gemini-2.5-Pro,Hybrid RF+PP,Quitting,0.4348,LLM
+Demographics + History + Message Embedding (LR),Baseline reference,Content,0.4966,Best baseline LR
+Demographics (RF),Baseline reference,Content,0.5034,Best baseline RF
+Demographics + History + Message Embedding (LR),Baseline reference,Coping,0.4497,Best baseline LR
+Embedding + Demo (RF),Baseline reference,Coping,0.4564,Best baseline RF
+Embedding (LR),Baseline reference,Quitting,0.5000,Best baseline LR
+Demographics + History + Message Embedding (RF),Baseline reference,Quitting,0.5403,Best baseline RF

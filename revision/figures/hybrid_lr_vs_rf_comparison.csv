@@ -1,0 +1,13 @@
+Model,Domain,Split,Accuracy,F1,Kappa,QWK,Directional_Accuracy,Directional_Macro_F1,Spearman_Rho,N
+Logistic Regression,Content,CV,0.3916,0.2419,0.1228,0.1527,0.6256,0.3901,-0.4904,641
+Logistic Regression,Content,Test,0.3577,0.2221,0.0722,0.1359,0.5985,0.3548,,274
+Random Forest,Content,CV,0.3729,0.2178,0.0833,0.1224,0.5913,0.3547,-0.8682,641
+Random Forest,Content,Test,0.3504,0.2080,0.0355,0.0774,0.6679,0.3575,,274
+Logistic Regression,Coping,CV,0.2944,0.2226,0.0352,0.1668,0.5530,0.3756,-0.7640,642
+Logistic Regression,Coping,Test,0.3139,0.2949,0.0627,0.1985,0.5547,0.4004,,274
+Random Forest,Coping,CV,0.2913,0.1892,0.0012,0.1375,0.5576,0.3189,-0.8759,642
+Random Forest,Coping,Test,0.2956,0.1759,0.0031,0.0691,0.5474,0.2853,,274
+Logistic Regression,Quitting,CV,0.3178,0.2172,0.0613,0.1914,0.5748,0.3760,-0.7185,642
+Logistic Regression,Quitting,Test,0.3321,0.2439,0.0801,0.1098,0.5547,0.3602,,274
+Random Forest,Quitting,CV,0.3053,0.1931,0.0141,0.1829,0.6044,0.3401,-0.8967,642
+Random Forest,Quitting,Test,0.4197,0.2573,0.1633,0.1294,0.6387,0.3480,,274
