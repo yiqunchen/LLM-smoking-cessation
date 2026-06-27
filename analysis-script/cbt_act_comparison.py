@@ -46,6 +46,7 @@ from text_baselines import (
     _load_embeddings,
     _match_embeddings,
 )
+from history_supervised_baselines import _make_item_key_from_record
 
 # ---------------------------------------------------------------------------
 # Configuration
@@ -60,6 +61,33 @@ SELECTED_METHODS = [
 ]
 
 FOCUS_BASELINE_METHOD = 'Best Text Baseline'
+SUPERVISED_PREDICTIONS_PATH = figures_path('history_supervised_predictions') + '.csv'
+SUPERVISED_CBT_ACT_SYSTEMS = [
+    {
+        'System': 'RF - Demographics',
+        'Feature_Set': 'Demographics',
+        'Classifier': 'RF',
+        'Label': 'RF\nDemo',
+    },
+    {
+        'System': 'LR - Demographics',
+        'Feature_Set': 'Demographics',
+        'Classifier': 'LR',
+        'Label': 'LR\nDemo',
+    },
+    {
+        'System': 'LR - Demo+History+Embedding',
+        'Feature_Set': 'Demographics + History + Message Embedding',
+        'Classifier': 'LR',
+        'Label': 'LR\nDemo+Hist\n+ Embed',
+    },
+    {
+        'System': 'RF - Demo+History+Embedding',
+        'Feature_Set': 'Demographics + History + Message Embedding',
+        'Classifier': 'RF',
+        'Label': 'RF\nDemo+Hist\n+ Embed',
+    },
+]
 TEXT_BASELINE_CANDIDATES = [
     'TF-IDF + LR',
     'TF-IDF + RF',
@@ -83,17 +111,11 @@ TEXT_BASELINE_SHORT_LABELS = {
     'Embedding + RF': 'Embed.\n+ RF',
 }
 THERAPY_COLORS = {'ACT': COLORS['GPT-4o-mini'], 'CBT': COLORS['GPT-5']}
-LEFT_PANEL_ORDER = [
-    'Embedding + RF',
-    'Demographics RF',
-    'Demographics LR',
-    'Embedding + LR',
-]
-LEFT_PANEL_LABELS = {
-    'Embedding + RF': 'Embed.\n+ RF',
-    'Demographics RF': 'Demo\n+ RF',
-    'Demographics LR': 'Demo\n+ LR',
-    'Embedding + LR': 'Embed.\n+ LR',
+LEFT_PANEL_ORDER = [spec['System'] for spec in SUPERVISED_CBT_ACT_SYSTEMS]
+LEFT_PANEL_LABELS = {spec['System']: spec['Label'] for spec in SUPERVISED_CBT_ACT_SYSTEMS}
+SUPERVISED_SYSTEM_LOOKUP = {
+    spec['System']: (spec['Feature_Set'], spec['Classifier'])
+    for spec in SUPERVISED_CBT_ACT_SYSTEMS
 }
 
 # Keep the revision deliverable bootstrap-based with a stable CI estimate.
@@ -339,38 +361,71 @@ def _get_non_llm_accuracy_outputs(
     return baseline_df[['therapy', 'gt', 'pred']].copy()
 
 
+def _load_existing_supervised_predictions_with_therapy():
+    """Load committed supervised predictions and attach ACT/CBT labels.
+
+    The source is `history_supervised_predictions.csv`, produced by
+    `history_supervised_baselines.py` on the cleaned canonical digital-twin
+    70/30 split. This keeps the CBT/ACT supervised panel on the same
+    supervised lineage used by Figure 2.
+    """
+    if not os.path.exists(SUPERVISED_PREDICTIONS_PATH):
+        raise FileNotFoundError(
+            f'Missing supervised prediction source: {SUPERVISED_PREDICTIONS_PATH}'
+        )
+
+    pred_df = pd.read_csv(SUPERVISED_PREDICTIONS_PATH)
+    _, test_data = load_canonical_data('7030', 'digital_twin')
+    test_df = pd.DataFrame(test_data).copy()
+    test_df['therapy'] = extract_therapy_category(test_df)
+
+    therapy_by_key = {
+        _make_item_key_from_record(record): therapy
+        for record, therapy in zip(test_data, test_df['therapy'])
+    }
+    pred_df['therapy'] = pred_df['Item_Key'].map(therapy_by_key)
+
+    missing = int(pred_df['therapy'].isna().sum())
+    if missing:
+        print(
+            f'WARNING: {missing} supervised prediction rows lacked ACT/CBT labels '
+            f'from digital-twin test metadata.',
+            flush=True,
+        )
+    return pred_df[pred_df['therapy'].isin(['ACT', 'CBT'])].copy()
+
+
 def compute_non_llm_accuracy_summary(domains=None, categories=None, n_boot=N_BOOTSTRAP):
-    """Compute accuracy summaries for the selected non-LLM baselines."""
+    """Compute ACT/CBT accuracy summaries from existing supervised predictions."""
     domains = domains or list(DOMAINS)
     categories = categories or ['ACT', 'CBT']
 
-    train_data, test_data = load_canonical_data('7030', 'participant')
-    emb_matrix, emb_lookup = _load_embeddings()
+    pred_df = _load_existing_supervised_predictions_with_therapy()
     rows = []
 
     for domain_idx, domain in enumerate(domains):
         for system_idx, system_name in enumerate(LEFT_PANEL_ORDER):
-            output_df = _get_non_llm_accuracy_outputs(
-                train_data,
-                test_data,
-                domain,
-                system_name,
-                emb_matrix=emb_matrix,
-                emb_lookup=emb_lookup,
-            )
+            feature_set, classifier = SUPERVISED_SYSTEM_LOOKUP[system_name]
+            output_df = pred_df[
+                (pred_df['Domain'] == domain.capitalize()) &
+                (pred_df['Feature_Set'] == feature_set) &
+                (pred_df['Classifier'] == classifier)
+            ].copy()
 
             for category_idx, category in enumerate(categories):
                 sub = output_df[output_df['therapy'] == category]
                 if len(sub) < 5:
                     continue
                 summary = bootstrap_accuracy_summary(
-                    sub['gt'].values.astype(float),
-                    sub['pred'].values.astype(float),
+                    sub['Ground_Truth_Num'].values.astype(float),
+                    sub['Predicted_Num'].values.astype(float),
                     n_boot=n_boot,
                     seed=RANDOM_SEED + 1000 + (100 * domain_idx) + (10 * system_idx) + category_idx,
                 )
                 rows.append({
                     'System': system_name,
+                    'Feature_Set': feature_set,
+                    'Classifier': classifier,
                     'Domain': domain.capitalize(),
                     'Category': category,
                     'Value': summary['Value'],
@@ -384,43 +439,46 @@ def compute_non_llm_accuracy_summary(domains=None, categories=None, n_boot=N_BOO
 
 
 def compute_non_llm_accuracy_significance(domains=None, n_boot=N_BOOTSTRAP):
-    """Compute ACT vs CBT accuracy tests for the non-LLM left-panel baselines."""
+    """Compute ACT vs CBT accuracy tests for existing supervised predictions."""
     domains = domains or list(DOMAINS)
 
-    train_data, test_data = load_canonical_data('7030', 'participant')
-    emb_matrix, emb_lookup = _load_embeddings()
+    pred_df = _load_existing_supervised_predictions_with_therapy()
     rows = []
 
     for domain_idx, domain in enumerate(domains):
         family_rows = []
         for system_idx, system_name in enumerate(LEFT_PANEL_ORDER):
-            output_df = _get_non_llm_accuracy_outputs(
-                train_data,
-                test_data,
-                domain,
-                system_name,
-                emb_matrix=emb_matrix,
-                emb_lookup=emb_lookup,
-            )
+            feature_set, classifier = SUPERVISED_SYSTEM_LOOKUP[system_name]
+            output_df = pred_df[
+                (pred_df['Domain'] == domain.capitalize()) &
+                (pred_df['Feature_Set'] == feature_set) &
+                (pred_df['Classifier'] == classifier)
+            ].copy()
             act_df = output_df[output_df['therapy'] == 'ACT']
             cbt_df = output_df[output_df['therapy'] == 'CBT']
             if len(act_df) < 5 or len(cbt_df) < 5:
                 continue
 
             diff_result = bootstrap_accuracy_difference(
-                act_df['gt'].values.astype(float),
-                act_df['pred'].values.astype(float),
-                cbt_df['gt'].values.astype(float),
-                cbt_df['pred'].values.astype(float),
+                act_df['Ground_Truth_Num'].values.astype(float),
+                act_df['Predicted_Num'].values.astype(float),
+                cbt_df['Ground_Truth_Num'].values.astype(float),
+                cbt_df['Predicted_Num'].values.astype(float),
                 n_boot=n_boot,
                 seed=RANDOM_SEED + 2000 + (100 * domain_idx) + system_idx,
             )
             family_rows.append({
-                'Panel': 'Non-LLM Baseline Accuracy',
+                'Panel': 'Supervised Baseline Accuracy',
                 'System': system_name,
+                'Feature_Set': feature_set,
+                'Classifier': classifier,
                 'Domain': domain.capitalize(),
-                'ACT_Accuracy': float(np.mean(act_df['gt'].values == act_df['pred'].values)),
-                'CBT_Accuracy': float(np.mean(cbt_df['gt'].values == cbt_df['pred'].values)),
+                'ACT_Accuracy': float(np.mean(
+                    act_df['Ground_Truth_Num'].values == act_df['Predicted_Num'].values
+                )),
+                'CBT_Accuracy': float(np.mean(
+                    cbt_df['Ground_Truth_Num'].values == cbt_df['Predicted_Num'].values
+                )),
                 'Diff_CBT_minus_ACT': diff_result['Diff_CBT_minus_ACT'],
                 'p_raw': diff_result['p_raw'],
                 'N_ACT': len(act_df),
@@ -957,7 +1015,7 @@ def plot_cbt_vs_act(results_df, llm_significance_df=None, non_llm_accuracy_df=No
                 _add_significance_bracket(right_ax, position - 0.12, position + 0.12, y)
 
         if row_idx == 0:
-            left_ax.set_title('Non-LLM\nBaseline Accuracy', fontsize=15, fontweight='bold')
+            left_ax.set_title('Supervised\nBaseline Accuracy', fontsize=15, fontweight='bold')
             right_ax.set_title('PP LLM\nAccuracy', fontsize=15, fontweight='bold')
 
         left_ax.set_xlim(-0.55, len(LEFT_PANEL_ORDER) - 0.45)
@@ -1111,7 +1169,32 @@ def main():
                 'Digital-Twin LLM Accuracy': 'PP LLM Accuracy',
             })
         non_llm_accuracy_df = pd.read_csv(score_path) if os.path.exists(score_path) else pd.DataFrame()
+        if (
+            non_llm_accuracy_df.empty or
+            not set(LEFT_PANEL_ORDER).issubset(set(non_llm_accuracy_df.get('System', [])))
+        ):
+            print('Recomputing supervised CBT/ACT summary from history_supervised_predictions.csv', flush=True)
+            non_llm_accuracy_df = compute_non_llm_accuracy_summary(
+                domains=domains,
+                categories=categories,
+                n_boot=args.n_bootstrap,
+            )
+            if not non_llm_accuracy_df.empty:
+                non_llm_accuracy_df.to_csv(score_path, index=False, float_format='%.4f')
+                print(f'       Supervised accuracy summary CSV: {score_path}', flush=True)
+
         non_llm_significance_df = pd.read_csv(score_sig_path) if os.path.exists(score_sig_path) else pd.DataFrame()
+        if (
+            non_llm_significance_df.empty or
+            not set(LEFT_PANEL_ORDER).issubset(set(non_llm_significance_df.get('System', [])))
+        ):
+            non_llm_significance_df = compute_non_llm_accuracy_significance(
+                domains=domains,
+                n_boot=args.n_bootstrap,
+            )
+            if not non_llm_significance_df.empty:
+                non_llm_significance_df.to_csv(score_sig_path, index=False, float_format='%.4f')
+                print(f'       Supervised accuracy significance CSV: {score_sig_path}', flush=True)
 
         if args.skip_figure:
             print('Skipping figure generation (--skip-figure).', flush=True)

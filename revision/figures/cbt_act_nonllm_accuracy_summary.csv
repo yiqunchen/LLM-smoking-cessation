@@ -1,0 +1,25 @@
+System,Feature_Set,Classifier,Domain,Category,Value,CI_Lower,CI_Upper,Bootstrap_N,N
+RF - Demographics,Demographics,RF,Content,ACT,0.4621,0.3712,0.5379,2000,132
+RF - Demographics,Demographics,RF,Content,CBT,0.5000,0.4310,0.5747,2000,174
+LR - Demographics,Demographics,LR,Content,ACT,0.4167,0.3333,0.5076,2000,132
+LR - Demographics,Demographics,LR,Content,CBT,0.4253,0.3563,0.4943,2000,174
+LR - Demo+History+Embedding,Demographics + History + Message Embedding,LR,Content,ACT,0.4697,0.3864,0.5530,2000,132
+LR - Demo+History+Embedding,Demographics + History + Message Embedding,LR,Content,CBT,0.4943,0.4253,0.5690,2000,174
+RF - Demo+History+Embedding,Demographics + History + Message Embedding,RF,Content,ACT,0.3106,0.2348,0.3939,2000,132
+RF - Demo+History+Embedding,Demographics + History + Message Embedding,RF,Content,CBT,0.4023,0.3333,0.4772,2000,174
+RF - Demographics,Demographics,RF,Coping,ACT,0.4586,0.3759,0.5414,2000,133
+RF - Demographics,Demographics,RF,Coping,CBT,0.4598,0.3908,0.5345,2000,174
+LR - Demographics,Demographics,LR,Coping,ACT,0.3835,0.3008,0.4737,2000,133
+LR - Demographics,Demographics,LR,Coping,CBT,0.3333,0.2586,0.4023,2000,174
+LR - Demo+History+Embedding,Demographics + History + Message Embedding,LR,Coping,ACT,0.4286,0.3459,0.5113,2000,133
+LR - Demo+History+Embedding,Demographics + History + Message Embedding,LR,Coping,CBT,0.4368,0.3621,0.5115,2000,174
+RF - Demo+History+Embedding,Demographics + History + Message Embedding,RF,Coping,ACT,0.3759,0.2932,0.4511,2000,133
+RF - Demo+History+Embedding,Demographics + History + Message Embedding,RF,Coping,CBT,0.3391,0.2701,0.4080,2000,174
+RF - Demographics,Demographics,RF,Quitting,ACT,0.4887,0.3985,0.5714,2000,133
+RF - Demographics,Demographics,RF,Quitting,CBT,0.4540,0.3793,0.5287,2000,174
+LR - Demographics,Demographics,LR,Quitting,ACT,0.3459,0.2632,0.4286,2000,133
+LR - Demographics,Demographics,LR,Quitting,CBT,0.3851,0.3103,0.4598,2000,174
+LR - Demo+History+Embedding,Demographics + History + Message Embedding,LR,Quitting,ACT,0.4812,0.3985,0.5714,2000,133
+LR - Demo+History+Embedding,Demographics + History + Message Embedding,LR,Quitting,CBT,0.5172,0.4425,0.5920,2000,174
+RF - Demo+History+Embedding,Demographics + History + Message Embedding,RF,Quitting,ACT,0.3308,0.2556,0.4135,2000,133
+RF - Demo+History+Embedding,Demographics + History + Message Embedding,RF,Quitting,CBT,0.3621,0.2931,0.4368,2000,174

@@ -100,6 +100,13 @@ Missing split-specific methods are omitted rather than backfilled from another s
 | Coping | 0.339 | 0.344 | -0.005 |
 | Quitting | 0.367 | 0.326 | 0.040 |
 - Artifacts: [cbt_act_comparison.csv](cbt_act_comparison.csv), [cbt_vs_act_performance.png](cbt_vs_act_performance.png), [cbt_vs_act_performance.pdf](cbt_vs_act_performance.pdf)
+- The supervised panel in the CBT/ACT figure is regenerated from
+  [history_supervised_predictions.csv](history_supervised_predictions.csv), not
+  from participant-split text baselines. This keeps the supervised source
+  aligned with Figure 2's cleaned `digital_twin_7030` baselines.
+- Source tables for the supervised CBT/ACT panel are
+  `cbt_act_nonllm_accuracy_summary.csv` and
+  `cbt_act_nonllm_accuracy_significance.csv`.
 
 ## Selection Quality
 
@@ -117,8 +124,18 @@ Missing split-specific methods are omitted rather than backfilled from another s
 | Coping | 15 | 4.800 | 0.087 | 3.710 | 0.200 |
 | Coping | 20 | 4.725 | 0.075 | 3.709 | 0.173 |
 - Artifacts: [llm_selection_quality.csv](llm_selection_quality.csv)
-- Strict supporting method-level selection benchmark uses the fixed `Demo+History` feature block across all domains:
-  [message_selection_gain.png](message_selection_gain.png),   [message_selection_gain.pdf](message_selection_gain.pdf), and   [message_selection_methods_k7.csv](message_selection_methods_k7.csv).
+- Strict supporting method-level selection benchmark uses the fixed
+  `Demographics + History + Message Embedding` feature block across all
+  domains on dt10 `k_train=7` rows:
+  [message_selection_quality_dt10.png](message_selection_quality_dt10.png),
+  [message_selection_quality_dt10.pdf](message_selection_quality_dt10.pdf),
+  [message_selection_gain.png](message_selection_gain.png),
+  [message_selection_gain.pdf](message_selection_gain.pdf), and
+  [message_selection_methods_k7.csv](message_selection_methods_k7.csv).
+- The LLM-only Figure 4 curve uses a 108-message digital-twin 70/30 pool and is
+  context only. The supervised method-level support uses a separate 122-message
+  dt10 pool. Do not combine these curves in one panel unless all methods are
+  recomputed on the same message pool.
 
 ## Demographic Subgroups
 

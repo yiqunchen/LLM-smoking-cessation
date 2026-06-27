@@ -85,16 +85,21 @@ Original top-K figure files:
 
 Supporting strict method-level benchmark:
 
-- `supporting_message_selection_gain.png`
-- `supporting_message_selection_gain.pdf`
+- `supporting_message_selection_quality_dt10.png`
+- `supporting_message_selection_quality_dt10.pdf`
+- `supporting_message_selection_gain_dt10.png`
+- `supporting_message_selection_gain_dt10.pdf`
 - `supporting_message_selection_methods_k7.csv`
 
 Status: original Figure 4 slot can be preserved. The LLM-only top-K CSV/plot was
 refreshed on 2026-06-01 from the manuscript result JSONs; the supporting
-benchmark should be used for the revised supervised/LLM/hybrid
-message-selection comparison. The supporting gain plot is regenerated with 95%
-CI bands and the fixed `Demographics + History + Message Embedding` feature
-block.
+benchmark should be used for the revised supervised-vs-LLM message-selection
+comparison. The supporting table uses dt10 `k_train=7`, the fixed
+`Demographics + History + Message Embedding` RF feature block, 122 messages per
+domain, and only two methods: Supervised RF and LLM-PP. Anchor hybrids are
+excluded. The LLM-only top-K curve and the supervised dt10 support use different
+message pools, so keep them as separate panels/artifacts unless every method is
+recomputed on a single shared message pool.
 
 ## Supplementary / Revision Diagnostics
 
