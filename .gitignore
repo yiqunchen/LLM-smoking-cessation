@@ -240,3 +240,9 @@ figures/*.pdf
 
 # Project-specific: WIP manuscript (local only, not for version control)
 wip-manuscript.md
+
+# Project-specific: matplotlib font cache (local, machine-specific)
+.mplconfig/
+
+# Project-specific: uv-generated boilerplate entry point (unused)
+main.py

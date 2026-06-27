@@ -36,6 +36,26 @@ bash run_hybrid_rf_all_models.sh
 ```
 ---
 
+## 🤝 Handoff Note: What is and isn't in this repo
+
+This repository is **self-contained for the revision deliverable** but **not self-regenerating from scratch**. Read this before assuming a script runs end-to-end.
+
+**Committed and ready to use:**
+- Revision narrative, reviewer responses, and edit maps — `revision/*.md`
+- Final revision graphs (PNG + PDF) — `revision/figures/`
+- Figure-level underlying data (CSV) — `revision/figures/` (see `revision/figures/README.md` for the figure → data → script map)
+- All analysis/plotting code — `analysis-script/*.py`
+- Graph reproducibility map — see [Graph Reproducibility](#graph-reproducibility) below
+
+**NOT committed (gitignored — must be obtained or regenerated locally):**
+- `data_splits/` — canonical train/test splits (e.g. `data_splits/canonical/*.json`). These are the **primary source data** referenced throughout the Graph Reproducibility table. Regenerate with the `analysis-script/create_canonical_splits.py` / `build_dt10_splits.py` scripts from the raw participant data (not redistributed here for privacy).
+- `results_manuscript_*/`, `results_hybrid_*/` — raw per-model LLM result JSONs consumed by the figure scripts. Regenerate by running the pipelines in [Quick Start](#-quick-start) (requires API keys).
+- `archive*/`, checkpoint/evaluation `*.json` — old experiments and intermediate caches.
+
+**Bottom line for regeneration:** the plotting scripts in the [Graph Reproducibility](#graph-reproducibility) order will reproduce the figures **only after** `data_splits/` and the relevant `results_manuscript_*/` inputs are present. With just this repo you can read every figure's committed CSV and inspect the code, but a full from-raw rerun needs the gitignored inputs above (and API keys for the LLM calls).
+
+---
+
 ## 📊 Evaluation Methods
 
 ### Generic LLM Methods (6 variants)
