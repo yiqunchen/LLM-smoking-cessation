@@ -44,15 +44,23 @@ This repository is **self-contained for the revision deliverable** but **not sel
 - Revision narrative, reviewer responses, and edit maps — `revision/*.md`
 - Final revision graphs (PNG + PDF) — `revision/figures/`
 - Figure-level underlying data (CSV) — `revision/figures/` (see `revision/figures/README.md` for the figure → data → script map)
+- Raw plot-source inputs needed by the current figure scripts:
+  - canonical plot splits under `data_splits/canonical/` for `digital_twin_7030`, `participant_7030`, and `dt10_k1/k3/k5/k7`
+  - five-model 70/30 result JSONs used by Figure 2, Figure 4, demographic subgroup, pairwise-significance, and uncertainty plots
+  - five hybrid RF+PP 70/30 result JSONs used by Figure 2
+  - Grok dt10 result JSONs used by the strict AI-vs-ML/message-selection support
+  - `archive/data/message_embeddings.pkl` and metadata used by the supervised embedding/history baselines
+  - `archive_results/embedding_results_test30/results.json` used by legacy embedding-baseline plotting helpers
 - All analysis/plotting code — `analysis-script/*.py`
 - Graph reproducibility map — see [Graph Reproducibility](#graph-reproducibility) below
 
 **NOT committed (gitignored — must be obtained or regenerated locally):**
-- `data_splits/` — canonical train/test splits (e.g. `data_splits/canonical/*.json`). These are the **primary source data** referenced throughout the Graph Reproducibility table. Regenerate with the `analysis-script/create_canonical_splits.py` / `build_dt10_splits.py` scripts from the raw participant data (not redistributed here for privacy).
-- `results_manuscript_*/`, `results_hybrid_*/` — raw per-model LLM result JSONs consumed by the figure scripts. Regenerate by running the pipelines in [Quick Start](#-quick-start) (requires API keys).
+- old/non-plot split variants, raw survey spreadsheets, old archives, checkpoints, logs, and comparison/replicate result files
+- `results_manuscript_*/generic_llm_5_continuous_dt7030.json` — referenced by the Figure 2 audit path but not present locally for any model, so no placeholder was committed
+- `results_hybrid_*/` and stale `results_manuscript_*` files not directly consumed by the current committed figures
 - `archive*/`, checkpoint/evaluation `*.json` — old experiments and intermediate caches.
 
-**Bottom line for regeneration:** the plotting scripts in the [Graph Reproducibility](#graph-reproducibility) order will reproduce the figures **only after** `data_splits/` and the relevant `results_manuscript_*/` inputs are present. With just this repo you can read every figure's committed CSV and inspect the code, but a full from-raw rerun needs the gitignored inputs above (and API keys for the LLM calls).
+**Bottom line for regeneration:** the plotting scripts in the [Graph Reproducibility](#graph-reproducibility) order now have the current plot-source inputs committed for the revision figures. A full new model rerun from scratch still requires API keys and will create gitignored checkpoints/logs; do not substitute old split variants or fabricate missing rows.
 
 ---
 

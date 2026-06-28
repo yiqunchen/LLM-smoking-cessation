@@ -222,17 +222,92 @@ pyrightconfig.json
 
 # Project-specific: Archive directories (don't track old experiments)
 archive_code/
-archive_results/
-archive/
+archive_results/*
+!archive_results/embedding_results_test30/
+archive_results/embedding_results_test30/*
+!archive_results/embedding_results_test30/results.json
+archive/*
+!archive/data/
+archive/data/*
+!archive/data/message_embeddings.pkl
+!archive/data/message_embeddings_metadata.json
 
-# Project-specific: Data splits (can be regenerated)
-data_splits/
+# Project-specific: Data splits.
+# Keep only canonical plot-source splits needed by the committed figures.
+data_splits/*
+!data_splits/canonical/
+data_splits/canonical/*
+!data_splits/canonical/README.md
+!data_splits/canonical/metadata_digital_twin_7030.json
+!data_splits/canonical/metadata_participant_7030.json
+!data_splits/canonical/metadata_dt10_k1.json
+!data_splits/canonical/metadata_dt10_k3.json
+!data_splits/canonical/metadata_dt10_k5.json
+!data_splits/canonical/metadata_dt10_k7.json
+!data_splits/canonical/train_digital_twin_7030.json
+!data_splits/canonical/test_digital_twin_7030.json
+!data_splits/canonical/train_participant_7030.json
+!data_splits/canonical/test_participant_7030.json
+!data_splits/canonical/train_dt10_k1.json
+!data_splits/canonical/test_dt10_k1.json
+!data_splits/canonical/train_dt10_k3.json
+!data_splits/canonical/test_dt10_k3.json
+!data_splits/canonical/train_dt10_k5.json
+!data_splits/canonical/test_dt10_k5.json
+!data_splits/canonical/train_dt10_k7.json
+!data_splits/canonical/test_dt10_k7.json
 
 # Project-specific: Large result files
 checkpoint_results_*.json
 evaluation_results_*.json
 temp_checkpoint/
-results_manuscript*/
+results_manuscript*/*
+!results_manuscript_gpt-4o-mini/
+!results_manuscript_gpt-5/
+!results_manuscript_deepseek_deepseek-r1-0528/
+!results_manuscript_x-ai_grok-4-fast/
+!results_manuscript_gemini-2.5-pro/
+!results_manuscript_hybrid_gpt-4o-mini/
+!results_manuscript_hybrid_gpt-5/
+!results_manuscript_hybrid_deepseek_deepseek-r1-0528/
+!results_manuscript_hybrid_x-ai_grok-4-fast/
+!results_manuscript_hybrid_gemini-2.5-pro/
+!results_manuscript_hybrid_rf_grok4/
+!results_manuscript_gpt-4o-mini/generic_llm_1_zero_shot_dt7030.json
+!results_manuscript_gpt-4o-mini/generic_llm_2_zero_shot_select_dt7030.json
+!results_manuscript_gpt-4o-mini/generic_llm_3_few_shot_dt7030.json
+!results_manuscript_gpt-4o-mini/generic_llm_4_few_shot_select_dt7030.json
+!results_manuscript_gpt-4o-mini/digital_twin_4_cbtact_7030.json
+!results_manuscript_gpt-5/generic_llm_1_zero_shot_dt7030.json
+!results_manuscript_gpt-5/generic_llm_2_zero_shot_select_dt7030.json
+!results_manuscript_gpt-5/generic_llm_3_few_shot_dt7030.json
+!results_manuscript_gpt-5/generic_llm_4_few_shot_select_dt7030.json
+!results_manuscript_gpt-5/digital_twin_4_cbtact_7030.json
+!results_manuscript_deepseek_deepseek-r1-0528/generic_llm_1_zero_shot_dt7030.json
+!results_manuscript_deepseek_deepseek-r1-0528/generic_llm_2_zero_shot_select_dt7030.json
+!results_manuscript_deepseek_deepseek-r1-0528/generic_llm_3_few_shot_dt7030.json
+!results_manuscript_deepseek_deepseek-r1-0528/generic_llm_4_few_shot_select_dt7030.json
+!results_manuscript_deepseek_deepseek-r1-0528/digital_twin_4_cbtact_7030.json
+!results_manuscript_x-ai_grok-4-fast/generic_llm_1_zero_shot_dt7030.json
+!results_manuscript_x-ai_grok-4-fast/generic_llm_2_zero_shot_select_dt7030.json
+!results_manuscript_x-ai_grok-4-fast/generic_llm_3_few_shot_dt7030.json
+!results_manuscript_x-ai_grok-4-fast/generic_llm_4_few_shot_select_dt7030.json
+!results_manuscript_x-ai_grok-4-fast/digital_twin_4_cbtact_7030.json
+!results_manuscript_x-ai_grok-4-fast/digital_twin_dt10_k1.json
+!results_manuscript_x-ai_grok-4-fast/digital_twin_dt10_k3.json
+!results_manuscript_x-ai_grok-4-fast/digital_twin_dt10_k5.json
+!results_manuscript_x-ai_grok-4-fast/digital_twin_dt10_k7.json
+!results_manuscript_gemini-2.5-pro/generic_llm_1_zero_shot_dt7030.json
+!results_manuscript_gemini-2.5-pro/generic_llm_2_zero_shot_select_dt7030.json
+!results_manuscript_gemini-2.5-pro/generic_llm_3_few_shot_dt7030.json
+!results_manuscript_gemini-2.5-pro/generic_llm_4_few_shot_select_dt7030.json
+!results_manuscript_gemini-2.5-pro/digital_twin_4_cbtact_7030.json
+!results_manuscript_hybrid_gpt-4o-mini/evaluation_results_gpt-4o-mini_text-only_hybrid-rf-digital-twin.json
+!results_manuscript_hybrid_gpt-5/evaluation_results_gpt-5_text-only_hybrid-rf-digital-twin.json
+!results_manuscript_hybrid_deepseek_deepseek-r1-0528/evaluation_results_deepseek_deepseek-r1-0528_text-only_hybrid-rf-digital-twin.json
+!results_manuscript_hybrid_x-ai_grok-4-fast/evaluation_results_x-ai_grok-4-fast_text-only_hybrid-rf-digital-twin.json
+!results_manuscript_hybrid_gemini-2.5-pro/evaluation_results_gemini-2.5-pro_text-only_hybrid-rf-digital-twin.json
+!results_manuscript_hybrid_rf_grok4/rf_predictions_all_features.json
 results_hybrid*/
 
 # Project-specific: Generated PDF figures (can be regenerated from PNGs)
