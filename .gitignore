@@ -246,3 +246,7 @@ wip-manuscript.md
 
 # Project-specific: uv-generated boilerplate entry point (unused)
 main.py
+
+# Project-specific: local document extraction and backup byproducts
+docs/reference/
+revision/.pre_anchor_sweep_backup_*/
