@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
-"""Run the three Reviewer 3 PP ablations on the canonical dt10-k7 split.
+"""Run the Reviewer 3 PP ablations on the canonical dt10-k7 split.
 
 The runner intentionally uses the same 2,107/898 participant-level split as
 the retained PP benchmark.  It never reads the retired 70/30 artefacts.
 
 Conditions (each is evaluated for all 898 held-out ratings):
+  * pp_cbtact: metadata + seven past messages + their ratings and CBT/ACT
+    category labels; rerun as a same-model comparison baseline.
   * full_pp_no_cbtact: metadata + seven past messages + their ratings;
     no CBT/ACT category labels or instructions.
   * history_ratings_only: seven past message texts and their ratings; no
@@ -39,9 +41,10 @@ SPLIT_DIR = ROOT / "data_splits" / "canonical"
 TRAIN_PATH = SPLIT_DIR / "train_dt10_k7.json"
 TEST_PATH = SPLIT_DIR / "test_dt10_k7.json"
 METADATA_PATH = SPLIT_DIR / "metadata_dt10_k7.json"
-OUTPUT_DIR = ROOT / "results_reviewer_ablations_x-ai_grok-4-fast"
-MODEL = "x-ai/grok-4-fast"
-CONDITIONS = ("full_pp_no_cbtact", "history_ratings_only", "history_text_only")
+OUTPUT_DIR = ROOT / "results_reviewer_ablations_x-ai_grok-4.3"
+MODEL = "x-ai/grok-4.3"
+FEEDBACK_PATH = ROOT / "archive" / "data" / "Message testing data with participant characteristics_02.27.csv"
+CONDITIONS = ("pp_cbtact", "full_pp_no_cbtact", "history_ratings_only", "history_text_only")
 RATING_ORDER = ("content", "design", "coping", "quitting")
 ALLOWED_LABELS = {
     "content": {"Very poor", "Poor", "Acceptable", "Good", "Very good"},
@@ -79,7 +82,7 @@ def format_metadata(metadata: dict) -> str:
     return "\n".join(rows) or "(No participant characteristics available.)"
 
 
-def format_history(profile: list[dict], include_ratings: bool) -> str:
+def format_history(profile: list[dict], include_ratings: bool, include_categories: bool = False) -> str:
     if not profile:
         return "(No prior messages available.)"
     blocks = []
@@ -94,16 +97,31 @@ def format_history(profile: list[dict], include_ratings: bool) -> str:
                 if ratings.get(domain) is not None
             ]
             block += "\nRatings:\n" + ("\n".join(lines) or "(missing)")
+        if include_categories and previous.get("l_category"):
+            block += f"\nMessage type: {previous['l_category']}"
         blocks.append(block)
     return "\n\n---\n\n".join(blocks)
 
 
 def build_prompt(item: dict, condition: str) -> str:
-    """Create an ablation prompt without any CBT/ACT fields or labels."""
+    """Create the explicitly specified prompt component ablation."""
     test_message = str(item.get("input_message", "")).strip()
     profile = item.get("profile_messages", [])
     metadata = format_metadata(item.get("metadata", {}))
-    if condition == "full_pp_no_cbtact":
+    if condition == "pp_cbtact":
+        context = (
+            "Participant characteristics:\n"
+            f"{metadata}\n\n"
+            "Seven past rated messages from this participant:\n"
+            f"{format_history(profile, include_ratings=True, include_categories=True)}\n\n"
+            f"New-message type: {item.get('test_l_category') or '(not available)'}"
+        )
+        instruction = (
+            "Use the participant characteristics and past ratings to make an "
+            "individual-level prediction. When predicting coping and quitting, "
+            "also use the provided message type (Acceptance or Distraction)."
+        )
+    elif condition == "full_pp_no_cbtact":
         context = (
             "Participant characteristics:\n"
             f"{metadata}\n\n"
@@ -165,7 +183,20 @@ Return exactly one JSON object with this schema and no Markdown:
 """
 
 
-def attach_profiles(train: list[dict], test: list[dict]) -> None:
+def category_lookup() -> dict[str, str]:
+    feedback = pd.read_csv(FEEDBACK_PATH)
+    columns = {column.lower(): column for column in feedback.columns}
+    image_column = columns.get("photo_no")
+    category_column = columns.get("l_category")
+    if not image_column or not category_column:
+        raise ValueError("Feedback CSV lacks photo_no/l_category fields needed for pp_cbtact")
+    return {
+        str(row[image_column]): str(row[category_column])
+        for _, row in feedback[[image_column, category_column]].dropna().iterrows()
+    }
+
+
+def attach_profiles(train: list[dict], test: list[dict], categories: dict[str, str]) -> None:
     by_participant: dict[str, list[dict]] = {}
     for record in train:
         participant = str(record.get("response_id", ""))
@@ -173,10 +204,14 @@ def attach_profiles(train: list[dict], test: list[dict]) -> None:
             by_participant.setdefault(participant, []).append({
                 "input_message": record.get("input_message", ""),
                 "ratings": record.get("ratings", {}) or {},
+                "l_category": categories.get(str((record.get("metadata") or {}).get("Image ID", "")), ""),
             })
     for record in test:
         record["profile_messages"] = list(
             by_participant.get(str(record.get("response_id", "")), [])
+        )
+        record["test_l_category"] = categories.get(
+            str((record.get("metadata") or {}).get("Image ID", "")), ""
         )
 
 
@@ -262,6 +297,7 @@ def write_manifest(test: list[dict], conditions: list[str], args) -> None:
         "n_test": len(test),
         "canonical_metadata": metadata,
         "conditions": {
+            "pp_cbtact": "metadata + seven history texts + their ratings + CBT/ACT message-type labels; same-model baseline",
             "full_pp_no_cbtact": "metadata + seven history texts + their ratings; no CBT/ACT labels/instructions",
             "history_ratings_only": "seven history texts + their ratings; no metadata",
             "history_text_only": "seven history texts only; no history ratings or metadata",
@@ -320,12 +356,22 @@ async def run_condition(client, test: list[dict], condition: str, args) -> None:
         print(f"[{condition}] complete: {len(results)}/{len(test)} rows", flush=True)
 
 
+async def preflight(client, item: dict, condition: str) -> None:
+    """Fail before the batch if the selected OpenRouter model is unavailable."""
+    qid, record, error = await call_one(
+        client, asyncio.Semaphore(1), "preflight", item, condition, retries=1
+    )
+    if error or record is None:
+        raise SystemExit(f"OpenRouter preflight failed for {MODEL}: {error}")
+    print(f"OpenRouter preflight passed for {MODEL} ({condition}).", flush=True)
+
+
 async def main_async(args) -> None:
     train = json.loads(TRAIN_PATH.read_text(encoding="utf-8"))
     test = json.loads(TEST_PATH.read_text(encoding="utf-8"))
     if len(train) != 2107 or len(test) != 898:
         raise SystemExit("Canonical dt10-k7 files do not have the expected 2,107/898 rows")
-    attach_profiles(train, test)
+    attach_profiles(train, test, category_lookup())
     profile_sizes = {len(item["profile_messages"]) for item in test}
     if profile_sizes != {7}:
         raise SystemExit(f"Expected exactly 7 history messages per test row; got {profile_sizes}")
@@ -337,9 +383,9 @@ async def main_async(args) -> None:
             prompt = build_prompt(test[0], condition)
             if condition == "history_text_only" and "Ratings:" in prompt:
                 raise SystemExit("history_text_only prompt unexpectedly includes ratings")
-            if condition != "full_pp_no_cbtact" and "Participant characteristics:" in prompt:
+            if condition not in {"full_pp_no_cbtact", "pp_cbtact"} and "Participant characteristics:" in prompt:
                 raise SystemExit(f"{condition} prompt unexpectedly includes metadata")
-            if "Message type:" in prompt or "Acceptance" in prompt or "Distraction" in prompt:
+            if condition != "pp_cbtact" and ("Message type:" in prompt or "Acceptance" in prompt or "Distraction" in prompt):
                 raise SystemExit(f"{condition} prompt unexpectedly includes CBT/ACT information")
         print("Validation passed: dt10-k7 profiles and prompt exclusions are correct.")
         return
@@ -347,6 +393,7 @@ async def main_async(args) -> None:
     if not key:
         raise SystemExit("OPENROUTER_API_KEY is not set")
     client = AsyncOpenAI(api_key=key, base_url="https://openrouter.ai/api/v1")
+    await preflight(client, test[0], args.conditions[0])
     for condition in args.conditions:
         if shutting_down:
             break

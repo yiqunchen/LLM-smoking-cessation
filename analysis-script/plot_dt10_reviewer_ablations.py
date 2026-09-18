@@ -3,9 +3,8 @@
 
 No figure is produced until every required condition contains all 898
 canonical test rows.  This prevents partial API checkpoints from appearing as
-reviewer results.  The two figures compare the existing canonical PP with
-CBT/ACT run to the three newly requested ablations for the same Grok-4-Fast
-model and exact test rows.
+reviewer results.  The two figures compare PP with CBT/ACT and the three
+requested ablations for the same Grok-4.3 model and exact test rows.
 """
 from __future__ import annotations
 
@@ -22,12 +21,11 @@ from sklearn.metrics import cohen_kappa_score
 
 ROOT = Path(__file__).resolve().parents[1]
 TEST_PATH = ROOT / "data_splits" / "canonical" / "test_dt10_k7.json"
-REVIEWER_RESULTS = ROOT / "results_reviewer_ablations_x-ai_grok-4-fast"
-BASELINE_PATH = ROOT / "results_manuscript_x-ai_grok-4-fast" / "digital_twin_dt10_k7.json"
+REVIEWER_RESULTS = ROOT / "results_reviewer_ablations_x-ai_grok-4.3"
 OUTDIR = ROOT / "revision" / "figures" / "reviewer_ablations_dt10"
 DOMAINS = ("content", "design", "coping", "quitting")
 SPECS = (
-    ("pp_cbtact", "PP + CBT/ACT", BASELINE_PATH, "#CC78BC"),
+    ("pp_cbtact", "PP + CBT/ACT", REVIEWER_RESULTS / "pp_cbtact_dt10_k7.json", "#CC78BC"),
     ("full_pp_no_cbtact", "PP, no CBT/ACT", REVIEWER_RESULTS / "full_pp_no_cbtact_dt10_k7.json", "#0173B2"),
     ("history_ratings_only", "History + ratings", REVIEWER_RESULTS / "history_ratings_only_dt10_k7.json", "#029E73"),
     ("history_text_only", "History text only", REVIEWER_RESULTS / "history_text_only_dt10_k7.json", "#7F7F7F"),
@@ -115,7 +113,7 @@ def make_summary(rows_by_condition: dict[str, dict[str, dict]], test: list[dict]
         for domain, (accuracy, qwk) in observed.items():
             acc_ci, qwk_ci = intervals[domain]
             records.append({
-                "split": "dt10_k7", "n_test": len(test), "model": "Grok-4-Fast",
+                "split": "dt10_k7", "n_test": len(test), "model": "Grok-4.3",
                 "condition_key": key, "condition": label, "color": color, "domain": domain.capitalize(),
                 "accuracy": accuracy, "accuracy_ci_low": acc_ci[0], "accuracy_ci_high": acc_ci[1],
                 "qwk": qwk, "qwk_ci_low": qwk_ci[0], "qwk_ci_high": qwk_ci[1],
