@@ -291,8 +291,13 @@ PROMPT_GENERATORS = {
 # ---------------------------------------------------------------------------
 
 def prepare_test_data_with_profiles() -> list:
-    """Load digital twin 7030 test data and attach profile messages from train."""
-    train_data, test_data = load_canonical_data('7030', 'digital_twin')
+    """Load the primary dt10 k=7 test data and attach seven-message profiles."""
+    train_path = os.path.join(PROJECT_ROOT, 'data_splits', 'canonical', 'train_dt10_k7.json')
+    test_path = os.path.join(PROJECT_ROOT, 'data_splits', 'canonical', 'test_dt10_k7.json')
+    with open(train_path, encoding='utf-8') as handle:
+        train_data = json.load(handle)
+    with open(test_path, encoding='utf-8') as handle:
+        test_data = json.load(handle)
 
     # Build map: response_id -> list of prior messages with ratings
     response_id_to_profile = {}
@@ -622,7 +627,7 @@ def main():
     print()
 
     # 1. Load and prepare test data
-    print("[1/4] Loading digital twin 7030 test data...")
+    print("[1/4] Loading primary dt10 k=7 test data...")
     test_data = prepare_test_data_with_profiles()
     n_with_profiles = sum(1 for it in test_data if it.get('profile_messages'))
     print(f"      Loaded {len(test_data)} test items "
@@ -679,11 +684,9 @@ def main():
             "exist in this repo yet.\n\n"
             "Available observed data:\n"
             "- `full-PP` reference rows in `ablation_results.csv`\n"
-            "- Saved PP prompt variants already in the repo: "
-            "`digital_twin_1_full_7030.json`, `digital_twin_2_select_7030.json`, "
-            "`digital_twin_3_feedback_7030.json`, and `digital_twin_4_cbtact_7030.json` "
-            "(coverage varies by model; these are not the same as the requested "
-            "`message-only` / `profile-only` / `history-only` ablations)\n"
+            "- The primary dt10 k=7 split (`train_dt10_k7.json` / `test_dt10_k7.json`)\n"
+            "- Prompt constructors for the requested `message-only`, `profile-only`, "
+            "and `history-only` ablations\n"
             "- Prompt constructors in `analysis-script/ablation_study.py`\n"
             "- Canonical PP splits in `data_splits/canonical/`\n\n"
             "Under the no-mock-data policy, `ablation_study.png` and `ablation_study.pdf` "

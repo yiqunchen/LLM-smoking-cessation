@@ -2,6 +2,12 @@
 
 Evaluating smoking cessation messages using Large Language Models (LLMs) to predict participant ratings across multiple dimensions.
 
+> **Current evaluation policy (supersedes conflicting historical notes below):**
+> all personalized-prompt test results and plots use the full ten-message
+> `dt10` splits. The primary reviewer analysis is `dt10_k7` (seven histories
+> per participant; 898 held-out ratings). The old `digital_twin_7030` / 323-row
+> artifacts have been retired and must not be regenerated or cited.
+
 ---
 
 ## 🚀 Quick Start

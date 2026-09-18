@@ -1,45 +1,20 @@
-# Canonical Data Splits
+# Canonical dt10 Evaluation Splits
 
-**DO NOT MODIFY THESE SPLITS!** All experiments must use these exact splits for fair comparison.
+**This directory is the sole source of truth for personalized-prompt test
+evaluation.** Do not use the retired `digital_twin_7030` 323-row pool.
 
-## Split Information
-- **Seed**: 202509
-- **Source Data**: `data/processed_llm_data.json`
+All participant-level reviewer analyses must use the full ten-message,
+within-participant splits built with seed `202509`.
 
-## Split Strategy
+| Evaluation | Training histories | Held-out rows | Files |
+| --- | ---: | ---: | --- |
+| Primary reviewer evaluation | 7 per participant | 898 | `train_dt10_k7.json`, `test_dt10_k7.json`, `metadata_dt10_k7.json` |
+| Learning-curve sensitivity | 1, 3, or 5 per participant | split-specific | corresponding `train_dt10_k*.json`, `test_dt10_k*.json`, `metadata_dt10_k*.json` |
 
-### Generic LLM & Hybrid ML-LLM Models
-**Split by PARTICIPANT** - ensures no participant appears in both train and test.
+The k=7 split has 2,107 training rows and 898 held-out rows across 301
+participants. Five participants have nine valid ratings; therefore the full
+analysis dataset contains 3,005 usable rows, not 3,010.
 
-Use these splits for:
-- 2.2.2 Generic LLM Models (zero-shot, few-shot, continuous)
-- 2.2.3 Hybrid ML-LLM Models
-
-Files:
-- `train_participant_7030.json` / `test_participant_7030.json` (DEFAULT: 70% train, 30% test)
-- `train_participant_3070.json` / `test_participant_3070.json` (ALTERNATIVE: 30% train, 70% test)
-
-### Digital Twin Models
-**Split by MESSAGE within each participant** - each person has some messages in their profile (train) 
-and some held out for testing (test).
-
-Use these splits for:
-- 2.2.4 Digital Twin Models
-
-Files:
-- `train_digital_twin_5050.json` / `test_digital_twin_5050.json` (50% profile, 50% test)
-- `train_digital_twin_7030.json` / `test_digital_twin_7030.json` (70% profile, 30% test)
-- `train_digital_twin_9010.json` / `test_digital_twin_9010.json` (90% profile, 10% test)
-
-## Metadata Files
-Each split has a corresponding `metadata_*.json` file with:
-- Exact participant IDs in train/test
-- Sample counts
-- Reproducibility information
-
-## Usage in Evaluation Scripts
-Always load the appropriate canonical split:
-```python
-with open('data_splits/canonical/train_participant_7030.json') as f:
-    train_data = json.load(f)
-```
+The archival raw files are retained outside Git under `archive/data/`. They are
+needed only to rebuild a split, not to run a prompt evaluation when both dt10
+JSON files are supplied with `--data-file` and `--train-file`.

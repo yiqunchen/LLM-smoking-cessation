@@ -2,6 +2,9 @@
 
 set -euo pipefail
 
+echo "This legacy dt7030 pipeline is retired. Use dt10 canonical splits; see revision/DT10_SOURCE_OF_TRUTH.md."
+exit 2
+
 if [ -z "${1:-}" ]; then
     echo "Usage: bash run_generic_dt7030_pipeline.sh <model> [provider] [max_concurrent]"
     echo "Example: bash run_generic_dt7030_pipeline.sh gpt-5 openai 10"

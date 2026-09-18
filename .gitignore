@@ -229,6 +229,10 @@ archive_results/embedding_results_test30/*
 archive/*
 !archive/data/
 archive/data/*
+
+# Local restricted-data handoff bundles; distribute outside Git.
+data-for-jasmine.zip
+data-for-jasmine-README.md
 !archive/data/message_embeddings.pkl
 !archive/data/message_embeddings_metadata.json
 

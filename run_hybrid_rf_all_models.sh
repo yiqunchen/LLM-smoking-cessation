@@ -8,6 +8,9 @@
 
 set -e  # Exit on error
 
+echo "This legacy 70/30 hybrid pipeline is retired. Use dt10 canonical splits; see revision/DT10_SOURCE_OF_TRUTH.md."
+exit 2
+
 echo "================================================================================"
 echo "HYBRID RF+PP EVALUATION (ALL MODELS)"
 echo "================================================================================"

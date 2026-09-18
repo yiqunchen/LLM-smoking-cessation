@@ -24,6 +24,9 @@
 
 set -e  # Exit on error
 
+echo "This legacy 70/30 pipeline is retired. Use the dt10 canonical splits; see revision/DT10_SOURCE_OF_TRUTH.md."
+exit 2
+
 # Colors
 GREEN='\033[0;32m'
 BLUE='\033[0;34m'
