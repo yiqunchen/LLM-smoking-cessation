@@ -54,6 +54,7 @@ ALLOWED_LABELS = {
 }
 DEFAULT_CONCURRENCY = 6
 DEFAULT_CHECKPOINT_INTERVAL = 25
+MAX_OUTPUT_TOKENS = 300
 shutting_down = False
 
 
@@ -273,6 +274,7 @@ async def call_one(client, semaphore, qid: str, item: dict, condition: str,
                     messages=[{"role": "user", "content": prompt}],
                     response_format={"type": "json_object"},
                     temperature=0.0,
+                    max_tokens=MAX_OUTPUT_TOKENS,
                 )
                 parsed = json.loads(completion.choices[0].message.content)
                 return qid, make_record(item, parsed, condition), None
@@ -304,6 +306,7 @@ def write_manifest(test: list[dict], conditions: list[str], args) -> None:
         },
         "requested_conditions": conditions,
         "max_concurrent": args.max_concurrent,
+        "max_output_tokens": MAX_OUTPUT_TOKENS,
         "checkpoint_interval": args.checkpoint_interval,
     }
     (OUTPUT_DIR / "manifest_dt10_k7.json").write_text(
@@ -401,7 +404,13 @@ async def main_async(args) -> None:
 
 
 def main() -> None:
+    global MODEL, OUTPUT_DIR
     parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--model", default=MODEL, help="OpenRouter model identifier")
+    parser.add_argument(
+        "--output-dir", default=str(OUTPUT_DIR.relative_to(ROOT)),
+        help="result directory relative to the repository root",
+    )
     parser.add_argument("--conditions", nargs="+", choices=CONDITIONS, default=list(CONDITIONS))
     parser.add_argument("--max-concurrent", type=int, default=DEFAULT_CONCURRENCY)
     parser.add_argument("--checkpoint-interval", type=int, default=DEFAULT_CHECKPOINT_INTERVAL)
@@ -410,6 +419,11 @@ def main() -> None:
     args = parser.parse_args()
     if args.max_concurrent < 1 or args.checkpoint_interval < 1 or args.max_retries < 1:
         parser.error("concurrency, checkpoint interval, and retries must be positive")
+    candidate_dir = (ROOT / args.output_dir).resolve()
+    if ROOT not in candidate_dir.parents:
+        parser.error("--output-dir must stay within the repository root")
+    MODEL = args.model
+    OUTPUT_DIR = candidate_dir
     asyncio.run(main_async(args))
 
 
