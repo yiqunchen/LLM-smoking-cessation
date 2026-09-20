@@ -1,6 +1,6 @@
 # Prompt Template Library for 2.2.2–2.2.3
 
-This file provides manuscript-ready templates for the LLM conditions described in Sections 2.2.2 and 2.2.3. The prose mirrors the study narrative while exposing the exact prompt scaffolding (persona framing, instruction rubrics, JSON contracts) used in `analysis/legacy/prompt_config.py`.
+This file provides manuscript-ready templates for the LLM conditions described in Sections 2.2.2 and 2.2.3. The prose mirrors the study narrative while exposing the exact prompt scaffolding (persona framing, instruction rubrics, JSON contracts) used by the original manuscript pipeline (archived).
 
 Throughout the document:
 - `{{input_message}}`, `{{response_id}}`, etc. are placeholders filled by the evaluation pipeline.

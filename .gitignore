@@ -246,14 +246,11 @@ results/prompt_ablations/*/*.tmp
 results/prompt_ablations/*/*_errors.log
 
 # results/manuscript, results/hybrid: manuscript-era runs. Only the dt10 Grok PP
-# runs and the RF predictions consumed by committed figures are tracked.
+# runs consumed by the main figures are tracked.
 results/manuscript/*
 !results/manuscript/x-ai_grok-4-fast/
 results/manuscript/x-ai_grok-4-fast/*
 !results/manuscript/x-ai_grok-4-fast/digital_twin_dt10_k*.json
-!results/manuscript/hybrid_rf_grok4/
-results/manuscript/hybrid_rf_grok4/*
-!results/manuscript/hybrid_rf_grok4/rf_predictions_all_features.json
 results/hybrid/
 
 # Old top-level result paths (pre-2026-09 layout). Never re-create them.
@@ -280,4 +277,3 @@ wip-manuscript.md
 main.py
 .claude/
 docs/reference/
-docs/revision/.pre_anchor_sweep_backup_*/

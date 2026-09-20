@@ -1,15 +1,11 @@
-# Revision figures: dt10-only
+# Figures
 
-Every retained figure and source table in this directory is tied to the full
-ten-message `dt10` evaluation. The primary test source is
-`data/splits/canonical/test_dt10_k7.json` (898 held-out rows), with its matched
-seven-message profile file `train_dt10_k7.json`.
+All figures use the dt10 splits (`docs/DATA_POLICY.md`); each directory holds
+the PNG/PDF files and the CSV tables they were drawn from.
 
-Retained outputs:
-
-- `progress_summary/`: strict shared-row dt10 summaries, learning curves, and
-  k=7 diagnostics.
-- `lc_dt10_*.csv`: learning-curve source data.
-- `message_selection_*`: dt10 k=7 supporting message-selection analysis.
-
-No `digital_twin_7030` results, figures, or cached tables are retained here.
+| Directory | Content | Script |
+|---|---|---|
+| `figure2/` | Main dt10 comparison: supervised RF vs LLM personalized prompting | `analysis/make_figure2_dt10.py` |
+| `figure4/` | Message-selection quality and gain at k = 7 | `analysis/make_figure4_supporting_dt10.py` |
+| `progress_summary/` | Strict shared-row summaries, learning curves over k, k = 7 diagnostics | `analysis/build_progress_summary.py` |
+| `prompt_ablations/` | Prompt-component ablations: metric grids, rating distributions, pairwise comparisons, bootstrap tables | `analysis/plot_prompt_ablations.py`, `analysis/bootstrap_prompt_ablations.py` |
