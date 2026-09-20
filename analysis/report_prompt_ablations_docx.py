@@ -2,7 +2,9 @@
 """Create the Word report for the prompt ablations (three domains, all metrics, bootstrap CIs, pairwise verdicts)."""
 from __future__ import annotations
 
+from datetime import datetime, timezone
 from pathlib import Path
+import zipfile
 
 import pandas as pd
 from docx import Document
@@ -224,8 +226,23 @@ def main() -> None:
     add_table(document, ["Model", "Configuration", "Rows", "Status", "File SHA-256 (prefix)"], audit_rows)
 
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
+    fixed = datetime(2026, 1, 1, tzinfo=timezone.utc)
+    document.core_properties.created = document.core_properties.modified = fixed
     document.save(OUTPUT)
+    normalize_zip_timestamps(OUTPUT)
     print(f"Wrote {OUTPUT}")
+
+
+def normalize_zip_timestamps(path: Path) -> None:
+    """Rewrite the .docx container with fixed entry timestamps so unchanged content is byte-identical across rebuilds."""
+    temporary = path.with_suffix(".tmp")
+    with zipfile.ZipFile(path) as source, zipfile.ZipFile(temporary, "w", zipfile.ZIP_DEFLATED) as target:
+        for info in sorted(source.infolist(), key=lambda item: item.filename):
+            clone = zipfile.ZipInfo(info.filename, date_time=(2026, 1, 1, 0, 0, 0))
+            clone.compress_type = zipfile.ZIP_DEFLATED
+            clone.external_attr = info.external_attr
+            target.writestr(clone, source.read(info.filename))
+    temporary.replace(path)
 
 
 if __name__ == "__main__":

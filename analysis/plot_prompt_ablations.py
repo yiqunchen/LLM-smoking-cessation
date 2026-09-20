@@ -87,7 +87,9 @@ def style(ax) -> None:
 def save(fig, name: str, legend=None) -> None:
     extra = (legend,) if legend is not None else ()
     for extension in ("png", "pdf"):
-        fig.savefig(OUTDIR / f"{name}.{extension}", bbox_inches="tight", bbox_extra_artists=extra, dpi=400)
+        # No timestamps in the PDF metadata, so an unchanged figure is byte-identical across rebuilds.
+        fig.savefig(OUTDIR / f"{name}.{extension}", bbox_inches="tight", bbox_extra_artists=extra, dpi=400,
+                    metadata={"CreationDate": None, "ModDate": None} if extension == "pdf" else None)
     plt.close(fig)
 
 
