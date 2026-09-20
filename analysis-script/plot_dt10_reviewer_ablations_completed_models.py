@@ -47,7 +47,7 @@ MODELS = (
     ("Grok-4.3", "#CC78BC", "results_reviewer_ablations_x-ai_grok-4.3"),
     ("Gemini-2.5-Pro", "#CA9161", "results_reviewer_ablations_google_gemini-2.5-pro"),
 )
-FONT_CHAIN = ["Arial", "Helvetica", "Helvetica Neue", "Avenir", "DejaVu Sans"]
+FONT_CHAIN = ["Helvetica", "Arial", "DejaVu Sans"]
 
 mpl.rcParams.update({
     "font.family": "sans-serif", "font.sans-serif": FONT_CHAIN, "font.size": 12,

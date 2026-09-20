@@ -57,7 +57,7 @@ PANEL_YLABELS = {
     "directional_accuracy": "Directional accuracy",
     "directional_macro_f1": "Directional macro-F1",
 }
-FONT_CHAIN = ["Avenir", "Avenir Next", "Helvetica Neue", "Helvetica", "Arial", "DejaVu Sans"]
+FONT_CHAIN = ["Helvetica", "Arial", "DejaVu Sans"]
 
 mpl.rcParams.update({
     "font.family": "sans-serif", "font.sans-serif": FONT_CHAIN, "font.size": 13,
@@ -107,7 +107,7 @@ def metrics(rows: dict[str, dict], test: list[dict]) -> list[dict]:
 
 def style(ax):
     for label in ax.get_xticklabels() + ax.get_yticklabels():
-        label.set_fontfamily("Avenir")
+        label.set_fontfamily("Helvetica")
         label.set_fontweight("bold")
 
 
@@ -121,7 +121,7 @@ def plot_metric(summary: pd.DataFrame, metric: str, ylabel: str, name: str) -> N
     ax.set_xticks(xs, [label for _key, label in CONDITIONS])
     ax.set_ylabel(ylabel)
     ax.set_ylim(METRIC_SPECS[metric][1])
-    ax.legend(loc="best", prop={"family": "Avenir", "weight": "bold", "size": 10})
+    ax.legend(loc="best", prop={"family": "Helvetica", "weight": "bold", "size": 10})
     style(ax)
     for extension in ("png", "pdf"):
         fig.savefig(OUTDIR / f"{name}.{extension}", bbox_inches="tight", dpi=400)
@@ -145,7 +145,7 @@ def plot_by_domain(records: pd.DataFrame, metric: str, ylabel: str, name: str) -
     axes[1, 0].set_ylabel(PANEL_YLABELS[metric])
     handles, labels = axes[0, 0].get_legend_handles_labels()
     legend = fig.legend(handles, labels, loc="lower center", bbox_to_anchor=(.5, -.03), ncol=5,
-                        prop={"family": "Avenir", "weight": "bold", "size": 10}, frameon=False)
+                        prop={"family": "Helvetica", "weight": "bold", "size": 10}, frameon=False)
     for extension in ("png", "pdf"):
         fig.savefig(OUTDIR / f"{name}.{extension}",
                     bbox_inches="tight", bbox_extra_artists=(legend,), dpi=400)

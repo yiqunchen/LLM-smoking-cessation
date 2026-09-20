@@ -38,7 +38,7 @@ SPECS = (
     ("history_ratings_only", "History + ratings", REVIEWER_RESULTS / "history_ratings_only_dt10_k7.json", "#029E73"),
     ("history_text_only", "History text only", REVIEWER_RESULTS / "history_text_only_dt10_k7.json", "#7F7F7F"),
 )
-FONT_CHAIN = ["Avenir", "Avenir Next", "Helvetica Neue", "Helvetica", "Arial", "DejaVu Sans"]
+FONT_CHAIN = ["Helvetica", "Arial", "DejaVu Sans"]
 
 mpl.rcParams.update({
     "font.family": "sans-serif", "font.sans-serif": FONT_CHAIN, "font.size": 13,
@@ -134,7 +134,7 @@ def make_summary(rows_by_condition: dict[str, dict[str, dict]], test: list[dict]
 def style_ticks(ax):
     for label in ax.get_xticklabels() + ax.get_yticklabels():
         label.set_fontweight("bold")
-        label.set_fontfamily("Avenir")
+        label.set_fontfamily("Helvetica")
 
 
 def plot_overall(summary: pd.DataFrame) -> None:
