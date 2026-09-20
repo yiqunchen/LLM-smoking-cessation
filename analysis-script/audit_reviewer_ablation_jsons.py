@@ -17,10 +17,9 @@ ROOT = Path(__file__).resolve().parents[1]
 TEST_PATH = ROOT / "data_splits" / "canonical" / "test_dt10_k7.json"
 OUTDIR = ROOT / "revision" / "figures" / "reviewer_ablations_dt10"
 CONDITIONS = ("pp_cbtact", "full_pp_no_cbtact", "history_ratings_only", "history_text_only")
-RATING_DOMAINS = ("content", "design", "coping", "quitting")
+RATING_DOMAINS = ("content", "coping", "quitting")
 ALLOWED_LABELS = {
     "content": {"Very poor", "Poor", "Acceptable", "Good", "Very good"},
-    "design": {"Very poor", "Poor", "Acceptable", "Good", "Very good"},
     "coping": {"Not at all helpful", "Somewhat helpful", "Moderately helpful", "Very helpful", "Extremely helpful"},
     "quitting": {"Not at all helpful", "Somewhat helpful", "Moderately helpful", "Very helpful", "Extremely helpful"},
 }
