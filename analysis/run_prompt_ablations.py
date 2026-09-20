@@ -423,14 +423,19 @@ async def run_condition(client, test: list[dict], condition: str, args) -> None:
         print(f"[{condition}] complete: {len(results)}/{len(test)} rows", flush=True)
 
 
-async def preflight(client, item: dict, condition: str) -> None:
+async def preflight(client, item: dict, condition: str, show: bool = False, retries: int = 1) -> dict:
     """Fail before the batch if the selected OpenRouter model is unavailable."""
     qid, record, error = await call_one(
-        client, asyncio.Semaphore(1), "preflight", item, condition, retries=1
+        client, asyncio.Semaphore(1), "preflight", item, condition, retries=retries
     )
     if error or record is None:
         raise SystemExit(f"OpenRouter preflight failed for {MODEL}: {error}")
     print(f"OpenRouter preflight passed for {MODEL} ({condition}).", flush=True)
+    if show:
+        for domain in RATING_ORDER:
+            print(f"  {domain:9s} truth={record[f'ground_truth_{domain}']!r:22} predicted={record[f'predicted_{domain}']!r}", flush=True)
+        print(f"  explanation: {str(record.get('explanation', ''))[:160]}", flush=True)
+    return record
 
 
 async def main_async(args) -> None:
@@ -464,6 +469,11 @@ async def main_async(args) -> None:
     # row instead of keeping a semaphore slot indefinitely after a network
     # interruption.  Retry policy is managed explicitly in ``call_one``.
     client = AsyncOpenAI(api_key=key, base_url="https://openrouter.ai/api/v1", timeout=120.0, max_retries=0)
+    if args.preflight_only:
+        # One real API call per requested condition on canonical row 0; nothing is written.
+        for condition in args.conditions:
+            await preflight(client, test[0], condition, show=True, retries=3)
+        return
     await preflight(client, test[0], args.conditions[0])
     write_manifest(test, args.conditions, args)
     for condition in args.conditions:
@@ -490,6 +500,8 @@ def main() -> None:
     parser.add_argument("--checkpoint-interval", type=int, default=DEFAULT_CHECKPOINT_INTERVAL)
     parser.add_argument("--max-retries", type=int, default=5)
     parser.add_argument("--validate-only", action="store_true", help="validate split and prompt exclusions without API calls")
+    parser.add_argument("--preflight-only", action="store_true",
+                        help="send one real request per requested condition (canonical row 0), print the parsed prediction, write nothing")
     args = parser.parse_args()
     if args.max_concurrent < 1 or args.max_output_tokens < 0 or args.checkpoint_interval < 1 or args.max_retries < 1:
         parser.error("concurrency, checkpoint interval, and retries must be positive; output tokens may be 0")
