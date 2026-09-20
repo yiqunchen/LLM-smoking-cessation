@@ -116,16 +116,14 @@ def main() -> None:
     metrics_path = OUTDIR / "prompt_ablation_bootstrap_metrics_dt10.csv"
     deltas_path = OUTDIR / "prompt_ablation_bootstrap_deltas_vs_pp_cbtact_dt10.csv"
     pairwise_path = OUTDIR / "prompt_ablation_bootstrap_pairwise_dt10.csv"
-    summary_path = OUTDIR / "prompt_ablation_pairwise_summary_dt10.csv"
     prediction_path = OUTDIR / "prompt_ablation_prediction_summary_dt10.csv"
     audit_path = OUTDIR / "prompt_ablation_integrity_audit_dt10.csv"
-    for path in (metrics_path, deltas_path, pairwise_path, summary_path, prediction_path, audit_path):
+    for path in (metrics_path, deltas_path, pairwise_path, prediction_path, audit_path):
         if not path.exists():
             raise SystemExit(f"Missing source table: {path.name}; run audit, bootstrap, and plot scripts first")
     metrics = pd.read_csv(metrics_path)
     deltas = pd.read_csv(deltas_path)
     pairwise = pd.read_csv(pairwise_path)
-    summary = pd.read_csv(summary_path)
     prediction = pd.read_csv(prediction_path)
     audit = pd.read_csv(audit_path)
     completed = [model for model in MODEL_ORDER if model in set(metrics["model"])]
@@ -133,7 +131,7 @@ def main() -> None:
         frame["model"] = pd.Categorical(frame["model"], categories=completed, ordered=True)
         frame["domain"] = pd.Categorical(frame["domain"], categories=DOMAIN_ORDER, ordered=True)
         frame[condition_column] = pd.Categorical(frame[condition_column], categories=CONDITION_ORDER, ordered=True)
-    for frame in (summary, prediction):
+    for frame in (prediction,):
         frame["model"] = pd.Categorical(frame["model"], categories=completed, ordered=True)
         frame["domain"] = pd.Categorical(frame["domain"], categories=DOMAIN_ORDER, ordered=True)
 
@@ -187,20 +185,8 @@ def main() -> None:
               make_table_rows(directional_delta, ["domain", "model", "comparison"], DIRECTIONAL_METRICS, "difference"))
     document.add_paragraph("Positive differences favor the compared configuration.")
 
-    # ---- best configuration and comparability ----------------------------
-    document.add_heading("Table 5. Best configuration per model, domain, and metric, and which configurations are comparable to it", level=1)
-    document.add_paragraph(
-        "The configuration with the highest point estimate; configurations whose paired 95% interval against it includes zero (comparable); "
-        "and those whose interval excludes zero (significantly worse). Differences are best minus other."
-    )
-    summary_rows = []
-    for row in summary[summary["metric"].isin(STANDARD_METRICS + DIRECTIONAL_METRICS)].sort_values(["metric", "domain", "model"]).itertuples():
-        summary_rows.append([METRIC_LABEL[row.metric], str(row.domain), str(row.model), str(row.best_condition), f"{row.best_estimate:.3f}",
-                             str(row.comparable_to_best), str(row.significantly_worse_than_best)])
-    add_table(document, ["Metric", "Domain", "Model", "Best configuration", "Estimate", "Comparable to best (Δ, 95% CI)", "Significantly worse than best (Δ, 95% CI)"], summary_rows)
-
     # ---- all pairwise comparisons, one table per metric -------------------
-    table_number = 6
+    table_number = 5
     for metric in STANDARD_METRICS + DIRECTIONAL_METRICS:
         document.add_heading(f"Table {table_number}. All pairwise configuration differences: {METRIC_LABEL[metric]}", level=1)
         columns, rows = pairwise_table_rows(pairwise, metric, completed)
