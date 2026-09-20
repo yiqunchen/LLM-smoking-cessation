@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Create a Word-ready Reviewer 3 ablation-results document from cached tables."""
+"""Create a three-domain Word-ready Reviewer 3 ablation-results document."""
 from __future__ import annotations
 
 from pathlib import Path
@@ -23,13 +23,9 @@ CONDITION_ORDER = [
     "History + ratings only",
     "History text only",
 ]
-METRIC_ORDER = ["accuracy", "macro_f1", "qwk"]
-METRIC_LABELS = {"accuracy": "Exact accuracy", "macro_f1": "Macro-F1", "qwk": "QWK"}
-DIRECTIONAL_METRIC_ORDER = ["directional_accuracy", "directional_macro_f1"]
-DIRECTIONAL_METRIC_LABELS = {
-    "directional_accuracy": "Directional accuracy",
-    "directional_macro_f1": "Directional macro-F1",
-}
+DOMAIN_ORDER = ["Content", "Coping", "Quitting"]
+STANDARD_METRICS = ["accuracy", "macro_f1", "qwk"]
+DIRECTIONAL_METRICS = ["directional_accuracy", "directional_macro_f1"]
 
 
 def shade(cell, fill: str) -> None:
@@ -43,7 +39,7 @@ def set_cell_text(cell, text: str, bold: bool = False, color: str | None = None)
     cell.text = ""
     run = cell.paragraphs[0].add_run(text)
     run.bold = bold
-    run.font.size = Pt(8.5)
+    run.font.size = Pt(7.8)
     if color:
         run.font.color.rgb = RGBColor.from_string(color)
 
@@ -51,7 +47,6 @@ def set_cell_text(cell, text: str, bold: bool = False, color: str | None = None)
 def add_table(doc: Document, columns: list[str], rows: list[list[str]]) -> None:
     table = doc.add_table(rows=1, cols=len(columns))
     table.style = "Table Grid"
-    table.autofit = True
     for cell, title in zip(table.rows[0].cells, columns):
         set_cell_text(cell, title, bold=True, color="FFFFFF")
         shade(cell, "1F4E79")
@@ -62,8 +57,10 @@ def add_table(doc: Document, columns: list[str], rows: list[list[str]]) -> None:
     doc.add_paragraph()
 
 
-def format_ci(row: pd.Series, value: str) -> str:
-    return f"{row[value]:.3f} [{row['ci_low']:.3f}, {row['ci_high']:.3f}]"
+def format_ci(values: pd.Series, value: str) -> str:
+    if value == "difference":
+        return f"{values[value]:+.3f} [{values['ci_low']:+.3f}, {values['ci_high']:+.3f}]"
+    return f"{values[value]:.3f} [{values['ci_low']:.3f}, {values['ci_high']:.3f}]"
 
 
 def add_caption(doc: Document, text: str) -> None:
@@ -74,158 +71,81 @@ def add_caption(doc: Document, text: str) -> None:
     run.font.size = Pt(9)
 
 
+def make_table_rows(frame: pd.DataFrame, index: list[str], metrics: list[str], value: str) -> list[list[str]]:
+    pivot = frame.pivot(index=index, columns="metric", values=[value, "ci_low", "ci_high"])
+    pivot = pivot.reindex(columns=pd.MultiIndex.from_product([[value, "ci_low", "ci_high"], metrics]))
+    rows: list[list[str]] = []
+    for keys, values in pivot.iterrows():
+        cells = [str(key) for key in (keys if isinstance(keys, tuple) else (keys,))]
+        for metric in metrics:
+            row = pd.Series({
+                value: values[(value, metric)],
+                "ci_low": values[("ci_low", metric)],
+                "ci_high": values[("ci_high", metric)],
+            })
+            cells.append(format_ci(row, value))
+        rows.append(cells)
+    return rows
+
+
 def main() -> None:
     metrics_path = OUTDIR / "reviewer_ablation_bootstrap_metrics_dt10.csv"
     deltas_path = OUTDIR / "reviewer_ablation_bootstrap_deltas_vs_pp_cbtact_dt10.csv"
-    status_path = OUTDIR / "reviewer_ablation_bootstrap_status_dt10.csv"
-    for path in (metrics_path, deltas_path, status_path):
+    for path in (metrics_path, deltas_path):
         if not path.exists():
             raise SystemExit(f"Missing bootstrap source table: {path.name}")
     metrics = pd.read_csv(metrics_path)
     deltas = pd.read_csv(deltas_path)
-    status = pd.read_csv(status_path)
     completed = [model for model in MODEL_ORDER if model in set(metrics["model"])]
-    pending = status.loc[status["status"] == "pending", "model"].tolist()
+    for frame, condition_column in ((metrics, "condition"), (deltas, "comparison")):
+        frame["model"] = pd.Categorical(frame["model"], categories=completed, ordered=True)
+        frame["domain"] = pd.Categorical(frame["domain"], categories=DOMAIN_ORDER, ordered=True)
+        frame[condition_column] = pd.Categorical(frame[condition_column], categories=CONDITION_ORDER, ordered=True)
 
     document = Document()
     section = document.sections[0]
     section.orientation = WD_ORIENT.LANDSCAPE
     section.page_width, section.page_height = section.page_height, section.page_width
-    section.top_margin = Inches(0.55)
-    section.bottom_margin = Inches(0.55)
-    section.left_margin = Inches(0.55)
-    section.right_margin = Inches(0.55)
+    section.top_margin = Inches(.55)
+    section.bottom_margin = Inches(.55)
+    section.left_margin = Inches(.55)
+    section.right_margin = Inches(.55)
     normal = document.styles["Normal"]
-    normal.font.name = "Arial"
-    normal.font.size = Pt(9.5)
-    normal.paragraph_format.space_after = Pt(5)
+    normal.font.name = "Helvetica"
+    normal.font.size = Pt(9)
 
     title = document.add_heading("Reviewer 3: Prompt-Component Sensitivity Analysis", level=0)
     title.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    subtitle = document.add_paragraph()
-    subtitle.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    run = subtitle.add_run("Confidence-interval results on the canonical dt10-k7 held-out test set")
-    run.italic = True
-    run.font.size = Pt(10)
-
-    document.add_heading("Analysis summary", level=1)
-    model_text = ", ".join(completed)
     document.add_paragraph(
-        f"This analysis evaluates {len(completed)} completed model families ({model_text}) "
-        "on the same 898 held-out messages from 301 participants. Each model was evaluated under four configurations: "
-        "PP + history + CBT/ACT; PP + history without CBT/ACT; history + ratings only; and history text only."
+        "All results use the canonical dt10-k7 held-out test set (898 messages from 301 participants). "
+        "The evaluated outcomes are Content, Coping, and Quitting, each reported separately."
     )
     document.add_paragraph(
-        "Confidence intervals are 95% percentile intervals from 2,000 participant-clustered bootstrap replicates. "
-        "Each replicate resamples participants and retains all of their held-out messages, accounting for repeated messages within participants. "
-        "Quadratic-weighted kappa (QWK) uses the fixed ordinal 1–5 rating scale; directional metrics use low (1–2), neutral (3), and high (4–5)."
-    )
-    if pending:
-        pending_note = document.add_paragraph()
-        pending_note.add_run("DeepSeek-R1 status: ").bold = True
-        pending_note.add_run(
-            "its four condition runs are still incomplete and it is intentionally excluded from every result and interval in this document. "
-            "The cached pipeline will add only DeepSeek-R1 after it reaches all 898 rows per condition."
-        )
-
-    document.add_heading("Table 1. Overall performance across four rating dimensions", level=1)
-    overall = metrics[(metrics["domain"] == "Mean (4 domains)")].copy()
-    overall["model"] = pd.Categorical(overall["model"], categories=completed, ordered=True)
-    overall["condition"] = pd.Categorical(overall["condition"], categories=CONDITION_ORDER, ordered=True)
-    overall = overall.sort_values(["model", "condition"])
-    metric_pivot = overall.pivot(index=["model", "condition"], columns="metric", values=["estimate", "ci_low", "ci_high"])
-    metric_pivot = metric_pivot.reindex(columns=pd.MultiIndex.from_product([["estimate", "ci_low", "ci_high"], METRIC_ORDER]))
-    table_rows: list[list[str]] = []
-    for (model, condition), values in metric_pivot.iterrows():
-        cells = [str(model), str(condition)]
-        for metric in METRIC_ORDER:
-            cells.append(f"{values[('estimate', metric)]:.3f} [{values[('ci_low', metric)]:.3f}, {values[('ci_high', metric)]:.3f}]")
-        table_rows.append(cells)
-    add_table(document, ["Model", "Configuration", "Exact accuracy (95% CI)", "Macro-F1 (95% CI)", "QWK (95% CI)"], table_rows)
-
-    all_models_ready = len(completed) == len(MODEL_ORDER)
-    overall_figure = OUTDIR / ("reviewer_ablation_all_models_accuracy_dt10.png" if all_models_ready else "reviewer_ablation_completed_models_overall_dt10.png")
-    document.add_picture(str(overall_figure), width=Inches(9.6))
-    if all_models_ready:
-        add_caption(document, "Figure 1. Mean exact accuracy across the four rating dimensions for all five model families. Lines connect configurations evaluated on the same canonical test messages.")
-    else:
-        add_caption(document, "Figure 1. Mean exact accuracy, macro-F1, and QWK across the four rating dimensions. Lines connect configurations evaluated on the same canonical test messages.")
-
-    document.add_heading("Table 2. Directional performance across four rating dimensions", level=1)
-    directional_pivot = overall.pivot(index=["model", "condition"], columns="metric", values=["estimate", "ci_low", "ci_high"])
-    directional_pivot = directional_pivot.reindex(
-        columns=pd.MultiIndex.from_product([["estimate", "ci_low", "ci_high"], DIRECTIONAL_METRIC_ORDER])
-    )
-    directional_rows: list[list[str]] = []
-    for (model, condition), values in directional_pivot.iterrows():
-        cells = [str(model), str(condition)]
-        for metric in DIRECTIONAL_METRIC_ORDER:
-            cells.append(f"{values[('estimate', metric)]:.3f} [{values[('ci_low', metric)]:.3f}, {values[('ci_high', metric)]:.3f}]")
-        directional_rows.append(cells)
-    add_table(
-        document,
-        ["Model", "Configuration", "Directional accuracy (95% CI)", "Directional macro-F1 (95% CI)"],
-        directional_rows,
+        "Intervals are 95% percentile intervals from 2,000 participant-clustered bootstrap replicates. "
+        "Directional metrics use low (1–2), neutral (3), and high (4–5)."
     )
 
-    directional_figure = OUTDIR / "reviewer_ablation_all_models_directional_accuracy_dt10.png"
-    document.add_picture(str(directional_figure), width=Inches(9.6))
-    add_caption(document, "Figure 2. Mean directional accuracy across the four rating dimensions. Direction is low (ratings 1–2), neutral (3), or high (4–5).")
+    document.add_heading("Table 1. Domain-specific exact and ordinal performance", level=1)
+    standard = metrics[metrics["metric"].isin(STANDARD_METRICS)].sort_values(["domain", "model", "condition"])
+    add_table(document, ["Domain", "Model", "Configuration", "Exact accuracy (95% CI)", "Macro-F1 (95% CI)", "QWK (95% CI)"],
+              make_table_rows(standard, ["domain", "model", "condition"], STANDARD_METRICS, "estimate"))
 
-    document.add_heading("Table 3. Paired changes from PP + history + CBT/ACT", level=1)
-    paired = deltas[deltas["domain"] == "Mean (4 domains)"].copy()
-    paired["model"] = pd.Categorical(paired["model"], categories=completed, ordered=True)
-    paired["comparison"] = pd.Categorical(paired["comparison"], categories=CONDITION_ORDER[1:], ordered=True)
-    paired = paired.sort_values(["model", "comparison", "metric"])
-    paired_pivot = paired.pivot(index=["model", "comparison"], columns="metric", values=["difference", "ci_low", "ci_high"])
-    paired_pivot = paired_pivot.reindex(columns=pd.MultiIndex.from_product([["difference", "ci_low", "ci_high"], METRIC_ORDER]))
-    paired_rows: list[list[str]] = []
-    for (model, comparison), values in paired_pivot.iterrows():
-        cells = [str(model), str(comparison)]
-        for metric in METRIC_ORDER:
-            cells.append(f"{values[('difference', metric)]:+.3f} [{values[('ci_low', metric)]:+.3f}, {values[('ci_high', metric)]:+.3f}]")
-        paired_rows.append(cells)
-    add_table(document, ["Model", "Compared configuration", "Δ accuracy (95% CI)", "Δ macro-F1 (95% CI)", "Δ QWK (95% CI)"], paired_rows)
-    document.add_paragraph(
-        "Positive differences favor the comparison configuration. Every interval is paired: the two configurations use the same participant-bootstrap replicate."
-    )
+    document.add_picture(str(OUTDIR / "reviewer_ablation_all_models_accuracy_by_domain_dt10.png"), width=Inches(9.8))
+    add_caption(document, "Figure 1. Exact accuracy by tested rating domain. Lines connect configurations evaluated on the same canonical test messages.")
 
-    document.add_heading("Table 4. Paired directional changes from PP + history + CBT/ACT", level=1)
-    paired_directional_pivot = paired.pivot(index=["model", "comparison"], columns="metric", values=["difference", "ci_low", "ci_high"])
-    paired_directional_pivot = paired_directional_pivot.reindex(
-        columns=pd.MultiIndex.from_product([["difference", "ci_low", "ci_high"], DIRECTIONAL_METRIC_ORDER])
-    )
-    paired_directional_rows: list[list[str]] = []
-    for (model, comparison), values in paired_directional_pivot.iterrows():
-        cells = [str(model), str(comparison)]
-        for metric in DIRECTIONAL_METRIC_ORDER:
-            cells.append(
-                f"{values[('difference', metric)]:+.3f} "
-                f"[{values[('ci_low', metric)]:+.3f}, {values[('ci_high', metric)]:+.3f}]"
-            )
-        paired_directional_rows.append(cells)
-    add_table(
-        document,
-        ["Model", "Compared configuration", "Δ directional accuracy (95% CI)", "Δ directional macro-F1 (95% CI)"],
-        paired_directional_rows,
-    )
+    document.add_heading("Table 2. Domain-specific directional performance", level=1)
+    directional = metrics[metrics["metric"].isin(DIRECTIONAL_METRICS)].sort_values(["domain", "model", "condition"])
+    add_table(document, ["Domain", "Model", "Configuration", "Directional accuracy (95% CI)", "Directional macro-F1 (95% CI)"],
+              make_table_rows(directional, ["domain", "model", "condition"], DIRECTIONAL_METRICS, "estimate"))
 
-    domain_figure = OUTDIR / ("reviewer_ablation_all_models_accuracy_by_domain_dt10.png" if all_models_ready else "reviewer_ablation_completed_models_accuracy_by_domain_dt10.png")
-    document.add_picture(str(domain_figure), width=Inches(8.8))
-    add_caption(document, "Figure 3. Exact accuracy by rating dimension. The content, design, coping, and quitting panels use the same configuration order and model colors as Table 1.")
+    document.add_picture(str(OUTDIR / "reviewer_ablation_all_models_directional_accuracy_by_domain_dt10.png"), width=Inches(9.8))
+    add_caption(document, "Figure 2. Directional accuracy by tested rating domain. Direction is low (1–2), neutral (3), or high (4–5).")
 
-    directional_domain_figure = OUTDIR / "reviewer_ablation_all_models_directional_accuracy_by_domain_dt10.png"
-    document.add_picture(str(directional_domain_figure), width=Inches(8.8))
-    add_caption(document, "Figure 4. Directional accuracy by rating dimension. Direction is defined consistently as low (1–2), neutral (3), or high (4–5).")
-
-    document.add_heading("Supplementary distribution checks", level=1)
-    document.add_paragraph(
-        "Separate observed-versus-predicted 1–5 score-frequency histograms were generated for Content, Design, Coping, and Quitting. "
-        "They are retained as companion figures because pooling domains would mix different rating-wording scales. Each displayed distribution sums to 898 canonical test messages."
-    )
-    document.add_paragraph(
-        "Source-data tables contain the complete domain-level exact and directional metrics, paired differences, and histogram counts."
-    )
+    document.add_heading("Table 3. Paired domain-specific changes from PP + history + CBT/ACT", level=1)
+    standard_delta = deltas[deltas["metric"].isin(STANDARD_METRICS)].sort_values(["domain", "model", "comparison"])
+    add_table(document, ["Domain", "Model", "Compared configuration", "Δ accuracy (95% CI)", "Δ macro-F1 (95% CI)", "Δ QWK (95% CI)"],
+              make_table_rows(standard_delta, ["domain", "model", "comparison"], STANDARD_METRICS, "difference"))
+    document.add_paragraph("Positive differences favor the comparison configuration. Every interval is paired within the same participant-bootstrap replicate.")
 
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
     document.save(OUTPUT)

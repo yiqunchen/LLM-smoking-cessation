@@ -24,11 +24,10 @@ ROOT = Path(__file__).resolve().parents[1]
 TEST_PATH = ROOT / "data_splits" / "canonical" / "test_dt10_k7.json"
 OUTDIR = ROOT / "revision" / "figures" / "reviewer_ablations_dt10"
 CACHE_DIR = OUTDIR / "bootstrap_cache_dt10"
-SCHEMA_VERSION = 2
-DOMAINS = ("content", "design", "coping", "quitting")
+SCHEMA_VERSION = 3
+DOMAINS = ("content", "coping", "quitting")
 RATING_SCALES = {
     "content": {"Very poor": 1, "Poor": 2, "Acceptable": 3, "Good": 4, "Very good": 5},
-    "design": {"Very poor": 1, "Poor": 2, "Acceptable": 3, "Good": 4, "Very good": 5},
     "coping": {
         "Not at all helpful": 1, "Not Helpful": 1, "Somewhat helpful": 2,
         "Moderately helpful": 3, "Very helpful": 4, "Extremely helpful": 5,
@@ -150,16 +149,12 @@ def ordinal_metrics(y_true: np.ndarray, y_pred: np.ndarray, weights: np.ndarray 
 
 def weighted_metrics(truth: dict[str, np.ndarray], prediction: dict[str, np.ndarray],
                      weights: np.ndarray | None) -> dict[str, dict[str, float]]:
-    """Compute fixed-scale ordinal metrics by domain plus an equally weighted mean."""
+    """Compute fixed-scale ordinal metrics separately for each tested domain."""
     result: dict[str, dict[str, float]] = {}
     for domain in DOMAINS:
         y_true = truth[domain]
         y_pred = prediction[domain]
         result[domain.capitalize()] = ordinal_metrics(y_true, y_pred, weights)
-    result["Mean (4 domains)"] = {
-        metric: float(np.mean([result[domain.capitalize()][metric] for domain in DOMAINS]))
-        for metric in METRICS
-    }
     return result
 
 
@@ -186,7 +181,7 @@ def bootstrap_one_model(model: str, color: str, rows_by_condition: dict[str, dic
     }
     rng = np.random.default_rng(seed)
     draws = rng.integers(0, len(clusters), size=(n_bootstrap, len(clusters)), endpoint=False)
-    scopes = tuple(domain.capitalize() for domain in DOMAINS) + ("Mean (4 domains)",)
+    scopes = tuple(domain.capitalize() for domain in DOMAINS)
     point = {condition: weighted_metrics(truth, pred, None) for condition, pred in predictions.items()}
     samples = {
         condition: {scope: {metric: np.empty(n_bootstrap, dtype=float) for metric in METRICS} for scope in scopes}
@@ -262,37 +257,37 @@ def markdown_table(frame: pd.DataFrame) -> str:
 
 
 def write_markdown_tables(metrics: pd.DataFrame, deltas: pd.DataFrame) -> None:
-    overall = metrics[(metrics["domain"] == "Mean (4 domains)")].copy()
-    overall["CI"] = overall.apply(formatted_ci, axis=1)
-    pivot = overall.pivot(index=["model", "condition"], columns="metric", values="CI").reset_index()
+    by_domain = metrics.copy()
+    by_domain["CI"] = by_domain.apply(formatted_ci, axis=1)
+    pivot = by_domain.pivot(index=["domain", "model", "condition"], columns="metric", values="CI").reset_index()
     standard_metrics = ["accuracy", "macro_f1", "qwk"]
     directional_metrics = ["directional_accuracy", "directional_macro_f1"]
-    pivot_standard = pivot[["model", "condition", *standard_metrics]].copy()
-    pivot_directional = pivot[["model", "condition", *directional_metrics]].copy()
-    pivot_standard = pivot_standard.rename(columns={"model": "Model", "condition": "Configuration", "accuracy": "Accuracy (95% CI)",
+    pivot_standard = pivot[["domain", "model", "condition", *standard_metrics]].copy()
+    pivot_directional = pivot[["domain", "model", "condition", *directional_metrics]].copy()
+    pivot_standard = pivot_standard.rename(columns={"domain": "Domain", "model": "Model", "condition": "Configuration", "accuracy": "Accuracy (95% CI)",
                                   "macro_f1": "Macro-F1 (95% CI)", "qwk": "QWK (95% CI)"})
-    pivot_directional = pivot_directional.rename(columns={"model": "Model", "condition": "Configuration",
+    pivot_directional = pivot_directional.rename(columns={"domain": "Domain", "model": "Model", "condition": "Configuration",
         "directional_accuracy": "Directional accuracy (95% CI)",
         "directional_macro_f1": "Directional macro-F1 (95% CI)"})
     lines = [
-        "# Reviewer 3 prompt ablations: clustered-bootstrap confidence intervals",
+        "# Reviewer 3 prompt ablations: domain-specific clustered-bootstrap confidence intervals",
         "",
-        "Participant-clustered percentile bootstrap (2,000 replicates by default); each model/configuration uses the shared canonical dt10-k7 test set (898 messages from 301 participants).",
+        "Participant-clustered percentile bootstrap (2,000 replicates by default); each model/configuration uses the shared canonical dt10-k7 test set (898 messages from 301 participants). Metrics are reported separately for Content, Coping, and Quitting; no cross-domain mean is calculated.",
         "",
         markdown_table(pivot_standard),
         "",
     ]
-    (OUTDIR / "reviewer_ablation_bootstrap_overall_table_dt10.md").write_text("\n".join(lines), encoding="utf-8")
+    (OUTDIR / "reviewer_ablation_bootstrap_by_domain_table_dt10.md").write_text("\n".join(lines), encoding="utf-8")
     directional_lines = [
-        "# Reviewer 3 prompt ablations: directional performance",
+        "# Reviewer 3 prompt ablations: domain-specific directional performance",
         "",
         "Directional ratings use the established three-bin definition: low (1–2), neutral (3), and high (4–5). Intervals use the same participant-clustered percentile bootstrap.",
         "",
         markdown_table(pivot_directional),
         "",
     ]
-    (OUTDIR / "reviewer_ablation_bootstrap_directional_overall_table_dt10.md").write_text("\n".join(directional_lines), encoding="utf-8")
-    delta = deltas[(deltas["domain"] == "Mean (4 domains)")].copy()
+    (OUTDIR / "reviewer_ablation_bootstrap_directional_by_domain_table_dt10.md").write_text("\n".join(directional_lines), encoding="utf-8")
+    delta = deltas.copy()
     delta["CI"] = delta.apply(lambda row: formatted_ci(row, "difference"), axis=1)
     delta = delta[["model", "comparison", "metric", "CI"]].rename(
         columns={"model": "Model", "comparison": "Compared with PP + history + CBT/ACT", "metric": "Metric", "CI": "Difference (95% CI)"}
@@ -305,7 +300,7 @@ def write_markdown_tables(metrics: pd.DataFrame, deltas: pd.DataFrame) -> None:
         markdown_table(delta),
         "",
     ]
-    (OUTDIR / "reviewer_ablation_bootstrap_deltas_vs_pp_cbtact_dt10.md").write_text("\n".join(delta_lines), encoding="utf-8")
+    (OUTDIR / "reviewer_ablation_bootstrap_deltas_by_domain_vs_pp_cbtact_dt10.md").write_text("\n".join(delta_lines), encoding="utf-8")
     directional_delta = delta[delta["Metric"].isin(directional_metrics)]
     directional_delta_lines = [
         "# Paired directional-performance differences from PP + history + CBT/ACT",
@@ -315,7 +310,7 @@ def write_markdown_tables(metrics: pd.DataFrame, deltas: pd.DataFrame) -> None:
         markdown_table(directional_delta),
         "",
     ]
-    (OUTDIR / "reviewer_ablation_bootstrap_directional_deltas_vs_pp_cbtact_dt10.md").write_text("\n".join(directional_delta_lines), encoding="utf-8")
+    (OUTDIR / "reviewer_ablation_bootstrap_directional_deltas_by_domain_vs_pp_cbtact_dt10.md").write_text("\n".join(directional_delta_lines), encoding="utf-8")
 
 
 def main() -> None:

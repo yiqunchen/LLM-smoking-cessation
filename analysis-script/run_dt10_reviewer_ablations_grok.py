@@ -45,10 +45,9 @@ OUTPUT_DIR = ROOT / "results_reviewer_ablations_x-ai_grok-4.3"
 MODEL = "x-ai/grok-4.3"
 FEEDBACK_PATH = ROOT / "archive" / "data" / "Message testing data with participant characteristics_02.27.csv"
 CONDITIONS = ("pp_cbtact", "full_pp_no_cbtact", "history_ratings_only", "history_text_only")
-RATING_ORDER = ("content", "design", "coping", "quitting")
+RATING_ORDER = ("content", "coping", "quitting")
 ALLOWED_LABELS = {
     "content": {"Very poor", "Poor", "Acceptable", "Good", "Very good"},
-    "design": {"Very poor", "Poor", "Acceptable", "Good", "Very good"},
     "coping": {"Not at all helpful", "Somewhat helpful", "Moderately helpful", "Very helpful", "Extremely helpful"},
     "quitting": {"Not at all helpful", "Somewhat helpful", "Moderately helpful", "Very helpful", "Extremely helpful"},
 }
@@ -160,12 +159,11 @@ def build_prompt(item: dict, condition: str) -> str:
 
 Rating dimensions:
 1. content — words and meaning
-2. design — how the message looks
-3. coping — helpfulness for coping with an urge or craving
-4. quitting — helpfulness for quitting or reducing smoking
+2. coping — helpfulness for coping with an urge or craving
+3. quitting — helpfulness for quitting or reducing smoking
 
 Allowed categories:
-- content/design: Very poor, Poor, Acceptable, Good, Very good
+- content: Very poor, Poor, Acceptable, Good, Very good
 - coping/quitting: Not at all helpful, Somewhat helpful, Moderately helpful, Very helpful, Extremely helpful
 
 New message to rate:
@@ -177,7 +175,6 @@ Return exactly one JSON object with this schema and no Markdown:
 {{
   "response_id": "{item.get('response_id', '')}",
   "predicted_content": "one allowed content category",
-  "predicted_design": "one allowed design category",
   "predicted_coping": "one allowed coping category",
   "predicted_quitting": "one allowed quitting category",
   "explanation": "brief rationale"
@@ -251,11 +248,9 @@ def make_record(item: dict, parsed: dict, condition: str) -> dict:
         "input_message": item.get("input_message", ""),
         "metadata": item.get("metadata", {}),
         "ground_truth_content": ratings.get("content", ""),
-        "ground_truth_design": ratings.get("design", ""),
         "ground_truth_coping": ratings.get("coping", ""),
         "ground_truth_quitting": ratings.get("quitting", ""),
         "predicted_content": parsed.get("predicted_content", ""),
-        "predicted_design": parsed.get("predicted_design", ""),
         "predicted_coping": parsed.get("predicted_coping", ""),
         "predicted_quitting": parsed.get("predicted_quitting", ""),
         "explanation": parsed.get("explanation", ""),
@@ -303,10 +298,13 @@ async def call_one(client, semaphore, qid: str, item: dict, condition: str,
                 # only the incompatible transport-level schema flag.
                 if "gemini" not in MODEL.lower():
                     request["response_format"] = {"type": "json_object"}
-                if REASONING_EFFORT and any(token in MODEL.lower() for token in ("gpt-5", "deepseek-r1")):
+                if REASONING_EFFORT and any(token in MODEL.lower() for token in ("gpt-5", "deepseek-r1", "gemini")):
                     # This repository's OpenAI SDK predates a typed
                     # ``reasoning`` parameter; OpenRouter receives it via
-                    # the supported pass-through request body.
+                    # the supported pass-through request body.  Gemini 2.5
+                    # Pro always thinks; without a bounded effort its hidden
+                    # reasoning consumes ``max_tokens`` and the final JSON
+                    # content comes back empty.
                     request["extra_body"] = {"reasoning": {"effort": REASONING_EFFORT}}
                 # Mirrors the original evaluator: GPT-5 rejects the standard
                 # temperature parameter, while the other model families use a
@@ -426,6 +424,8 @@ async def main_async(args) -> None:
     if args.validate_only:
         for condition in args.conditions:
             prompt = build_prompt(test[0], condition)
+            if '"predicted_design"' in prompt or "design — how the message looks" in prompt:
+                raise SystemExit("Prompt unexpectedly requests a Design rating")
             if condition == "history_text_only" and "Ratings:" in prompt:
                 raise SystemExit("history_text_only prompt unexpectedly includes ratings")
             if condition not in {"full_pp_no_cbtact", "pp_cbtact"} and "Participant characteristics:" in prompt:
@@ -456,7 +456,7 @@ def main() -> None:
         "--output-dir", default=str(OUTPUT_DIR.relative_to(ROOT)),
         help="result directory relative to the repository root",
     )
-    parser.add_argument("--reasoning-effort", choices=("low", "medium", "high"), help="explicit effort for GPT-5 and DeepSeek-R1")
+    parser.add_argument("--reasoning-effort", choices=("low", "medium", "high"), help="explicit effort for GPT-5, DeepSeek-R1, and Gemini 2.5 Pro")
     parser.add_argument("--conditions", nargs="+", choices=CONDITIONS, default=list(CONDITIONS))
     parser.add_argument("--max-concurrent", type=int, default=DEFAULT_CONCURRENCY)
     parser.add_argument(

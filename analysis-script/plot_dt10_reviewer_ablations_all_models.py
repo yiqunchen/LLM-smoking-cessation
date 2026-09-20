@@ -20,10 +20,9 @@ from sklearn.metrics import cohen_kappa_score, f1_score
 ROOT = Path(__file__).resolve().parents[1]
 TEST_PATH = ROOT / "data_splits" / "canonical" / "test_dt10_k7.json"
 OUTDIR = ROOT / "revision" / "figures" / "reviewer_ablations_dt10"
-DOMAINS = ("content", "design", "coping", "quitting")
+DOMAINS = ("content", "coping", "quitting")
 RATING_SCALES = {
     "content": {"Very poor": 1, "Poor": 2, "Acceptable": 3, "Good": 4, "Very good": 5},
-    "design": {"Very poor": 1, "Poor": 2, "Acceptable": 3, "Good": 4, "Very good": 5},
     "coping": {"Not at all helpful": 1, "Not Helpful": 1, "Somewhat helpful": 2,
                "Moderately helpful": 3, "Very helpful": 4, "Extremely helpful": 5},
     "quitting": {"Not at all helpful": 1, "Not Helpful": 1, "Somewhat helpful": 2,
@@ -44,11 +43,11 @@ MODELS = (
 )
 DIRECTIONAL_BUCKET_MAP = {1: 0, 2: 0, 3: 1, 4: 2, 5: 2}
 METRIC_SPECS = {
-    "accuracy": ("Mean exact accuracy across four ratings", (0, .75)),
-    "macro_f1": ("Mean macro-F1 across four ratings", (0, .75)),
-    "qwk": ("Mean QWK across four rating dimensions", (-.05, .65)),
-    "directional_accuracy": ("Mean directional accuracy across four ratings", (0, 1.0)),
-    "directional_macro_f1": ("Mean directional macro-F1 across four ratings", (0, 1.0)),
+    "accuracy": ("Exact accuracy", (0, .75)),
+    "macro_f1": ("Macro-F1", (0, .75)),
+    "qwk": ("QWK", (-.05, .65)),
+    "directional_accuracy": ("Directional accuracy", (0, 1.0)),
+    "directional_macro_f1": ("Directional macro-F1", (0, 1.0)),
 }
 PANEL_YLABELS = {
     "accuracy": "Exact accuracy",
@@ -111,27 +110,10 @@ def style(ax):
         label.set_fontweight("bold")
 
 
-def plot_metric(summary: pd.DataFrame, metric: str, ylabel: str, name: str) -> None:
-    fig, ax = plt.subplots(figsize=(10.5, 5.5), constrained_layout=True)
-    xs = np.arange(len(CONDITIONS))
-    for model, color, _directory in MODELS:
-        subset = summary[summary.model == model].set_index("condition_key")
-        values = [subset.loc[key, metric] for key, _label in CONDITIONS]
-        ax.plot(xs, values, marker="o", color=color, label=model, linewidth=2.4, markersize=7)
-    ax.set_xticks(xs, [label for _key, label in CONDITIONS])
-    ax.set_ylabel(ylabel)
-    ax.set_ylim(METRIC_SPECS[metric][1])
-    ax.legend(loc="best", prop={"family": "Helvetica", "weight": "bold", "size": 10})
-    style(ax)
-    for extension in ("png", "pdf"):
-        fig.savefig(OUTDIR / f"{name}.{extension}", bbox_inches="tight", dpi=400)
-    plt.close(fig)
-
-
 def plot_by_domain(records: pd.DataFrame, metric: str, ylabel: str, name: str) -> None:
-    fig, axes = plt.subplots(2, 2, figsize=(14, 10), sharex=True, constrained_layout=True)
+    fig, axes = plt.subplots(1, 3, figsize=(15, 5.5), sharex=True, constrained_layout=True)
     xs = np.arange(len(CONDITIONS))
-    for axis, domain in zip(axes.flat, ("Content", "Design", "Coping", "Quitting")):
+    for axis, domain in zip(axes.flat, ("Content", "Coping", "Quitting")):
         domain_df = records[records.domain == domain]
         for model, color, _directory in MODELS:
             subset = domain_df[domain_df.model == model].set_index("condition_key")
@@ -141,9 +123,8 @@ def plot_by_domain(records: pd.DataFrame, metric: str, ylabel: str, name: str) -
         axis.set_ylim(METRIC_SPECS[metric][1])
         axis.set_xticks(xs, [label for _key, label in CONDITIONS])
         style(axis)
-    axes[0, 0].set_ylabel(PANEL_YLABELS[metric])
-    axes[1, 0].set_ylabel(PANEL_YLABELS[metric])
-    handles, labels = axes[0, 0].get_legend_handles_labels()
+    axes[0].set_ylabel(PANEL_YLABELS[metric])
+    handles, labels = axes[0].get_legend_handles_labels()
     legend = fig.legend(handles, labels, loc="lower center", bbox_to_anchor=(.5, -.03), ncol=5,
                         prop={"family": "Helvetica", "weight": "bold", "size": 10}, frameon=False)
     for extension in ("png", "pdf"):
@@ -169,10 +150,7 @@ def main() -> None:
     OUTDIR.mkdir(parents=True, exist_ok=True)
     results.to_csv(OUTDIR / "reviewer_ablation_all_models_metrics_dt10.csv", index=False)
     metric_columns = list(METRIC_SPECS)
-    summary = results.groupby(["model", "model_color", "condition_key", "condition"], as_index=False)[metric_columns].mean()
-    summary.to_csv(OUTDIR / "reviewer_ablation_all_models_summary_dt10.csv", index=False)
     for metric, (ylabel, _ylim) in METRIC_SPECS.items():
-        plot_metric(summary, metric, ylabel, f"reviewer_ablation_all_models_{metric}_dt10")
         plot_by_domain(results, metric, ylabel, f"reviewer_ablation_all_models_{metric}_by_domain_dt10")
     print(f"Wrote validated five-model reviewer figures to {OUTDIR}")
 
