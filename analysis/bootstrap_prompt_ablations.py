@@ -12,9 +12,9 @@ Outputs (figures/prompt_ablations/):
   prompt_ablation_bootstrap_metrics_dt10.csv          estimate + 95% CI per model x condition x domain x metric
   prompt_ablation_bootstrap_deltas_vs_pp_cbtact_dt10.csv  paired differences from the full PP prompt
   prompt_ablation_bootstrap_pairwise_dt10.csv         paired differences for all six condition pairs
-  prompt_ablation_pairwise_summary_dt10.{csv,md}      per model/domain/metric: best condition, which
+  prompt_ablation_pairwise_summary_dt10.csv           per model/domain/metric: best condition, which
                                                       conditions are comparable to it, significant pairs
-  *_table_dt10.md                                     Markdown renderings of the above
+All tables are rendered in the Word report by report_prompt_ablations_docx.py.
 """
 from __future__ import annotations
 
@@ -260,20 +260,6 @@ def cache_is_valid(cache: dict, model: str, input_hashes: dict[str, str], n_boot
     )
 
 
-def formatted_ci(row: pd.Series, value: str = "estimate") -> str:
-    return f"{row[value]:.3f} [{row['ci_low']:.3f}, {row['ci_high']:.3f}]"
-
-
-def markdown_table(frame: pd.DataFrame) -> str:
-    """Render a compact Markdown table without an optional third-party package."""
-    columns = [str(column) for column in frame.columns]
-    lines = ["| " + " | ".join(columns) + " |", "| " + " | ".join(["---"] * len(columns)) + " |"]
-    for row in frame.itertuples(index=False, name=None):
-        cells = [str(value).replace("|", "\\|").replace("\n", " ") for value in row]
-        lines.append("| " + " | ".join(cells) + " |")
-    return "\n".join(lines)
-
-
 def pairwise_summary(metrics: pd.DataFrame, pairwise: pd.DataFrame) -> pd.DataFrame:
     """One row per model x domain x metric: best condition and how the others compare to it.
 
@@ -314,98 +300,6 @@ def pairwise_summary(metrics: pd.DataFrame, pairwise: pd.DataFrame) -> pd.DataFr
             "significant_pairs": sig_text if sig_text else "none",
         })
     return pd.DataFrame(rows)
-
-
-def write_markdown_tables(metrics: pd.DataFrame, deltas: pd.DataFrame, pairwise: pd.DataFrame, summary: pd.DataFrame) -> None:
-    by_domain = metrics.copy()
-    by_domain["CI"] = by_domain.apply(formatted_ci, axis=1)
-    pivot = by_domain.pivot(index=["domain", "model", "condition"], columns="metric", values="CI").reset_index()
-    standard_metrics = ["accuracy", "macro_f1", "qwk"]
-    directional_metrics = ["directional_accuracy", "directional_macro_f1"]
-    pivot_standard = pivot[["domain", "model", "condition", *standard_metrics]].copy()
-    pivot_directional = pivot[["domain", "model", "condition", *directional_metrics]].copy()
-    pivot_standard = pivot_standard.rename(columns={"domain": "Domain", "model": "Model", "condition": "Configuration", "accuracy": "Accuracy (95% CI)",
-                                  "macro_f1": "Macro-F1 (95% CI)", "qwk": "QWK (95% CI)"})
-    pivot_directional = pivot_directional.rename(columns={"domain": "Domain", "model": "Model", "condition": "Configuration",
-        "directional_accuracy": "Directional accuracy (95% CI)",
-        "directional_macro_f1": "Directional macro-F1 (95% CI)"})
-    lines = [
-        "# Prompt ablations: domain-specific clustered-bootstrap confidence intervals",
-        "",
-        "Participant-clustered percentile bootstrap (2,000 replicates by default); each model/configuration uses the shared canonical dt10-k7 test set (898 messages from 301 participants). Metrics are reported separately for Content, Coping, and Quitting; no cross-domain mean is calculated.",
-        "",
-        markdown_table(pivot_standard),
-        "",
-    ]
-    (OUTDIR / "prompt_ablation_bootstrap_by_domain_table_dt10.md").write_text("\n".join(lines), encoding="utf-8")
-    directional_lines = [
-        "# Prompt ablations: domain-specific directional performance",
-        "",
-        "Directional ratings use the established three-bin definition: low (1–2), neutral (3), and high (4–5). Intervals use the same participant-clustered percentile bootstrap.",
-        "",
-        markdown_table(pivot_directional),
-        "",
-    ]
-    (OUTDIR / "prompt_ablation_bootstrap_directional_by_domain_table_dt10.md").write_text("\n".join(directional_lines), encoding="utf-8")
-    delta = deltas.copy()
-    delta["CI"] = delta.apply(lambda row: formatted_ci(row, "difference"), axis=1)
-    delta = delta[["model", "domain", "comparison", "metric", "CI"]].rename(
-        columns={"model": "Model", "domain": "Domain", "comparison": "Compared with PP + history + CBT/ACT", "metric": "Metric", "CI": "Difference (95% CI)"}
-    )
-    delta_lines = [
-        "# Paired configuration differences from PP + history + CBT/ACT",
-        "",
-        "Positive differences favor the comparison configuration. Each interval uses the same participant-bootstrap replicate for both configurations.",
-        "",
-        markdown_table(delta),
-        "",
-    ]
-    (OUTDIR / "prompt_ablation_bootstrap_deltas_by_domain_vs_pp_cbtact_dt10.md").write_text("\n".join(delta_lines), encoding="utf-8")
-    directional_delta = delta[delta["Metric"].isin(directional_metrics)]
-    directional_delta_lines = [
-        "# Paired directional-performance differences from PP + history + CBT/ACT",
-        "",
-        "Positive differences favor the comparison configuration. Directional ratings use low (1–2), neutral (3), and high (4–5).",
-        "",
-        markdown_table(directional_delta),
-        "",
-    ]
-    (OUTDIR / "prompt_ablation_bootstrap_directional_deltas_by_domain_vs_pp_cbtact_dt10.md").write_text("\n".join(directional_delta_lines), encoding="utf-8")
-    pair = pairwise.copy()
-    pair["CI"] = pair.apply(lambda row: formatted_ci(row, "difference"), axis=1)
-    pair = pair[["model", "domain", "metric", "reference", "comparison", "CI", "verdict"]].rename(
-        columns={"model": "Model", "domain": "Domain", "metric": "Metric", "reference": "Reference",
-                 "comparison": "Comparison", "CI": "Comparison - reference (95% CI)", "verdict": "Verdict"})
-    pair_lines = [
-        "# Paired differences for all condition pairs",
-        "",
-        "Each row contrasts two prompt conditions on the same participant-bootstrap replicates. "
-        "Verdict: 'comparison better' if the 95% CI lies above zero, 'reference better' if below zero, otherwise 'comparable'. "
-        "No multiplicity correction is applied.",
-        "",
-        markdown_table(pair),
-        "",
-    ]
-    (OUTDIR / "prompt_ablation_bootstrap_pairwise_table_dt10.md").write_text("\n".join(pair_lines), encoding="utf-8")
-    summ = summary[["model", "domain", "metric", "best_condition", "best_estimate", "comparable_to_best",
-                    "significantly_worse_than_best", "significant_pairs"]].copy()
-    summ["best_estimate"] = summ["best_estimate"].map(lambda v: f"{v:.3f}")
-    summ = summ.rename(columns={"model": "Model", "domain": "Domain", "metric": "Metric", "best_condition": "Best condition",
-                                "best_estimate": "Best estimate", "comparable_to_best": "Comparable to best (best - other, 95% CI)",
-                                "significantly_worse_than_best": "Significantly worse than best (best - other, 95% CI)",
-                                "significant_pairs": "All significant pairs"})
-    summary_lines = [
-        "# Which prompt conditions are significantly better, and which are comparable",
-        "",
-        "For every model, domain, and metric: the condition with the highest point estimate, the conditions whose paired "
-        "95% CI against it includes zero (comparable), and those whose CI excludes zero (significantly worse). "
-        "'All significant pairs' lists every pair whose paired CI excludes zero, oriented as better > worse. "
-        "Participant-clustered percentile bootstrap; no multiplicity correction.",
-        "",
-        markdown_table(summ),
-        "",
-    ]
-    (OUTDIR / "prompt_ablation_pairwise_summary_dt10.md").write_text("\n".join(summary_lines), encoding="utf-8")
 
 
 def main() -> None:
@@ -463,7 +357,6 @@ def main() -> None:
     deltas_df.to_csv(OUTDIR / "prompt_ablation_bootstrap_deltas_vs_pp_cbtact_dt10.csv", index=False)
     pairwise_df.to_csv(OUTDIR / "prompt_ablation_bootstrap_pairwise_dt10.csv", index=False)
     summary_df.to_csv(OUTDIR / "prompt_ablation_pairwise_summary_dt10.csv", index=False)
-    write_markdown_tables(metrics_df, deltas_df, pairwise_df, summary_df)
     print(f"Wrote bootstrap tables for {metrics_df['model'].nunique()} complete model families; status table includes pending models.")
 
 

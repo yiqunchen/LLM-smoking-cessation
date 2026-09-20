@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Row-level integrity audit for current Reviewer 3 ablation result JSONs.
+"""Row-level integrity audit for the prompt-ablation result JSONs.
 
 Unlike a count-only checkpoint check, this validates every saved prediction
 against the canonical dt10-k7 held-out record.  Incomplete DeepSeek files are
@@ -121,24 +121,12 @@ def main() -> None:
                 "file_sha256": sha256(path) if path.exists() else "", "violations": "; ".join(errors),
             })
     OUTDIR.mkdir(parents=True, exist_ok=True)
-    csv_path = OUTDIR / "reviewer_ablation_json_integrity_audit.csv"
+    csv_path = OUTDIR / "prompt_ablation_integrity_audit_dt10.csv"
     with csv_path.open("w", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(handle, fieldnames=list(report[0]))
         writer.writeheader()
         writer.writerows(report)
     status_counts = {status: sum(row["status"] == status for row in report) for status in ("PASS", "VALID_PARTIAL", "FAIL")}
-    markdown = [
-        "# Reviewer-ablation JSON integrity audit",
-        "",
-        f"Canonical test: {len(test)} rows; SHA-256: `{expected_hash}`.",
-        "",
-        f"- PASS: {status_counts['PASS']} complete model-condition files",
-        f"- VALID_PARTIAL: {status_counts['VALID_PARTIAL']} DeepSeek checkpoint files (not eligible for analysis)",
-        f"- FAIL: {status_counts['FAIL']} files",
-        "",
-        "Each saved row was checked for its canonical index, participant, message text, ground truth, allowed prediction label, condition identity, and seven-message profile count.",
-    ]
-    (OUTDIR / "reviewer_ablation_json_integrity_audit.md").write_text("\n".join(markdown) + "\n", encoding="utf-8")
     print(f"Audit: {status_counts['PASS']} complete PASS; {status_counts['VALID_PARTIAL']} valid partial; {status_counts['FAIL']} FAIL.")
     if failures:
         raise SystemExit("\n".join(failures))

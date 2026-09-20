@@ -88,32 +88,61 @@ def make_table_rows(frame: pd.DataFrame, index: list[str], metrics: list[str], v
     return rows
 
 
+PAIR_SHORT = {"PP + history + CBT/ACT": "Full PP", "PP + history (no CBT/ACT)": "No CBT/ACT",
+              "History + ratings only": "Hist + ratings", "History text only": "Hist text"}
+METRIC_LABEL = {"accuracy": "Exact accuracy", "macro_f1": "Macro-F1", "qwk": "QWK",
+                "directional_accuracy": "Directional accuracy", "directional_macro_f1": "Directional macro-F1"}
+
+
+def pairwise_table_rows(pairwise: pd.DataFrame, metric: str, completed: list[str]) -> tuple[list[str], list[list[str]]]:
+    """Rows = model x domain; columns = the six condition pairs; cell = difference [95% CI] with a verdict marker."""
+    block = pairwise[pairwise["metric"] == metric]
+    pairs = list(dict.fromkeys(zip(block["reference"], block["comparison"])))
+    columns = ["Model", "Domain"] + [f"{PAIR_SHORT[c]} − {PAIR_SHORT[r]}" for r, c in pairs]
+    rows = []
+    for model in completed:
+        for domain in DOMAIN_ORDER:
+            cells = [model, domain]
+            for reference, comparison in pairs:
+                hit = block[(block["model"] == model) & (block["domain"] == domain)
+                            & (block["reference"] == reference) & (block["comparison"] == comparison)].iloc[0]
+                marker = "" if hit["verdict"] == "comparable" else " *"
+                cells.append(f"{hit['difference']:+.3f} [{hit['ci_low']:+.3f}, {hit['ci_high']:+.3f}]{marker}")
+            rows.append(cells)
+    return columns, rows
+
+
 def main() -> None:
     metrics_path = OUTDIR / "prompt_ablation_bootstrap_metrics_dt10.csv"
     deltas_path = OUTDIR / "prompt_ablation_bootstrap_deltas_vs_pp_cbtact_dt10.csv"
+    pairwise_path = OUTDIR / "prompt_ablation_bootstrap_pairwise_dt10.csv"
     summary_path = OUTDIR / "prompt_ablation_pairwise_summary_dt10.csv"
     prediction_path = OUTDIR / "prompt_ablation_prediction_summary_dt10.csv"
-    for path in (metrics_path, deltas_path, summary_path, prediction_path):
+    audit_path = OUTDIR / "prompt_ablation_integrity_audit_dt10.csv"
+    for path in (metrics_path, deltas_path, pairwise_path, summary_path, prediction_path, audit_path):
         if not path.exists():
-            raise SystemExit(f"Missing source table: {path.name}; run bootstrap_prompt_ablations.py and plot_prompt_ablations.py first")
+            raise SystemExit(f"Missing source table: {path.name}; run audit, bootstrap, and plot scripts first")
     metrics = pd.read_csv(metrics_path)
     deltas = pd.read_csv(deltas_path)
+    pairwise = pd.read_csv(pairwise_path)
     summary = pd.read_csv(summary_path)
     prediction = pd.read_csv(prediction_path)
+    audit = pd.read_csv(audit_path)
     completed = [model for model in MODEL_ORDER if model in set(metrics["model"])]
     for frame, condition_column in ((metrics, "condition"), (deltas, "comparison")):
         frame["model"] = pd.Categorical(frame["model"], categories=completed, ordered=True)
         frame["domain"] = pd.Categorical(frame["domain"], categories=DOMAIN_ORDER, ordered=True)
         frame[condition_column] = pd.Categorical(frame[condition_column], categories=CONDITION_ORDER, ordered=True)
+    for frame in (summary, prediction):
+        frame["model"] = pd.Categorical(frame["model"], categories=completed, ordered=True)
+        frame["domain"] = pd.Categorical(frame["domain"], categories=DOMAIN_ORDER, ordered=True)
 
     document = Document()
     section = document.sections[0]
     section.orientation = WD_ORIENT.LANDSCAPE
     section.page_width, section.page_height = section.page_height, section.page_width
-    section.top_margin = Inches(.55)
-    section.bottom_margin = Inches(.55)
-    section.left_margin = Inches(.55)
-    section.right_margin = Inches(.55)
+    for side in ("top_margin", "bottom_margin", "left_margin", "right_margin"):
+        setattr(section, side, Inches(.55))
     normal = document.styles["Normal"]
     normal.font.name = "Helvetica"
     normal.font.size = Pt(9)
@@ -122,71 +151,91 @@ def main() -> None:
     title.alignment = WD_ALIGN_PARAGRAPH.CENTER
     document.add_paragraph(
         "All results use the canonical dt10-k7 held-out test set (898 messages from 301 participants). "
-        "The evaluated outcomes are Content, Coping, and Quitting, each reported separately."
+        "The evaluated outcomes are Content, Coping, and Quitting, each reported separately; no cross-domain mean is calculated."
     )
     document.add_paragraph(
-        "Intervals are 95% percentile intervals from 2,000 participant-clustered bootstrap replicates. "
-        "Directional metrics use low (1–2), neutral (3), and high (4–5)."
+        "Intervals are 95% percentile intervals from 2,000 participant-clustered bootstrap replicates; paired differences use the same "
+        "replicate for both configurations. Directional metrics use low (1–2), neutral (3), and high (4–5). "
+        "No multiplicity correction is applied to the pairwise comparisons."
     )
+    document.add_paragraph("Configurations: " + "; ".join(f"{k} = {v}" for k, v in PAIR_SHORT.items()) + ".")
 
-    document.add_heading("Table 1. Domain-specific exact and ordinal performance", level=1)
+    # ---- performance ------------------------------------------------------
+    document.add_heading("Table 1. Exact and ordinal performance by domain", level=1)
     standard = metrics[metrics["metric"].isin(STANDARD_METRICS)].sort_values(["domain", "model", "condition"])
     add_table(document, ["Domain", "Model", "Configuration", "Exact accuracy (95% CI)", "Macro-F1 (95% CI)", "QWK (95% CI)"],
               make_table_rows(standard, ["domain", "model", "condition"], STANDARD_METRICS, "estimate"))
-
     document.add_picture(str(OUTDIR / "prompt_ablation_metrics_by_domain_dt10.png"), width=Inches(9.0))
     add_caption(document, "Figure 1. Exact accuracy, macro-F1, and QWK by rating domain. Lines connect configurations evaluated on the same canonical test messages; "
-                          "95% intervals are given in Tables 1–3.")
+                          "95% intervals are given in Table 1.")
 
-    document.add_heading("Table 2. Domain-specific directional performance", level=1)
+    document.add_heading("Table 2. Directional performance by domain", level=1)
     directional = metrics[metrics["metric"].isin(DIRECTIONAL_METRICS)].sort_values(["domain", "model", "condition"])
     add_table(document, ["Domain", "Model", "Configuration", "Directional accuracy (95% CI)", "Directional macro-F1 (95% CI)"],
               make_table_rows(directional, ["domain", "model", "condition"], DIRECTIONAL_METRICS, "estimate"))
-
     document.add_picture(str(OUTDIR / "prompt_ablation_directional_by_domain_dt10.png"), width=Inches(9.0))
-    add_caption(document, "Figure 2. Directional accuracy and directional macro-F1 by rating domain. Direction is low (1–2), neutral (3), or high (4–5).")
+    add_caption(document, "Figure 2. Directional accuracy and directional macro-F1 by rating domain; 95% intervals are given in Table 2.")
 
-    document.add_heading("Table 3. Paired domain-specific changes from PP + history + CBT/ACT", level=1)
+    # ---- differences from the full PP prompt ------------------------------
+    document.add_heading("Table 3. Paired differences from the full PP prompt (exact and ordinal metrics)", level=1)
     standard_delta = deltas[deltas["metric"].isin(STANDARD_METRICS)].sort_values(["domain", "model", "comparison"])
     add_table(document, ["Domain", "Model", "Compared configuration", "Δ accuracy (95% CI)", "Δ macro-F1 (95% CI)", "Δ QWK (95% CI)"],
               make_table_rows(standard_delta, ["domain", "model", "comparison"], STANDARD_METRICS, "difference"))
-    document.add_paragraph("Positive differences favor the comparison configuration. Every interval is paired within the same participant-bootstrap replicate.")
+    document.add_heading("Table 4. Paired differences from the full PP prompt (directional metrics)", level=1)
+    directional_delta = deltas[deltas["metric"].isin(DIRECTIONAL_METRICS)].sort_values(["domain", "model", "comparison"])
+    add_table(document, ["Domain", "Model", "Compared configuration", "Δ directional accuracy (95% CI)", "Δ directional macro-F1 (95% CI)"],
+              make_table_rows(directional_delta, ["domain", "model", "comparison"], DIRECTIONAL_METRICS, "difference"))
+    document.add_paragraph("Positive differences favor the compared configuration.")
 
-    document.add_heading("Table 4. Which configuration is best, and which are statistically comparable to it", level=1)
+    # ---- best configuration and comparability ----------------------------
+    document.add_heading("Table 5. Best configuration per model, domain, and metric, and which configurations are comparable to it", level=1)
     document.add_paragraph(
-        "For each model, domain, and metric: the configuration with the highest point estimate, the configurations whose paired "
-        "95% interval against it includes zero (comparable), and those whose interval excludes zero (significantly worse). "
-        "Differences are reported as best minus other. No multiplicity correction is applied."
+        "The configuration with the highest point estimate; configurations whose paired 95% interval against it includes zero (comparable); "
+        "and those whose interval excludes zero (significantly worse). Differences are best minus other."
     )
-    summary["model"] = pd.Categorical(summary["model"], categories=completed, ordered=True)
-    summary["domain"] = pd.Categorical(summary["domain"], categories=DOMAIN_ORDER, ordered=True)
     summary_rows = []
     for row in summary[summary["metric"].isin(STANDARD_METRICS + DIRECTIONAL_METRICS)].sort_values(["metric", "domain", "model"]).itertuples():
-        summary_rows.append([str(row.metric), str(row.domain), str(row.model), str(row.best_condition), f"{row.best_estimate:.3f}",
+        summary_rows.append([METRIC_LABEL[row.metric], str(row.domain), str(row.model), str(row.best_condition), f"{row.best_estimate:.3f}",
                              str(row.comparable_to_best), str(row.significantly_worse_than_best)])
     add_table(document, ["Metric", "Domain", "Model", "Best configuration", "Estimate", "Comparable to best (Δ, 95% CI)", "Significantly worse than best (Δ, 95% CI)"], summary_rows)
 
+    # ---- all pairwise comparisons, one table per metric -------------------
+    table_number = 6
+    for metric in STANDARD_METRICS + DIRECTIONAL_METRICS:
+        document.add_heading(f"Table {table_number}. All pairwise configuration differences: {METRIC_LABEL[metric]}", level=1)
+        columns, rows = pairwise_table_rows(pairwise, metric, completed)
+        add_table(document, columns, rows)
+        table_number += 1
+    document.add_paragraph("Each cell is comparison minus reference with its paired 95% interval; * marks intervals that exclude zero.")
     document.add_picture(str(OUTDIR / "prompt_ablation_pairwise_qwk_dt10.png"), width=Inches(9.0))
-    add_caption(document, "Figure 3. Paired QWK differences for all six configuration pairs (comparison minus reference). "
-                          "Shaded cells have 95% intervals excluding zero; white cells are statistically comparable.")
+    add_caption(document, "Figure 3. Paired QWK differences for all six configuration pairs. Shaded cells have 95% intervals excluding zero; white cells are statistically comparable.")
 
-    document.add_heading("Table 5. Distribution of predicted ratings", level=1)
+    # ---- distributions ----------------------------------------------------
+    document.add_heading(f"Table {table_number}. Distribution of predicted ratings", level=1)
     document.add_paragraph(
         "Mean and SD of observed and predicted ratings, bias (predicted minus observed), mean absolute error, and the share of "
         "messages predicted exactly or within one level, per configuration and domain."
     )
-    prediction["model"] = pd.Categorical(prediction["model"], categories=completed, ordered=True)
-    prediction["domain"] = pd.Categorical(prediction["domain"], categories=DOMAIN_ORDER, ordered=True)
     prediction_rows = []
     for row in prediction.sort_values(["domain", "model", "condition_key"]).itertuples():
         prediction_rows.append([str(row.domain), str(row.model), str(row.condition), f"{row.observed_mean:.2f} ({row.observed_sd:.2f})",
                                 f"{row.predicted_mean:.2f} ({row.predicted_sd:.2f})", f"{row.bias_predicted_minus_observed:+.2f}",
                                 f"{row.mean_absolute_error:.2f}", f"{row.exact_rate:.3f}", f"{row.within_one_rate:.3f}"])
     add_table(document, ["Domain", "Model", "Configuration", "Observed mean (SD)", "Predicted mean (SD)", "Bias", "MAE", "Exact", "Within 1"], prediction_rows)
-
+    table_number += 1
     document.add_picture(str(OUTDIR / "prompt_ablation_rating_distributions_dt10.png"), width=Inches(8.4))
     add_caption(document, "Figure 4. Human versus predicted rating distributions on the 898 held-out messages, by prompt configuration and domain. "
                           "Gray background bars are the human ratings; coloured bars are each model's predictions.")
+
+    # ---- data integrity ---------------------------------------------------
+    document.add_heading(f"Table {table_number}. Result-file integrity audit", level=1)
+    document.add_paragraph(
+        "Every saved row was checked against the canonical test set for its index, participant, message text, ground truth, "
+        "allowed prediction label, condition identity, and seven-message history count."
+    )
+    audit_rows = [[str(r.model), str(r.condition_key), f"{r.n_saved_rows}/{r.n_expected_rows}", str(r.status), str(r.file_sha256)[:16] + "…"]
+                  for r in audit.itertuples()]
+    add_table(document, ["Model", "Configuration", "Rows", "Status", "File SHA-256 (prefix)"], audit_rows)
 
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
     document.save(OUTPUT)

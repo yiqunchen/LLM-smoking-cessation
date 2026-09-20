@@ -5,7 +5,7 @@
 #   bash scripts/build_prompt_ablation_package.sh
 #
 # Outputs
-#   figures/prompt_ablations/            figures + CSV tables
+#   figures/prompt_ablations/            figures + CSV source tables (all tables are rendered in the .docx)
 #   reports/prompt_ablation_results.docx
 #   reports/prompt_ablation_package.zip
 #   ~/Downloads/prompt_ablation_package_<UTC stamp>.zip       (off-repo copy)
