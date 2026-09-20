@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Verify, audit, bootstrap, plot, and package the Reviewer 3 prompt ablations.
+# Verify, audit, bootstrap, plot, and package the prompt ablations.
 # Refuses to proceed unless every model has all four conditions x 898 rows.
 #
 #   bash scripts/build_prompt_ablation_package.sh
@@ -8,8 +8,8 @@
 #   figures/prompt_ablations/            figures + CSV tables
 #   reports/prompt_ablation_results.docx
 #   reports/prompt_ablation_package.zip
-#   ~/Downloads/Reviewer_3_prompt_ablation_package_<UTC stamp>.zip   (off-repo copy)
-#   ~/Downloads/reviewer_ablation_raw_results_<UTC stamp>.zip        (raw JSON backup)
+#   ~/Downloads/prompt_ablation_package_<UTC stamp>.zip       (off-repo copy)
+#   ~/Downloads/prompt_ablation_raw_results_<UTC stamp>.zip   (raw JSON backup)
 set -euo pipefail
 cd "$(dirname "$0")/.."
 PY=.venv/bin/python
@@ -29,15 +29,18 @@ if grep -rl 'predicted_design\|ground_truth_design' results/prompt_ablations/*/ 
   echo "ERROR: Design-outcome fields found in ablation outputs" >&2; exit 1
 fi
 
-( cd revision && rm -f prompt_ablation_package.zip && \
-  zip -q -r prompt_ablation_package.zip \
-      prompt_ablation_results.docx figures/reviewer_ablations_dt10 \
-      -x 'figures/reviewer_ablations_dt10/bootstrap_cache_dt10/*' && unzip -tq prompt_ablation_package.zip )
+mkdir -p reports
+rm -f reports/prompt_ablation_package.zip
+zip -q -r reports/prompt_ablation_package.zip \
+    reports/prompt_ablation_results.docx figures/prompt_ablations \
+    -x 'figures/prompt_ablations/bootstrap_cache_dt10/*'
+unzip -tq reports/prompt_ablation_package.zip
 
+# Off-repo copies (the raw JSONs are expensive API runs; keep a second copy).
 stamp=$(date -u +%Y%m%dT%H%M%SZ)
 mkdir -p ~/Downloads
-cp reports/prompt_ablation_package.zip ~/Downloads/Reviewer_3_prompt_ablation_package_${stamp}.zip
-zip -q -r ~/Downloads/reviewer_ablation_raw_results_${stamp}.zip results/prompt_ablations/*/ -x '*.tmp' '*_errors.log'
+cp reports/prompt_ablation_package.zip ~/Downloads/prompt_ablation_package_${stamp}.zip
+zip -q -r ~/Downloads/prompt_ablation_raw_results_${stamp}.zip results/prompt_ablations/ -x '*.tmp' '*_errors.log'
 echo "Package: reports/prompt_ablation_package.zip"
-echo "Copies:  ~/Downloads/Reviewer_3_prompt_ablation_package_${stamp}.zip"
-echo "         ~/Downloads/reviewer_ablation_raw_results_${stamp}.zip"
+echo "Copies:  ~/Downloads/prompt_ablation_package_${stamp}.zip"
+echo "         ~/Downloads/prompt_ablation_raw_results_${stamp}.zip"
