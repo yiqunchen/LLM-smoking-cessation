@@ -184,6 +184,96 @@ Each row contrasts two prompt conditions on the same participant-bootstrap repli
 | GPT-5 | Quitting | qwk | History + ratings only | History text only | -0.474 [-0.542, -0.397] | reference better |
 | GPT-5 | Quitting | directional_accuracy | History + ratings only | History text only | -0.305 [-0.352, -0.255] | reference better |
 | GPT-5 | Quitting | directional_macro_f1 | History + ratings only | History text only | -0.253 [-0.300, -0.202] | reference better |
+| DeepSeek-R1 | Content | accuracy | PP + history + CBT/ACT | PP + history (no CBT/ACT) | -0.023 [-0.049, 0.003] | comparable |
+| DeepSeek-R1 | Content | macro_f1 | PP + history + CBT/ACT | PP + history (no CBT/ACT) | -0.034 [-0.064, 0.000] | comparable |
+| DeepSeek-R1 | Content | qwk | PP + history + CBT/ACT | PP + history (no CBT/ACT) | -0.042 [-0.089, 0.006] | comparable |
+| DeepSeek-R1 | Content | directional_accuracy | PP + history + CBT/ACT | PP + history (no CBT/ACT) | -0.020 [-0.042, 0.002] | comparable |
+| DeepSeek-R1 | Content | directional_macro_f1 | PP + history + CBT/ACT | PP + history (no CBT/ACT) | -0.060 [-0.102, -0.015] | reference better |
+| DeepSeek-R1 | Coping | accuracy | PP + history + CBT/ACT | PP + history (no CBT/ACT) | -0.031 [-0.061, 0.000] | comparable |
+| DeepSeek-R1 | Coping | macro_f1 | PP + history + CBT/ACT | PP + history (no CBT/ACT) | -0.038 [-0.073, -0.004] | reference better |
+| DeepSeek-R1 | Coping | qwk | PP + history + CBT/ACT | PP + history (no CBT/ACT) | -0.048 [-0.098, -0.002] | reference better |
+| DeepSeek-R1 | Coping | directional_accuracy | PP + history + CBT/ACT | PP + history (no CBT/ACT) | -0.032 [-0.059, -0.006] | reference better |
+| DeepSeek-R1 | Coping | directional_macro_f1 | PP + history + CBT/ACT | PP + history (no CBT/ACT) | -0.019 [-0.057, 0.019] | comparable |
+| DeepSeek-R1 | Quitting | accuracy | PP + history + CBT/ACT | PP + history (no CBT/ACT) | -0.040 [-0.071, -0.010] | reference better |
+| DeepSeek-R1 | Quitting | macro_f1 | PP + history + CBT/ACT | PP + history (no CBT/ACT) | -0.052 [-0.085, -0.016] | reference better |
+| DeepSeek-R1 | Quitting | qwk | PP + history + CBT/ACT | PP + history (no CBT/ACT) | -0.068 [-0.116, -0.023] | reference better |
+| DeepSeek-R1 | Quitting | directional_accuracy | PP + history + CBT/ACT | PP + history (no CBT/ACT) | -0.037 [-0.064, -0.012] | reference better |
+| DeepSeek-R1 | Quitting | directional_macro_f1 | PP + history + CBT/ACT | PP + history (no CBT/ACT) | -0.042 [-0.081, -0.005] | reference better |
+| DeepSeek-R1 | Content | accuracy | PP + history + CBT/ACT | History + ratings only | -0.008 [-0.032, 0.018] | comparable |
+| DeepSeek-R1 | Content | macro_f1 | PP + history + CBT/ACT | History + ratings only | 0.017 [-0.020, 0.060] | comparable |
+| DeepSeek-R1 | Content | qwk | PP + history + CBT/ACT | History + ratings only | -0.012 [-0.059, 0.037] | comparable |
+| DeepSeek-R1 | Content | directional_accuracy | PP + history + CBT/ACT | History + ratings only | -0.013 [-0.031, 0.004] | comparable |
+| DeepSeek-R1 | Content | directional_macro_f1 | PP + history + CBT/ACT | History + ratings only | -0.012 [-0.052, 0.030] | comparable |
+| DeepSeek-R1 | Coping | accuracy | PP + history + CBT/ACT | History + ratings only | -0.024 [-0.050, 0.003] | comparable |
+| DeepSeek-R1 | Coping | macro_f1 | PP + history + CBT/ACT | History + ratings only | -0.013 [-0.043, 0.017] | comparable |
+| DeepSeek-R1 | Coping | qwk | PP + history + CBT/ACT | History + ratings only | -0.040 [-0.090, 0.004] | comparable |
+| DeepSeek-R1 | Coping | directional_accuracy | PP + history + CBT/ACT | History + ratings only | -0.032 [-0.056, -0.008] | reference better |
+| DeepSeek-R1 | Coping | directional_macro_f1 | PP + history + CBT/ACT | History + ratings only | -0.008 [-0.040, 0.027] | comparable |
+| DeepSeek-R1 | Quitting | accuracy | PP + history + CBT/ACT | History + ratings only | -0.020 [-0.048, 0.007] | comparable |
+| DeepSeek-R1 | Quitting | macro_f1 | PP + history + CBT/ACT | History + ratings only | -0.021 [-0.052, 0.012] | comparable |
+| DeepSeek-R1 | Quitting | qwk | PP + history + CBT/ACT | History + ratings only | -0.046 [-0.091, -0.007] | reference better |
+| DeepSeek-R1 | Quitting | directional_accuracy | PP + history + CBT/ACT | History + ratings only | -0.027 [-0.051, -0.003] | reference better |
+| DeepSeek-R1 | Quitting | directional_macro_f1 | PP + history + CBT/ACT | History + ratings only | -0.017 [-0.053, 0.019] | comparable |
+| DeepSeek-R1 | Content | accuracy | PP + history + CBT/ACT | History text only | -0.146 [-0.190, -0.101] | reference better |
+| DeepSeek-R1 | Content | macro_f1 | PP + history + CBT/ACT | History text only | -0.159 [-0.193, -0.120] | reference better |
+| DeepSeek-R1 | Content | qwk | PP + history + CBT/ACT | History text only | -0.349 [-0.440, -0.255] | reference better |
+| DeepSeek-R1 | Content | directional_accuracy | PP + history + CBT/ACT | History text only | -0.072 [-0.103, -0.041] | reference better |
+| DeepSeek-R1 | Content | directional_macro_f1 | PP + history + CBT/ACT | History text only | -0.176 [-0.232, -0.113] | reference better |
+| DeepSeek-R1 | Coping | accuracy | PP + history + CBT/ACT | History text only | -0.137 [-0.183, -0.092] | reference better |
+| DeepSeek-R1 | Coping | macro_f1 | PP + history + CBT/ACT | History text only | -0.184 [-0.230, -0.135] | reference better |
+| DeepSeek-R1 | Coping | qwk | PP + history + CBT/ACT | History text only | -0.420 [-0.510, -0.329] | reference better |
+| DeepSeek-R1 | Coping | directional_accuracy | PP + history + CBT/ACT | History text only | -0.135 [-0.173, -0.098] | reference better |
+| DeepSeek-R1 | Coping | directional_macro_f1 | PP + history + CBT/ACT | History text only | -0.133 [-0.183, -0.082] | reference better |
+| DeepSeek-R1 | Quitting | accuracy | PP + history + CBT/ACT | History text only | -0.178 [-0.228, -0.133] | reference better |
+| DeepSeek-R1 | Quitting | macro_f1 | PP + history + CBT/ACT | History text only | -0.245 [-0.293, -0.199] | reference better |
+| DeepSeek-R1 | Quitting | qwk | PP + history + CBT/ACT | History text only | -0.500 [-0.579, -0.418] | reference better |
+| DeepSeek-R1 | Quitting | directional_accuracy | PP + history + CBT/ACT | History text only | -0.157 [-0.194, -0.121] | reference better |
+| DeepSeek-R1 | Quitting | directional_macro_f1 | PP + history + CBT/ACT | History text only | -0.221 [-0.274, -0.169] | reference better |
+| DeepSeek-R1 | Content | accuracy | PP + history (no CBT/ACT) | History + ratings only | 0.016 [-0.013, 0.043] | comparable |
+| DeepSeek-R1 | Content | macro_f1 | PP + history (no CBT/ACT) | History + ratings only | 0.051 [0.009, 0.096] | comparison better |
+| DeepSeek-R1 | Content | qwk | PP + history (no CBT/ACT) | History + ratings only | 0.030 [-0.023, 0.082] | comparable |
+| DeepSeek-R1 | Content | directional_accuracy | PP + history (no CBT/ACT) | History + ratings only | 0.007 [-0.017, 0.030] | comparable |
+| DeepSeek-R1 | Content | directional_macro_f1 | PP + history (no CBT/ACT) | History + ratings only | 0.048 [-0.000, 0.095] | comparable |
+| DeepSeek-R1 | Coping | accuracy | PP + history (no CBT/ACT) | History + ratings only | 0.007 [-0.022, 0.039] | comparable |
+| DeepSeek-R1 | Coping | macro_f1 | PP + history (no CBT/ACT) | History + ratings only | 0.025 [-0.012, 0.065] | comparable |
+| DeepSeek-R1 | Coping | qwk | PP + history (no CBT/ACT) | History + ratings only | 0.008 [-0.036, 0.054] | comparable |
+| DeepSeek-R1 | Coping | directional_accuracy | PP + history (no CBT/ACT) | History + ratings only | 0.000 [-0.026, 0.027] | comparable |
+| DeepSeek-R1 | Coping | directional_macro_f1 | PP + history (no CBT/ACT) | History + ratings only | 0.012 [-0.024, 0.051] | comparable |
+| DeepSeek-R1 | Quitting | accuracy | PP + history (no CBT/ACT) | History + ratings only | 0.020 [-0.007, 0.048] | comparable |
+| DeepSeek-R1 | Quitting | macro_f1 | PP + history (no CBT/ACT) | History + ratings only | 0.031 [-0.003, 0.067] | comparable |
+| DeepSeek-R1 | Quitting | qwk | PP + history (no CBT/ACT) | History + ratings only | 0.022 [-0.017, 0.062] | comparable |
+| DeepSeek-R1 | Quitting | directional_accuracy | PP + history (no CBT/ACT) | History + ratings only | 0.010 [-0.012, 0.035] | comparable |
+| DeepSeek-R1 | Quitting | directional_macro_f1 | PP + history (no CBT/ACT) | History + ratings only | 0.025 [-0.005, 0.058] | comparable |
+| DeepSeek-R1 | Content | accuracy | PP + history (no CBT/ACT) | History text only | -0.122 [-0.164, -0.079] | reference better |
+| DeepSeek-R1 | Content | macro_f1 | PP + history (no CBT/ACT) | History text only | -0.126 [-0.158, -0.093] | reference better |
+| DeepSeek-R1 | Content | qwk | PP + history (no CBT/ACT) | History text only | -0.307 [-0.392, -0.224] | reference better |
+| DeepSeek-R1 | Content | directional_accuracy | PP + history (no CBT/ACT) | History text only | -0.052 [-0.080, -0.023] | reference better |
+| DeepSeek-R1 | Content | directional_macro_f1 | PP + history (no CBT/ACT) | History text only | -0.116 [-0.162, -0.067] | reference better |
+| DeepSeek-R1 | Coping | accuracy | PP + history (no CBT/ACT) | History text only | -0.106 [-0.151, -0.062] | reference better |
+| DeepSeek-R1 | Coping | macro_f1 | PP + history (no CBT/ACT) | History text only | -0.145 [-0.187, -0.103] | reference better |
+| DeepSeek-R1 | Coping | qwk | PP + history (no CBT/ACT) | History text only | -0.372 [-0.452, -0.289] | reference better |
+| DeepSeek-R1 | Coping | directional_accuracy | PP + history (no CBT/ACT) | History text only | -0.102 [-0.141, -0.065] | reference better |
+| DeepSeek-R1 | Coping | directional_macro_f1 | PP + history (no CBT/ACT) | History text only | -0.114 [-0.165, -0.060] | reference better |
+| DeepSeek-R1 | Quitting | accuracy | PP + history (no CBT/ACT) | History text only | -0.138 [-0.183, -0.095] | reference better |
+| DeepSeek-R1 | Quitting | macro_f1 | PP + history (no CBT/ACT) | History text only | -0.194 [-0.235, -0.151] | reference better |
+| DeepSeek-R1 | Quitting | qwk | PP + history (no CBT/ACT) | History text only | -0.431 [-0.508, -0.353] | reference better |
+| DeepSeek-R1 | Quitting | directional_accuracy | PP + history (no CBT/ACT) | History text only | -0.120 [-0.157, -0.083] | reference better |
+| DeepSeek-R1 | Quitting | directional_macro_f1 | PP + history (no CBT/ACT) | History text only | -0.179 [-0.230, -0.126] | reference better |
+| DeepSeek-R1 | Content | accuracy | History + ratings only | History text only | -0.138 [-0.179, -0.097] | reference better |
+| DeepSeek-R1 | Content | macro_f1 | History + ratings only | History text only | -0.177 [-0.228, -0.128] | reference better |
+| DeepSeek-R1 | Content | qwk | History + ratings only | History text only | -0.338 [-0.432, -0.242] | reference better |
+| DeepSeek-R1 | Content | directional_accuracy | History + ratings only | History text only | -0.059 [-0.090, -0.028] | reference better |
+| DeepSeek-R1 | Content | directional_macro_f1 | History + ratings only | History text only | -0.164 [-0.217, -0.107] | reference better |
+| DeepSeek-R1 | Coping | accuracy | History + ratings only | History text only | -0.112 [-0.158, -0.069] | reference better |
+| DeepSeek-R1 | Coping | macro_f1 | History + ratings only | History text only | -0.171 [-0.218, -0.122] | reference better |
+| DeepSeek-R1 | Coping | qwk | History + ratings only | History text only | -0.380 [-0.463, -0.292] | reference better |
+| DeepSeek-R1 | Coping | directional_accuracy | History + ratings only | History text only | -0.102 [-0.141, -0.065] | reference better |
+| DeepSeek-R1 | Coping | directional_macro_f1 | History + ratings only | History text only | -0.126 [-0.178, -0.074] | reference better |
+| DeepSeek-R1 | Quitting | accuracy | History + ratings only | History text only | -0.158 [-0.206, -0.112] | reference better |
+| DeepSeek-R1 | Quitting | macro_f1 | History + ratings only | History text only | -0.224 [-0.271, -0.176] | reference better |
+| DeepSeek-R1 | Quitting | qwk | History + ratings only | History text only | -0.453 [-0.529, -0.370] | reference better |
+| DeepSeek-R1 | Quitting | directional_accuracy | History + ratings only | History text only | -0.130 [-0.168, -0.094] | reference better |
+| DeepSeek-R1 | Quitting | directional_macro_f1 | History + ratings only | History text only | -0.204 [-0.253, -0.154] | reference better |
 | Grok-4.3 | Content | accuracy | PP + history + CBT/ACT | PP + history (no CBT/ACT) | -0.002 [-0.025, 0.020] | comparable |
 | Grok-4.3 | Content | macro_f1 | PP + history + CBT/ACT | PP + history (no CBT/ACT) | -0.010 [-0.043, 0.017] | comparable |
 | Grok-4.3 | Content | qwk | PP + history + CBT/ACT | PP + history (no CBT/ACT) | -0.008 [-0.039, 0.021] | comparable |

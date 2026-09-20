@@ -40,6 +40,24 @@ Positive differences favor the comparison configuration. Directional ratings use
 | GPT-5 | Coping | History text only | directional_macro_f1 | -0.221 [-0.268, -0.173] |
 | GPT-5 | Quitting | History text only | directional_accuracy | -0.350 [-0.399, -0.299] |
 | GPT-5 | Quitting | History text only | directional_macro_f1 | -0.289 [-0.337, -0.235] |
+| DeepSeek-R1 | Content | PP + history (no CBT/ACT) | directional_accuracy | -0.020 [-0.042, 0.002] |
+| DeepSeek-R1 | Content | PP + history (no CBT/ACT) | directional_macro_f1 | -0.060 [-0.102, -0.015] |
+| DeepSeek-R1 | Coping | PP + history (no CBT/ACT) | directional_accuracy | -0.032 [-0.059, -0.006] |
+| DeepSeek-R1 | Coping | PP + history (no CBT/ACT) | directional_macro_f1 | -0.019 [-0.057, 0.019] |
+| DeepSeek-R1 | Quitting | PP + history (no CBT/ACT) | directional_accuracy | -0.037 [-0.064, -0.012] |
+| DeepSeek-R1 | Quitting | PP + history (no CBT/ACT) | directional_macro_f1 | -0.042 [-0.081, -0.005] |
+| DeepSeek-R1 | Content | History + ratings only | directional_accuracy | -0.013 [-0.031, 0.004] |
+| DeepSeek-R1 | Content | History + ratings only | directional_macro_f1 | -0.012 [-0.052, 0.030] |
+| DeepSeek-R1 | Coping | History + ratings only | directional_accuracy | -0.032 [-0.056, -0.008] |
+| DeepSeek-R1 | Coping | History + ratings only | directional_macro_f1 | -0.008 [-0.040, 0.027] |
+| DeepSeek-R1 | Quitting | History + ratings only | directional_accuracy | -0.027 [-0.051, -0.003] |
+| DeepSeek-R1 | Quitting | History + ratings only | directional_macro_f1 | -0.017 [-0.053, 0.019] |
+| DeepSeek-R1 | Content | History text only | directional_accuracy | -0.072 [-0.103, -0.041] |
+| DeepSeek-R1 | Content | History text only | directional_macro_f1 | -0.176 [-0.232, -0.113] |
+| DeepSeek-R1 | Coping | History text only | directional_accuracy | -0.135 [-0.173, -0.098] |
+| DeepSeek-R1 | Coping | History text only | directional_macro_f1 | -0.133 [-0.183, -0.082] |
+| DeepSeek-R1 | Quitting | History text only | directional_accuracy | -0.157 [-0.194, -0.121] |
+| DeepSeek-R1 | Quitting | History text only | directional_macro_f1 | -0.221 [-0.274, -0.169] |
 | Grok-4.3 | Content | PP + history (no CBT/ACT) | directional_accuracy | 0.010 [-0.008, 0.028] |
 | Grok-4.3 | Content | PP + history (no CBT/ACT) | directional_macro_f1 | -0.001 [-0.024, 0.021] |
 | Grok-4.3 | Coping | PP + history (no CBT/ACT) | directional_accuracy | -0.004 [-0.028, 0.019] |

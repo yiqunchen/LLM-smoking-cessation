@@ -94,6 +94,51 @@ Positive differences favor the comparison configuration. Each interval uses the 
 | GPT-5 | Quitting | History text only | qwk | -0.525 [-0.593, -0.451] |
 | GPT-5 | Quitting | History text only | directional_accuracy | -0.350 [-0.399, -0.299] |
 | GPT-5 | Quitting | History text only | directional_macro_f1 | -0.289 [-0.337, -0.235] |
+| DeepSeek-R1 | Content | PP + history (no CBT/ACT) | accuracy | -0.023 [-0.049, 0.003] |
+| DeepSeek-R1 | Content | PP + history (no CBT/ACT) | macro_f1 | -0.034 [-0.064, 0.000] |
+| DeepSeek-R1 | Content | PP + history (no CBT/ACT) | qwk | -0.042 [-0.089, 0.006] |
+| DeepSeek-R1 | Content | PP + history (no CBT/ACT) | directional_accuracy | -0.020 [-0.042, 0.002] |
+| DeepSeek-R1 | Content | PP + history (no CBT/ACT) | directional_macro_f1 | -0.060 [-0.102, -0.015] |
+| DeepSeek-R1 | Coping | PP + history (no CBT/ACT) | accuracy | -0.031 [-0.061, 0.000] |
+| DeepSeek-R1 | Coping | PP + history (no CBT/ACT) | macro_f1 | -0.038 [-0.073, -0.004] |
+| DeepSeek-R1 | Coping | PP + history (no CBT/ACT) | qwk | -0.048 [-0.098, -0.002] |
+| DeepSeek-R1 | Coping | PP + history (no CBT/ACT) | directional_accuracy | -0.032 [-0.059, -0.006] |
+| DeepSeek-R1 | Coping | PP + history (no CBT/ACT) | directional_macro_f1 | -0.019 [-0.057, 0.019] |
+| DeepSeek-R1 | Quitting | PP + history (no CBT/ACT) | accuracy | -0.040 [-0.071, -0.010] |
+| DeepSeek-R1 | Quitting | PP + history (no CBT/ACT) | macro_f1 | -0.052 [-0.085, -0.016] |
+| DeepSeek-R1 | Quitting | PP + history (no CBT/ACT) | qwk | -0.068 [-0.116, -0.023] |
+| DeepSeek-R1 | Quitting | PP + history (no CBT/ACT) | directional_accuracy | -0.037 [-0.064, -0.012] |
+| DeepSeek-R1 | Quitting | PP + history (no CBT/ACT) | directional_macro_f1 | -0.042 [-0.081, -0.005] |
+| DeepSeek-R1 | Content | History + ratings only | accuracy | -0.008 [-0.032, 0.018] |
+| DeepSeek-R1 | Content | History + ratings only | macro_f1 | 0.017 [-0.020, 0.060] |
+| DeepSeek-R1 | Content | History + ratings only | qwk | -0.012 [-0.059, 0.037] |
+| DeepSeek-R1 | Content | History + ratings only | directional_accuracy | -0.013 [-0.031, 0.004] |
+| DeepSeek-R1 | Content | History + ratings only | directional_macro_f1 | -0.012 [-0.052, 0.030] |
+| DeepSeek-R1 | Coping | History + ratings only | accuracy | -0.024 [-0.050, 0.003] |
+| DeepSeek-R1 | Coping | History + ratings only | macro_f1 | -0.013 [-0.043, 0.017] |
+| DeepSeek-R1 | Coping | History + ratings only | qwk | -0.040 [-0.090, 0.004] |
+| DeepSeek-R1 | Coping | History + ratings only | directional_accuracy | -0.032 [-0.056, -0.008] |
+| DeepSeek-R1 | Coping | History + ratings only | directional_macro_f1 | -0.008 [-0.040, 0.027] |
+| DeepSeek-R1 | Quitting | History + ratings only | accuracy | -0.020 [-0.048, 0.007] |
+| DeepSeek-R1 | Quitting | History + ratings only | macro_f1 | -0.021 [-0.052, 0.012] |
+| DeepSeek-R1 | Quitting | History + ratings only | qwk | -0.046 [-0.091, -0.007] |
+| DeepSeek-R1 | Quitting | History + ratings only | directional_accuracy | -0.027 [-0.051, -0.003] |
+| DeepSeek-R1 | Quitting | History + ratings only | directional_macro_f1 | -0.017 [-0.053, 0.019] |
+| DeepSeek-R1 | Content | History text only | accuracy | -0.146 [-0.190, -0.101] |
+| DeepSeek-R1 | Content | History text only | macro_f1 | -0.159 [-0.193, -0.120] |
+| DeepSeek-R1 | Content | History text only | qwk | -0.349 [-0.440, -0.255] |
+| DeepSeek-R1 | Content | History text only | directional_accuracy | -0.072 [-0.103, -0.041] |
+| DeepSeek-R1 | Content | History text only | directional_macro_f1 | -0.176 [-0.232, -0.113] |
+| DeepSeek-R1 | Coping | History text only | accuracy | -0.137 [-0.183, -0.092] |
+| DeepSeek-R1 | Coping | History text only | macro_f1 | -0.184 [-0.230, -0.135] |
+| DeepSeek-R1 | Coping | History text only | qwk | -0.420 [-0.510, -0.329] |
+| DeepSeek-R1 | Coping | History text only | directional_accuracy | -0.135 [-0.173, -0.098] |
+| DeepSeek-R1 | Coping | History text only | directional_macro_f1 | -0.133 [-0.183, -0.082] |
+| DeepSeek-R1 | Quitting | History text only | accuracy | -0.178 [-0.228, -0.133] |
+| DeepSeek-R1 | Quitting | History text only | macro_f1 | -0.245 [-0.293, -0.199] |
+| DeepSeek-R1 | Quitting | History text only | qwk | -0.500 [-0.579, -0.418] |
+| DeepSeek-R1 | Quitting | History text only | directional_accuracy | -0.157 [-0.194, -0.121] |
+| DeepSeek-R1 | Quitting | History text only | directional_macro_f1 | -0.221 [-0.274, -0.169] |
 | Grok-4.3 | Content | PP + history (no CBT/ACT) | accuracy | -0.002 [-0.025, 0.020] |
 | Grok-4.3 | Content | PP + history (no CBT/ACT) | macro_f1 | -0.010 [-0.043, 0.017] |
 | Grok-4.3 | Content | PP + history (no CBT/ACT) | qwk | -0.008 [-0.039, 0.021] |

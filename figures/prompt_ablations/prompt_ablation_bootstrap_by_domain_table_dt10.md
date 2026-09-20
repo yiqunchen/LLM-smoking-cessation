@@ -4,6 +4,10 @@ Participant-clustered percentile bootstrap (2,000 replicates by default); each m
 
 | Domain | Model | Configuration | Accuracy (95% CI) | Macro-F1 (95% CI) | QWK (95% CI) |
 | --- | --- | --- | --- | --- | --- |
+| Content | DeepSeek-R1 | History + ratings only | 0.469 [0.433, 0.506] | 0.337 [0.292, 0.385] | 0.340 [0.262, 0.419] |
+| Content | DeepSeek-R1 | History text only | 0.331 [0.296, 0.368] | 0.160 [0.142, 0.179] | 0.003 [-0.053, 0.060] |
+| Content | DeepSeek-R1 | PP + history (no CBT/ACT) | 0.453 [0.414, 0.492] | 0.286 [0.256, 0.317] | 0.310 [0.238, 0.384] |
+| Content | DeepSeek-R1 | PP + history + CBT/ACT | 0.477 [0.439, 0.514] | 0.319 [0.286, 0.350] | 0.352 [0.272, 0.428] |
 | Content | GPT-4o-mini | History + ratings only | 0.341 [0.308, 0.375] | 0.162 [0.144, 0.180] | 0.085 [0.027, 0.143] |
 | Content | GPT-4o-mini | History text only | 0.326 [0.292, 0.362] | 0.120 [0.106, 0.134] | 0.007 [-0.029, 0.044] |
 | Content | GPT-4o-mini | PP + history (no CBT/ACT) | 0.344 [0.310, 0.380] | 0.168 [0.150, 0.188] | 0.125 [0.075, 0.176] |
@@ -20,6 +24,10 @@ Participant-clustered percentile bootstrap (2,000 replicates by default); each m
 | Content | Grok-4.3 | History text only | 0.326 [0.294, 0.360] | 0.159 [0.139, 0.181] | 0.022 [-0.027, 0.070] |
 | Content | Grok-4.3 | PP + history (no CBT/ACT) | 0.490 [0.452, 0.528] | 0.362 [0.316, 0.410] | 0.424 [0.344, 0.491] |
 | Content | Grok-4.3 | PP + history + CBT/ACT | 0.492 [0.453, 0.532] | 0.372 [0.325, 0.420] | 0.432 [0.352, 0.502] |
+| Coping | DeepSeek-R1 | History + ratings only | 0.398 [0.363, 0.434] | 0.337 [0.298, 0.379] | 0.395 [0.320, 0.464] |
+| Coping | DeepSeek-R1 | History text only | 0.285 [0.254, 0.316] | 0.167 [0.145, 0.189] | 0.015 [-0.043, 0.073] |
+| Coping | DeepSeek-R1 | PP + history (no CBT/ACT) | 0.391 [0.357, 0.426] | 0.312 [0.278, 0.348] | 0.387 [0.316, 0.454] |
+| Coping | DeepSeek-R1 | PP + history + CBT/ACT | 0.422 [0.386, 0.457] | 0.350 [0.309, 0.391] | 0.435 [0.361, 0.510] |
 | Coping | GPT-4o-mini | History + ratings only | 0.255 [0.225, 0.286] | 0.154 [0.135, 0.174] | 0.051 [0.003, 0.097] |
 | Coping | GPT-4o-mini | History text only | 0.219 [0.192, 0.248] | 0.131 [0.114, 0.149] | 0.031 [-0.006, 0.069] |
 | Coping | GPT-4o-mini | PP + history (no CBT/ACT) | 0.262 [0.232, 0.291] | 0.161 [0.143, 0.180] | 0.141 [0.096, 0.187] |
@@ -36,6 +44,10 @@ Participant-clustered percentile bootstrap (2,000 replicates by default); each m
 | Coping | Grok-4.3 | History text only | 0.232 [0.203, 0.261] | 0.145 [0.128, 0.164] | -0.016 [-0.070, 0.041] |
 | Coping | Grok-4.3 | PP + history (no CBT/ACT) | 0.412 [0.375, 0.450] | 0.377 [0.331, 0.420] | 0.506 [0.434, 0.571] |
 | Coping | Grok-4.3 | PP + history + CBT/ACT | 0.429 [0.390, 0.467] | 0.386 [0.342, 0.428] | 0.510 [0.437, 0.579] |
+| Quitting | DeepSeek-R1 | History + ratings only | 0.423 [0.387, 0.461] | 0.364 [0.322, 0.406] | 0.466 [0.398, 0.530] |
+| Quitting | DeepSeek-R1 | History text only | 0.265 [0.233, 0.298] | 0.140 [0.119, 0.161] | 0.013 [-0.037, 0.065] |
+| Quitting | DeepSeek-R1 | PP + history (no CBT/ACT) | 0.403 [0.368, 0.439] | 0.334 [0.297, 0.371] | 0.445 [0.380, 0.505] |
+| Quitting | DeepSeek-R1 | PP + history + CBT/ACT | 0.443 [0.408, 0.481] | 0.385 [0.344, 0.427] | 0.513 [0.446, 0.579] |
 | Quitting | GPT-4o-mini | History + ratings only | 0.275 [0.244, 0.306] | 0.178 [0.156, 0.200] | 0.124 [0.071, 0.173] |
 | Quitting | GPT-4o-mini | History text only | 0.225 [0.198, 0.254] | 0.148 [0.129, 0.168] | 0.051 [0.003, 0.100] |
 | Quitting | GPT-4o-mini | PP + history (no CBT/ACT) | 0.297 [0.267, 0.329] | 0.202 [0.177, 0.224] | 0.235 [0.174, 0.291] |

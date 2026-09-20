@@ -4,6 +4,10 @@ Directional ratings use the established three-bin definition: low (1–2), neutr
 
 | Domain | Model | Configuration | Directional accuracy (95% CI) | Directional macro-F1 (95% CI) |
 | --- | --- | --- | --- | --- |
+| Content | DeepSeek-R1 | History + ratings only | 0.690 [0.653, 0.727] | 0.461 [0.413, 0.509] |
+| Content | DeepSeek-R1 | History text only | 0.631 [0.590, 0.673] | 0.297 [0.278, 0.320] |
+| Content | DeepSeek-R1 | PP + history (no CBT/ACT) | 0.684 [0.642, 0.722] | 0.413 [0.370, 0.456] |
+| Content | DeepSeek-R1 | PP + history + CBT/ACT | 0.704 [0.665, 0.741] | 0.473 [0.418, 0.525] |
 | Content | GPT-4o-mini | History + ratings only | 0.619 [0.581, 0.660] | 0.316 [0.293, 0.339] |
 | Content | GPT-4o-mini | History text only | 0.643 [0.603, 0.682] | 0.295 [0.275, 0.317] |
 | Content | GPT-4o-mini | PP + history (no CBT/ACT) | 0.627 [0.590, 0.666] | 0.343 [0.322, 0.367] |
@@ -20,6 +24,10 @@ Directional ratings use the established three-bin definition: low (1–2), neutr
 | Content | Grok-4.3 | History text only | 0.616 [0.576, 0.654] | 0.311 [0.286, 0.339] |
 | Content | Grok-4.3 | PP + history (no CBT/ACT) | 0.719 [0.682, 0.754] | 0.524 [0.469, 0.573] |
 | Content | Grok-4.3 | PP + history + CBT/ACT | 0.709 [0.671, 0.745] | 0.525 [0.472, 0.574] |
+| Coping | DeepSeek-R1 | History + ratings only | 0.614 [0.576, 0.654] | 0.478 [0.432, 0.523] |
+| Coping | DeepSeek-R1 | History text only | 0.511 [0.476, 0.546] | 0.352 [0.322, 0.381] |
+| Coping | DeepSeek-R1 | PP + history (no CBT/ACT) | 0.614 [0.576, 0.652] | 0.466 [0.421, 0.510] |
+| Coping | DeepSeek-R1 | PP + history + CBT/ACT | 0.646 [0.609, 0.683] | 0.486 [0.441, 0.529] |
 | Coping | GPT-4o-mini | History + ratings only | 0.386 [0.354, 0.420] | 0.299 [0.272, 0.327] |
 | Coping | GPT-4o-mini | History text only | 0.305 [0.276, 0.336] | 0.252 [0.226, 0.279] |
 | Coping | GPT-4o-mini | PP + history (no CBT/ACT) | 0.391 [0.361, 0.423] | 0.330 [0.299, 0.363] |
@@ -36,6 +44,10 @@ Directional ratings use the established three-bin definition: low (1–2), neutr
 | Coping | Grok-4.3 | History text only | 0.391 [0.359, 0.423] | 0.315 [0.287, 0.344] |
 | Coping | Grok-4.3 | PP + history (no CBT/ACT) | 0.640 [0.600, 0.680] | 0.536 [0.493, 0.577] |
 | Coping | Grok-4.3 | PP + history + CBT/ACT | 0.645 [0.606, 0.684] | 0.537 [0.492, 0.576] |
+| Quitting | DeepSeek-R1 | History + ratings only | 0.655 [0.616, 0.693] | 0.516 [0.473, 0.558] |
+| Quitting | DeepSeek-R1 | History text only | 0.524 [0.483, 0.563] | 0.312 [0.284, 0.340] |
+| Quitting | DeepSeek-R1 | PP + history (no CBT/ACT) | 0.645 [0.604, 0.684] | 0.491 [0.446, 0.533] |
+| Quitting | DeepSeek-R1 | PP + history + CBT/ACT | 0.682 [0.643, 0.720] | 0.533 [0.488, 0.576] |
 | Quitting | GPT-4o-mini | History + ratings only | 0.450 [0.417, 0.486] | 0.362 [0.329, 0.395] |
 | Quitting | GPT-4o-mini | History text only | 0.341 [0.311, 0.372] | 0.302 [0.272, 0.332] |
 | Quitting | GPT-4o-mini | PP + history (no CBT/ACT) | 0.487 [0.450, 0.524] | 0.415 [0.375, 0.452] |

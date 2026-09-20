@@ -119,6 +119,66 @@ GPT-5,#DE8F05,history_text_only,History text only,Quitting,macro_f1,0.1576270485
 GPT-5,#DE8F05,history_text_only,History text only,Quitting,qwk,0.009426584749193001,-0.03449313420481504,0.05847101603063436,2000,participant,301,898,20261928
 GPT-5,#DE8F05,history_text_only,History text only,Quitting,directional_accuracy,0.31403118040089084,0.28476084538375973,0.34560502007060984,2000,participant,301,898,20261928
 GPT-5,#DE8F05,history_text_only,History text only,Quitting,directional_macro_f1,0.28935809912797145,0.25960550066582655,0.32048054319835745,2000,participant,301,898,20261928
+DeepSeek-R1,#029E73,pp_cbtact,PP + history + CBT/ACT,Content,accuracy,0.4766146993318486,0.4391871130907444,0.514490116461993,2000,participant,301,898,20262937
+DeepSeek-R1,#029E73,pp_cbtact,PP + history + CBT/ACT,Content,macro_f1,0.31932465374648167,0.2864864261173699,0.35001326798411003,2000,participant,301,898,20262937
+DeepSeek-R1,#029E73,pp_cbtact,PP + history + CBT/ACT,Content,qwk,0.35195738539140276,0.2719798591399296,0.4275241028817205,2000,participant,301,898,20262937
+DeepSeek-R1,#029E73,pp_cbtact,PP + history + CBT/ACT,Content,directional_accuracy,0.7037861915367484,0.6648106904231625,0.7410724206349206,2000,participant,301,898,20262937
+DeepSeek-R1,#029E73,pp_cbtact,PP + history + CBT/ACT,Content,directional_macro_f1,0.4730948242204902,0.41757711645484585,0.5246686546853715,2000,participant,301,898,20262937
+DeepSeek-R1,#029E73,pp_cbtact,PP + history + CBT/ACT,Coping,accuracy,0.4220489977728285,0.38555555555555554,0.4571850046678849,2000,participant,301,898,20262937
+DeepSeek-R1,#029E73,pp_cbtact,PP + history + CBT/ACT,Coping,macro_f1,0.3503626664938465,0.3085307846439553,0.3910081789859679,2000,participant,301,898,20262937
+DeepSeek-R1,#029E73,pp_cbtact,PP + history + CBT/ACT,Coping,qwk,0.4351679315599679,0.36071031028348294,0.5099309647247674,2000,participant,301,898,20262937
+DeepSeek-R1,#029E73,pp_cbtact,PP + history + CBT/ACT,Coping,directional_accuracy,0.6458797327394209,0.609368910077951,0.6826280623608018,2000,participant,301,898,20262937
+DeepSeek-R1,#029E73,pp_cbtact,PP + history + CBT/ACT,Coping,directional_macro_f1,0.4855491448572173,0.441154165364026,0.5289751068356316,2000,participant,301,898,20262937
+DeepSeek-R1,#029E73,pp_cbtact,PP + history + CBT/ACT,Quitting,accuracy,0.44320712694877507,0.4077777777777778,0.48054730447837357,2000,participant,301,898,20262937
+DeepSeek-R1,#029E73,pp_cbtact,PP + history + CBT/ACT,Quitting,macro_f1,0.3853133271175813,0.3435765935856484,0.4266246570619227,2000,participant,301,898,20262937
+DeepSeek-R1,#029E73,pp_cbtact,PP + history + CBT/ACT,Quitting,qwk,0.5127316894373333,0.44621685155003876,0.5790700871702732,2000,participant,301,898,20262937
+DeepSeek-R1,#029E73,pp_cbtact,PP + history + CBT/ACT,Quitting,directional_accuracy,0.6815144766146993,0.6431727034628492,0.7200044593088071,2000,participant,301,898,20262937
+DeepSeek-R1,#029E73,pp_cbtact,PP + history + CBT/ACT,Quitting,directional_macro_f1,0.5325277547001155,0.48820919696903414,0.575848331719721,2000,participant,301,898,20262937
+DeepSeek-R1,#029E73,full_pp_no_cbtact,PP + history (no CBT/ACT),Content,accuracy,0.4532293986636971,0.41444444444444445,0.4916573971078977,2000,participant,301,898,20262937
+DeepSeek-R1,#029E73,full_pp_no_cbtact,PP + history (no CBT/ACT),Content,macro_f1,0.28575731062385473,0.2555426991679013,0.3169706297104295,2000,participant,301,898,20262937
+DeepSeek-R1,#029E73,full_pp_no_cbtact,PP + history (no CBT/ACT),Content,qwk,0.3099851464631339,0.23795954515010084,0.38440883207970594,2000,participant,301,898,20262937
+DeepSeek-R1,#029E73,full_pp_no_cbtact,PP + history (no CBT/ACT),Content,directional_accuracy,0.6837416481069042,0.6418221697223104,0.7222222222222222,2000,participant,301,898,20262937
+DeepSeek-R1,#029E73,full_pp_no_cbtact,PP + history (no CBT/ACT),Content,directional_macro_f1,0.4131830758303574,0.36959391309243034,0.45649821422831915,2000,participant,301,898,20262937
+DeepSeek-R1,#029E73,full_pp_no_cbtact,PP + history (no CBT/ACT),Coping,accuracy,0.3908685968819599,0.35674470457079155,0.4258681143299318,2000,participant,301,898,20262937
+DeepSeek-R1,#029E73,full_pp_no_cbtact,PP + history (no CBT/ACT),Coping,macro_f1,0.31210129165819184,0.27759189463236683,0.34810351757952046,2000,participant,301,898,20262937
+DeepSeek-R1,#029E73,full_pp_no_cbtact,PP + history (no CBT/ACT),Coping,qwk,0.3868246346753037,0.3156003776055011,0.4540507199718223,2000,participant,301,898,20262937
+DeepSeek-R1,#029E73,full_pp_no_cbtact,PP + history (no CBT/ACT),Coping,directional_accuracy,0.6135857461024499,0.5755513673318552,0.6521751207729468,2000,participant,301,898,20262937
+DeepSeek-R1,#029E73,full_pp_no_cbtact,PP + history (no CBT/ACT),Coping,directional_macro_f1,0.4661639159290764,0.4207762697593546,0.5101067594361449,2000,participant,301,898,20262937
+DeepSeek-R1,#029E73,full_pp_no_cbtact,PP + history (no CBT/ACT),Quitting,accuracy,0.40311804008908686,0.3675949036343955,0.43924529670648543,2000,participant,301,898,20262937
+DeepSeek-R1,#029E73,full_pp_no_cbtact,PP + history (no CBT/ACT),Quitting,macro_f1,0.33364201615957034,0.29685459684248067,0.3714907241759516,2000,participant,301,898,20262937
+DeepSeek-R1,#029E73,full_pp_no_cbtact,PP + history (no CBT/ACT),Quitting,qwk,0.4445532526545184,0.37958717279837484,0.5053139556190475,2000,participant,301,898,20262937
+DeepSeek-R1,#029E73,full_pp_no_cbtact,PP + history (no CBT/ACT),Quitting,directional_accuracy,0.6447661469933185,0.6040262857313495,0.6837504428330413,2000,participant,301,898,20262937
+DeepSeek-R1,#029E73,full_pp_no_cbtact,PP + history (no CBT/ACT),Quitting,directional_macro_f1,0.49098532494758906,0.4455586971601114,0.5330683341726182,2000,participant,301,898,20262937
+DeepSeek-R1,#029E73,history_ratings_only,History + ratings only,Content,accuracy,0.4688195991091314,0.43254540143142317,0.5055679287305123,2000,participant,301,898,20262937
+DeepSeek-R1,#029E73,history_ratings_only,History + ratings only,Content,macro_f1,0.33679949195071895,0.29214442807577645,0.38548604283243854,2000,participant,301,898,20262937
+DeepSeek-R1,#029E73,history_ratings_only,History + ratings only,Content,qwk,0.3402998696408511,0.26221069039860406,0.41882840273097816,2000,participant,301,898,20262937
+DeepSeek-R1,#029E73,history_ratings_only,History + ratings only,Content,directional_accuracy,0.6904231625835189,0.6525054651445227,0.7265701208890747,2000,participant,301,898,20262937
+DeepSeek-R1,#029E73,history_ratings_only,History + ratings only,Content,directional_macro_f1,0.4609918010274419,0.4129589941030114,0.5093470331541179,2000,participant,301,898,20262937
+DeepSeek-R1,#029E73,history_ratings_only,History + ratings only,Coping,accuracy,0.3975501113585746,0.36281702825212037,0.4336677814938685,2000,participant,301,898,20262937
+DeepSeek-R1,#029E73,history_ratings_only,History + ratings only,Coping,macro_f1,0.33727095384628164,0.2975322655059904,0.3794698320613969,2000,participant,301,898,20262937
+DeepSeek-R1,#029E73,history_ratings_only,History + ratings only,Coping,qwk,0.39484841687260275,0.31955980310492743,0.4641016369870816,2000,participant,301,898,20262937
+DeepSeek-R1,#029E73,history_ratings_only,History + ratings only,Coping,directional_accuracy,0.6135857461024499,0.5757238307349666,0.6536823462366289,2000,participant,301,898,20262937
+DeepSeek-R1,#029E73,history_ratings_only,History + ratings only,Coping,directional_macro_f1,0.47795015769827964,0.431527300993302,0.5229958363851253,2000,participant,301,898,20262937
+DeepSeek-R1,#029E73,history_ratings_only,History + ratings only,Quitting,accuracy,0.42316258351893093,0.38666480446927376,0.46060996319358094,2000,participant,301,898,20262937
+DeepSeek-R1,#029E73,history_ratings_only,History + ratings only,Quitting,macro_f1,0.36429629364319405,0.32214628592828426,0.40621953121346444,2000,participant,301,898,20262937
+DeepSeek-R1,#029E73,history_ratings_only,History + ratings only,Quitting,qwk,0.4663243886671069,0.3984235008004244,0.530288393302848,2000,participant,301,898,20262937
+DeepSeek-R1,#029E73,history_ratings_only,History + ratings only,Quitting,directional_accuracy,0.6547884187082406,0.6159822419533851,0.693086681547619,2000,participant,301,898,20262937
+DeepSeek-R1,#029E73,history_ratings_only,History + ratings only,Quitting,directional_macro_f1,0.5155466566616392,0.47289512221141267,0.5579685865269256,2000,participant,301,898,20262937
+DeepSeek-R1,#029E73,history_text_only,History text only,Content,accuracy,0.3307349665924276,0.29575384424603174,0.36777777777777776,2000,participant,301,898,20262937
+DeepSeek-R1,#029E73,history_text_only,History text only,Content,macro_f1,0.16022814578430933,0.1424725964408228,0.17889575001000863,2000,participant,301,898,20262937
+DeepSeek-R1,#029E73,history_text_only,History text only,Content,qwk,0.0026163725391123993,-0.053275595279293105,0.060330616253873946,2000,participant,301,898,20262937
+DeepSeek-R1,#029E73,history_text_only,History text only,Content,directional_accuracy,0.6314031180400891,0.5895389685666278,0.6726148950454724,2000,participant,301,898,20262937
+DeepSeek-R1,#029E73,history_text_only,History text only,Content,directional_macro_f1,0.2973113969182121,0.27753938761906854,0.319548244140689,2000,participant,301,898,20262937
+DeepSeek-R1,#029E73,history_text_only,History text only,Coping,accuracy,0.28507795100222716,0.2538904895565724,0.31626716622843276,2000,participant,301,898,20262937
+DeepSeek-R1,#029E73,history_text_only,History text only,Coping,macro_f1,0.16672060229975005,0.14466244307820367,0.18924416791799611,2000,participant,301,898,20262937
+DeepSeek-R1,#029E73,history_text_only,History text only,Coping,qwk,0.01520957231270248,-0.04310038351047832,0.07330497575586782,2000,participant,301,898,20262937
+DeepSeek-R1,#029E73,history_text_only,History text only,Coping,directional_accuracy,0.5111358574610245,0.47613762486126526,0.546167560479987,2000,participant,301,898,20262937
+DeepSeek-R1,#029E73,history_text_only,History text only,Coping,directional_macro_f1,0.35212400746835887,0.32229436423230523,0.38093739873070476,2000,participant,301,898,20262937
+DeepSeek-R1,#029E73,history_text_only,History text only,Quitting,accuracy,0.2650334075723831,0.23299698135254882,0.29778311011904757,2000,participant,301,898,20262937
+DeepSeek-R1,#029E73,history_text_only,History text only,Quitting,macro_f1,0.1400664836853516,0.11936029849870182,0.16140481639206666,2000,participant,301,898,20262937
+DeepSeek-R1,#029E73,history_text_only,History text only,Quitting,qwk,0.013186813186812807,-0.036825998571751756,0.06511192695522376,2000,participant,301,898,20262937
+DeepSeek-R1,#029E73,history_text_only,History text only,Quitting,directional_accuracy,0.5244988864142539,0.48329621380846327,0.5632714632325495,2000,participant,301,898,20262937
+DeepSeek-R1,#029E73,history_text_only,History text only,Quitting,directional_macro_f1,0.3117753589131402,0.28403716816374264,0.3403765635116881,2000,participant,301,898,20262937
 Grok-4.3,#CC78BC,pp_cbtact,PP + history + CBT/ACT,Content,accuracy,0.4922048997772829,0.45272525027808674,0.5321543563178089,2000,participant,301,898,20263946
 Grok-4.3,#CC78BC,pp_cbtact,PP + history + CBT/ACT,Content,macro_f1,0.3718127815766571,0.32526800027802955,0.4196319810382426,2000,participant,301,898,20263946
 Grok-4.3,#CC78BC,pp_cbtact,PP + history + CBT/ACT,Content,qwk,0.43189518799331983,0.3515668910577412,0.5017743854064155,2000,participant,301,898,20263946

@@ -1,5 +1,6 @@
 {
   "created_utc": "2026-09-20T19:32:53.772565+00:00",
+  "updated_utc": "2026-09-20T19:42:23.389796+00:00",
   "model": "deepseek/deepseek-r1-0528",
   "split": "dt10_k7",
   "train_path": "data/splits/canonical/train_dt10_k7.json",
@@ -1838,12 +1839,13 @@
   ],
   "runs": {
     "pp_cbtact": {
+      "started_utc": "2026-09-20T19:42:23.389796+00:00",
       "max_concurrent": 30,
-      "max_output_tokens": 2000,
+      "max_output_tokens": 4000,
       "reasoning_effort": "low",
       "checkpoint_interval": 5,
       "max_retries": 5,
-      "resumed": false
+      "resumed": true
     },
     "full_pp_no_cbtact": {
       "max_concurrent": 30,
@@ -1854,12 +1856,13 @@
       "resumed": false
     },
     "history_ratings_only": {
+      "started_utc": "2026-09-20T19:40:34.016083+00:00",
       "max_concurrent": 30,
-      "max_output_tokens": 2000,
+      "max_output_tokens": 4000,
       "reasoning_effort": "low",
       "checkpoint_interval": 5,
       "max_retries": 5,
-      "resumed": false
+      "resumed": true
     },
     "history_text_only": {
       "max_concurrent": 30,
@@ -1870,6 +1873,5 @@
       "resumed": false
     }
   },
-  "notes": "Run 2026-09-20 14:35 EDT, 4 parallel tmux workers; rows that returned empty content after 5 retries were resumed with identical settings until 898/898.",
-  "updated_utc": "2026-09-20T19:32:53.772565+00:00"
+  "notes": "Run 2026-09-20 14:35 EDT, 4 parallel tmux workers; rows that returned empty content after 5 retries were resumed with identical settings until 898/898. Five rows (pp_cbtact 277, 510, 538, 546; history_ratings_only 665) returned empty content on every attempt at max_output_tokens=2000 (deterministic budget exhaustion at temperature 0) and were completed with max_output_tokens=4000, all other settings identical; the 'runs' entries below reflect that final pass for those two conditions."
 }
