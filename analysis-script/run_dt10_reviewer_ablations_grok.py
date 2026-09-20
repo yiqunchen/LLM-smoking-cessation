@@ -55,6 +55,7 @@ ALLOWED_LABELS = {
 DEFAULT_CONCURRENCY = 6
 DEFAULT_CHECKPOINT_INTERVAL = 25
 MAX_OUTPUT_TOKENS = 300
+REASONING_EFFORT: str | None = None
 shutting_down = False
 
 
@@ -263,20 +264,57 @@ def make_record(item: dict, parsed: dict, condition: str) -> dict:
     }
 
 
+def parse_response_content(content: object) -> dict:
+    """Accept JSON-object responses with optional Markdown code fences."""
+    if not isinstance(content, str) or not content.strip():
+        raise ValueError("Model returned no final JSON content")
+    text = content.strip()
+    if text.startswith("```"):
+        lines = text.splitlines()
+        if lines and lines[0].lstrip().startswith("```"):
+            lines = lines[1:]
+        if lines and lines[-1].strip().startswith("```"):
+            lines = lines[:-1]
+        text = "\n".join(lines).strip()
+    try:
+        return json.loads(text)
+    except json.JSONDecodeError:
+        start, end = text.find("{"), text.rfind("}")
+        if start < 0 or end <= start:
+            raise
+        return json.loads(text[start:end + 1])
+
+
 async def call_one(client, semaphore, qid: str, item: dict, condition: str,
                    retries: int) -> tuple[str, dict | None, str | None]:
     prompt = build_prompt(item, condition)
     async with semaphore:
         for attempt in range(retries):
             try:
-                completion = await client.chat.completions.create(
-                    model=MODEL,
-                    messages=[{"role": "user", "content": prompt}],
-                    response_format={"type": "json_object"},
-                    temperature=0.0,
-                    max_tokens=MAX_OUTPUT_TOKENS,
-                )
-                parsed = json.loads(completion.choices[0].message.content)
+                request = {
+                    "model": MODEL,
+                    "messages": [{"role": "user", "content": prompt}],
+                }
+                if MAX_OUTPUT_TOKENS is not None:
+                    request["max_tokens"] = MAX_OUTPUT_TOKENS
+                # The Gemini OpenRouter route has returned empty content for
+                # json_object requests.  Its prompt still requires an exact
+                # JSON object and parse_response_content validates it; omit
+                # only the incompatible transport-level schema flag.
+                if "gemini" not in MODEL.lower():
+                    request["response_format"] = {"type": "json_object"}
+                if REASONING_EFFORT and any(token in MODEL.lower() for token in ("gpt-5", "deepseek-r1")):
+                    # This repository's OpenAI SDK predates a typed
+                    # ``reasoning`` parameter; OpenRouter receives it via
+                    # the supported pass-through request body.
+                    request["extra_body"] = {"reasoning": {"effort": REASONING_EFFORT}}
+                # Mirrors the original evaluator: GPT-5 rejects the standard
+                # temperature parameter, while the other model families use a
+                # deterministic zero-temperature prompt.
+                if "gpt-5" not in MODEL.lower():
+                    request["temperature"] = 0.0
+                completion = await client.chat.completions.create(**request)
+                parsed = parse_response_content(completion.choices[0].message.content)
                 return qid, make_record(item, parsed, condition), None
             except Exception as exc:  # records remain pending after final retry
                 if attempt == retries - 1:
@@ -307,11 +345,15 @@ def write_manifest(test: list[dict], conditions: list[str], args) -> None:
         "requested_conditions": conditions,
         "max_concurrent": args.max_concurrent,
         "max_output_tokens": MAX_OUTPUT_TOKENS,
+        "reasoning_effort": REASONING_EFFORT,
         "checkpoint_interval": args.checkpoint_interval,
     }
-    (OUTPUT_DIR / "manifest_dt10_k7.json").write_text(
-        json.dumps(manifest, indent=2) + "\n", encoding="utf-8"
-    )
+    # Condition workers may share an output directory.  Publish the manifest
+    # atomically so a concurrent metadata refresh cannot concatenate JSON.
+    manifest_path = OUTPUT_DIR / "manifest_dt10_k7.json"
+    temporary = manifest_path.with_suffix(".tmp")
+    temporary.write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
+    temporary.replace(manifest_path)
 
 
 async def run_condition(client, test: list[dict], condition: str, args) -> None:
@@ -395,7 +437,10 @@ async def main_async(args) -> None:
     key = os.environ.get("OPENROUTER_API_KEY")
     if not key:
         raise SystemExit("OPENROUTER_API_KEY is not set")
-    client = AsyncOpenAI(api_key=key, base_url="https://openrouter.ai/api/v1")
+    # Bound provider stalls so a resumable checkpoint run retries a missing
+    # row instead of keeping a semaphore slot indefinitely after a network
+    # interruption.  Retry policy is managed explicitly in ``call_one``.
+    client = AsyncOpenAI(api_key=key, base_url="https://openrouter.ai/api/v1", timeout=120.0, max_retries=0)
     await preflight(client, test[0], args.conditions[0])
     for condition in args.conditions:
         if shutting_down:
@@ -404,26 +449,33 @@ async def main_async(args) -> None:
 
 
 def main() -> None:
-    global MODEL, OUTPUT_DIR
+    global MODEL, OUTPUT_DIR, MAX_OUTPUT_TOKENS, REASONING_EFFORT
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--model", default=MODEL, help="OpenRouter model identifier")
     parser.add_argument(
         "--output-dir", default=str(OUTPUT_DIR.relative_to(ROOT)),
         help="result directory relative to the repository root",
     )
+    parser.add_argument("--reasoning-effort", choices=("low", "medium", "high"), help="explicit effort for GPT-5 and DeepSeek-R1")
     parser.add_argument("--conditions", nargs="+", choices=CONDITIONS, default=list(CONDITIONS))
     parser.add_argument("--max-concurrent", type=int, default=DEFAULT_CONCURRENCY)
+    parser.add_argument(
+        "--max-output-tokens", type=int, default=MAX_OUTPUT_TOKENS,
+        help="maximum completion tokens; use 0 to follow the provider default",
+    )
     parser.add_argument("--checkpoint-interval", type=int, default=DEFAULT_CHECKPOINT_INTERVAL)
     parser.add_argument("--max-retries", type=int, default=5)
     parser.add_argument("--validate-only", action="store_true", help="validate split and prompt exclusions without API calls")
     args = parser.parse_args()
-    if args.max_concurrent < 1 or args.checkpoint_interval < 1 or args.max_retries < 1:
-        parser.error("concurrency, checkpoint interval, and retries must be positive")
+    if args.max_concurrent < 1 or args.max_output_tokens < 0 or args.checkpoint_interval < 1 or args.max_retries < 1:
+        parser.error("concurrency, checkpoint interval, and retries must be positive; output tokens may be 0")
     candidate_dir = (ROOT / args.output_dir).resolve()
     if ROOT not in candidate_dir.parents:
         parser.error("--output-dir must stay within the repository root")
     MODEL = args.model
     OUTPUT_DIR = candidate_dir
+    MAX_OUTPUT_TOKENS = args.max_output_tokens or None
+    REASONING_EFFORT = args.reasoning_effort
     asyncio.run(main_async(args))
 
 

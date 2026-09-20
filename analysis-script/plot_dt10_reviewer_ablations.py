@@ -24,6 +24,14 @@ TEST_PATH = ROOT / "data_splits" / "canonical" / "test_dt10_k7.json"
 REVIEWER_RESULTS = ROOT / "results_reviewer_ablations_x-ai_grok-4.3"
 OUTDIR = ROOT / "revision" / "figures" / "reviewer_ablations_dt10"
 DOMAINS = ("content", "design", "coping", "quitting")
+RATING_SCALES = {
+    "content": {"Very poor": 1, "Poor": 2, "Acceptable": 3, "Good": 4, "Very good": 5},
+    "design": {"Very poor": 1, "Poor": 2, "Acceptable": 3, "Good": 4, "Very good": 5},
+    "coping": {"Not at all helpful": 1, "Not Helpful": 1, "Somewhat helpful": 2,
+               "Moderately helpful": 3, "Very helpful": 4, "Extremely helpful": 5},
+    "quitting": {"Not at all helpful": 1, "Not Helpful": 1, "Somewhat helpful": 2,
+                 "Moderately helpful": 3, "Very helpful": 4, "Extremely helpful": 5},
+}
 SPECS = (
     ("pp_cbtact", "PP + CBT/ACT", REVIEWER_RESULTS / "pp_cbtact_dt10_k7.json", "#CC78BC"),
     ("full_pp_no_cbtact", "PP, no CBT/ACT", REVIEWER_RESULTS / "full_pp_no_cbtact_dt10_k7.json", "#0173B2"),
@@ -76,7 +84,9 @@ def domain_metrics(rows: dict[str, dict], indices: np.ndarray) -> dict[str, tupl
         truth = np.array([rows[str(i)][f"ground_truth_{domain}"] for i in indices])
         prediction = np.array([rows[str(i)][f"predicted_{domain}"] for i in indices])
         accuracy = float(np.mean(truth == prediction))
-        qwk = float(cohen_kappa_score(truth, prediction, weights="quadratic"))
+        ordinal_truth = np.array([RATING_SCALES[domain][value] for value in truth])
+        ordinal_prediction = np.array([RATING_SCALES[domain][value] for value in prediction])
+        qwk = float(cohen_kappa_score(ordinal_truth, ordinal_prediction, weights="quadratic"))
         output[domain] = (accuracy, qwk)
     return output
 

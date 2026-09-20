@@ -14,13 +14,21 @@ import matplotlib as mpl
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-from sklearn.metrics import cohen_kappa_score
+from sklearn.metrics import cohen_kappa_score, f1_score
 
 
 ROOT = Path(__file__).resolve().parents[1]
 TEST_PATH = ROOT / "data_splits" / "canonical" / "test_dt10_k7.json"
 OUTDIR = ROOT / "revision" / "figures" / "reviewer_ablations_dt10"
 DOMAINS = ("content", "design", "coping", "quitting")
+RATING_SCALES = {
+    "content": {"Very poor": 1, "Poor": 2, "Acceptable": 3, "Good": 4, "Very good": 5},
+    "design": {"Very poor": 1, "Poor": 2, "Acceptable": 3, "Good": 4, "Very good": 5},
+    "coping": {"Not at all helpful": 1, "Not Helpful": 1, "Somewhat helpful": 2,
+               "Moderately helpful": 3, "Very helpful": 4, "Extremely helpful": 5},
+    "quitting": {"Not at all helpful": 1, "Not Helpful": 1, "Somewhat helpful": 2,
+                 "Moderately helpful": 3, "Very helpful": 4, "Extremely helpful": 5},
+}
 CONDITIONS = (
     ("pp_cbtact", "PP +\nCBT/ACT"),
     ("full_pp_no_cbtact", "PP, no\nCBT/ACT"),
@@ -34,6 +42,21 @@ MODELS = (
     ("Grok-4.3", "#CC78BC", "results_reviewer_ablations_x-ai_grok-4.3"),
     ("Gemini-2.5-Pro", "#CA9161", "results_reviewer_ablations_google_gemini-2.5-pro"),
 )
+DIRECTIONAL_BUCKET_MAP = {1: 0, 2: 0, 3: 1, 4: 2, 5: 2}
+METRIC_SPECS = {
+    "accuracy": ("Mean exact accuracy across four ratings", (0, .75)),
+    "macro_f1": ("Mean macro-F1 across four ratings", (0, .75)),
+    "qwk": ("Mean QWK across four rating dimensions", (-.05, .65)),
+    "directional_accuracy": ("Mean directional accuracy across four ratings", (0, 1.0)),
+    "directional_macro_f1": ("Mean directional macro-F1 across four ratings", (0, 1.0)),
+}
+PANEL_YLABELS = {
+    "accuracy": "Exact accuracy",
+    "macro_f1": "Macro-F1",
+    "qwk": "QWK",
+    "directional_accuracy": "Directional accuracy",
+    "directional_macro_f1": "Directional macro-F1",
+}
 FONT_CHAIN = ["Avenir", "Avenir Next", "Helvetica Neue", "Helvetica", "Arial", "DejaVu Sans"]
 
 mpl.rcParams.update({
@@ -67,10 +90,17 @@ def metrics(rows: dict[str, dict], test: list[dict]) -> list[dict]:
     for domain in DOMAINS:
         truth = [rows[str(index)][f"ground_truth_{domain}"] for index in range(len(test))]
         prediction = [rows[str(index)][f"predicted_{domain}"] for index in range(len(test))]
+        ordinal_truth = [RATING_SCALES[domain][value] for value in truth]
+        ordinal_prediction = [RATING_SCALES[domain][value] for value in prediction]
+        directional_truth = [DIRECTIONAL_BUCKET_MAP[value] for value in ordinal_truth]
+        directional_prediction = [DIRECTIONAL_BUCKET_MAP[value] for value in ordinal_prediction]
         output.append({
             "domain": domain.capitalize(),
             "accuracy": float(np.mean(np.asarray(truth) == np.asarray(prediction))),
-            "qwk": float(cohen_kappa_score(truth, prediction, weights="quadratic")),
+            "macro_f1": float(f1_score(truth, prediction, average="macro", zero_division=0)),
+            "qwk": float(cohen_kappa_score(ordinal_truth, ordinal_prediction, weights="quadratic")),
+            "directional_accuracy": float(np.mean(np.asarray(directional_truth) == np.asarray(directional_prediction))),
+            "directional_macro_f1": float(f1_score(directional_truth, directional_prediction, average="macro", zero_division=0)),
         })
     return output
 
@@ -90,8 +120,7 @@ def plot_metric(summary: pd.DataFrame, metric: str, ylabel: str, name: str) -> N
         ax.plot(xs, values, marker="o", color=color, label=model, linewidth=2.4, markersize=7)
     ax.set_xticks(xs, [label for _key, label in CONDITIONS])
     ax.set_ylabel(ylabel)
-    ax.set_ylim((0, .75) if metric == "accuracy" else (0, .65))
-    ax.set_title(f"Reviewer 3 prompt-component comparison — {ylabel}")
+    ax.set_ylim(METRIC_SPECS[metric][1])
     ax.legend(loc="best", prop={"family": "Avenir", "weight": "bold", "size": 10})
     style(ax)
     for extension in ("png", "pdf"):
@@ -99,27 +128,26 @@ def plot_metric(summary: pd.DataFrame, metric: str, ylabel: str, name: str) -> N
     plt.close(fig)
 
 
-def plot_by_domain(records: pd.DataFrame) -> None:
+def plot_by_domain(records: pd.DataFrame, metric: str, ylabel: str, name: str) -> None:
     fig, axes = plt.subplots(2, 2, figsize=(14, 10), sharex=True, constrained_layout=True)
     xs = np.arange(len(CONDITIONS))
     for axis, domain in zip(axes.flat, ("Content", "Design", "Coping", "Quitting")):
         domain_df = records[records.domain == domain]
         for model, color, _directory in MODELS:
             subset = domain_df[domain_df.model == model].set_index("condition_key")
-            axis.plot(xs, [subset.loc[key, "accuracy"] for key, _label in CONDITIONS],
+            axis.plot(xs, [subset.loc[key, metric] for key, _label in CONDITIONS],
                       marker="o", color=color, linewidth=2.2, markersize=6, label=model)
         axis.set_title(domain)
-        axis.set_ylim(0, .82)
+        axis.set_ylim(METRIC_SPECS[metric][1])
         axis.set_xticks(xs, [label for _key, label in CONDITIONS])
         style(axis)
-    axes[0, 0].set_ylabel("Accuracy")
-    axes[1, 0].set_ylabel("Accuracy")
+    axes[0, 0].set_ylabel(PANEL_YLABELS[metric])
+    axes[1, 0].set_ylabel(PANEL_YLABELS[metric])
     handles, labels = axes[0, 0].get_legend_handles_labels()
     legend = fig.legend(handles, labels, loc="lower center", bbox_to_anchor=(.5, -.03), ncol=5,
                         prop={"family": "Avenir", "weight": "bold", "size": 10}, frameon=False)
-    fig.suptitle("Accuracy by rating dimension — all models, canonical dt10-k7 (N = 898)", fontweight="bold", fontsize=16)
     for extension in ("png", "pdf"):
-        fig.savefig(OUTDIR / f"reviewer_ablation_all_models_accuracy_by_domain_dt10.{extension}",
+        fig.savefig(OUTDIR / f"{name}.{extension}",
                     bbox_inches="tight", bbox_extra_artists=(legend,), dpi=400)
     plt.close(fig)
 
@@ -140,11 +168,12 @@ def main() -> None:
     results = pd.DataFrame(records)
     OUTDIR.mkdir(parents=True, exist_ok=True)
     results.to_csv(OUTDIR / "reviewer_ablation_all_models_metrics_dt10.csv", index=False)
-    summary = results.groupby(["model", "model_color", "condition_key", "condition"], as_index=False)[["accuracy", "qwk"]].mean()
+    metric_columns = list(METRIC_SPECS)
+    summary = results.groupby(["model", "model_color", "condition_key", "condition"], as_index=False)[metric_columns].mean()
     summary.to_csv(OUTDIR / "reviewer_ablation_all_models_summary_dt10.csv", index=False)
-    plot_metric(summary, "accuracy", "Mean accuracy across four ratings", "reviewer_ablation_all_models_accuracy_dt10")
-    plot_metric(summary, "qwk", "Mean quadratic-weighted κ across four ratings", "reviewer_ablation_all_models_qwk_dt10")
-    plot_by_domain(results)
+    for metric, (ylabel, _ylim) in METRIC_SPECS.items():
+        plot_metric(summary, metric, ylabel, f"reviewer_ablation_all_models_{metric}_dt10")
+        plot_by_domain(results, metric, ylabel, f"reviewer_ablation_all_models_{metric}_by_domain_dt10")
     print(f"Wrote validated five-model reviewer figures to {OUTDIR}")
 
 

@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
-# Queue the four non-Grok model families after the active Grok 4.3 run passes
-# its canonical completeness check.  The jobs run in parallel, one request at
-# a time per model (four total), below the prior failing six-request level.
-# Re-running this script is safe: the Python runner resumes only missing rows.
+# Coordinate verification and plotting after independently launched model
+# workers complete.  It deliberately does not start duplicate workers: each
+# runner is interruption-safe and should be resumed explicitly with its model-
+# appropriate concurrency if a provider has a transient connection failure.
 set -euo pipefail
 
 cd "$(dirname "$0")/.."
@@ -17,31 +17,37 @@ done
   --results-dir results_reviewer_ablations_x-ai_grok-4.3 \
   >> logs/reviewer_ablations_all_models.log 2>&1
 
-run_model() {
-  local model="$1"
-  local directory="$2"
-  local log_name="logs/$(basename "$directory").log"
-  echo "$(date -u +%FT%TZ) Starting ${model}." >> "$log_name"
-  .venv/bin/python analysis-script/run_dt10_reviewer_ablations_grok.py \
-    --model "$model" \
-    --output-dir "$directory" \
-    --max-concurrent 1 \
-    --checkpoint-interval 25 \
-    >> "$log_name" 2>&1
+for session in \
+  reviewer-gpt4omini reviewer-gpt5 reviewer-gemini \
+  reviewer-deepseek-pp reviewer-deepseek-full \
+  reviewer-deepseek-ratings reviewer-deepseek-history; do
+  while tmux has-session -t "$session" 2>/dev/null; do
+    echo "$(date -u +%FT%TZ) Waiting for independently started ${session}." >> logs/reviewer_ablations_all_models.log
+    sleep 60
+  done
+done
+
+for directory in \
+  results_reviewer_ablations_openai_gpt-4o-mini \
+  results_reviewer_ablations_openai_gpt-5 \
+  results_reviewer_ablations_deepseek-r1 \
+  results_reviewer_ablations_google_gemini-2.5-pro; do
   .venv/bin/python analysis-script/verify_reviewer_ablation_completion.py \
     --results-dir "$directory" \
-    >> "$log_name" 2>&1
-  echo "$(date -u +%FT%TZ) Finished ${model}." >> "$log_name"
-}
-
-run_model "openai/gpt-4o-mini" "results_reviewer_ablations_openai_gpt-4o-mini" & pid_4omini=$!
-run_model "openai/gpt-5" "results_reviewer_ablations_openai_gpt-5" & pid_gpt5=$!
-run_model "deepseek/deepseek-r1-0528" "results_reviewer_ablations_deepseek-r1" & pid_deepseek=$!
-run_model "google/gemini-2.5-pro" "results_reviewer_ablations_google_gemini-2.5-pro" & pid_gemini=$!
-
-for pid in "$pid_4omini" "$pid_gpt5" "$pid_deepseek" "$pid_gemini"; do
-  wait "$pid"
+    >> logs/reviewer_ablations_all_models.log 2>&1
 done
 
 .venv/bin/python analysis-script/plot_dt10_reviewer_ablations_all_models.py \
+  >> logs/reviewer_ablations_all_models.log 2>&1
+
+.venv/bin/python analysis-script/audit_reviewer_ablation_jsons.py \
+  >> logs/reviewer_ablations_all_models.log 2>&1
+
+# The bootstrap script validates SHA-256 input hashes and reuses the four
+# completed-model caches.  At this point it computes DeepSeek-R1 only, then
+# refreshes the combined CI tables and Word-ready reviewer document.
+.venv/bin/python analysis-script/bootstrap_dt10_reviewer_ablations.py \
+  --n-bootstrap 2000 \
+  >> logs/reviewer_ablations_all_models.log 2>&1
+python3 analysis-script/create_reviewer_bootstrap_word_doc.py \
   >> logs/reviewer_ablations_all_models.log 2>&1
