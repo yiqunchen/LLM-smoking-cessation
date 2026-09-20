@@ -135,8 +135,8 @@ def main() -> None:
               make_table_rows(standard, ["domain", "model", "condition"], STANDARD_METRICS, "estimate"))
 
     document.add_picture(str(OUTDIR / "prompt_ablation_metrics_by_domain_dt10.png"), width=Inches(9.0))
-    add_caption(document, "Figure 1. Exact accuracy, macro-F1, and QWK by rating domain with 95% participant-clustered bootstrap intervals. "
-                          "Lines connect configurations evaluated on the same canonical test messages.")
+    add_caption(document, "Figure 1. Exact accuracy, macro-F1, and QWK by rating domain. Lines connect configurations evaluated on the same canonical test messages; "
+                          "95% intervals are given in Tables 1–3.")
 
     document.add_heading("Table 2. Domain-specific directional performance", level=1)
     directional = metrics[metrics["metric"].isin(DIRECTIONAL_METRICS)].sort_values(["domain", "model", "condition"])
@@ -144,7 +144,7 @@ def main() -> None:
               make_table_rows(directional, ["domain", "model", "condition"], DIRECTIONAL_METRICS, "estimate"))
 
     document.add_picture(str(OUTDIR / "prompt_ablation_directional_by_domain_dt10.png"), width=Inches(9.0))
-    add_caption(document, "Figure 2. Directional accuracy and directional macro-F1 by rating domain with 95% intervals. Direction is low (1–2), neutral (3), or high (4–5).")
+    add_caption(document, "Figure 2. Directional accuracy and directional macro-F1 by rating domain. Direction is low (1–2), neutral (3), or high (4–5).")
 
     document.add_heading("Table 3. Paired domain-specific changes from PP + history + CBT/ACT", level=1)
     standard_delta = deltas[deltas["metric"].isin(STANDARD_METRICS)].sort_values(["domain", "model", "comparison"])
@@ -185,9 +185,8 @@ def main() -> None:
     add_table(document, ["Domain", "Model", "Configuration", "Observed mean (SD)", "Predicted mean (SD)", "Bias", "MAE", "Exact", "Within 1"], prediction_rows)
 
     document.add_picture(str(OUTDIR / "prompt_ablation_rating_distributions_dt10.png"), width=Inches(8.4))
-    add_caption(document, "Figure 4. Observed versus predicted rating distributions on the 898 held-out messages, by model and domain.")
-    document.add_picture(str(OUTDIR / "prompt_ablation_signed_error_distributions_dt10.png"), width=Inches(8.4))
-    add_caption(document, "Figure 5. Distribution of predicted minus observed rating, by model and domain. Zero is an exact match.")
+    add_caption(document, "Figure 4. Human versus predicted rating distributions on the 898 held-out messages, by prompt configuration and domain. "
+                          "Gray background bars are the human ratings; coloured bars are each model's predictions.")
 
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
     document.save(OUTPUT)

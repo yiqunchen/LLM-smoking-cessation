@@ -8,13 +8,9 @@ in the bootstrap table) are drawn; pending models are listed in
 Every metric is reported separately for Content, Coping, and Quitting.
 
 Outputs (figures/prompt_ablations/, PNG + PDF unless noted):
-  prompt_ablation_<metric>_by_domain_dt10            one metric, three domain panels, 95% CI whiskers
   prompt_ablation_metrics_by_domain_dt10             accuracy / macro-F1 / QWK (rows) x domains (columns)
   prompt_ablation_directional_by_domain_dt10         directional accuracy / macro-F1 x domains
-  prompt_ablation_rating_distributions_dt10          observed vs predicted rating distributions, models x domains
-  prompt_ablation_rating_distribution_<model>_dt10   the same for one model
-  prompt_ablation_signed_error_distributions_dt10    (predicted - observed) distributions, models x domains
-  prompt_ablation_signed_error_<model>_dt10          the same for one model
+  prompt_ablation_rating_distributions_dt10          human vs predicted rating distributions, conditions x domains
   prompt_ablation_pairwise_<metric>_dt10             paired differences for all condition pairs, colour = verdict
   prompt_ablation_rating_distribution_dt10.csv       long table behind the distribution figures
   prompt_ablation_prediction_summary_dt10.csv        mean/SD of predictions, bias, MAE, within-1 rate
@@ -61,14 +57,14 @@ MODELS = (
 METRIC_SPECS = {
     "accuracy": ("Exact accuracy", (0, .75)),
     "macro_f1": ("Macro-F1", (0, .75)),
-    "qwk": ("QWK", (-.1, .7)),
+    "qwk": ("QWK", (-.05, .65)),
     "directional_accuracy": ("Directional accuracy", (0, 1.0)),
     "directional_macro_f1": ("Directional macro-F1", (0, 1.0)),
 }
 STANDARD_METRICS = ("accuracy", "macro_f1", "qwk")
 DIRECTIONAL_METRICS = ("directional_accuracy", "directional_macro_f1")
 FONT_CHAIN = ["Helvetica", "Arial", "DejaVu Sans"]
-LEGEND_FONT = {"family": "Helvetica", "weight": "bold", "size": 10}
+LEGEND_FONT = {"family": "Helvetica", "weight": "bold", "size": 14}
 
 mpl.rcParams.update({
     "font.family": "sans-serif", "font.sans-serif": FONT_CHAIN, "font.size": 13,
@@ -116,35 +112,19 @@ def load_rows(path: Path, test: list[dict]) -> dict[str, dict]:
 # --------------------------------------------------------------------------
 
 def metric_panel(ax, metrics: pd.DataFrame, models: list[tuple[str, str]], metric: str, domain: str) -> None:
+    """Point estimates only; the bootstrap intervals are reported in the tables and the Word report."""
     xs = np.arange(len(CONDITIONS))
-    offsets = np.linspace(-.27, .27, len(models)) if len(models) > 1 else [0.0]
-    for (model, color), offset in zip(models, offsets):
+    for model, color in models:
         block = metrics[(metrics.model == model) & (metrics.domain == domain) & (metrics.metric == metric)]
         block = block.set_index("condition_key").reindex([key for key, *_ in CONDITIONS])
-        y = block["estimate"].to_numpy()
-        yerr = np.vstack([y - block["ci_low"].to_numpy(), block["ci_high"].to_numpy() - y])
-        ax.plot(xs + offset, y, color=color, linewidth=1.3, alpha=.55, zorder=2)
-        ax.errorbar(xs + offset, y, yerr=yerr, fmt="o", color=color, markersize=6, capsize=3,
-                    elinewidth=1.4, capthick=1.4, label=model, zorder=3)
+        ax.plot(xs, block["estimate"].to_numpy(), marker="o", color=color, linewidth=2.2, markersize=6, label=model)
     lower, upper = METRIC_SPECS[metric][1]
     sub = metrics[(metrics.metric == metric) & (metrics.model.isin([m for m, _ in models]))]
-    lower = min(lower, float(np.floor((sub["ci_low"].min() - .02) * 20) / 20))
-    upper = max(upper, float(np.ceil((sub["ci_high"].max() + .02) * 20) / 20))
+    lower = min(lower, float(np.floor((sub["estimate"].min() - .02) * 20) / 20))
+    upper = max(upper, float(np.ceil((sub["estimate"].max() + .02) * 20) / 20))
     ax.set_ylim(lower, upper)
-    ax.set_xlim(-.6, len(CONDITIONS) - .4)
     ax.set_xticks(xs, [label for _key, label, _short in CONDITIONS])
     style(ax)
-
-
-def figure_metric(metrics: pd.DataFrame, models: list[tuple[str, str]], metric: str) -> None:
-    fig, axes = plt.subplots(1, 3, figsize=(15, 5.5), sharex=True, constrained_layout=True)
-    for ax, domain in zip(axes, ("Content", "Coping", "Quitting")):
-        metric_panel(ax, metrics, models, metric, domain)
-        ax.set_title(domain)
-    axes[0].set_ylabel(METRIC_SPECS[metric][0])
-    handles, labels = axes[0].get_legend_handles_labels()
-    legend = fig.legend(handles, labels, loc="lower center", bbox_to_anchor=(.5, -.03), ncol=len(models), prop=LEGEND_FONT)
-    save(fig, f"prompt_ablation_{metric}_by_domain_dt10", legend)
 
 
 def figure_metric_grid(metrics: pd.DataFrame, models: list[tuple[str, str]], metric_list: tuple[str, ...], name: str) -> None:
@@ -160,12 +140,12 @@ def figure_metric_grid(metrics: pd.DataFrame, models: list[tuple[str, str]], met
             if c == 0:
                 ax.set_ylabel(METRIC_SPECS[metric][0])
     handles, labels = axes[0, 0].get_legend_handles_labels()
-    legend = fig.legend(handles, labels, loc="lower center", bbox_to_anchor=(.5, -.02), ncol=len(models), prop=LEGEND_FONT)
+    legend = fig.legend(handles, labels, loc="upper center", bbox_to_anchor=(.5, -.01), ncol=len(models), prop=LEGEND_FONT)
     save(fig, name, legend)
 
 
 # --------------------------------------------------------------------------
-# Rating and signed-error distributions
+# Rating distributions
 # --------------------------------------------------------------------------
 
 def distributions(predictions: dict[str, dict[str, dict[str, np.ndarray]]], truth: dict[str, np.ndarray]) -> tuple[pd.DataFrame, pd.DataFrame]:
@@ -204,55 +184,48 @@ def distributions(predictions: dict[str, dict[str, dict[str, np.ndarray]]], trut
     return pd.DataFrame(dist_rows), pd.DataFrame(summary_rows)
 
 
-def rating_panel(ax, dist: pd.DataFrame, model: str, domain: str, show_legend_labels: bool) -> None:
+def figure_rating_grid(dist: pd.DataFrame, models: list[tuple[str, str]]) -> None:
+    """Observed vs predicted rating distributions: rows = prompt conditions, columns = domains.
+
+    Same construction as the manuscript's score-distribution figure: the human
+    rating distribution is a wide light-gray background bar and each model's
+    predicted distribution is a narrow coloured bar drawn on top of it.
+    """
     levels = np.arange(1, 6)
-    series = [("Observed", "observed", OBSERVED_COLOR)] + [(short, key, CONDITION_COLORS[key]) for key, _l, short in CONDITIONS]
-    width = .8 / len(series)
-    offsets = (np.arange(len(series)) - (len(series) - 1) / 2) * width
-    for (label, key, color), offset in zip(series, offsets):
-        source = "Observed" if key == "observed" else model
-        block = dist[(dist.model == source) & (dist.condition_key == key) & (dist.domain == domain) & (dist.kind == "rating")]
-        block = block.set_index("value").reindex(levels)
-        ax.bar(levels + offset, block["proportion"].to_numpy(), width=width * .95, color=color,
-               label=label if show_legend_labels else None, zorder=3)
-    ax.set_xticks(levels)
-    ax.set_ylim(0, 1)
-    style(ax)
-
-
-def error_panel(ax, dist: pd.DataFrame, model: str, domain: str, show_legend_labels: bool) -> None:
-    errors = np.arange(-4, 5)
-    width = .8 / len(CONDITIONS)
-    offsets = (np.arange(len(CONDITIONS)) - (len(CONDITIONS) - 1) / 2) * width
-    for (key, _label, short), offset in zip(CONDITIONS, offsets):
-        block = dist[(dist.model == model) & (dist.condition_key == key) & (dist.domain == domain) & (dist.kind == "signed_error")]
-        block = block.set_index("value").reindex(errors)
-        ax.bar(errors + offset, block["proportion"].to_numpy(), width=width * .95, color=CONDITION_COLORS[key],
-               label=short if show_legend_labels else None, zorder=3)
-    ax.axvline(0, color=OBSERVED_COLOR, linestyle="--", linewidth=1.2, alpha=.7, zorder=2)
-    ax.set_xticks(errors)
-    ax.set_ylim(0, 1)
-    style(ax)
-
-
-def figure_distribution(dist: pd.DataFrame, models: list[tuple[str, str]], panel, xlabel: str, ylabel: str, name: str) -> None:
-    rows = len(models)
-    fig, axes = plt.subplots(rows, 3, figsize=(15, 3.3 * rows), sharex=True, sharey=True, constrained_layout=True)
+    shown = dist[(dist.kind == "rating") & (dist.model.isin(["Observed"] + [m for m, _ in models]))]
+    y_max = 100 if shown["proportion"].max() > .9 else 90
+    n_rows, n_cols = len(CONDITIONS), 3
+    fig, axes = plt.subplots(n_rows, n_cols, figsize=(15, 2.9 * n_rows), sharex=True, sharey=True, constrained_layout=True)
     axes = np.atleast_2d(axes)
-    for r, (model, _color) in enumerate(models):
+    total_width = .78
+    bar_width = min(.13, total_width / max(1, len(models)) * .86)
+    offsets = np.linspace(-total_width / 2 + bar_width / 2, total_width / 2 - bar_width / 2, len(models)) if len(models) > 1 else [0.0]
+    for r, (key, _label, short) in enumerate(CONDITIONS):
         for c, domain in enumerate(("Content", "Coping", "Quitting")):
             ax = axes[r, c]
-            panel(ax, dist, model, domain, show_legend_labels=(r == 0 and c == 0))
+            ax.grid(axis="y", alpha=.12, color=OBSERVED_COLOR, linestyle="--", linewidth=.6)
+            human = dist[(dist.model == "Observed") & (dist.domain == domain) & (dist.kind == "rating")].set_index("value").reindex(levels)
+            ax.bar(levels, 100 * human["proportion"].to_numpy(), width=.82, color=OBSERVED_COLOR, alpha=.16,
+                   edgecolor=OBSERVED_COLOR, linewidth=.9, zorder=2)
+            for (model, color), offset in zip(models, offsets):
+                block = dist[(dist.model == model) & (dist.condition_key == key) & (dist.domain == domain) & (dist.kind == "rating")]
+                block = block.set_index("value").reindex(levels)
+                ax.bar(levels + offset, 100 * block["proportion"].to_numpy(), width=bar_width, color=color, alpha=.88,
+                       edgecolor="black", linewidth=.8, zorder=3)
+            ax.set_ylim(0, y_max)
+            ax.set_yticks([0, y_max / 2, y_max], ["0%", f"{y_max // 2}%", f"{y_max}%"])
+            ax.set_xticks(levels, [str(level) for level in levels])
             if r == 0:
                 ax.set_title(domain)
             if c == 0:
-                ax.set_ylabel(f"{model}\n{ylabel}")
-            if r == rows - 1:
-                ax.set_xlabel(xlabel)
-    handles, labels = axes[0, 0].get_legend_handles_labels()
-    legend = fig.legend(handles, labels, loc="lower center", bbox_to_anchor=(.5, -.02 if rows > 1 else -.06),
-                        ncol=len(labels), prop=LEGEND_FONT)
-    save(fig, name, legend)
+                ax.set_ylabel(short.replace(", ", ",\n").replace(" + ", " +\n"))
+            if r == n_rows - 1:
+                ax.set_xlabel("Rating")
+            style(ax)
+    handles = [Patch(facecolor=OBSERVED_COLOR, alpha=.16, edgecolor=OBSERVED_COLOR, label="Human ratings")]
+    handles += [Patch(facecolor=color, alpha=.88, edgecolor="black", label=model) for model, color in models]
+    legend = fig.legend(handles=handles, loc="upper center", bbox_to_anchor=(.5, -.01), ncol=len(handles), prop=LEGEND_FONT)
+    save(fig, "prompt_ablation_rating_distributions_dt10", legend)
 
 
 # --------------------------------------------------------------------------
@@ -299,7 +272,7 @@ def figure_pairwise(pairwise: pd.DataFrame, models: list[tuple[str, str]], metri
     handles = [Patch(facecolor=colors["comparison better"], edgecolor="#4D4D4D", label="Comparison better (95% CI > 0)"),
                Patch(facecolor=colors["reference better"], edgecolor="#4D4D4D", label="Reference better (95% CI < 0)"),
                Patch(facecolor="white", edgecolor="#4D4D4D", label="Comparable (CI includes 0)")]
-    legend = fig.legend(handles=handles, loc="lower center", bbox_to_anchor=(.5, -.04), ncol=3, prop=LEGEND_FONT)
+    legend = fig.legend(handles=handles, loc="upper center", bbox_to_anchor=(.5, -.01), ncol=3, prop=LEGEND_FONT)
     save(fig, f"prompt_ablation_pairwise_{metric}_dt10", legend)
 
 
@@ -340,15 +313,10 @@ def main() -> None:
     summary.to_csv(OUTDIR / "prompt_ablation_prediction_summary_dt10.csv", index=False)
 
     for metric in METRIC_SPECS:
-        figure_metric(metrics, completed, metric)
         figure_pairwise(pairwise, completed, metric)
     figure_metric_grid(metrics, completed, STANDARD_METRICS, "prompt_ablation_metrics_by_domain_dt10")
     figure_metric_grid(metrics, completed, DIRECTIONAL_METRICS, "prompt_ablation_directional_by_domain_dt10")
-    figure_distribution(dist, completed, rating_panel, "Rating (1–5)", "proportion", "prompt_ablation_rating_distributions_dt10")
-    figure_distribution(dist, completed, error_panel, "Predicted − observed rating", "proportion", "prompt_ablation_signed_error_distributions_dt10")
-    for model, color in completed:
-        figure_distribution(dist, [(model, color)], rating_panel, "Rating (1–5)", "proportion", f"prompt_ablation_rating_distribution_{slug(model)}_dt10")
-        figure_distribution(dist, [(model, color)], error_panel, "Predicted − observed rating", "proportion", f"prompt_ablation_signed_error_{slug(model)}_dt10")
+    figure_rating_grid(dist, completed)
     print(f"Wrote prompt-ablation figures for {len(completed)} complete model(s) to {OUTDIR}"
           + (f"; pending: {', '.join(pending)}" if pending else ""))
 
