@@ -1,6 +1,6 @@
 # Prompt Template Library for 2.2.2–2.2.3
 
-This file provides manuscript-ready templates for the LLM conditions described in Sections 2.2.2 and 2.2.3. The prose mirrors the study narrative while exposing the exact prompt scaffolding (persona framing, instruction rubrics, JSON contracts) used in `analysis-script/prompt_config.py`.
+This file provides manuscript-ready templates for the LLM conditions described in Sections 2.2.2 and 2.2.3. The prose mirrors the study narrative while exposing the exact prompt scaffolding (persona framing, instruction rubrics, JSON contracts) used in `analysis/legacy/prompt_config.py`.
 
 Throughout the document:
 - `{{input_message}}`, `{{response_id}}`, etc. are placeholders filled by the evaluation pipeline.
@@ -181,4 +181,4 @@ An illustrative prompting structure for these personalized-prompt variants is in
 
 ## Implementation Notes
 - Zero-shot/few-shot templates map to functions such as `generate_zero_shot_prompt`, `generate_zero_shot_feature_select_prompt`, `generate_few_shot_prompt`, `generate_few_shot_feature_select_prompt`, and `generate_zero_shot_feature_select_prob_prompt`.
-- PP templates align with `generate_digital_twin_prompt` and `generate_hybrid_rf_digital_twin_prompt`, while sensitivity variants correspond to the CBT/ACT, feedback, and selected-feature helpers in `analysis-script/prompt_config.py`.
+- PP templates align with `generate_digital_twin_prompt` and `generate_hybrid_rf_digital_twin_prompt`, while sensitivity variants correspond to the CBT/ACT, feedback, and selected-feature helpers in `analysis/legacy/prompt_config.py`.

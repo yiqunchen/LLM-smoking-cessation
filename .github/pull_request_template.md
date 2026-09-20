@@ -19,8 +19,8 @@ Provide exact commands and expected artifacts:
 ```bash
 pip install -r requirements.txt
 export CHEN_OPENAI_API_KEY=...  # required for model calls
-python analysis-script/preprocess_data.py
-python analysis-script/main_eval.py --mode text-only --model gpt-4o --prompt-config few-shot-feature-select-balanced --sample-size 10
+python analysis/preprocess_data.py
+python analysis/legacy/main_eval.py --mode text-only --model gpt-4o --prompt-config few-shot-feature-select-balanced --sample-size 10
 ```
 
 ## Data / Environment

@@ -221,61 +221,69 @@ pyrightconfig.json
 *.key
 
 # ---------------------------------------------------------------------------
-# Project-specific rules (dt10-only policy; see revision/DT10_SOURCE_OF_TRUTH.md)
+# Project rules. Policy: docs/DATA_POLICY.md (dt10 splits only; three outcomes).
 # ---------------------------------------------------------------------------
 
-# Archives: old experiments, retired splits/results. Never tracked.
-archive_code/
-archive_results/*
-!archive_results/embedding_results_test30/
-archive_results/embedding_results_test30/*
-!archive_results/embedding_results_test30/results.json
+# archive/: retired experiments, splits, results, handoff bundles. Not tracked,
+# except one legacy embedding-baseline result some legacy plots read.
 archive/*
-!archive/data/
-archive/data/*
-!archive/data/message_embeddings.pkl
-!archive/data/message_embeddings_metadata.json
+!archive/results/
+archive/results/*
+!archive/results/embedding_results_test30/
+archive/results/embedding_results_test30/*
+!archive/results/embedding_results_test30/results.json
 
-# Restricted-data handoff bundles; distribute outside Git.
-data-for-jasmine*.zip
-data-for-jasmine*.md
+# data/raw: restricted participant-level inputs. Only derived embeddings tracked.
+data/raw/*
+!data/raw/message_embeddings.pkl
+!data/raw/message_embeddings_metadata.json
 
-# Data splits: only the canonical dt10 splits are tracked.
-data_splits/*
-!data_splits/canonical/
-data_splits/canonical/*
-!data_splits/canonical/README.md
-!data_splits/canonical/metadata_dt10_k*.json
-!data_splits/canonical/train_dt10_k*.json
-!data_splits/canonical/test_dt10_k*.json
+# data/splits: only the canonical dt10 splits are tracked.
+data/splits/*
+!data/splits/canonical/
+data/splits/canonical/*
+!data/splits/canonical/README.md
+!data/splits/canonical/metadata_dt10_k*.json
+!data/splits/canonical/train_dt10_k*.json
+!data/splits/canonical/test_dt10_k*.json
 
-# Manuscript-era results: only the dt10 Grok PP runs and the RF predictions
-# consumed by committed revision figures are tracked.
+# results/prompt_ablations: tracked (predictions + manifest); scratch ignored.
+results/prompt_ablations/*/*.tmp
+results/prompt_ablations/*/*_errors.log
+
+# results/manuscript, results/hybrid: manuscript-era runs. Only the dt10 Grok PP
+# runs and the RF predictions consumed by committed figures are tracked.
+results/manuscript/*
+!results/manuscript/x-ai_grok-4-fast/
+results/manuscript/x-ai_grok-4-fast/*
+!results/manuscript/x-ai_grok-4-fast/digital_twin_dt10_k*.json
+!results/manuscript/hybrid_rf_grok4/
+results/manuscript/hybrid_rf_grok4/*
+!results/manuscript/hybrid_rf_grok4/rf_predictions_all_features.json
+results/hybrid/
+
+# Old top-level result paths (pre-2026-09 layout). Never re-create them.
+results_reviewer_ablations_*
+results_manuscript_*
+results_hybrid*
+data_splits/
+analysis-script/
+
+# Regenerable caches, packages, logs, scratch
+figures/prompt_ablations/bootstrap_cache_dt10/
+figures/*.pdf
+reports/*.zip
+logs/
+*.tmp
 checkpoint_results_*.json
 evaluation_results_*.json
 temp_checkpoint/
-results_manuscript*/*
-!results_manuscript_x-ai_grok-4-fast/
-!results_manuscript_x-ai_grok-4-fast/digital_twin_dt10_k*.json
-!results_manuscript_hybrid_rf_grok4/
-!results_manuscript_hybrid_rf_grok4/rf_predictions_all_features.json
-results_hybrid*/
+data-for-jasmine*
 
-# Reviewer 3 prompt ablations (dt10-k7): track results + manifest, not scratch.
-results_reviewer_ablations_*/*.tmp
-results_reviewer_ablations_*/*_errors.log
-revision/figures/reviewer_ablations_dt10/bootstrap_cache_dt10/
-
-# Run logs and scratch
-logs/
-*.tmp
-
-# Generated PDF figures under figures/ (regenerable from scripts)
-figures/*.pdf
-
-# Local-only files
+# Local-only
 wip-manuscript.md
 .mplconfig/
 main.py
+.claude/
 docs/reference/
-revision/.pre_anchor_sweep_backup_*/
+docs/revision/.pre_anchor_sweep_backup_*/
