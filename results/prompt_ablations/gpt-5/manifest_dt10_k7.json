@@ -1836,8 +1836,40 @@
     "history_ratings_only",
     "history_text_only"
   ],
-  "max_concurrent": 6,
-  "max_output_tokens": 300,
-  "reasoning_effort": null,
-  "checkpoint_interval": 25
+  "runs": {
+    "pp_cbtact": {
+      "max_concurrent": 30,
+      "max_output_tokens": 1000,
+      "reasoning_effort": "low",
+      "checkpoint_interval": 5,
+      "max_retries": 5,
+      "resumed": true
+    },
+    "full_pp_no_cbtact": {
+      "max_concurrent": 30,
+      "max_output_tokens": 1000,
+      "reasoning_effort": "low",
+      "checkpoint_interval": 5,
+      "max_retries": 5,
+      "resumed": false
+    },
+    "history_ratings_only": {
+      "max_concurrent": 30,
+      "max_output_tokens": 1000,
+      "reasoning_effort": "low",
+      "checkpoint_interval": 5,
+      "max_retries": 5,
+      "resumed": false
+    },
+    "history_text_only": {
+      "max_concurrent": 30,
+      "max_output_tokens": 1000,
+      "reasoning_effort": "low",
+      "checkpoint_interval": 5,
+      "max_retries": 5,
+      "resumed": false
+    }
+  },
+  "notes": "Run 2026-09-20 14:35 EDT, 4 parallel tmux workers. pp_cbtact resumed 25 rows checkpointed by a 14:20 run at max_concurrent=10, max_output_tokens=1000.",
+  "updated_utc": "2026-09-20T18:57:15.058391+00:00"
 }

@@ -1831,10 +1831,45 @@
     "history_text_only": "seven history texts only; no history ratings or metadata"
   },
   "requested_conditions": [
+    "pp_cbtact",
+    "full_pp_no_cbtact",
+    "history_ratings_only",
     "history_text_only"
   ],
-  "max_concurrent": 10,
-  "max_output_tokens": 300,
-  "reasoning_effort": null,
-  "checkpoint_interval": 25
+  "runs": {
+    "pp_cbtact": {
+      "max_concurrent": 10,
+      "max_output_tokens": 300,
+      "reasoning_effort": null,
+      "checkpoint_interval": 25,
+      "max_retries": 5,
+      "resumed": false
+    },
+    "full_pp_no_cbtact": {
+      "max_concurrent": 10,
+      "max_output_tokens": 300,
+      "reasoning_effort": null,
+      "checkpoint_interval": 25,
+      "max_retries": 5,
+      "resumed": false
+    },
+    "history_ratings_only": {
+      "max_concurrent": 10,
+      "max_output_tokens": 300,
+      "reasoning_effort": null,
+      "checkpoint_interval": 25,
+      "max_retries": 5,
+      "resumed": false
+    },
+    "history_text_only": {
+      "max_concurrent": 10,
+      "max_output_tokens": 300,
+      "reasoning_effort": null,
+      "checkpoint_interval": 25,
+      "max_retries": 5,
+      "resumed": false
+    }
+  },
+  "notes": "Run 2026-09-20 14:18-14:20 EDT with the corrected three-outcome prompt (Codex launch, 4 parallel tmux workers).",
+  "updated_utc": "2026-09-20T18:18:41.919812+00:00"
 }

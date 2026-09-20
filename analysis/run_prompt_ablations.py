@@ -322,9 +322,37 @@ async def call_one(client, semaphore, qid: str, item: dict, condition: str,
 
 
 def write_manifest(test: list[dict], conditions: list[str], args) -> None:
+    """Record split hashes and the exact settings each condition was run with.
+
+    Condition workers share one output directory, so the manifest is merged
+    rather than replaced: the split/prompt block is rewritten (it is identical
+    for every worker) and ``runs[<condition>]`` records this worker's settings
+    without touching other conditions' entries.  The write is atomic through a
+    per-process temporary file, so concurrent workers cannot collide.
+    """
+    manifest_path = OUTPUT_DIR / "manifest_dt10_k7.json"
+    existing: dict = {}
+    if manifest_path.exists():
+        try:
+            existing = json.loads(manifest_path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError:
+            existing = {}
     metadata = json.loads(METADATA_PATH.read_text(encoding="utf-8"))
+    now = datetime.now(timezone.utc).isoformat()
+    runs = dict(existing.get("runs") or {})
+    for condition in conditions:
+        runs[condition] = {
+            "started_utc": now,
+            "max_concurrent": args.max_concurrent,
+            "max_output_tokens": MAX_OUTPUT_TOKENS,
+            "reasoning_effort": REASONING_EFFORT,
+            "checkpoint_interval": args.checkpoint_interval,
+            "max_retries": args.max_retries,
+            "resumed": output_path(condition).exists(),
+        }
     manifest = {
-        "created_utc": datetime.now(timezone.utc).isoformat(),
+        "created_utc": existing.get("created_utc", now),
+        "updated_utc": now,
         "model": MODEL,
         "split": "dt10_k7",
         "train_path": str(TRAIN_PATH.relative_to(ROOT)),
@@ -340,16 +368,12 @@ def write_manifest(test: list[dict], conditions: list[str], args) -> None:
             "history_ratings_only": "seven history texts + their ratings; no metadata",
             "history_text_only": "seven history texts only; no history ratings or metadata",
         },
-        "requested_conditions": conditions,
-        "max_concurrent": args.max_concurrent,
-        "max_output_tokens": MAX_OUTPUT_TOKENS,
-        "reasoning_effort": REASONING_EFFORT,
-        "checkpoint_interval": args.checkpoint_interval,
+        "requested_conditions": sorted(runs, key=list(CONDITIONS).index),
+        "runs": runs,
     }
-    # Condition workers may share an output directory.  Publish the manifest
-    # atomically so a concurrent metadata refresh cannot concatenate JSON.
-    manifest_path = OUTPUT_DIR / "manifest_dt10_k7.json"
-    temporary = manifest_path.with_suffix(".tmp")
+    if existing.get("notes"):
+        manifest["notes"] = existing["notes"]
+    temporary = manifest_path.with_name(f"manifest_dt10_k7.{os.getpid()}.tmp")
     temporary.write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
     temporary.replace(manifest_path)
 
@@ -419,7 +443,6 @@ async def main_async(args) -> None:
     if profile_sizes != {7}:
         raise SystemExit(f"Expected exactly 7 history messages per test row; got {profile_sizes}")
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
-    write_manifest(test, args.conditions, args)
     print(f"Canonical split: train={len(train)}, test={len(test)}, profiles={profile_sizes}", flush=True)
     if args.validate_only:
         for condition in args.conditions:
@@ -442,6 +465,7 @@ async def main_async(args) -> None:
     # interruption.  Retry policy is managed explicitly in ``call_one``.
     client = AsyncOpenAI(api_key=key, base_url="https://openrouter.ai/api/v1", timeout=120.0, max_retries=0)
     await preflight(client, test[0], args.conditions[0])
+    write_manifest(test, args.conditions, args)
     for condition in args.conditions:
         if shutting_down:
             break

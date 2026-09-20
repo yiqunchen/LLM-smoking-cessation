@@ -40,7 +40,7 @@ for spec in "${MODELS[@]}"; do
   IFS='|' read -r name model outdir flags <<<"$spec"
   selected "$name" || continue
   mkdir -p "$outdir"
-  # Write the manifest once up front so parallel workers never race on it.
+  # Validate the split and prompt exclusions before spending any API calls.
   $PY --model "$model" --output-dir "$outdir" --validate-only >/dev/null
   for cond in "${CONDITIONS[@]}"; do
     session="rerun-$name-$cond"

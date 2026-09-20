@@ -1,6 +1,6 @@
 {
-  "created_utc": "2026-09-20T18:36:35.268861+00:00",
-  "model": "google/gemini-2.5-pro",
+  "created_utc": "2026-09-20T19:32:53.772565+00:00",
+  "model": "deepseek/deepseek-r1-0528",
   "split": "dt10_k7",
   "train_path": "data/splits/canonical/train_dt10_k7.json",
   "test_path": "data/splits/canonical/test_dt10_k7.json",
@@ -1839,37 +1839,37 @@
   "runs": {
     "pp_cbtact": {
       "max_concurrent": 30,
-      "max_output_tokens": null,
-      "reasoning_effort": null,
+      "max_output_tokens": 2000,
+      "reasoning_effort": "low",
       "checkpoint_interval": 5,
       "max_retries": 5,
       "resumed": false
     },
     "full_pp_no_cbtact": {
       "max_concurrent": 30,
-      "max_output_tokens": null,
-      "reasoning_effort": null,
+      "max_output_tokens": 2000,
+      "reasoning_effort": "low",
       "checkpoint_interval": 5,
       "max_retries": 5,
       "resumed": false
     },
     "history_ratings_only": {
       "max_concurrent": 30,
-      "max_output_tokens": null,
-      "reasoning_effort": null,
+      "max_output_tokens": 2000,
+      "reasoning_effort": "low",
       "checkpoint_interval": 5,
       "max_retries": 5,
       "resumed": false
     },
     "history_text_only": {
       "max_concurrent": 30,
-      "max_output_tokens": null,
-      "reasoning_effort": null,
+      "max_output_tokens": 2000,
+      "reasoning_effort": "low",
       "checkpoint_interval": 5,
       "max_retries": 5,
       "resumed": false
     }
   },
-  "notes": "Run 2026-09-20 14:35 EDT, 4 parallel tmux workers, max_tokens uncapped (Gemini 2.5 Pro thinking).",
-  "updated_utc": "2026-09-20T18:36:35.268861+00:00"
+  "notes": "Run 2026-09-20 14:35 EDT, 4 parallel tmux workers; rows that returned empty content after 5 retries were resumed with identical settings until 898/898.",
+  "updated_utc": "2026-09-20T19:32:53.772565+00:00"
 }

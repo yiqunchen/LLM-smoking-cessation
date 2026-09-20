@@ -1831,10 +1831,45 @@
     "history_text_only": "seven history texts only; no history ratings or metadata"
   },
   "requested_conditions": [
-    "history_ratings_only"
+    "pp_cbtact",
+    "full_pp_no_cbtact",
+    "history_ratings_only",
+    "history_text_only"
   ],
-  "max_concurrent": 30,
-  "max_output_tokens": 300,
-  "reasoning_effort": null,
-  "checkpoint_interval": 5
+  "runs": {
+    "pp_cbtact": {
+      "max_concurrent": 30,
+      "max_output_tokens": 300,
+      "reasoning_effort": null,
+      "checkpoint_interval": 5,
+      "max_retries": 5,
+      "resumed": true
+    },
+    "full_pp_no_cbtact": {
+      "max_concurrent": 30,
+      "max_output_tokens": 300,
+      "reasoning_effort": null,
+      "checkpoint_interval": 5,
+      "max_retries": 5,
+      "resumed": true
+    },
+    "history_ratings_only": {
+      "max_concurrent": 30,
+      "max_output_tokens": 300,
+      "reasoning_effort": null,
+      "checkpoint_interval": 5,
+      "max_retries": 5,
+      "resumed": true
+    },
+    "history_text_only": {
+      "max_concurrent": 30,
+      "max_output_tokens": 300,
+      "reasoning_effort": null,
+      "checkpoint_interval": 5,
+      "max_retries": 5,
+      "resumed": true
+    }
+  },
+  "notes": "Run 2026-09-20 14:35 EDT, 4 parallel tmux workers. Each condition resumed rows checkpointed by a 14:20 run at max_concurrent=10 (pp_cbtact 475, full_pp_no_cbtact 450, history_ratings_only 400, history_text_only 325). Temperature 0; concurrency does not affect outputs.",
+  "updated_utc": "2026-09-20T18:37:12.599903+00:00"
 }
