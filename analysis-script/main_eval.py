@@ -27,6 +27,7 @@ from prompt_config import (
     generate_zero_shot_feature_select_prob_prompt,
     generate_zero_shot_natural_lang_prob_prompt,
     generate_digital_twin_prompt,
+    generate_digital_twin_history_only_prompt,
     generate_digital_twin_select_prompt,
     generate_digital_twin_feedback_prompt,
     generate_digital_twin_cbtact_prompt,
@@ -191,6 +192,8 @@ async def evaluate_questions_parallel(
                 text_prompt = generate_zero_shot_natural_lang_prob_prompt(data)
             elif prompt_config == 'digital-twin':
                 text_prompt = generate_digital_twin_prompt(data)
+            elif prompt_config == 'digital-twin-history-only':
+                text_prompt = generate_digital_twin_history_only_prompt(data)
             elif prompt_config == 'digital-twin-select':
                 text_prompt = generate_digital_twin_select_prompt(data)
             elif prompt_config == 'digital-twin-feedback':
@@ -346,7 +349,7 @@ async def main():
     parser.add_argument('--mode', type=str, choices=['text-only', 'vision'], default='text-only', help="Evaluation mode: 'text-only' or 'vision'")
     parser.add_argument('--model', type=str, default="gpt-4o-mini", help="Name of the model to use.")
     parser.add_argument('--provider', type=str, choices=['openai', 'openrouter', 'gemini'], default='openai', help="API provider: openai, openrouter, or gemini")
-    parser.add_argument('--prompt-config', type=str, choices=['zero-shot', 'zero-shot-feature-select', 'zero-shot-feature-select-balanced', 'few-shot', 'few-shot-feature-select', 'few-shot-feature-select-balanced', 'enhanced-zero-shot', 'zero-shot-prob', 'zero-shot-natural-lang', 'digital-twin', 'digital-twin-select', 'digital-twin-feedback', 'digital-twin-cbtact', 'hybrid-rf-digital-twin'], default='zero-shot', help="Prompt configuration")
+    parser.add_argument('--prompt-config', type=str, choices=['zero-shot', 'zero-shot-feature-select', 'zero-shot-feature-select-balanced', 'few-shot', 'few-shot-feature-select', 'few-shot-feature-select-balanced', 'enhanced-zero-shot', 'zero-shot-prob', 'zero-shot-natural-lang', 'digital-twin', 'digital-twin-history-only', 'digital-twin-select', 'digital-twin-feedback', 'digital-twin-cbtact', 'hybrid-rf-digital-twin'], default='zero-shot', help="Prompt configuration")
     parser.add_argument('--sample-size', type=int, default=None, help="Number of samples to process for testing (if not specified, processes all data)")
     parser.add_argument('--adaptive', action='store_true', help="Run adaptive prompt optimization instead of regular evaluation")
     parser.add_argument('--checkpoint-file', type=str, default=DEFAULT_CHECKPOINT_FILE, help="Path template for checkpoint file (use {model}, {mode}, and {prompt_config} placeholders).")

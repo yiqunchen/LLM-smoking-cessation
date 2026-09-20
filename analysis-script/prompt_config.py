@@ -790,6 +790,56 @@ Return **exactly** this JSON object:
     #print("==========================")
     return prompt 
 
+def generate_digital_twin_history_only_prompt(data):
+    """Generate a digital-twin ablation prompt using only past ratings + message text."""
+    history_text = ""
+    if data.get('profile_messages'):
+        history_text = _format_profile_messages(data['profile_messages'])
+    else:
+        history_text = "(No prior rating history available for this participant.)\n"
+
+    prompt = f"""
+You are an AI assistant simulating this participant. Your task is to predict how the participant will rate a new smoking-cessation support message, using ONLY their past message ratings shown below.
+Base your prediction on how similar the new message is to the participant's previously rated messages. Remain consistent with the participant's prior rating patterns.
+Be sure to carefully follow all provided Instructions for formatting your answer.
+---
+Instructions:
+### RATING DIMENSIONS
+1. **content** – How would you rate the content (that is, the words and meaning) of this message?
+2. **design** – How would you rate the design (that is, how the message looks) of this message?
+3. **coping** – How helpful would this message be to support you in coping with a smoking urge or craving?
+4. **quitting** – How helpful would this message be to support you in quitting or reducing smoking?
+
+### Allowed rating categories
+**content / design** → Very poor · Poor · Acceptable · Good · Very good
+**coping / quitting** → Not at all helpful · Somewhat helpful · Moderately helpful · Very helpful · Extremely helpful
+
+
+
+### INPUTS
+
+Here is the message provided to the participant to be rated:
+
+\\"{data['input_message']}\\"
+
+Participant's past message ratings:
+{history_text}
+---
+
+### OUTPUT FORMAT
+Return **exactly** this JSON object:
+
+{{
+  "response_id": "{data['response_id']}",
+  "predicted_content": "Very poor/Poor/Acceptable/Good/Very good",
+  "predicted_design": "Very poor/Poor/Acceptable/Good/Very good",
+  "predicted_coping": "Not at all helpful/Somewhat helpful/Moderately helpful/Very helpful/Extremely helpful",
+  "predicted_quitting": "Not at all helpful/Somewhat helpful/Moderately helpful/Very helpful/Extremely helpful",
+  "explanation": "≤ 2 sentences per dimension reflecting the participant's likely view based only on past rating patterns."
+}}
+"""
+    return prompt
+
 def generate_digital_twin_select_prompt(data):
     """Generate prompts for digital twin method with selected features"""
 
@@ -1134,8 +1184,12 @@ def generate_hybrid_rf_digital_twin_prompt(data: dict, profile_messages: list = 
     # Note: data should already have 'profile_messages' attached by main_eval.py
     base_prompt = generate_digital_twin_prompt(data)
     
-    # Load RF predictions if available
-    rf_pred_path = 'results_manuscript_hybrid_rf_grok4/rf_predictions_all_features.json'
+    # Load RF predictions if available; allow override for the v2 (history-RF) run
+    import os as _os
+    rf_pred_path = _os.environ.get(
+        'HYBRID_RF_PREDICTIONS',
+        'results_manuscript_hybrid_rf_grok4/rf_predictions_all_features.json',
+    )
     rf_predictions = None
     
     try:
@@ -1164,9 +1218,18 @@ def generate_hybrid_rf_digital_twin_prompt(data: dict, profile_messages: list = 
             5: "Extremely helpful"
         }
         
-        rf_context = "\n\n---\n\n### ADDITIONAL CONTEXT: PRIOR MODEL PREDICTIONS\n\n"
-        rf_context += "A Random Forest model trained on participant characteristics has made the following predictions for this message:\n\n"
-        
+        soft_mode = _os.environ.get('HYBRID_RF_SOFT', '0') == '1'
+
+        if soft_mode:
+            rf_context = "\n\n---\n\n### OPTIONAL CENTERING SIGNAL\n\n"
+            rf_context += (
+                "A simple statistical model based on this participant's *average prior rating tendency* "
+                "produces these rough estimates:\n\n"
+            )
+        else:
+            rf_context = "\n\n---\n\n### ADDITIONAL CONTEXT: PRIOR MODEL PREDICTIONS\n\n"
+            rf_context += "A Random Forest model trained on participant characteristics has made the following predictions for this message:\n\n"
+
         if 'rf_pred_content' in rf_predictions:
             rf_context += f"- **Content**: {rating_map_content_design.get(rf_predictions['rf_pred_content'], 'Unknown')}\n"
         if 'rf_pred_design' in rf_predictions:
@@ -1175,14 +1238,28 @@ def generate_hybrid_rf_digital_twin_prompt(data: dict, profile_messages: list = 
             rf_context += f"- **Coping**: {rating_map_coping_quitting.get(rf_predictions['rf_pred_coping'], 'Unknown')}\n"
         if 'rf_pred_quitting' in rf_predictions:
             rf_context += f"- **Quitting**: {rating_map_coping_quitting.get(rf_predictions['rf_pred_quitting'], 'Unknown')}\n"
-        
-        rf_context += "\n**IMPORTANT**: These are PRIOR predictions based solely on participant demographics and smoking history. "
-        rf_context += "They are **NOT 100% accurate** and should be treated as ONE input among many. "
-        rf_context += "Please make your final prediction by considering:\n"
-        rf_context += "1. The participant's complete history (messages shown above)\n"
-        rf_context += "2. The actual message content and image\n"
-        rf_context += "3. The prior model predictions as a reasonable baseline\n"
-        rf_context += "4. Your own assessment of how THIS specific participant would respond\n"
+
+        if soft_mode:
+            rf_context += (
+                "\n**Caveats about this signal — read carefully:**\n"
+                "- It is computed only from the participant's average prior rating, with no use of the held-out message text.\n"
+                "- It is biased toward modal categories (e.g., 'Good', 'Very helpful') and is unreliable for detecting extreme ratings such as 'Very poor', 'Very good', 'Not at all helpful', or 'Extremely helpful'.\n"
+                "- Treat it as a soft centering anchor, not a constraint. If the message content or the participant's history clearly indicates an extreme reaction, your independent judgment should override this anchor.\n"
+                "- Do not assume agreement; the model often misses minority-class outcomes.\n"
+                "Make your final rating from:\n"
+                "1. The participant's full history (messages shown above) and overall pattern.\n"
+                "2. The actual content of the held-out message.\n"
+                "3. Your independent assessment of how *this* participant would respond to *this* specific message — especially the possibility of an extreme rating.\n"
+                "4. The centering signal above only as a tie-breaker when the first three are inconclusive.\n"
+            )
+        else:
+            rf_context += "\n**IMPORTANT**: These are PRIOR predictions based solely on participant demographics and smoking history. "
+            rf_context += "They are **NOT 100% accurate** and should be treated as ONE input among many. "
+            rf_context += "Please make your final prediction by considering:\n"
+            rf_context += "1. The participant's complete history (messages shown above)\n"
+            rf_context += "2. The actual message content and image\n"
+            rf_context += "3. The prior model predictions as a reasonable baseline\n"
+            rf_context += "4. Your own assessment of how THIS specific participant would respond\n"
         
         # Insert RF context before the OUTPUT FORMAT section
         base_prompt = base_prompt.replace(

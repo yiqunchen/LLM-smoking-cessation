@@ -1,0 +1,145 @@
+k_train,feature_set,method,metric,metric_col,mean_across_domains,N_min,N_max
+1,Avg-History,Supervised RF,Accuracy,Accuracy,0.32100591715976334,2704.0,2704.0
+1,Avg-History,LLM-PP (Grok-4-Fast),Accuracy,Accuracy,0.4174063116370808,2704.0,2704.0
+1,Demo+History,Supervised RF,Accuracy,Accuracy,0.4203648915187377,2704.0,2704.0
+1,Demo+History,LLM-PP (Grok-4-Fast),Accuracy,Accuracy,0.4174063116370808,2704.0,2704.0
+1,Demographics,Supervised RF,Accuracy,Accuracy,0.42011834319526625,2704.0,2704.0
+1,Demographics,LLM-PP (Grok-4-Fast),Accuracy,Accuracy,0.4174063116370808,2704.0,2704.0
+1,Demographics + History + Message Embedding,Supervised RF,Accuracy,Accuracy,0.30112359550561796,2670.0,2670.0
+1,Demographics + History + Message Embedding,LLM-PP (Grok-4-Fast),Accuracy,Accuracy,0.4184769038701623,2670.0,2670.0
+1,Embedding,Supervised RF,Accuracy,Accuracy,0.3032459425717853,2670.0,2670.0
+1,Embedding,LLM-PP (Grok-4-Fast),Accuracy,Accuracy,0.4184769038701623,2670.0,2670.0
+1,Embedding+Demo,Supervised RF,Accuracy,Accuracy,0.29987515605493126,2670.0,2670.0
+1,Embedding+Demo,LLM-PP (Grok-4-Fast),Accuracy,Accuracy,0.4184769038701623,2670.0,2670.0
+3,Avg-History,Supervised RF,Accuracy,Accuracy,0.4367269267364415,2102.0,2102.0
+3,Avg-History,LLM-PP (Grok-4-Fast),Accuracy,Accuracy,0.437836980653346,2102.0,2102.0
+3,Demo+History,Supervised RF,Accuracy,Accuracy,0.45353631462099586,2102.0,2102.0
+3,Demo+History,LLM-PP (Grok-4-Fast),Accuracy,Accuracy,0.437836980653346,2102.0,2102.0
+3,Demographics,Supervised RF,Accuracy,Accuracy,0.4483032032984459,2102.0,2102.0
+3,Demographics,LLM-PP (Grok-4-Fast),Accuracy,Accuracy,0.437836980653346,2102.0,2102.0
+3,Demographics + History + Message Embedding,Supervised RF,Accuracy,Accuracy,0.33253282100544346,2082.0,2082.0
+3,Demographics + History + Message Embedding,LLM-PP (Grok-4-Fast),Accuracy,Accuracy,0.43723983349343576,2082.0,2082.0
+3,Embedding,Supervised RF,Accuracy,Accuracy,0.3117195004803074,2082.0,2082.0
+3,Embedding,LLM-PP (Grok-4-Fast),Accuracy,Accuracy,0.43723983349343576,2082.0,2082.0
+3,Embedding+Demo,Supervised RF,Accuracy,Accuracy,0.3157220621197566,2082.0,2082.0
+3,Embedding+Demo,LLM-PP (Grok-4-Fast),Accuracy,Accuracy,0.43723983349343576,2082.0,2082.0
+7,Avg-History,Supervised RF,Accuracy,Accuracy,0.4617668893838158,898.0,898.0
+7,Avg-History,LLM-PP (Grok-4-Fast),Accuracy,Accuracy,0.46213808463251665,898.0,898.0
+7,Demo+History,Supervised RF,Accuracy,Accuracy,0.4461766889383815,898.0,898.0
+7,Demo+History,LLM-PP (Grok-4-Fast),Accuracy,Accuracy,0.46213808463251665,898.0,898.0
+7,Demographics,Supervised RF,Accuracy,Accuracy,0.47438752783964366,898.0,898.0
+7,Demographics,LLM-PP (Grok-4-Fast),Accuracy,Accuracy,0.46213808463251665,898.0,898.0
+7,Demographics + History + Message Embedding,Supervised RF,Accuracy,Accuracy,0.3639109097772744,883.0,883.0
+7,Demographics + History + Message Embedding,LLM-PP (Grok-4-Fast),Accuracy,Accuracy,0.4628161570403926,883.0,883.0
+7,Embedding,Supervised RF,Accuracy,Accuracy,0.32163080407701017,883.0,883.0
+7,Embedding,LLM-PP (Grok-4-Fast),Accuracy,Accuracy,0.4628161570403926,883.0,883.0
+7,Embedding+Demo,Supervised RF,Accuracy,Accuracy,0.3227633069082672,883.0,883.0
+7,Embedding+Demo,LLM-PP (Grok-4-Fast),Accuracy,Accuracy,0.4628161570403926,883.0,883.0
+1,Avg-History,Supervised RF,Macro-F1,F1,0.0971512178082532,2704.0,2704.0
+1,Avg-History,LLM-PP (Grok-4-Fast),Macro-F1,F1,0.3433378861934848,2704.0,2704.0
+1,Demo+History,Supervised RF,Macro-F1,F1,0.35640544722649486,2704.0,2704.0
+1,Demo+History,LLM-PP (Grok-4-Fast),Macro-F1,F1,0.3433378861934848,2704.0,2704.0
+1,Demographics,Supervised RF,Macro-F1,F1,0.35641185582298335,2704.0,2704.0
+1,Demographics,LLM-PP (Grok-4-Fast),Macro-F1,F1,0.3433378861934848,2704.0,2704.0
+1,Demographics + History + Message Embedding,Supervised RF,Macro-F1,F1,0.19826165115399363,2670.0,2670.0
+1,Demographics + History + Message Embedding,LLM-PP (Grok-4-Fast),Macro-F1,F1,0.344416211270538,2670.0,2670.0
+1,Embedding,Supervised RF,Macro-F1,F1,0.20508762644442458,2670.0,2670.0
+1,Embedding,LLM-PP (Grok-4-Fast),Macro-F1,F1,0.344416211270538,2670.0,2670.0
+1,Embedding+Demo,Supervised RF,Macro-F1,F1,0.20095067127241753,2670.0,2670.0
+1,Embedding+Demo,LLM-PP (Grok-4-Fast),Macro-F1,F1,0.344416211270538,2670.0,2670.0
+3,Avg-History,Supervised RF,Macro-F1,F1,0.3258821282547173,2102.0,2102.0
+3,Avg-History,LLM-PP (Grok-4-Fast),Macro-F1,F1,0.3528649728652111,2102.0,2102.0
+3,Demo+History,Supervised RF,Macro-F1,F1,0.38269609757494516,2102.0,2102.0
+3,Demo+History,LLM-PP (Grok-4-Fast),Macro-F1,F1,0.3528649728652111,2102.0,2102.0
+3,Demographics,Supervised RF,Macro-F1,F1,0.3670759919472089,2102.0,2102.0
+3,Demographics,LLM-PP (Grok-4-Fast),Macro-F1,F1,0.3528649728652111,2102.0,2102.0
+3,Demographics + History + Message Embedding,Supervised RF,Macro-F1,F1,0.23198943645478973,2082.0,2082.0
+3,Demographics + History + Message Embedding,LLM-PP (Grok-4-Fast),Macro-F1,F1,0.35162349303248686,2082.0,2082.0
+3,Embedding,Supervised RF,Macro-F1,F1,0.2128363521436425,2082.0,2082.0
+3,Embedding,LLM-PP (Grok-4-Fast),Macro-F1,F1,0.35162349303248686,2082.0,2082.0
+3,Embedding+Demo,Supervised RF,Macro-F1,F1,0.2170652276130034,2082.0,2082.0
+3,Embedding+Demo,LLM-PP (Grok-4-Fast),Macro-F1,F1,0.35162349303248686,2082.0,2082.0
+7,Avg-History,Supervised RF,Macro-F1,F1,0.3707610529386387,898.0,898.0
+7,Avg-History,LLM-PP (Grok-4-Fast),Macro-F1,F1,0.3698716966150057,898.0,898.0
+7,Demo+History,Supervised RF,Macro-F1,F1,0.36838176008804985,898.0,898.0
+7,Demo+History,LLM-PP (Grok-4-Fast),Macro-F1,F1,0.3698716966150057,898.0,898.0
+7,Demographics,Supervised RF,Macro-F1,F1,0.40275219476295304,898.0,898.0
+7,Demographics,LLM-PP (Grok-4-Fast),Macro-F1,F1,0.3698716966150057,898.0,898.0
+7,Demographics + History + Message Embedding,Supervised RF,Macro-F1,F1,0.253859709584053,883.0,883.0
+7,Demographics + History + Message Embedding,LLM-PP (Grok-4-Fast),Macro-F1,F1,0.3690702056836101,883.0,883.0
+7,Embedding,Supervised RF,Macro-F1,F1,0.21795671398600058,883.0,883.0
+7,Embedding,LLM-PP (Grok-4-Fast),Macro-F1,F1,0.3690702056836101,883.0,883.0
+7,Embedding+Demo,Supervised RF,Macro-F1,F1,0.22059917694315492,883.0,883.0
+7,Embedding+Demo,LLM-PP (Grok-4-Fast),Macro-F1,F1,0.3690702056836101,883.0,883.0
+1,Avg-History,Supervised RF,QWK,QWK,0.0,2704.0,2704.0
+1,Avg-History,LLM-PP (Grok-4-Fast),QWK,QWK,0.4172571367200517,2704.0,2704.0
+1,Demo+History,Supervised RF,QWK,QWK,0.41735638241267364,2704.0,2704.0
+1,Demo+History,LLM-PP (Grok-4-Fast),QWK,QWK,0.4172571367200517,2704.0,2704.0
+1,Demographics,Supervised RF,QWK,QWK,0.41781820849663304,2704.0,2704.0
+1,Demographics,LLM-PP (Grok-4-Fast),QWK,QWK,0.4172571367200517,2704.0,2704.0
+1,Demographics + History + Message Embedding,Supervised RF,QWK,QWK,0.035707138963373866,2670.0,2670.0
+1,Demographics + History + Message Embedding,LLM-PP (Grok-4-Fast),QWK,QWK,0.41774538653209725,2670.0,2670.0
+1,Embedding,Supervised RF,QWK,QWK,0.04597424960006077,2670.0,2670.0
+1,Embedding,LLM-PP (Grok-4-Fast),QWK,QWK,0.41774538653209725,2670.0,2670.0
+1,Embedding+Demo,Supervised RF,QWK,QWK,0.0410511250635939,2670.0,2670.0
+1,Embedding+Demo,LLM-PP (Grok-4-Fast),QWK,QWK,0.41774538653209725,2670.0,2670.0
+3,Avg-History,Supervised RF,QWK,QWK,0.499351407903974,2102.0,2102.0
+3,Avg-History,LLM-PP (Grok-4-Fast),QWK,QWK,0.45718598287637446,2102.0,2102.0
+3,Demo+History,Supervised RF,QWK,QWK,0.5033339599241291,2102.0,2102.0
+3,Demo+History,LLM-PP (Grok-4-Fast),QWK,QWK,0.45718598287637446,2102.0,2102.0
+3,Demographics,Supervised RF,QWK,QWK,0.44720771096923,2102.0,2102.0
+3,Demographics,LLM-PP (Grok-4-Fast),QWK,QWK,0.45718598287637446,2102.0,2102.0
+3,Demographics + History + Message Embedding,Supervised RF,QWK,QWK,0.13814860855158342,2082.0,2082.0
+3,Demographics + History + Message Embedding,LLM-PP (Grok-4-Fast),QWK,QWK,0.4554266688868049,2082.0,2082.0
+3,Embedding,Supervised RF,QWK,QWK,0.05730794375911513,2082.0,2082.0
+3,Embedding,LLM-PP (Grok-4-Fast),QWK,QWK,0.4554266688868049,2082.0,2082.0
+3,Embedding+Demo,Supervised RF,QWK,QWK,0.06380339070120684,2082.0,2082.0
+3,Embedding+Demo,LLM-PP (Grok-4-Fast),QWK,QWK,0.4554266688868049,2082.0,2082.0
+7,Avg-History,Supervised RF,QWK,QWK,0.5467025060726762,898.0,898.0
+7,Avg-History,LLM-PP (Grok-4-Fast),QWK,QWK,0.4878557646528325,898.0,898.0
+7,Demo+History,Supervised RF,QWK,QWK,0.5485012253369551,898.0,898.0
+7,Demo+History,LLM-PP (Grok-4-Fast),QWK,QWK,0.4878557646528325,898.0,898.0
+7,Demographics,Supervised RF,QWK,QWK,0.5268589904535682,898.0,898.0
+7,Demographics,LLM-PP (Grok-4-Fast),QWK,QWK,0.4878557646528325,898.0,898.0
+7,Demographics + History + Message Embedding,Supervised RF,QWK,QWK,0.2119405409780892,883.0,883.0
+7,Demographics + History + Message Embedding,LLM-PP (Grok-4-Fast),QWK,QWK,0.490225121546914,883.0,883.0
+7,Embedding,Supervised RF,QWK,QWK,0.07142507125325658,883.0,883.0
+7,Embedding,LLM-PP (Grok-4-Fast),QWK,QWK,0.490225121546914,883.0,883.0
+7,Embedding+Demo,Supervised RF,QWK,QWK,0.09243167898759934,883.0,883.0
+7,Embedding+Demo,LLM-PP (Grok-4-Fast),QWK,QWK,0.490225121546914,883.0,883.0
+1,Avg-History,Supervised RF,Within-participant Spearman rho,Spearman_Rho,,,
+1,Avg-History,LLM-PP (Grok-4-Fast),Within-participant Spearman rho,Spearman_Rho,0.060846960479588465,2704.0,2704.0
+1,Demo+History,Supervised RF,Within-participant Spearman rho,Spearman_Rho,,,
+1,Demo+History,LLM-PP (Grok-4-Fast),Within-participant Spearman rho,Spearman_Rho,0.060846960479588465,2704.0,2704.0
+1,Demographics,Supervised RF,Within-participant Spearman rho,Spearman_Rho,,,
+1,Demographics,LLM-PP (Grok-4-Fast),Within-participant Spearman rho,Spearman_Rho,0.060846960479588465,2704.0,2704.0
+1,Demographics + History + Message Embedding,Supervised RF,Within-participant Spearman rho,Spearman_Rho,-0.020142005812158765,2670.0,2670.0
+1,Demographics + History + Message Embedding,LLM-PP (Grok-4-Fast),Within-participant Spearman rho,Spearman_Rho,0.0620747491667627,2670.0,2670.0
+1,Embedding,Supervised RF,Within-participant Spearman rho,Spearman_Rho,-0.0028661943717708666,2670.0,2670.0
+1,Embedding,LLM-PP (Grok-4-Fast),Within-participant Spearman rho,Spearman_Rho,0.0620747491667627,2670.0,2670.0
+1,Embedding+Demo,Supervised RF,Within-participant Spearman rho,Spearman_Rho,-0.008146994779453434,2670.0,2670.0
+1,Embedding+Demo,LLM-PP (Grok-4-Fast),Within-participant Spearman rho,Spearman_Rho,0.0620747491667627,2670.0,2670.0
+3,Avg-History,Supervised RF,Within-participant Spearman rho,Spearman_Rho,,,
+3,Avg-History,LLM-PP (Grok-4-Fast),Within-participant Spearman rho,Spearman_Rho,0.015085245922355066,2102.0,2102.0
+3,Demo+History,Supervised RF,Within-participant Spearman rho,Spearman_Rho,,,
+3,Demo+History,LLM-PP (Grok-4-Fast),Within-participant Spearman rho,Spearman_Rho,0.015085245922355066,2102.0,2102.0
+3,Demographics,Supervised RF,Within-participant Spearman rho,Spearman_Rho,,,
+3,Demographics,LLM-PP (Grok-4-Fast),Within-participant Spearman rho,Spearman_Rho,0.015085245922355066,2102.0,2102.0
+3,Demographics + History + Message Embedding,Supervised RF,Within-participant Spearman rho,Spearman_Rho,0.03381294718432863,2082.0,2082.0
+3,Demographics + History + Message Embedding,LLM-PP (Grok-4-Fast),Within-participant Spearman rho,Spearman_Rho,0.0123548028837601,2082.0,2082.0
+3,Embedding,Supervised RF,Within-participant Spearman rho,Spearman_Rho,0.025343587530166935,2082.0,2082.0
+3,Embedding,LLM-PP (Grok-4-Fast),Within-participant Spearman rho,Spearman_Rho,0.0123548028837601,2082.0,2082.0
+3,Embedding+Demo,Supervised RF,Within-participant Spearman rho,Spearman_Rho,0.025617860862160502,2082.0,2082.0
+3,Embedding+Demo,LLM-PP (Grok-4-Fast),Within-participant Spearman rho,Spearman_Rho,0.0123548028837601,2082.0,2082.0
+7,Avg-History,Supervised RF,Within-participant Spearman rho,Spearman_Rho,,,
+7,Avg-History,LLM-PP (Grok-4-Fast),Within-participant Spearman rho,Spearman_Rho,0.058003402264047675,898.0,898.0
+7,Demo+History,Supervised RF,Within-participant Spearman rho,Spearman_Rho,,,
+7,Demo+History,LLM-PP (Grok-4-Fast),Within-participant Spearman rho,Spearman_Rho,0.058003402264047675,898.0,898.0
+7,Demographics,Supervised RF,Within-participant Spearman rho,Spearman_Rho,,,
+7,Demographics,LLM-PP (Grok-4-Fast),Within-participant Spearman rho,Spearman_Rho,0.058003402264047675,898.0,898.0
+7,Demographics + History + Message Embedding,Supervised RF,Within-participant Spearman rho,Spearman_Rho,-0.010129511936994531,883.0,883.0
+7,Demographics + History + Message Embedding,LLM-PP (Grok-4-Fast),Within-participant Spearman rho,Spearman_Rho,0.07140350522703691,883.0,883.0
+7,Embedding,Supervised RF,Within-participant Spearman rho,Spearman_Rho,-0.08379786601120535,883.0,883.0
+7,Embedding,LLM-PP (Grok-4-Fast),Within-participant Spearman rho,Spearman_Rho,0.07140350522703691,883.0,883.0
+7,Embedding+Demo,Supervised RF,Within-participant Spearman rho,Spearman_Rho,-0.037082682301098235,883.0,883.0
+7,Embedding+Demo,LLM-PP (Grok-4-Fast),Within-participant Spearman rho,Spearman_Rho,0.07140350522703691,883.0,883.0

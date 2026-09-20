@@ -1,0 +1,7 @@
+Method,k_train,Content,Coping,Quitting,Mean,best feature set (Content),best feature set (Coping),best feature set (Quitting),N (Content),N (Coping),N (Quitting)
+Supervised RF,1,0.336,0.369,0.364,0.356,Demographics,Demo+History,Demographics,2704,2704,2704
+LLM-PP (Grok-4-Fast),1,0.327,0.349,0.357,0.345,Demographics,Embedding,Embedding,2704,2670,2670
+Supervised RF,3,0.354,0.402,0.392,0.383,Demographics,Demo+History,Demo+History,2102,2102,2102
+LLM-PP (Grok-4-Fast),3,0.334,0.361,0.363,0.353,Demographics,Demographics,Demographics,2102,2102,2102
+Supervised RF,7,0.393,0.407,0.408,0.403,Demographics,Demographics,Demographics,898,898,898
+LLM-PP (Grok-4-Fast),7,0.337,0.37,0.406,0.371,Demographics,Embedding,Demographics,898,883,898
