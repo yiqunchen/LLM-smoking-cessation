@@ -224,14 +224,8 @@ pyrightconfig.json
 # Project rules. Policy: docs/DATA_POLICY.md (dt10 splits only; three outcomes).
 # ---------------------------------------------------------------------------
 
-# archive/: retired experiments, splits, results, handoff bundles. Not tracked,
-# except one legacy embedding-baseline result some legacy plots read.
-archive/*
-!archive/results/
-archive/results/*
-!archive/results/embedding_results_test30/
-archive/results/embedding_results_test30/*
-!archive/results/embedding_results_test30/results.json
+# archive/: retired experiments, splits, results, handoff bundles. Never tracked.
+archive/
 
 # data/raw: restricted participant-level inputs. Only derived embeddings tracked.
 data/raw/*
