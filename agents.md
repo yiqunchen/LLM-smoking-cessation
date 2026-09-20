@@ -4,6 +4,7 @@
 - Reuse these semantic colors consistently:
   `GPT-4o-mini #0173B2`, `GPT-5 #DE8F05`, `DeepSeek-R1 #029E73`, `Grok-4-Fast #CC78BC`, `Gemini-2.5-Pro #CA9161`, `Logistic Regression #E02020`, `Random Forest #7F7F7F`.
 - Keep figure and axes backgrounds white.
+- Use bold Helvetica for publication or revision figures, with Arial and DejaVu Sans as fallbacks. Do not use Avenir unless a user explicitly requests it.
 - Use bold axis labels, titles, and usually bold tick labels for publication or revision figures.
 - Prefer neutral gray reference and grid styling similar to `../distributional-ppi`: `#4D4D4D`, dashed reference lines, light grid alpha.
 - If a figure introduces non-model categories, draw from the same restrained, colorblind-safe family and avoid ad hoc bright colors when a repo color can be reused.
