@@ -68,6 +68,9 @@ models (GPT-4o-mini, GPT-5, DeepSeek-R1, Grok-4.3, Gemini-2.5-Pro), all 898
 | `history_text_only` | | x | | |
 
 ```bash
+# 0. Smoke test: one real request per model, prints the parsed prediction, writes nothing.
+bash scripts/smoke_test_apis.sh
+
 # 1. Launch or resume every model x condition (tmux, checkpointed, idempotent).
 bash scripts/run_prompt_ablations.sh            # subset: ... gpt5 grok
 tmux ls | grep rerun- ; tail -c 300 logs/rerun-*.log

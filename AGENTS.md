@@ -29,7 +29,7 @@ file is the contract for agents and contributors.
 |---|---|
 | `analysis/` | Active Python. One script per step; each has a docstring and `--help`. |
 | `analysis/legacy/` | Frozen manuscript-era code. |
-| `scripts/` | Shell entry points. `run_prompt_ablations.sh`, `build_prompt_ablation_package.sh`. |
+| `scripts/` | Shell entry points. `smoke_test_apis.sh`, `run_prompt_ablations.sh`, `build_prompt_ablation_package.sh`. |
 | `data/splits/canonical/` | dt10 `k1/k3/k5/k7` train/test/metadata JSON (tracked). |
 | `data/raw/` | Restricted participant-level inputs (gitignored except embeddings). |
 | `results/prompt_ablations/<model>/` | Prompt-ablation predictions: 4 conditions x 898 rows + manifest (tracked). |
