@@ -1,9 +1,23 @@
 #!/usr/bin/env python3
-"""Create validated five-model figures for the Reviewer 3 prompt ablations.
+"""Figures for the prompt ablations on the canonical dt10-k7 split, by domain.
 
-The script refuses to pool or plot a model until all four conditions contain
-the exact 898 canonical dt10-k7 rows.  It emits observed metrics only—never
-placeholder values for unfinished model runs.
+Reads the bootstrap tables written by ``bootstrap_prompt_ablations.py`` plus the
+raw result JSONs.  Only models whose four conditions are complete (those present
+in the bootstrap table) are drawn; pending models are listed in
+``prompt_ablation_figure_status_dt10.csv`` and never drawn as placeholders.
+Every metric is reported separately for Content, Coping, and Quitting.
+
+Outputs (figures/prompt_ablations/, PNG + PDF unless noted):
+  prompt_ablation_<metric>_by_domain_dt10            one metric, three domain panels, 95% CI whiskers
+  prompt_ablation_metrics_by_domain_dt10             accuracy / macro-F1 / QWK (rows) x domains (columns)
+  prompt_ablation_directional_by_domain_dt10         directional accuracy / macro-F1 x domains
+  prompt_ablation_rating_distributions_dt10          observed vs predicted rating distributions, models x domains
+  prompt_ablation_rating_distribution_<model>_dt10   the same for one model
+  prompt_ablation_signed_error_distributions_dt10    (predicted - observed) distributions, models x domains
+  prompt_ablation_signed_error_<model>_dt10          the same for one model
+  prompt_ablation_pairwise_<metric>_dt10             paired differences for all condition pairs, colour = verdict
+  prompt_ablation_rating_distribution_dt10.csv       long table behind the distribution figures
+  prompt_ablation_prediction_summary_dt10.csv        mean/SD of predictions, bias, MAE, within-1 rate
 """
 from __future__ import annotations
 
@@ -12,9 +26,9 @@ from pathlib import Path
 
 import matplotlib as mpl
 import matplotlib.pyplot as plt
+from matplotlib.patches import Patch
 import numpy as np
 import pandas as pd
-from sklearn.metrics import cohen_kappa_score, f1_score
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -29,11 +43,14 @@ RATING_SCALES = {
                  "Moderately helpful": 3, "Very helpful": 4, "Extremely helpful": 5},
 }
 CONDITIONS = (
-    ("pp_cbtact", "PP +\nCBT/ACT"),
-    ("full_pp_no_cbtact", "PP, no\nCBT/ACT"),
-    ("history_ratings_only", "History +\nratings"),
-    ("history_text_only", "History text\nonly"),
+    ("pp_cbtact", "PP +\nCBT/ACT", "PP + CBT/ACT"),
+    ("full_pp_no_cbtact", "PP, no\nCBT/ACT", "PP, no CBT/ACT"),
+    ("history_ratings_only", "History +\nratings", "History + ratings"),
+    ("history_text_only", "History text\nonly", "History text only"),
 )
+CONDITION_COLORS = {"pp_cbtact": "#0173B2", "full_pp_no_cbtact": "#DE8F05",
+                    "history_ratings_only": "#029E73", "history_text_only": "#CC78BC"}
+OBSERVED_COLOR = "#4D4D4D"
 MODELS = (
     ("GPT-4o-mini", "#0173B2", "results/prompt_ablations/gpt-4o-mini"),
     ("GPT-5", "#DE8F05", "results/prompt_ablations/gpt-5"),
@@ -41,22 +58,17 @@ MODELS = (
     ("Grok-4.3", "#CC78BC", "results/prompt_ablations/grok-4.3"),
     ("Gemini-2.5-Pro", "#CA9161", "results/prompt_ablations/gemini-2.5-pro"),
 )
-DIRECTIONAL_BUCKET_MAP = {1: 0, 2: 0, 3: 1, 4: 2, 5: 2}
 METRIC_SPECS = {
     "accuracy": ("Exact accuracy", (0, .75)),
     "macro_f1": ("Macro-F1", (0, .75)),
-    "qwk": ("QWK", (-.05, .65)),
+    "qwk": ("QWK", (-.1, .7)),
     "directional_accuracy": ("Directional accuracy", (0, 1.0)),
     "directional_macro_f1": ("Directional macro-F1", (0, 1.0)),
 }
-PANEL_YLABELS = {
-    "accuracy": "Exact accuracy",
-    "macro_f1": "Macro-F1",
-    "qwk": "QWK",
-    "directional_accuracy": "Directional accuracy",
-    "directional_macro_f1": "Directional macro-F1",
-}
+STANDARD_METRICS = ("accuracy", "macro_f1", "qwk")
+DIRECTIONAL_METRICS = ("directional_accuracy", "directional_macro_f1")
 FONT_CHAIN = ["Helvetica", "Arial", "DejaVu Sans"]
+LEGEND_FONT = {"family": "Helvetica", "weight": "bold", "size": 10}
 
 mpl.rcParams.update({
     "font.family": "sans-serif", "font.sans-serif": FONT_CHAIN, "font.size": 13,
@@ -70,13 +82,28 @@ mpl.rcParams.update({
 })
 
 
-def load_and_validate(path: Path, test: list[dict], condition: str) -> dict[str, dict]:
-    if not path.exists():
-        raise SystemExit(f"Missing required result: {path}")
+def style(ax) -> None:
+    for label in ax.get_xticklabels() + ax.get_yticklabels():
+        label.set_fontfamily("Helvetica")
+        label.set_fontweight("bold")
+
+
+def save(fig, name: str, legend=None) -> None:
+    extra = (legend,) if legend is not None else ()
+    for extension in ("png", "pdf"):
+        fig.savefig(OUTDIR / f"{name}.{extension}", bbox_inches="tight", bbox_extra_artists=extra, dpi=400)
+    plt.close(fig)
+
+
+def slug(model: str) -> str:
+    return model.lower().replace("-", "_").replace(".", "_")
+
+
+def load_rows(path: Path, test: list[dict]) -> dict[str, dict]:
     rows = json.loads(path.read_text(encoding="utf-8"))
     expected = {str(index) for index in range(len(test))}
     if not isinstance(rows, dict) or set(rows) != expected:
-        raise SystemExit(f"Incomplete result for {condition}: {path}")
+        raise SystemExit(f"Incomplete result: {path}")
     for index, item in enumerate(test):
         row = rows[str(index)]
         if row.get("response_id") != item.get("response_id") or row.get("input_message") != item.get("input_message"):
@@ -84,75 +111,246 @@ def load_and_validate(path: Path, test: list[dict], condition: str) -> dict[str,
     return rows
 
 
-def metrics(rows: dict[str, dict], test: list[dict]) -> list[dict]:
-    output = []
-    for domain in DOMAINS:
-        truth = [rows[str(index)][f"ground_truth_{domain}"] for index in range(len(test))]
-        prediction = [rows[str(index)][f"predicted_{domain}"] for index in range(len(test))]
-        ordinal_truth = [RATING_SCALES[domain][value] for value in truth]
-        ordinal_prediction = [RATING_SCALES[domain][value] for value in prediction]
-        directional_truth = [DIRECTIONAL_BUCKET_MAP[value] for value in ordinal_truth]
-        directional_prediction = [DIRECTIONAL_BUCKET_MAP[value] for value in ordinal_prediction]
-        output.append({
-            "domain": domain.capitalize(),
-            "accuracy": float(np.mean(np.asarray(truth) == np.asarray(prediction))),
-            "macro_f1": float(f1_score(truth, prediction, average="macro", zero_division=0)),
-            "qwk": float(cohen_kappa_score(ordinal_truth, ordinal_prediction, weights="quadratic")),
-            "directional_accuracy": float(np.mean(np.asarray(directional_truth) == np.asarray(directional_prediction))),
-            "directional_macro_f1": float(f1_score(directional_truth, directional_prediction, average="macro", zero_division=0)),
-        })
-    return output
+# --------------------------------------------------------------------------
+# Metric figures with 95% CI whiskers
+# --------------------------------------------------------------------------
 
-
-def style(ax):
-    for label in ax.get_xticklabels() + ax.get_yticklabels():
-        label.set_fontfamily("Helvetica")
-        label.set_fontweight("bold")
-
-
-def plot_by_domain(records: pd.DataFrame, metric: str, ylabel: str, name: str) -> None:
-    fig, axes = plt.subplots(1, 3, figsize=(15, 5.5), sharex=True, constrained_layout=True)
+def metric_panel(ax, metrics: pd.DataFrame, models: list[tuple[str, str]], metric: str, domain: str) -> None:
     xs = np.arange(len(CONDITIONS))
-    for axis, domain in zip(axes.flat, ("Content", "Coping", "Quitting")):
-        domain_df = records[records.domain == domain]
-        for model, color, _directory in MODELS:
-            subset = domain_df[domain_df.model == model].set_index("condition_key")
-            axis.plot(xs, [subset.loc[key, metric] for key, _label in CONDITIONS],
-                      marker="o", color=color, linewidth=2.2, markersize=6, label=model)
-        axis.set_title(domain)
-        axis.set_ylim(METRIC_SPECS[metric][1])
-        axis.set_xticks(xs, [label for _key, label in CONDITIONS])
-        style(axis)
-    axes[0].set_ylabel(PANEL_YLABELS[metric])
-    handles, labels = axes[0].get_legend_handles_labels()
-    legend = fig.legend(handles, labels, loc="lower center", bbox_to_anchor=(.5, -.03), ncol=5,
-                        prop={"family": "Helvetica", "weight": "bold", "size": 10}, frameon=False)
-    for extension in ("png", "pdf"):
-        fig.savefig(OUTDIR / f"{name}.{extension}",
-                    bbox_inches="tight", bbox_extra_artists=(legend,), dpi=400)
-    plt.close(fig)
+    offsets = np.linspace(-.27, .27, len(models)) if len(models) > 1 else [0.0]
+    for (model, color), offset in zip(models, offsets):
+        block = metrics[(metrics.model == model) & (metrics.domain == domain) & (metrics.metric == metric)]
+        block = block.set_index("condition_key").reindex([key for key, *_ in CONDITIONS])
+        y = block["estimate"].to_numpy()
+        yerr = np.vstack([y - block["ci_low"].to_numpy(), block["ci_high"].to_numpy() - y])
+        ax.plot(xs + offset, y, color=color, linewidth=1.3, alpha=.55, zorder=2)
+        ax.errorbar(xs + offset, y, yerr=yerr, fmt="o", color=color, markersize=6, capsize=3,
+                    elinewidth=1.4, capthick=1.4, label=model, zorder=3)
+    lower, upper = METRIC_SPECS[metric][1]
+    sub = metrics[(metrics.metric == metric) & (metrics.model.isin([m for m, _ in models]))]
+    lower = min(lower, float(np.floor((sub["ci_low"].min() - .02) * 20) / 20))
+    upper = max(upper, float(np.ceil((sub["ci_high"].max() + .02) * 20) / 20))
+    ax.set_ylim(lower, upper)
+    ax.set_xlim(-.6, len(CONDITIONS) - .4)
+    ax.set_xticks(xs, [label for _key, label, _short in CONDITIONS])
+    style(ax)
 
+
+def figure_metric(metrics: pd.DataFrame, models: list[tuple[str, str]], metric: str) -> None:
+    fig, axes = plt.subplots(1, 3, figsize=(15, 5.5), sharex=True, constrained_layout=True)
+    for ax, domain in zip(axes, ("Content", "Coping", "Quitting")):
+        metric_panel(ax, metrics, models, metric, domain)
+        ax.set_title(domain)
+    axes[0].set_ylabel(METRIC_SPECS[metric][0])
+    handles, labels = axes[0].get_legend_handles_labels()
+    legend = fig.legend(handles, labels, loc="lower center", bbox_to_anchor=(.5, -.03), ncol=len(models), prop=LEGEND_FONT)
+    save(fig, f"prompt_ablation_{metric}_by_domain_dt10", legend)
+
+
+def figure_metric_grid(metrics: pd.DataFrame, models: list[tuple[str, str]], metric_list: tuple[str, ...], name: str) -> None:
+    rows = len(metric_list)
+    fig, axes = plt.subplots(rows, 3, figsize=(15, 4.4 * rows), sharex=True, constrained_layout=True)
+    axes = np.atleast_2d(axes)
+    for r, metric in enumerate(metric_list):
+        for c, domain in enumerate(("Content", "Coping", "Quitting")):
+            ax = axes[r, c]
+            metric_panel(ax, metrics, models, metric, domain)
+            if r == 0:
+                ax.set_title(domain)
+            if c == 0:
+                ax.set_ylabel(METRIC_SPECS[metric][0])
+    handles, labels = axes[0, 0].get_legend_handles_labels()
+    legend = fig.legend(handles, labels, loc="lower center", bbox_to_anchor=(.5, -.02), ncol=len(models), prop=LEGEND_FONT)
+    save(fig, name, legend)
+
+
+# --------------------------------------------------------------------------
+# Rating and signed-error distributions
+# --------------------------------------------------------------------------
+
+def distributions(predictions: dict[str, dict[str, dict[str, np.ndarray]]], truth: dict[str, np.ndarray]) -> tuple[pd.DataFrame, pd.DataFrame]:
+    """Long tables: rating-level proportions and (predicted - observed) proportions, plus summary statistics."""
+    dist_rows, summary_rows = [], []
+    levels = np.arange(1, 6)
+    errors = np.arange(-4, 5)
+    for domain in DOMAINS:
+        y = truth[domain]
+        counts = np.bincount(y, minlength=6)[1:]
+        for level, count in zip(levels, counts):
+            dist_rows.append({"model": "Observed", "condition_key": "observed", "condition": "Observed", "domain": domain.capitalize(),
+                              "kind": "rating", "value": int(level), "count": int(count), "proportion": count / len(y)})
+    for model, by_condition in predictions.items():
+        for condition_key, _label, short in CONDITIONS:
+            for domain in DOMAINS:
+                y, p = truth[domain], by_condition[condition_key][domain]
+                counts = np.bincount(p, minlength=6)[1:]
+                for level, count in zip(levels, counts):
+                    dist_rows.append({"model": model, "condition_key": condition_key, "condition": short, "domain": domain.capitalize(),
+                                      "kind": "rating", "value": int(level), "count": int(count), "proportion": count / len(p)})
+                error = p - y
+                ecounts = np.bincount(error + 4, minlength=9)
+                for value, count in zip(errors, ecounts):
+                    dist_rows.append({"model": model, "condition_key": condition_key, "condition": short, "domain": domain.capitalize(),
+                                      "kind": "signed_error", "value": int(value), "count": int(count), "proportion": count / len(p)})
+                summary_rows.append({
+                    "model": model, "condition_key": condition_key, "condition": short, "domain": domain.capitalize(),
+                    "n": int(len(p)), "observed_mean": float(y.mean()), "observed_sd": float(y.std(ddof=1)),
+                    "predicted_mean": float(p.mean()), "predicted_sd": float(p.std(ddof=1)),
+                    "bias_predicted_minus_observed": float(error.mean()), "mean_absolute_error": float(np.abs(error).mean()),
+                    "exact_rate": float((error == 0).mean()), "within_one_rate": float((np.abs(error) <= 1).mean()),
+                    "over_rate": float((error > 0).mean()), "under_rate": float((error < 0).mean()),
+                    "predicted_level_proportions": " ".join(f"{v:.3f}" for v in np.bincount(p, minlength=6)[1:] / len(p)),
+                })
+    return pd.DataFrame(dist_rows), pd.DataFrame(summary_rows)
+
+
+def rating_panel(ax, dist: pd.DataFrame, model: str, domain: str, show_legend_labels: bool) -> None:
+    levels = np.arange(1, 6)
+    series = [("Observed", "observed", OBSERVED_COLOR)] + [(short, key, CONDITION_COLORS[key]) for key, _l, short in CONDITIONS]
+    width = .8 / len(series)
+    offsets = (np.arange(len(series)) - (len(series) - 1) / 2) * width
+    for (label, key, color), offset in zip(series, offsets):
+        source = "Observed" if key == "observed" else model
+        block = dist[(dist.model == source) & (dist.condition_key == key) & (dist.domain == domain) & (dist.kind == "rating")]
+        block = block.set_index("value").reindex(levels)
+        ax.bar(levels + offset, block["proportion"].to_numpy(), width=width * .95, color=color,
+               label=label if show_legend_labels else None, zorder=3)
+    ax.set_xticks(levels)
+    ax.set_ylim(0, 1)
+    style(ax)
+
+
+def error_panel(ax, dist: pd.DataFrame, model: str, domain: str, show_legend_labels: bool) -> None:
+    errors = np.arange(-4, 5)
+    width = .8 / len(CONDITIONS)
+    offsets = (np.arange(len(CONDITIONS)) - (len(CONDITIONS) - 1) / 2) * width
+    for (key, _label, short), offset in zip(CONDITIONS, offsets):
+        block = dist[(dist.model == model) & (dist.condition_key == key) & (dist.domain == domain) & (dist.kind == "signed_error")]
+        block = block.set_index("value").reindex(errors)
+        ax.bar(errors + offset, block["proportion"].to_numpy(), width=width * .95, color=CONDITION_COLORS[key],
+               label=short if show_legend_labels else None, zorder=3)
+    ax.axvline(0, color=OBSERVED_COLOR, linestyle="--", linewidth=1.2, alpha=.7, zorder=2)
+    ax.set_xticks(errors)
+    ax.set_ylim(0, 1)
+    style(ax)
+
+
+def figure_distribution(dist: pd.DataFrame, models: list[tuple[str, str]], panel, xlabel: str, ylabel: str, name: str) -> None:
+    rows = len(models)
+    fig, axes = plt.subplots(rows, 3, figsize=(15, 3.3 * rows), sharex=True, sharey=True, constrained_layout=True)
+    axes = np.atleast_2d(axes)
+    for r, (model, _color) in enumerate(models):
+        for c, domain in enumerate(("Content", "Coping", "Quitting")):
+            ax = axes[r, c]
+            panel(ax, dist, model, domain, show_legend_labels=(r == 0 and c == 0))
+            if r == 0:
+                ax.set_title(domain)
+            if c == 0:
+                ax.set_ylabel(f"{model}\n{ylabel}")
+            if r == rows - 1:
+                ax.set_xlabel(xlabel)
+    handles, labels = axes[0, 0].get_legend_handles_labels()
+    legend = fig.legend(handles, labels, loc="lower center", bbox_to_anchor=(.5, -.02 if rows > 1 else -.06),
+                        ncol=len(labels), prop=LEGEND_FONT)
+    save(fig, name, legend)
+
+
+# --------------------------------------------------------------------------
+# Pairwise comparison heat maps
+# --------------------------------------------------------------------------
+
+def figure_pairwise(pairwise: pd.DataFrame, models: list[tuple[str, str]], metric: str) -> None:
+    short = {key: s for key, _l, s in CONDITIONS}
+    keys = [key for key, *_ in CONDITIONS]
+    pairs = [(keys[i], keys[j]) for i in range(len(keys)) for j in range(i + 1, len(keys))]
+    row_labels, cells, verdicts = [], [], []
+    for model, _color in models:
+        for domain in ("Content", "Coping", "Quitting"):
+            row_labels.append(f"{model} · {domain}")
+            block = pairwise[(pairwise.model == model) & (pairwise.domain == domain) & (pairwise.metric == metric)]
+            values, flags = [], []
+            for reference, comparison in pairs:
+                hit = block[(block.reference_key == reference) & (block.comparison_key == comparison)].iloc[0]
+                values.append(hit["difference"])
+                flags.append(hit["verdict"])
+            cells.append(values)
+            verdicts.append(flags)
+    colors = {"comparison better": mpl.colors.to_rgba("#0173B2", .45), "reference better": mpl.colors.to_rgba("#DE8F05", .45),
+              "comparable": (1, 1, 1, 1)}
+    rgba = np.array([[colors[v] for v in row] for row in verdicts])
+    fig, ax = plt.subplots(figsize=(13, .42 * len(row_labels) + 1.8), constrained_layout=True)
+    ax.imshow(rgba, aspect="auto", interpolation="nearest")
+    for r, row in enumerate(cells):
+        for c, value in enumerate(row):
+            ax.text(c, r, f"{value:+.3f}", ha="center", va="center", fontsize=10, family="Helvetica",
+                    weight="bold" if verdicts[r][c] != "comparable" else "normal", color="black")
+    ax.set_xticks(range(len(pairs)), [f"{short[b]}\n− {short[a]}" for a, b in pairs], fontsize=10)
+    ax.set_yticks(range(len(row_labels)), row_labels, fontsize=10)
+    ax.grid(False)
+    for spine in ax.spines.values():
+        spine.set_visible(True)
+    for r in range(3, len(row_labels), 3):
+        ax.axhline(r - .5, color="#4D4D4D", linewidth=1.2)
+    for c in range(1, len(pairs)):
+        ax.axvline(c - .5, color="#4D4D4D", linewidth=.4, alpha=.5)
+    ax.tick_params(length=0)
+    style(ax)
+    ax.set_xlabel(f"Δ {METRIC_SPECS[metric][0]} (comparison − reference)")
+    handles = [Patch(facecolor=colors["comparison better"], edgecolor="#4D4D4D", label="Comparison better (95% CI > 0)"),
+               Patch(facecolor=colors["reference better"], edgecolor="#4D4D4D", label="Reference better (95% CI < 0)"),
+               Patch(facecolor="white", edgecolor="#4D4D4D", label="Comparable (CI includes 0)")]
+    legend = fig.legend(handles=handles, loc="lower center", bbox_to_anchor=(.5, -.04), ncol=3, prop=LEGEND_FONT)
+    save(fig, f"prompt_ablation_pairwise_{metric}_dt10", legend)
+
+
+# --------------------------------------------------------------------------
 
 def main() -> None:
+    metrics_path = OUTDIR / "prompt_ablation_bootstrap_metrics_dt10.csv"
+    pairwise_path = OUTDIR / "prompt_ablation_bootstrap_pairwise_dt10.csv"
+    for path in (metrics_path, pairwise_path):
+        if not path.exists():
+            raise SystemExit(f"Missing {path.name}; run analysis/bootstrap_prompt_ablations.py first")
+    metrics = pd.read_csv(metrics_path)
+    pairwise = pd.read_csv(pairwise_path)
     test = json.loads(TEST_PATH.read_text(encoding="utf-8"))
     if len(test) != 898:
         raise SystemExit("Expected the 898-row canonical dt10-k7 test file")
-    records = []
-    for model, color, directory in MODELS:
-        for condition_key, condition_label in CONDITIONS:
-            rows = load_and_validate(ROOT / directory / f"{condition_key}_dt10_k7.json", test, f"{model}: {condition_key}")
-            for row in metrics(rows, test):
-                records.append({
-                    "split": "dt10_k7", "n_test": len(test), "model": model, "model_color": color,
-                    "condition_key": condition_key, "condition": condition_label.replace("\n", " "), **row,
-                })
-    results = pd.DataFrame(records)
+    completed = [(model, color) for model, color, _dir in MODELS if model in set(metrics["model"])]
+    pending = [model for model, _color, _dir in MODELS if model not in set(metrics["model"])]
+    if not completed:
+        raise SystemExit("No complete model families in the bootstrap table")
     OUTDIR.mkdir(parents=True, exist_ok=True)
-    results.to_csv(OUTDIR / "reviewer_ablation_all_models_metrics_dt10.csv", index=False)
-    metric_columns = list(METRIC_SPECS)
-    for metric, (ylabel, _ylim) in METRIC_SPECS.items():
-        plot_by_domain(results, metric, ylabel, f"reviewer_ablation_all_models_{metric}_by_domain_dt10")
-    print(f"Wrote validated five-model reviewer figures to {OUTDIR}")
+    pd.DataFrame([{"model": m, "status": "plotted"} for m, _ in completed] + [{"model": m, "status": "pending"} for m in pending]) \
+        .to_csv(OUTDIR / "prompt_ablation_figure_status_dt10.csv", index=False)
+
+    truth = {domain: np.asarray([RATING_SCALES[domain][item["ratings"][domain]] for item in test], dtype=int) for domain in DOMAINS}
+    predictions: dict[str, dict[str, dict[str, np.ndarray]]] = {}
+    directories = {model: directory for model, _color, directory in MODELS}
+    for model, _color in completed:
+        predictions[model] = {}
+        for key, *_ in CONDITIONS:
+            rows = load_rows(ROOT / directories[model] / f"{key}_dt10_k7.json", test)
+            predictions[model][key] = {
+                domain: np.asarray([RATING_SCALES[domain][rows[str(i)][f"predicted_{domain}"]] for i in range(len(test))], dtype=int)
+                for domain in DOMAINS
+            }
+    dist, summary = distributions(predictions, truth)
+    dist.to_csv(OUTDIR / "prompt_ablation_rating_distribution_dt10.csv", index=False)
+    summary.to_csv(OUTDIR / "prompt_ablation_prediction_summary_dt10.csv", index=False)
+
+    for metric in METRIC_SPECS:
+        figure_metric(metrics, completed, metric)
+        figure_pairwise(pairwise, completed, metric)
+    figure_metric_grid(metrics, completed, STANDARD_METRICS, "prompt_ablation_metrics_by_domain_dt10")
+    figure_metric_grid(metrics, completed, DIRECTIONAL_METRICS, "prompt_ablation_directional_by_domain_dt10")
+    figure_distribution(dist, completed, rating_panel, "Rating (1–5)", "proportion", "prompt_ablation_rating_distributions_dt10")
+    figure_distribution(dist, completed, error_panel, "Predicted − observed rating", "proportion", "prompt_ablation_signed_error_distributions_dt10")
+    for model, color in completed:
+        figure_distribution(dist, [(model, color)], rating_panel, "Rating (1–5)", "proportion", f"prompt_ablation_rating_distribution_{slug(model)}_dt10")
+        figure_distribution(dist, [(model, color)], error_panel, "Predicted − observed rating", "proportion", f"prompt_ablation_signed_error_{slug(model)}_dt10")
+    print(f"Wrote prompt-ablation figures for {len(completed)} complete model(s) to {OUTDIR}"
+          + (f"; pending: {', '.join(pending)}" if pending else ""))
 
 
 if __name__ == "__main__":
